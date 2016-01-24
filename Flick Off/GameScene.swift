@@ -59,7 +59,7 @@ class GameScene: SKScene {
         
         
         
-        
+        setStaticHearts(3)
         objects=[space_objects, city_objects,underwater_objects, mars_objects]
         self.physicsWorld.gravity=CGVectorMake(0, 0);
         self.manager.deviceMotionUpdateInterval=1.0/60.0;
@@ -175,8 +175,7 @@ class GameScene: SKScene {
         for(var i=0; i<num; i+=1){
             let heart = addHeart()
             heart.size=CGSizeMake(40, 40)
-            heart.position=CGPointMake(50, 50)
-            
+            heart.position=CGPointMake(CGFloat(30+(45*i)), 30)
             addChild(heart)
             
         }
@@ -199,7 +198,6 @@ class GameScene: SKScene {
         addChild(coin)
         coins.append(coin)
         }
-        
     }
     func addHeart() -> SKSpriteNode{
         let heart = SKSpriteNode()
@@ -214,7 +212,6 @@ class GameScene: SKScene {
         heart_image.position=CGPointMake(0, 0)
 
         heart.position=CGPointMake(CGFloat(Int(arc4random_uniform(UInt32(self.size.width)-40)+20)), self.size.height+25)
-        heart.size=CGSizeMake(90, 90);
         heart.runAction(SKAction.repeatActionForever( SKAction.sequence([SKAction.fadeAlphaTo(0.5, duration: 0.5),SKAction.fadeAlphaTo(1, duration: 0.5) ])))
         heart.addChild(background);
         heart.addChild(heart_image);
@@ -222,7 +219,6 @@ class GameScene: SKScene {
         
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    
         for touches: AnyObject in touches{
             
             let location = touches.locationInNode(self)
@@ -232,8 +228,6 @@ class GameScene: SKScene {
                 moving_object=self.nodeAtPoint(location) as! SKSpriteNode
             }
         }
-        
-        
     }
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touches: AnyObject in touches{
@@ -292,6 +286,7 @@ class GameScene: SKScene {
         //adding heart nodes
         if(frame_counter%600==0){
             let heart = addHeart()
+            heart.size=CGSizeMake(90, 90);
             addChild(heart)
             hearts.append(heart);
         }

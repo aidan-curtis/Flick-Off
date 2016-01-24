@@ -23,9 +23,21 @@ class GameScene: SKScene {
     //hearts init
     var hearts=[SKSpriteNode]()
     var permanant_hearts=[SKSpriteNode]()
+    var number_of_hearts=3;
     //let space_objects:[String] = ["meteorBrown_big1", "meteorBrown_big2", "meteorBrown_big3", "meteorBrown_big4"];
     //fix later to stramline string formatting
-    let space_objects: [String] = ["a300","a100", "b100", "b300", "c100", "c300", "c400"];
+    let paralax=["rain.sks"]
+    
+    let space_objects: [String] = ["a30000","a10000", "b10000", "b30000", "c10000", "c30000", "c40000"];
+    let city_objects: [String] = ["cat", "dog"]
+    let underwater_objects: [String] = ["Fish1","Fish2", "Fish3", "Shark"]
+    let mars_objects: [String] = ["UFO1", "UFO2", "UFO3"]
+    var objects = Array<Array<String>>()
+    
+    let backgrounds: [String] = ["garaxee", "urban-landscape-background-Preview.png", "", ""]
+    
+    let character_images: [String] = ["playerShip1_green", "playerShip1_green"]
+    
     var space_actions = [SKAction]();
     var frame_counter=0;
     var moving_object=SKSpriteNode();
@@ -34,28 +46,38 @@ class GameScene: SKScene {
     var character = SKSpriteNode();
     var fuel = SKEmitterNode(fileNamed: "MyParticle.sks");
     
+    
+    var game_mode=0
+    
+    
     var spinning_asteroid = SKAction();
     let manager = CMMotionManager();
     var currentRoll = Double();
     
     override func didMoveToView(view: SKView) {
         
+        
+        
+        
+        
+        objects=[space_objects, city_objects,underwater_objects, mars_objects]
         self.physicsWorld.gravity=CGVectorMake(0, 0);
         self.manager.deviceMotionUpdateInterval=1.0/60.0;
         self.manager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical);
-        
+    
         fuel!.targetNode=self;
         
         /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
-        //        backgroundNode.texture=SKTexture(imageNamed: "black");
-        //        backgroundNode.position = CGPointMake(self.size.width/2, self.size.height/2)
-        //        backgroundNode.zPosition = -10000
-        //        backgroundNode.size = CGSizeMake(300, self.size.height)
-        //        addChild(backgroundNode)
+    
+        backgroundNode.texture=SKTexture(imageNamed: backgrounds[game_mode]);
+        backgroundNode.position = CGPointMake(self.size.width/2, self.size.height/2)
+        backgroundNode.zPosition = -10000
+        backgroundNode.size = CGSizeMake(self.size.width, self.size.height)
+        addChild(backgroundNode)
         
         
-        character.texture=SKTexture(imageNamed: "playerShip1_green");
+        character.texture=SKTexture(imageNamed: character_images[game_mode]);
         character.position=CGPointMake(self.size.width/2, 90);
         character.size=CGSizeMake(50, 38);
         character.physicsBody=SKPhysicsBody(rectangleOfSize:character.size);
@@ -66,7 +88,7 @@ class GameScene: SKScene {
         
         addChild(fuel!);
         
-        
+        if(game_mode==0){
         var emitterNode = starfieldEmitter(SKColor.lightGrayColor(), starSpeedY: 300, starsPerSecond: 10, starScaleFactor: 0.2)
         emitterNode.zPosition = -10
         self.addChild(emitterNode)
@@ -74,6 +96,16 @@ class GameScene: SKScene {
         emitterNode = starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1)
         emitterNode.zPosition = -11
         self.addChild(emitterNode)
+            
+        }
+        else{
+            let emitterNode = SKEmitterNode(fileNamed: "Rain.sks")!
+            emitterNode.zPosition = -11
+            emitterNode.position = CGPoint(x: frame.size.width/2, y: frame.size.height)
+            emitterNode.particlePositionRange = CGVector(dx: frame.size.width+200, dy: 0)
+            addChild(emitterNode)
+            
+        }
         
         //        emitterNode = starfieldEmitter(SKColor.darkGrayColor(), starSpeedY: 1, starsPerSecond: 4, starScaleFactor: 0.05)
         //        emitterNode.zPosition = -12
@@ -90,10 +122,10 @@ class GameScene: SKScene {
     func addFallingObject(){
 
         let falling_object = SKSpriteNode();
-        let num = Int(arc4random_uniform(UInt32(space_objects.count)));
+        let num = Int(arc4random_uniform(UInt32(objects[game_mode].count)));
         NSLog("%i", num);
         //falling_object.runAction(SKAction.repeatActionForever(space_actions[1]));
-        falling_object.texture=SKTexture(imageNamed: space_objects[num]+"00");
+        falling_object.texture=SKTexture(imageNamed: objects[game_mode][num]);
         falling_object.position = CGPointMake( CGFloat(arc4random_uniform(UInt32(self.size.width)))
                                                 ,self.size.height+25);
         falling_object.size = CGSizeMake(100, 100);
@@ -139,12 +171,22 @@ class GameScene: SKScene {
         
         return emitterNode
     }
+    func setStaticHearts(num : Int){
+        for(var i=0; i<num; i+=1){
+            let heart = addHeart()
+            heart.size=CGSizeMake(40, 40)
+            heart.position=CGPointMake(50, 50)
+            
+            addChild(heart)
+            
+        }
+    }
     func addCoin(){
         let coin = SKSpriteNode()
         if(arc4random_uniform(20)==0){
-            coins_position_x=2*Int(arc4random_uniform(UInt32(self.size.width))+20)
+            coins_position_x=2*Int(arc4random_uniform(UInt32(self.size.width)-40)+20)
         }
-        if(coins_position_x<Int(self.size.width)-20){
+        if(coins_position_x<Int(self.size.width)){
         //coin.texture=SKTexture(imageNamed:"spinning_coin_gold_1")
         var coin_textures=[SKTexture]()
         for (var i=0; i<8; i=i+1){
@@ -159,27 +201,24 @@ class GameScene: SKScene {
         }
         
     }
-    func addHeart(){
+    func addHeart() -> SKSpriteNode{
         let heart = SKSpriteNode()
         let background = SKSpriteNode(texture: SKTexture(imageNamed: "red_glow"))
         let heart_image = SKSpriteNode(texture: SKTexture(imageNamed: "heart"))
         
-        background.runAction(SKAction.sequence([SKAction.fadeAlphaTo(0.5, duration: 1),SKAction.fadeAlphaTo(1, duration: 1) ]))
+        
         background.size=CGSizeMake(90, 90)
-        background.position=CGPointMake(0, 0)
+        background.position=CGPointMake(0, 5)
         
         heart_image.size=CGSizeMake(42,42)
         heart_image.position=CGPointMake(0, 0)
 
-        heart.position=CGPointMake(CGFloat(coins_position_x), self.size.height+25)
+        heart.position=CGPointMake(CGFloat(Int(arc4random_uniform(UInt32(self.size.width)-40)+20)), self.size.height+25)
         heart.size=CGSizeMake(90, 90);
+        heart.runAction(SKAction.repeatActionForever( SKAction.sequence([SKAction.fadeAlphaTo(0.5, duration: 0.5),SKAction.fadeAlphaTo(1, duration: 0.5) ])))
         heart.addChild(background);
         heart.addChild(heart_image);
-        
-        
-        
-        addChild(heart)
-        hearts.append(heart)
+        return heart
         
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -252,7 +291,9 @@ class GameScene: SKScene {
         }
         //adding heart nodes
         if(frame_counter%600==0){
-            addHeart();
+            let heart = addHeart()
+            addChild(heart)
+            hearts.append(heart);
         }
         //add falling objects
         if(frame_counter%50==0 && !(frame_counter%600==0)){

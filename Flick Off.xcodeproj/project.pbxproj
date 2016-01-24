@@ -18,6 +18,9 @@
 		0E197A391C54291B00AA5658 /* spinning_coin_gold_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A301C54291B00AA5658 /* spinning_coin_gold_8.png */; };
 		0E197A3D1C54467D00AA5658 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A3B1C54467D00AA5658 /* heart.png */; };
 		0E197A3E1C54467D00AA5658 /* red_glow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A3C1C54467D00AA5658 /* red_glow.png */; };
+		0E197A421C551CC400AA5658 /* credit in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A401C551CC400AA5658 /* credit */; };
+		0E197A431C551CC400AA5658 /* urban-landscape-background-Preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A411C551CC400AA5658 /* urban-landscape-background-Preview.png */; };
+		0E197A451C552A9900AA5658 /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A441C552A9900AA5658 /* Rain.sks */; };
 		0E1DDD001C34677000E0C28F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1DDCFF1C34677000E0C28F /* AppDelegate.swift */; };
 		0E1DDD021C34677000E0C28F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDD011C34677000E0C28F /* GameScene.sks */; };
 		0E1DDD041C34677000E0C28F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1DDD031C34677000E0C28F /* GameScene.swift */; };
@@ -434,6 +437,9 @@
 		0E197A301C54291B00AA5658 /* spinning_coin_gold_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_gold_8.png; sourceTree = "<group>"; };
 		0E197A3B1C54467D00AA5658 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		0E197A3C1C54467D00AA5658 /* red_glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_glow.png; sourceTree = "<group>"; };
+		0E197A401C551CC400AA5658 /* credit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = credit; sourceTree = "<group>"; };
+		0E197A411C551CC400AA5658 /* urban-landscape-background-Preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "urban-landscape-background-Preview.png"; sourceTree = "<group>"; };
+		0E197A441C552A9900AA5658 /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
 		0E1DDCFC1C34677000E0C28F /* Flick Off.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flick Off.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E1DDCFF1C34677000E0C28F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E1DDD011C34677000E0C28F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -879,6 +885,16 @@
 			path = Images/Heart;
 			sourceTree = "<group>";
 		};
+		0E197A3F1C551CC400AA5658 /* City background */ = {
+			isa = PBXGroup;
+			children = (
+				0E197A401C551CC400AA5658 /* credit */,
+				0E197A411C551CC400AA5658 /* urban-landscape-background-Preview.png */,
+			);
+			name = "City background";
+			path = "Images/City background";
+			sourceTree = "<group>";
+		};
 		0E1DDCF31C34677000E0C28F = {
 			isa = PBXGroup;
 			children = (
@@ -902,6 +918,7 @@
 		0E1DDCFE1C34677000E0C28F /* Flick Off */ = {
 			isa = PBXGroup;
 			children = (
+				0E197A3F1C551CC400AA5658 /* City background */,
 				0E197A3A1C54467D00AA5658 /* Heart */,
 				0E197A271C54291B00AA5658 /* Coin */,
 				0E1DDDDA1C35E09000E0C28F /* asteroids (1) */,
@@ -915,6 +932,7 @@
 				0E1DDD011C34677000E0C28F /* GameScene.sks */,
 				0E1DDD351C359A2800E0C28F /* spark.png */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
+				0E197A441C552A9900AA5658 /* Rain.sks */,
 				0E1DDDD31C35D6D200E0C28F /* spark.png */,
 				0E1DDD051C34677000E0C28F /* GameViewController.swift */,
 				0E1DDD071C34677000E0C28F /* Main.storyboard */,
@@ -1456,6 +1474,7 @@
 				0E1DDFCA1C35E09000E0C28F /* a10012.png in Resources */,
 				0E1DE09D1C35E09000E0C28F /* b10015.png in Resources */,
 				0E1DDFAE1C35E09000E0C28F /* c40000.png in Resources */,
+				0E197A451C552A9900AA5658 /* Rain.sks in Resources */,
 				0E1DE0BD1C35E09000E0C28F /* b40015.png in Resources */,
 				0E1DE0231C35E09000E0C28F /* c40005.png in Resources */,
 				0E1DDF811C35E09000E0C28F /* b30003.png in Resources */,
@@ -1686,6 +1705,7 @@
 				0E1DE0801C35E09000E0C28F /* a40002.png in Resources */,
 				0E1DE0461C35E09000E0C28F /* d30008.png in Resources */,
 				0E1DE0891C35E09000E0C28F /* a40011.png in Resources */,
+				0E197A431C551CC400AA5658 /* urban-landscape-background-Preview.png in Resources */,
 				0E1DE0A11C35E09000E0C28F /* b30003.png in Resources */,
 				0E1DE0311C35E09000E0C28F /* d10003.png in Resources */,
 				0E1DDFD21C35E09000E0C28F /* a30004.png in Resources */,
@@ -1824,6 +1844,7 @@
 				0E1DDF5B1C35E09000E0C28F /* a10013.png in Resources */,
 				0E1DE02C1C35E09000E0C28F /* c40014.png in Resources */,
 				0E1DE0161C35E09000E0C28F /* c30008.png in Resources */,
+				0E197A421C551CC400AA5658 /* credit in Resources */,
 				0E1DDF551C35E09000E0C28F /* a10007.png in Resources */,
 				0E1DDF741C35E09000E0C28F /* b10006.png in Resources */,
 				0E1DE0841C35E09000E0C28F /* a40006.png in Resources */,

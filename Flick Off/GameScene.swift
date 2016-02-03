@@ -12,15 +12,18 @@ import CoreMotion
 
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     enum GameMode : Int {
         case SPACE=0,CITY,UNDERWATER,MARS
     }
+    enum Objects : UInt32{
+        case Meteor=100
+    }
     //labels
     let score = SKLabelNode()
     var score_number = 0;
-    
+    var gems = [SKSpriteNode]();
     
     var backgroundNode=SKSpriteNode();
     var falling_objects=[SKSpriteNode]();
@@ -61,11 +64,68 @@ class GameScene: SKScene {
     var currentRoll = Double();
     
     var explosion = [SKTexture]()
+    var menu = SKSpriteNode();
     
+    
+    
+
+    
+    func presentMenu(){
+        menu.size=CGSizeMake(200, 100)
+        menu.color=UIColor.redColor()
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        print("contact!");
+        var velocity1 = CGVector(), velocity2=CGVector();
+        var location1 = CGPoint(), location2=CGPoint();
+        var node1=SKSpriteNode(), node2=SKSpriteNode()
+        for node: SKSpriteNode in falling_objects{
+            if(node.physicsBody==contact.bodyA){
+
+                velocity1=(node.physicsBody?.velocity)!
+                location1=node.position;
+                node1=node;
+            }
+            if(node.physicsBody==contact.bodyB){
+
+                velocity2=(node.physicsBody?.velocity)!
+                location2=node.position;
+                node2=node;
+            }
+        }
+        let power = pow(pow(velocity1.dx,2)+pow(velocity1.dy,2),0.5)+pow(pow(velocity2.dx,2)+pow(velocity2.dy,2),0.5) ;
+        if(power>1000){
+            if(arc4random_uniform(5)==0){
+                
+            addGem(node1.position)
+            }
+            node1.removeFromParent()
+            node2.removeFromParent()
+            
+            falling_objects.removeAtIndex(falling_objects.indexOf(node1)!)
+            falling_objects.removeAtIndex(falling_objects.indexOf(node2)!)
+            explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01)
+            
+            
+        }
+       
+        
+        
+        
+    }
     override func didMoveToView(view: SKView) {
+        self.physicsWorld.contactDelegate = self
         for(var i=0; i<34; i+=1){
             explosion.append(SKTexture(imageNamed: "explosion_\(i+1)"))
         }
+        
+        
+        //present menu at beginning and after death
+        presentMenu()
+        
+        //addGem(CGPointMake(200, 200))
+        
         //setting score label
         score.position = CGPointMake(30, self.size.height-30)
         score.fontName = "04b_19"
@@ -99,9 +159,6 @@ class GameScene: SKScene {
         character.texture=SKTexture(imageNamed: character_images[game_mode]);
         character.position=CGPointMake(self.size.width/2, 90);
         character.size=CGSizeMake(50, 38);
-        character.physicsBody=SKPhysicsBody(rectangleOfSize:character.size);
-        
-        character.physicsBody!.dynamic=false;
         addChild(character);
         fuel!.position=CGPointMake(self.size.width/2, 73);
         
@@ -139,6 +196,7 @@ class GameScene: SKScene {
         let falling_object = SKSpriteNode();
         let num = Int(arc4random_uniform(UInt32(objects[game_mode].count)));
         NSLog("%i", num);
+        falling_object.zPosition=1000
         //falling_object.runAction(SKAction.repeatActionForever(space_actions[1]));
         falling_object.texture=SKTexture(imageNamed: objects[game_mode][num]);
         falling_object.position = CGPointMake( CGFloat(arc4random_uniform(UInt32(self.size.width))),self.size.height+25);
@@ -154,6 +212,10 @@ class GameScene: SKScene {
         falling_object.physicsBody=SKPhysicsBody(circleOfRadius: falling_object.size.width/4);
         falling_object.physicsBody!.dynamic=true;
         falling_object.physicsBody!.allowsRotation=true;
+        falling_object.physicsBody!.categoryBitMask = Objects.Meteor.rawValue
+        falling_object.physicsBody!.usesPreciseCollisionDetection=true;
+        falling_object.physicsBody!.contactTestBitMask = Objects.Meteor.rawValue
+        
         
         
         
@@ -169,12 +231,12 @@ class GameScene: SKScene {
         
     
     }
-    func explode(size: CGSize, location: CGPoint){
+    func explode(size: CGSize, location: CGPoint, speed: Double){
         let explosion_node = SKSpriteNode()
         explosion_node.size = size
         explosion_node.position = location
         explosion_node.zPosition = 50
-        explosion_node.runAction(SKAction.animateWithTextures(explosion, timePerFrame: 0.02), completion:{explosion_node.removeFromParent()})
+        explosion_node.runAction(SKAction.animateWithTextures(explosion, timePerFrame: speed), completion:{explosion_node.removeFromParent()})
         addChild(explosion_node)
     }
     func starfieldEmitter(color: SKColor, starSpeedY: CGFloat, starsPerSecond: CGFloat, starScaleFactor: CGFloat) -> SKEmitterNode {
@@ -208,6 +270,22 @@ class GameScene: SKScene {
             addChild(heart)
             
         }
+    }
+    
+    func addGem(location:CGPoint){
+        let gem = SKSpriteNode()
+        gem.size = CGSizeMake(50, 40)
+        gem.position=location
+        var gem_textures = [SKTexture]()
+        for(var i = 7; i<106; i+=8){
+
+            gem_textures.append(SKTexture(imageNamed: "Gem v\(i)"))
+        }
+        gem.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(gem_textures, timePerFrame: 0.1)))
+        
+        addChild(gem)
+        gems.append(gem)
+        
     }
     func addCoin(){
         let coin = SKSpriteNode()
@@ -304,12 +382,21 @@ class GameScene: SKScene {
         for heart: SKSpriteNode in hearts{
             heart.position=CGPointMake(heart.position.x, heart.position.y-5)
         }
-        
+        for gem: SKSpriteNode in gems{
+            gem.position=CGPointMake(gem.position.x, gem.position.y-5)
+        }
         //falling objects enumerate
         var falling_temp = falling_objects
         for falling: SKSpriteNode in falling_objects{
-            if(CGRectIntersectsRect(falling.frame,character.frame)){
-                self.explode(CGSizeMake(90, 90), location: CGPointMake(character.position.x, character.position.y+15))
+            let shrinkx:CGFloat=character.frame.width/2, shrinkx_m=character.frame.width/2
+            let shrinky:CGFloat=character.frame.height/2, shrinky_m=character.frame.height/2
+            if(CGRectIntersectsRect(CGRectMake(falling.frame.origin.x+shrinkx_m, falling.frame.origin.y+shrinky_m, 70, 70), CGRectMake(character.frame.origin.x+shrinkx, character.frame.origin.y+shrinky, 1, 1))){
+                var explosion_size = 0.1*pow(pow((falling.physicsBody?.velocity.dx)!, 2)+pow((falling.physicsBody?.velocity.dy)!, 2), 0.5)
+                if(explosion_size < 60){
+                    explosion_size = 60
+                }
+
+                self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02))
                 falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
                 falling.removeFromParent()
 
@@ -328,7 +415,7 @@ class GameScene: SKScene {
                     //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
                 }
                 
-                
+
                 coin.runAction(SKAction.runBlock(a) )
                 
             }

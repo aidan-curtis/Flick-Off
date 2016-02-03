@@ -474,6 +474,20 @@
 		0EBF813B1C5599EE0090E585 /* explosion_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF81171C5599EE0090E585 /* explosion_9.png */; };
 		0EBF813C1C5599EE0090E585 /* spritesheet2-150x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF81181C5599EE0090E585 /* spritesheet2-150x150.png */; };
 		0EBF813D1C5599EE0090E585 /* spritesheet9-150x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF81191C5599EE0090E585 /* spritesheet9-150x150.png */; };
+		0ED77CEB1C5D435B00BF5D90 /* Gem v103.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C881C5D435B00BF5D90 /* Gem v103.png */; };
+		0ED77CF21C5D435B00BF5D90 /* Gem v15.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C8F1C5D435B00BF5D90 /* Gem v15.png */; };
+		0ED77CFA1C5D435B00BF5D90 /* Gem v23.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C971C5D435B00BF5D90 /* Gem v23.png */; };
+		0ED77D021C5D435B00BF5D90 /* Gem v31.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C9F1C5D435B00BF5D90 /* Gem v31.png */; };
+		0ED77D0A1C5D435B00BF5D90 /* Gem v39.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CA71C5D435B00BF5D90 /* Gem v39.png */; };
+		0ED77D121C5D435B00BF5D90 /* Gem v47.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CAF1C5D435B00BF5D90 /* Gem v47.png */; };
+		0ED77D1A1C5D435B00BF5D90 /* Gem v55.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CB71C5D435B00BF5D90 /* Gem v55.png */; };
+		0ED77D221C5D435B00BF5D90 /* Gem v63.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CBF1C5D435B00BF5D90 /* Gem v63.png */; };
+		0ED77D291C5D435B00BF5D90 /* Gem v7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CC61C5D435B00BF5D90 /* Gem v7.png */; };
+		0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CC81C5D435B00BF5D90 /* Gem v71.png */; };
+		0ED77D331C5D435B00BF5D90 /* Gem v79.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CD01C5D435B00BF5D90 /* Gem v79.png */; };
+		0ED77D3C1C5D435B00BF5D90 /* Gem v87.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CD91C5D435B00BF5D90 /* Gem v87.png */; };
+		0ED77D451C5D435B00BF5D90 /* Gem v95.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CE21C5D435B00BF5D90 /* Gem v95.png */; };
+		0ED77D4B1C5D69C900BF5D90 /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77D4A1C5D69C900BF5D90 /* Magic.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -967,6 +981,20 @@
 		0EBF81171C5599EE0090E585 /* explosion_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_9.png; sourceTree = "<group>"; };
 		0EBF81181C5599EE0090E585 /* spritesheet2-150x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spritesheet2-150x150.png"; sourceTree = "<group>"; };
 		0EBF81191C5599EE0090E585 /* spritesheet9-150x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spritesheet9-150x150.png"; sourceTree = "<group>"; };
+		0ED77C881C5D435B00BF5D90 /* Gem v103.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v103.png"; sourceTree = "<group>"; };
+		0ED77C8F1C5D435B00BF5D90 /* Gem v15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v15.png"; sourceTree = "<group>"; };
+		0ED77C971C5D435B00BF5D90 /* Gem v23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v23.png"; sourceTree = "<group>"; };
+		0ED77C9F1C5D435B00BF5D90 /* Gem v31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v31.png"; sourceTree = "<group>"; };
+		0ED77CA71C5D435B00BF5D90 /* Gem v39.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v39.png"; sourceTree = "<group>"; };
+		0ED77CAF1C5D435B00BF5D90 /* Gem v47.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v47.png"; sourceTree = "<group>"; };
+		0ED77CB71C5D435B00BF5D90 /* Gem v55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v55.png"; sourceTree = "<group>"; };
+		0ED77CBF1C5D435B00BF5D90 /* Gem v63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v63.png"; sourceTree = "<group>"; };
+		0ED77CC61C5D435B00BF5D90 /* Gem v7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v7.png"; sourceTree = "<group>"; };
+		0ED77CC81C5D435B00BF5D90 /* Gem v71.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v71.png"; sourceTree = "<group>"; };
+		0ED77CD01C5D435B00BF5D90 /* Gem v79.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v79.png"; sourceTree = "<group>"; };
+		0ED77CD91C5D435B00BF5D90 /* Gem v87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v87.png"; sourceTree = "<group>"; };
+		0ED77CE21C5D435B00BF5D90 /* Gem v95.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v95.png"; sourceTree = "<group>"; };
+		0ED77D4A1C5D69C900BF5D90 /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1083,6 +1111,7 @@
 		0E1DDCFE1C34677000E0C28F /* Flick Off */ = {
 			isa = PBXGroup;
 			children = (
+				0ED77C831C5D435B00BF5D90 /* PURPLE GEMS */,
 				0EBF80F51C5599EE0090E585 /* Explosion */,
 				0EBF80F01C558AD40090E585 /* Flappy_Font */,
 				0EBF80DF1C557C280090E585 /* Fish */,
@@ -1103,6 +1132,7 @@
 				0E1DDD011C34677000E0C28F /* GameScene.sks */,
 				0E1DDD351C359A2800E0C28F /* spark.png */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
+				0ED77D4A1C5D69C900BF5D90 /* Magic.sks */,
 				0E197A441C552A9900AA5658 /* Rain.sks */,
 				0E1DDDD31C35D6D200E0C28F /* spark.png */,
 				0E1DDD051C34677000E0C28F /* GameViewController.swift */,
@@ -1618,6 +1648,27 @@
 			path = Images/Explosion;
 			sourceTree = "<group>";
 		};
+		0ED77C831C5D435B00BF5D90 /* PURPLE GEMS */ = {
+			isa = PBXGroup;
+			children = (
+				0ED77C881C5D435B00BF5D90 /* Gem v103.png */,
+				0ED77C8F1C5D435B00BF5D90 /* Gem v15.png */,
+				0ED77C971C5D435B00BF5D90 /* Gem v23.png */,
+				0ED77C9F1C5D435B00BF5D90 /* Gem v31.png */,
+				0ED77CA71C5D435B00BF5D90 /* Gem v39.png */,
+				0ED77CAF1C5D435B00BF5D90 /* Gem v47.png */,
+				0ED77CB71C5D435B00BF5D90 /* Gem v55.png */,
+				0ED77CBF1C5D435B00BF5D90 /* Gem v63.png */,
+				0ED77CC61C5D435B00BF5D90 /* Gem v7.png */,
+				0ED77CC81C5D435B00BF5D90 /* Gem v71.png */,
+				0ED77CD01C5D435B00BF5D90 /* Gem v79.png */,
+				0ED77CD91C5D435B00BF5D90 /* Gem v87.png */,
+				0ED77CE21C5D435B00BF5D90 /* Gem v95.png */,
+			);
+			name = "PURPLE GEMS";
+			path = "Flick Off/Images/PURPLE GEMS";
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1742,6 +1793,7 @@
 				0E1DE00C1C35E09000E0C28F /* c10014.png in Resources */,
 				0E1DE0171C35E09000E0C28F /* c30009.png in Resources */,
 				0E1DDF8F1C35E09000E0C28F /* c10001.png in Resources */,
+				0ED77CEB1C5D435B00BF5D90 /* Gem v103.png in Resources */,
 				0E1DE0551C35E09000E0C28F /* d40007.png in Resources */,
 				0E1DE0691C35E09000E0C28F /* a10011.png in Resources */,
 				0E1DDFDE1C35E09000E0C28F /* a40000.png in Resources */,
@@ -1779,6 +1831,7 @@
 				0EBF80E91C557C280090E585 /* color_fish.png in Resources */,
 				0E197A991C5577B500AA5658 /* bubsv20015.png in Resources */,
 				0E1DDFB31C35E09000E0C28F /* c40005.png in Resources */,
+				0ED77D221C5D435B00BF5D90 /* Gem v63.png in Resources */,
 				0E1DE08F1C35E09000E0C28F /* b10001.png in Resources */,
 				0EBF81201C5599EE0090E585 /* explosion_15.png in Resources */,
 				0E1DE03C1C35E09000E0C28F /* d10014.png in Resources */,
@@ -1807,6 +1860,7 @@
 				0E1DE0831C35E09000E0C28F /* a40005.png in Resources */,
 				0E1DDFC11C35E09000E0C28F /* a10003.png in Resources */,
 				0E1DDDCF1C35CB3600E0C28F /* playerShip1_green.png in Resources */,
+				0ED77D451C5D435B00BF5D90 /* Gem v95.png in Resources */,
 				0E1DE0951C35E09000E0C28F /* b10007.png in Resources */,
 				0E1DDFA81C35E09000E0C28F /* c30010.png in Resources */,
 				0E1DE07B1C35E09000E0C28F /* a30013.png in Resources */,
@@ -1814,6 +1868,7 @@
 				0E1DE0431C35E09000E0C28F /* d30005.png in Resources */,
 				0E1DE08B1C35E09000E0C28F /* a40013.png in Resources */,
 				0E1DE0941C35E09000E0C28F /* b10006.png in Resources */,
+				0ED77D1A1C5D435B00BF5D90 /* Gem v55.png in Resources */,
 				0E1DDFEF1C35E09000E0C28F /* b40001.png in Resources */,
 				0E197A9C1C5577B500AA5658 /* bubsv20018.png in Resources */,
 				0E197A391C54291B00AA5658 /* spinning_coin_gold_8.png in Resources */,
@@ -1836,6 +1891,7 @@
 				0EBF81211C5599EE0090E585 /* explosion_16.png in Resources */,
 				0E1DDFE11C35E09000E0C28F /* a40003.png in Resources */,
 				0E1DE0B91C35E09000E0C28F /* b40011.png in Resources */,
+				0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */,
 				0E1DDF9F1C35E09000E0C28F /* c30001.png in Resources */,
 				0E1DDFF01C35E09000E0C28F /* b40002.png in Resources */,
 				0E1DE0B31C35E09000E0C28F /* b40005.png in Resources */,
@@ -1845,6 +1901,7 @@
 				0E1DE0261C35E09000E0C28F /* c40008.png in Resources */,
 				0E1DDF5D1C35E09000E0C28F /* a10015.png in Resources */,
 				0EBF81301C5599EE0090E585 /* explosion_3.png in Resources */,
+				0ED77CF21C5D435B00BF5D90 /* Gem v15.png in Resources */,
 				0E197A971C5577B500AA5658 /* bubsv20013.png in Resources */,
 				0EBF81351C5599EE0090E585 /* explosion_34.png in Resources */,
 				0E1DDF7A1C35E09000E0C28F /* b10012.png in Resources */,
@@ -1867,6 +1924,7 @@
 				0E1DDD021C34677000E0C28F /* GameScene.sks in Resources */,
 				0EBF81311C5599EE0090E585 /* explosion_30.png in Resources */,
 				0E1DDFFF1C35E09000E0C28F /* c10001.png in Resources */,
+				0ED77D3C1C5D435B00BF5D90 /* Gem v87.png in Resources */,
 				0E1DE0761C35E09000E0C28F /* a30008.png in Resources */,
 				0E1DDFE81C35E09000E0C28F /* a40010.png in Resources */,
 				0E1DDFD31C35E09000E0C28F /* a30005.png in Resources */,
@@ -1998,6 +2056,7 @@
 				0E1DDFB41C35E09000E0C28F /* c40006.png in Resources */,
 				0E1DDFBC1C35E09000E0C28F /* c40014.png in Resources */,
 				0E1DE0651C35E09000E0C28F /* a10007.png in Resources */,
+				0ED77D021C5D435B00BF5D90 /* Gem v31.png in Resources */,
 				0EBF81221C5599EE0090E585 /* explosion_17.png in Resources */,
 				0E197A8F1C5577B500AA5658 /* bubsv20005.png in Resources */,
 				0EBF812E1C5599EE0090E585 /* explosion_28.png in Resources */,
@@ -2037,6 +2096,7 @@
 				0E1DDF7F1C35E09000E0C28F /* b30001.png in Resources */,
 				0E1DDFB91C35E09000E0C28F /* c40011.png in Resources */,
 				0E1DDFA01C35E09000E0C28F /* c30002.png in Resources */,
+				0ED77D331C5D435B00BF5D90 /* Gem v79.png in Resources */,
 				0EBF81321C5599EE0090E585 /* explosion_31.png in Resources */,
 				0E1DDF841C35E09000E0C28F /* b30006.png in Resources */,
 				0E1DE06D1C35E09000E0C28F /* a10015.png in Resources */,
@@ -2092,6 +2152,7 @@
 				0E1DDFC51C35E09000E0C28F /* a10007.png in Resources */,
 				0E1DDFE01C35E09000E0C28F /* a40002.png in Resources */,
 				0E1DE01E1C35E09000E0C28F /* c40000.png in Resources */,
+				0ED77D121C5D435B00BF5D90 /* Gem v47.png in Resources */,
 				0E1DDFDF1C35E09000E0C28F /* a40001.png in Resources */,
 				0E1DE0221C35E09000E0C28F /* c40004.png in Resources */,
 				0E1DE09E1C35E09000E0C28F /* b30000.png in Resources */,
@@ -2149,6 +2210,7 @@
 				0E1DDFFB1C35E09000E0C28F /* b40013.png in Resources */,
 				0E1DDF851C35E09000E0C28F /* b30007.png in Resources */,
 				0E1DE06C1C35E09000E0C28F /* a10014.png in Resources */,
+				0ED77D4B1C5D69C900BF5D90 /* Magic.sks in Resources */,
 				0E1DE09B1C35E09000E0C28F /* b10013.png in Resources */,
 				0E1DDF8A1C35E09000E0C28F /* b30012.png in Resources */,
 				0EBF812D1C5599EE0090E585 /* explosion_27.png in Resources */,
@@ -2157,6 +2219,7 @@
 				0E197A331C54291B00AA5658 /* spinning_coin_gold_2.png in Resources */,
 				0E1DE04E1C35E09000E0C28F /* d40000.png in Resources */,
 				0E1DDFD11C35E09000E0C28F /* a30003.png in Resources */,
+				0ED77CFA1C5D435B00BF5D90 /* Gem v23.png in Resources */,
 				0E1DE0481C35E09000E0C28F /* d30010.png in Resources */,
 				0E1DDF861C35E09000E0C28F /* b30008.png in Resources */,
 				0E1DE0591C35E09000E0C28F /* d40011.png in Resources */,
@@ -2164,6 +2227,7 @@
 				0E1DDF871C35E09000E0C28F /* b30009.png in Resources */,
 				0E1DDF5B1C35E09000E0C28F /* a10013.png in Resources */,
 				0E1DE02C1C35E09000E0C28F /* c40014.png in Resources */,
+				0ED77D0A1C5D435B00BF5D90 /* Gem v39.png in Resources */,
 				0E1DE0161C35E09000E0C28F /* c30008.png in Resources */,
 				0E197A421C551CC400AA5658 /* credit in Resources */,
 				0EBF80F31C558AD40090E585 /* about.gif in Resources */,
@@ -2183,6 +2247,7 @@
 				0E1DDDD11C35D54800E0C28F /* black.png in Resources */,
 				0E1DE05B1C35E09000E0C28F /* d40013.png in Resources */,
 				0E1DDFC31C35E09000E0C28F /* a10005.png in Resources */,
+				0ED77D291C5D435B00BF5D90 /* Gem v7.png in Resources */,
 				0E1DDF991C35E09000E0C28F /* c10011.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

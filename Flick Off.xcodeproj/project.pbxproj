@@ -488,6 +488,8 @@
 		0ED77D3C1C5D435B00BF5D90 /* Gem v87.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CD91C5D435B00BF5D90 /* Gem v87.png */; };
 		0ED77D451C5D435B00BF5D90 /* Gem v95.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77CE21C5D435B00BF5D90 /* Gem v95.png */; };
 		0ED77D4B1C5D69C900BF5D90 /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77D4A1C5D69C900BF5D90 /* Magic.sks */; };
+		0ED77D4D1C67B4B800BF5D90 /* coin_dispenser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */; };
+		0ED77D4F1C67DD4D00BF5D90 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77D4E1C67DD4D00BF5D90 /* Background7.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -995,6 +997,8 @@
 		0ED77CD91C5D435B00BF5D90 /* Gem v87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v87.png"; sourceTree = "<group>"; };
 		0ED77CE21C5D435B00BF5D90 /* Gem v95.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v95.png"; sourceTree = "<group>"; };
 		0ED77D4A1C5D69C900BF5D90 /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
+		0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coin_dispenser.swift; sourceTree = "<group>"; };
+		0ED77D4E1C67DD4D00BF5D90 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background7.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1111,6 +1115,7 @@
 		0E1DDCFE1C34677000E0C28F /* Flick Off */ = {
 			isa = PBXGroup;
 			children = (
+				0ED77D4E1C67DD4D00BF5D90 /* Background7.png */,
 				0ED77C831C5D435B00BF5D90 /* PURPLE GEMS */,
 				0EBF80F51C5599EE0090E585 /* Explosion */,
 				0EBF80F01C558AD40090E585 /* Flappy_Font */,
@@ -1132,6 +1137,7 @@
 				0E1DDD011C34677000E0C28F /* GameScene.sks */,
 				0E1DDD351C359A2800E0C28F /* spark.png */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
+				0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */,
 				0ED77D4A1C5D69C900BF5D90 /* Magic.sks */,
 				0E197A441C552A9900AA5658 /* Rain.sks */,
 				0E1DDDD31C35D6D200E0C28F /* spark.png */,
@@ -2061,6 +2067,7 @@
 				0E197A8F1C5577B500AA5658 /* bubsv20005.png in Resources */,
 				0EBF812E1C5599EE0090E585 /* explosion_28.png in Resources */,
 				0E1DDFA61C35E09000E0C28F /* c30008.png in Resources */,
+				0ED77D4F1C67DD4D00BF5D90 /* Background7.png in Resources */,
 				0E1DE09C1C35E09000E0C28F /* b10014.png in Resources */,
 				0E197A381C54291B00AA5658 /* spinning_coin_gold_7.png in Resources */,
 				0E1DDF5A1C35E09000E0C28F /* a10012.png in Resources */,
@@ -2273,6 +2280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ED77D4D1C67B4B800BF5D90 /* coin_dispenser.swift in Sources */,
 				0E1DDD041C34677000E0C28F /* GameScene.swift in Sources */,
 				0E1DDD061C34677000E0C28F /* GameViewController.swift in Sources */,
 				0E1DDD001C34677000E0C28F /* AppDelegate.swift in Sources */,

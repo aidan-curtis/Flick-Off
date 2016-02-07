@@ -9,24 +9,28 @@
 import SpriteKit
 import CoreMotion
 
-
-
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
+    let MAX_HEALTH = 150
     enum GameMode : Int {
         case SPACE=0,CITY,UNDERWATER,MARS
     }
     enum Objects : UInt32{
         case Meteor=100
     }
+    
+    let next_coin: coin_dispenser = coin_dispenser()
+    
+    
     //labels
     let score = SKLabelNode()
     var score_number = 0;
     var gems = [SKSpriteNode]();
-    
     var backgroundNode=SKSpriteNode();
+    
+    
     var falling_objects=[SKSpriteNode]();
+   
+    
     var coins=[SKSpriteNode]()
     var coins_position_x=0
     //hearts init
@@ -43,7 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let mars_objects: [String] = ["UFO1", "UFO2", "UFO3"]
     var objects = Array<Array<String>>()
     
-    let backgrounds: [String] = ["garaxee", "urban-landscape-background-Preview.png", "ocean_background", ""]
+    let backgrounds: [String] = ["Background7", "urban-landscape-background-Preview.png", "ocean_background", ""]
     
     let character_images: [String] = ["playerShip1_green", "playerShip1_green", "playerShip1_green"]
     
@@ -66,8 +70,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var explosion = [SKTexture]()
     var menu = SKSpriteNode();
     
-    
-    
+    let life_bar=SKSpriteNode();
+    let shield_bar=SKSpriteNode();
 
     
     func presentMenu(){
@@ -96,9 +100,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         let power = pow(pow(velocity1.dx,2)+pow(velocity1.dy,2),0.5)+pow(pow(velocity2.dx,2)+pow(velocity2.dy,2),0.5) ;
         if(power>1000){
-            if(arc4random_uniform(5)==0){
-                
-            addGem(node1.position)
+            if(node1.name=="purple" || node2.name=="purple"){
+                addGem(node1.position)
             }
             node1.removeFromParent()
             node2.removeFromParent()
@@ -106,13 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             falling_objects.removeAtIndex(falling_objects.indexOf(node1)!)
             falling_objects.removeAtIndex(falling_objects.indexOf(node2)!)
             explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01)
-            
-            
         }
-       
-        
-        
-        
     }
     override func didMoveToView(view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -133,7 +130,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score.text = "0"
         addChild(score)
         
-        setStaticHearts(3)
+        setStaticHearts(MAX_HEALTH)
+        setShieldBar(MAX_HEALTH)
+        addChild(shield_bar)
+        addChild(life_bar)
         objects=[space_objects, city_objects,underwater_objects, mars_objects]
         self.physicsWorld.gravity=CGVectorMake(0, 0);
         self.manager.deviceMotionUpdateInterval=1.0/60.0;
@@ -149,9 +149,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        else{
         backgroundNode.texture=SKTexture(imageNamed: backgrounds[game_mode]);
         
-        backgroundNode.position = CGPointMake(self.size.width/2, self.size.height/2)
+        backgroundNode.position = CGPointMake(self.size.width/2, self.size.height*30/2)
         backgroundNode.zPosition = -10000
-        backgroundNode.size = CGSizeMake(self.size.width, self.size.height)
+        backgroundNode.size = CGSizeMake(self.size.width, self.size.height*30)
         addChild(backgroundNode)
 //        }
         
@@ -165,11 +165,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(fuel!);
         
         if(game_mode==GameMode.SPACE.rawValue){
-        var emitterNode = starfieldEmitter(SKColor.lightGrayColor(), starSpeedY: 300, starsPerSecond: 10, starScaleFactor: 0.2)
-        emitterNode.zPosition = -10
-        self.addChild(emitterNode)
+//      var emitterNode = starfieldEmitter(SKColor.lightGrayColor(), starSpeedY: 300, starsPerSecond: 10, starScaleFactor: 0.2)
+//        emitterNode.zPosition = -10
+//        self.addChild(emitterNode)
         
-        emitterNode = starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1)
+        var emitterNode = starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1)
         emitterNode.zPosition = -11
         self.addChild(emitterNode)
             
@@ -207,8 +207,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if(game_mode==GameMode.UNDERWATER.rawValue){
             falling_object.size = CGSizeMake(100, 55);
         }
-        //falling_object.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(CGFloat(2.0*M_PI), duration: Double(arc4random_uniform(4)+1))))
-        //falling_object.runAction(SKAction.repeatActionForever(SKAction.moveBy(CGVectorMake(0,-100), duration: Double(arc4random_uniform(2)+1))));
+        
+        
+        if(arc4random_uniform(UInt32(11))==10){
+        falling_object.name="purple"
+        //add emitter_node
+        let emitterNode = SKEmitterNode(fileNamed: "Magic")!
+        emitterNode.zPosition = -11
+        emitterNode.position = CGPointMake(0, 0)
+        emitterNode.targetNode=self
+        falling_object.addChild(emitterNode)
+        }
+        
+        //add physics body
         falling_object.physicsBody=SKPhysicsBody(circleOfRadius: falling_object.size.width/4);
         falling_object.physicsBody!.dynamic=true;
         falling_object.physicsBody!.allowsRotation=true;
@@ -264,12 +275,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return emitterNode
     }
     func setStaticHearts(num : Int){
-        for(var i=0; i<num; i+=1){
-            let heart = addHeart(35)
-            heart.position=CGPointMake(CGFloat(30+(40*i)), 30)
-            addChild(heart)
-            
-        }
+        
+        life_bar.size=CGSizeMake(CGFloat(num), 8);
+        life_bar.color=UIColor.redColor()
+        life_bar.alpha=0.5
+        life_bar.position=CGPointMake(CGFloat(num/2), 4)
+    }
+    func setShieldBar(num : Int){
+        shield_bar.size=CGSizeMake(CGFloat(num), 8);
+        shield_bar.color=UIColor.blueColor()
+        shield_bar.alpha=0.5
+        shield_bar.position=CGPointMake(CGFloat(num/2), 12)
     }
     
     func addGem(location:CGPoint){
@@ -290,9 +306,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addCoin(){
         let coin = SKSpriteNode()
         if(arc4random_uniform(20)==0){
-            coins_position_x=2*Int(arc4random_uniform(UInt32(self.size.width)-40)+20)
+            let mode=Int(arc4random_uniform(3))
+            next_coin.begin_action(mode, starting_location: Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
+            next_coin.setAlternate(Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
+            next_coin.setWidth(Int(arc4random_uniform(15))+10)
+            next_coin.power(Int(arc4random_uniform(2)))
         }
-        if(coins_position_x<Int(self.size.width)){
+        coins_position_x=next_coin.fetch_next_coin()
+        if(coins_position_x<Int(self.size.width) && next_coin.status==1){
         //coin.texture=SKTexture(imageNamed:"spinning_coin_gold_1")
         var coin_textures=[SKTexture]()
         for (var i=0; i<8; i=i+1){
@@ -317,7 +338,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         heart_image.size=CGSizeMake(CGFloat(size),CGFloat(size))
         heart_image.position=CGPointMake(0, 0)
-
         heart.position=CGPointMake(CGFloat(Int(arc4random_uniform(UInt32(self.size.width)-40)+20)), self.size.height+25)
         heart.runAction(SKAction.repeatActionForever( SKAction.sequence([SKAction.fadeAlphaTo(0.5, duration: 0.5),SKAction.fadeAlphaTo(1, duration: 0.5) ])))
         heart.addChild(background);
@@ -346,6 +366,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isTouching=false
     }
     override func update(currentTime: CFTimeInterval) {
+        //improve shield power
+        
+        if(frame_counter<=150){
+        backgroundNode.position = CGPointMake(self.size.width/2,backgroundNode.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+        frame_counter++
+        }
+        else{
+        backgroundNode.position = CGPointMake(self.size.width/2, backgroundNode.position.y-1)
+        
+        
+        if(life_bar.size.width<0){
+            //game over
+            print("game over");
+        }
+        
+        if(frame_counter%3==0 && shield_bar.size.width<CGFloat(MAX_HEALTH)){
+        
+        setShieldBar(Int(shield_bar.size.width+1))
+        }
         
         if(frame_counter%5==0){
             score_number++
@@ -381,6 +420,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //move hearts
         for heart: SKSpriteNode in hearts{
             heart.position=CGPointMake(heart.position.x, heart.position.y-5)
+            if(CGRectIntersectsRect(heart.frame,character.frame)){
+                setStaticHearts(Int(CGFloat(life_bar.size.width)+CGFloat(50.0)))
+                if(life_bar.size.width>CGFloat(MAX_HEALTH)){
+                    setStaticHearts(MAX_HEALTH)
+                }
+                hearts.removeAtIndex(hearts.indexOf(heart)!)
+                heart.removeFromParent()
+            }
         }
         for gem: SKSpriteNode in gems{
             gem.position=CGPointMake(gem.position.x, gem.position.y-5)
@@ -398,6 +445,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                 self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02))
                 falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                
+                var change_health=0
+                var change_shield=shield_bar.size.width-explosion_size
+         
+                if(change_shield<0){
+                    change_health=abs(Int(change_shield))
+                    change_shield=0
+                }
+                setShieldBar(Int(change_shield))
+                setStaticHearts(Int(life_bar.size.width) - change_health)
                 falling.removeFromParent()
 
             }
@@ -414,23 +471,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     coin.runAction(SKAction.moveTo(CGPointMake(self.size.width,0), duration: 0.5), completion: b)
                     //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
                 }
-                
-
                 coin.runAction(SKAction.runBlock(a) )
-                
             }
             coin.position=CGPointMake(coin.position.x, coin.position.y-5)
         }
         //adding heart nodes
         if(frame_counter%600==0){
             let heart = addHeart(40)
-            
             addChild(heart)
             hearts.append(heart);
         }
         //add falling objects
         if(frame_counter%50==0 && !(frame_counter%600==0)){
             addFallingObject();
+        }
         }
     }
 }

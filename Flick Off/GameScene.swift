@@ -10,6 +10,14 @@ import SpriteKit
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    //menus
+    var main_menu = SKSpriteNode();
+    var sub_menu_1 = SKSpriteNode();
+    var play = SKSpriteNode();
+    
+    
+    
     let MAX_HEALTH = 150
     enum GameMode : Int {
         case SPACE=0,CITY,UNDERWATER,MARS
@@ -112,6 +120,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     override func didMoveToView(view: SKView) {
+        play.color=UIColor.blueColor();
+        play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
+        play.alpha=0.0
+        play.size=CGSizeMake(130,70)
+        let lab = SKLabelNode();
+        lab.text="PLAY"
+        lab.fontName="04b_19"
+        lab.fontColor=UIColor.whiteColor()
+        lab.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-10)
+        addChild(lab)
+        
+        addChild(play)
+        
         self.physicsWorld.contactDelegate = self
         for(var i=0; i<34; i+=1){
             explosion.append(SKTexture(imageNamed: "explosion_\(i+1)"))

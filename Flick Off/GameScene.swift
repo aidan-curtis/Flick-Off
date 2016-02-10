@@ -10,12 +10,19 @@ import SpriteKit
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
+    var game_status=0
     //menus
     var main_menu = SKSpriteNode();
     var sub_menu_1 = SKSpriteNode();
     var play = SKSpriteNode();
+    var main_panel = SKSpriteNode();
+    var high_score_label = SKLabelNode();
+    var score_label = SKLabelNode();
     
+    
+    
+    var emitterNode = SKEmitterNode();
+    var backup_emitterNode = SKEmitterNode();
     
     
     let MAX_HEALTH = 150
@@ -119,18 +126,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01)
         }
     }
+    func game_starting_values(){
+        setStaticHearts(MAX_HEALTH)
+        setShieldBar(MAX_HEALTH)
+        for coin: SKSpriteNode in coins{
+            coin.removeFromParent()
+        }
+        coins.removeAll()
+    }
     override func didMoveToView(view: SKView) {
-        play.color=UIColor.blueColor();
-        play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
-        play.alpha=0.0
-        play.size=CGSizeMake(130,70)
-        let lab = SKLabelNode();
-        lab.text="PLAY"
-        lab.fontName="04b_19"
-        lab.fontColor=UIColor.whiteColor()
-        lab.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-10)
-        addChild(lab)
+        play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-100)
         
+        play.size=CGSizeMake(130,70)
+        play.texture=SKTexture(imageNamed: "play_button")
+        play.name="play"
+        main_panel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+100)
+        main_panel.size=CGSizeMake(290,270)
+        
+        main_panel.texture=SKTexture(imageNamed: "Main_Panel")
+        
+        high_score_label.position = CGPointMake(190,450)
+        score_label.position = CGPointMake(190,350)
+        high_score_label.fontColor=UIColor.greenColor()
+        score_label.fontColor=UIColor.greenColor()
+        high_score_label.text = "0"
+        score_label.text = "0"
+        high_score_label.fontName = "04b_19"
+        score_label.fontName = "04b_19"
+        high_score_label.zPosition = 900
+        score_label.zPosition = 900
+ 
+        
+        addChild(high_score_label)
+        addChild(score_label)
+        
+        
+        
+        addChild(main_panel)
         addChild(play)
         
         self.physicsWorld.contactDelegate = self
@@ -151,10 +183,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score.text = "0"
         addChild(score)
         
-        setStaticHearts(MAX_HEALTH)
-        setShieldBar(MAX_HEALTH)
+        game_starting_values()
         addChild(shield_bar)
         addChild(life_bar)
+        
         objects=[space_objects, city_objects,underwater_objects, mars_objects]
         self.physicsWorld.gravity=CGVectorMake(0, 0);
         self.manager.deviceMotionUpdateInterval=1.0/60.0;
@@ -185,29 +217,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(fuel!);
         
-        if(game_mode==GameMode.SPACE.rawValue){
-//      var emitterNode = starfieldEmitter(SKColor.lightGrayColor(), starSpeedY: 300, starsPerSecond: 10, starScaleFactor: 0.2)
-//        emitterNode.zPosition = -10
-//        self.addChild(emitterNode)
-        
-        var emitterNode = starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1)
+
+
+        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
         emitterNode.zPosition = -11
         self.addChild(emitterNode)
+        emitterNode.paused=true
+        
+        backup_emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup:  true)
+        backup_emitterNode.zPosition = -11
+        self.addChild(backup_emitterNode)
+        
             
-        }
-        else{
-            let emitterNode = SKEmitterNode(fileNamed: paralax[game_mode-1])!
-            emitterNode.zPosition = -11
-            if(game_mode==GameMode.CITY.rawValue){
-                emitterNode.position = CGPoint(x: frame.size.width/2, y: frame.size.height)
-            }
-            else if(game_mode==GameMode.UNDERWATER.rawValue){
-                emitterNode.position = CGPoint(x: frame.size.width/2, y: 0)
-            }
-            emitterNode.particlePositionRange = CGVector(dx: frame.size.width+200, dy: 0)
-            addChild(emitterNode)
-            
-        }
+        
         //        emitterNode = starfieldEmitter(SKColor.darkGrayColor(), starSpeedY: 1, starsPerSecond: 4, starScaleFactor: 0.05)
         //        emitterNode.zPosition = -12
         //        self.addChild(emitterNode)
@@ -271,7 +293,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         explosion_node.runAction(SKAction.animateWithTextures(explosion, timePerFrame: speed), completion:{explosion_node.removeFromParent()})
         addChild(explosion_node)
     }
-    func starfieldEmitter(color: SKColor, starSpeedY: CGFloat, starsPerSecond: CGFloat, starScaleFactor: CGFloat) -> SKEmitterNode {
+    func starfieldEmitter(color: SKColor, starSpeedY: CGFloat, starsPerSecond: CGFloat, starScaleFactor: CGFloat, backup: Bool) -> SKEmitterNode {
         
         // Determine the time a star is visible on screen
         let lifetime =  frame.size.height * UIScreen.mainScreen().scale / starSpeedY
@@ -291,7 +313,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         emitterNode.particlePositionRange = CGVector(dx: frame.size.width, dy: 0)
         
         // Fast forward the effect to start with a filled screen
+        
+        if(backup){
+            
         emitterNode.advanceSimulationTime(NSTimeInterval(lifetime))
+        }
         
         return emitterNode
     }
@@ -367,9 +393,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        
         for touches: AnyObject in touches{
             
             let location = touches.locationInNode(self)
+            if(self.nodeAtPoint(location).name=="play"){
+                game_status=1;
+            }
              if(Mirror(reflecting: self.nodeAtPoint(location)).subjectType == SKSpriteNode.self && falling_objects.contains((self.nodeAtPoint(location) as! SKSpriteNode))){
                 touched_location = touches.locationInNode(self)
                 isTouching=true
@@ -389,22 +420,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         //improve shield power
         
+        //score_label.text = "\(Int(score_label.text!)!+1)"
+        if(game_status==0){
+            
+            game_starting_values()
+            frame_counter=0
+            backgroundNode.position = CGPointMake(self.size.width/2, 7900)
+            play.hidden=false;
+            main_panel.hidden=false;
+            high_score_label.hidden=false
+            score_label.hidden=false;
+            
+            
+        }
+        else if(game_status==1){
+            backup_emitterNode.hidden=true
+            emitterNode.resetSimulation()
+            emitterNode.hidden=false
+            emitterNode.paused=true
+            
+            backgroundNode.position = CGPointMake(self.size.width/2, self.size.height*30/2)
+            play.hidden=true;
+            main_panel.hidden=true;
+            high_score_label.hidden=true
+            score_label.hidden=true;
+            
+            game_status=2
+        }
+        if(game_status==2){
+        
+            
+        
         if(frame_counter<=150){
-        backgroundNode.position = CGPointMake(self.size.width/2,backgroundNode.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
-        frame_counter++
+            backgroundNode.position = CGPointMake(self.size.width/2,backgroundNode.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+            frame_counter++
         }
         else{
-        backgroundNode.position = CGPointMake(self.size.width/2, backgroundNode.position.y-1)
         
+        emitterNode.paused=false
+        backgroundNode.position = CGPointMake(self.size.width/2, backgroundNode.position.y-1)
+       
         
         if(life_bar.size.width<0){
             //game over
             print("game over");
+            game_status=3
         }
         
         if(frame_counter%3==0 && shield_bar.size.width<CGFloat(MAX_HEALTH)){
-        
-        setShieldBar(Int(shield_bar.size.width+1))
+            setShieldBar(Int(shield_bar.size.width+1))
         }
         
         if(frame_counter%5==0){
@@ -507,5 +571,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addFallingObject();
         }
         }
+        }
+        else if (game_status==3){
+            
+            
+            
+            backup_emitterNode.hidden=false
+            emitterNode.hidden=true
+            
+           game_status=0
+        }
     }
+    
 }

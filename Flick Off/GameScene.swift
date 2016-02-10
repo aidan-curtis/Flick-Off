@@ -135,6 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coins.removeAll()
     }
     override func didMoveToView(view: SKView) {
+        high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
         play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-100)
         
         play.size=CGSizeMake(130,70)
@@ -145,8 +146,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         main_panel.texture=SKTexture(imageNamed: "Main_Panel")
         
-        high_score_label.position = CGPointMake(190,450)
-        score_label.position = CGPointMake(190,350)
+        high_score_label.position = CGPointMake(190,350)
+        score_label.position = CGPointMake(190,450)
         high_score_label.fontColor=UIColor.greenColor()
         score_label.fontColor=UIColor.greenColor()
         high_score_label.text = "0"
@@ -573,9 +574,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         }
         else if (game_status==3){
+            if(Int(score.text!)>Int(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))){
+                NSUserDefaults.standardUserDefaults().setInteger(Int(score.text!)!, forKey: "highscore")
+            }
             
-            
-            
+            high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
+            score_label.text="\(Int(score.text!)!)"
             backup_emitterNode.hidden=false
             emitterNode.hidden=true
             

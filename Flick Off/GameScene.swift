@@ -196,14 +196,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = UIColor.blackColor()
 
         
-        backgroundNode_1.texture=SKTexture(imageNamed: "Background7_1");
+        backgroundNode_1.texture=SKTexture(imageNamed: "Background7_1.png");
         backgroundNode_1.zPosition = -10000
        
         
         backgroundNode_1.size = CGSizeMake(self.size.width, self.size.width*25)
         addChild(backgroundNode_1)
 
-        backgroundNode_2.texture=SKTexture(imageNamed: "Background7_2");
+        backgroundNode_2.texture=SKTexture(imageNamed: "Background7_2.png");
         backgroundNode_2.zPosition = -10000
         backgroundNode_2.size = CGSizeMake(self.size.width, self.size.width*25)
         addChild(backgroundNode_2)

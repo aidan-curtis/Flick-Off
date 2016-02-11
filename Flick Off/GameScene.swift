@@ -593,6 +593,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         }
         else if (game_status==3){
+            score.text="0"
             if(Int(score.text!)>Int(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))){
                 NSUserDefaults.standardUserDefaults().setInteger(Int(score.text!)!, forKey: "highscore")
             }

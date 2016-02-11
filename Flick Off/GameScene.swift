@@ -40,7 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let score = SKLabelNode()
     var score_number = 0;
     var gems = [SKSpriteNode]();
-    var backgroundNode=SKSpriteNode();
+    var backgroundNode_1=SKSpriteNode();
+    var backgroundNode_2=SKSpriteNode();
     
     
     var falling_objects=[SKSpriteNode]();
@@ -61,10 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let underwater_objects: [String] = ["color_fish_1","color_fish_2","color_fish_3","color_fish_4","color_fish_5"]
     let mars_objects: [String] = ["UFO1", "UFO2", "UFO3"]
     var objects = Array<Array<String>>()
-    
-    let backgrounds: [String] = ["Background7", "urban-landscape-background-Preview.png", "ocean_background", ""]
-    
-    let character_images: [String] = ["playerShip1_green", "playerShip1_green", "playerShip1_green"]
+ 
     
     var space_actions = [SKAction]();
     var frame_counter=0;
@@ -137,17 +135,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
         play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-100)
-        
         play.size=CGSizeMake(130,70)
         play.texture=SKTexture(imageNamed: "play_button")
         play.name="play"
+        
         main_panel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+100)
         main_panel.size=CGSizeMake(290,270)
-        
         main_panel.texture=SKTexture(imageNamed: "Main_Panel")
         
-        high_score_label.position = CGPointMake(190,350)
-        score_label.position = CGPointMake(190,450)
+        high_score_label.position = CGPointMake(self.frame.size.width/2,(self.frame.size.height/2)+30)
+        score_label.position = CGPointMake(self.frame.size.width/2,(self.frame.size.height/2)+120)
         high_score_label.fontColor=UIColor.greenColor()
         score_label.fontColor=UIColor.greenColor()
         high_score_label.text = "0"
@@ -197,20 +194,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
-//        if(game_mode==2) {
-//            self.backgroundColor = UIColor.init(colorLiteralRed: 0, green: 153/255.0, blue: 153/255.0, alpha: 1)
-//        }
-//        else{
-        backgroundNode.texture=SKTexture(imageNamed: backgrounds[game_mode]);
+
         
-        backgroundNode.position = CGPointMake(self.size.width/2, self.size.height*30/2)
-        backgroundNode.zPosition = -10000
-        backgroundNode.size = CGSizeMake(self.size.width, self.size.height*30)
-        addChild(backgroundNode)
-//        }
+        backgroundNode_1.texture=SKTexture(imageNamed: "Background7_1");
+        backgroundNode_1.zPosition = -10000
+       
+        
+        backgroundNode_1.size = CGSizeMake(self.size.width, self.size.width*25)
+        addChild(backgroundNode_1)
+
+        backgroundNode_2.texture=SKTexture(imageNamed: "Background7_2");
+        backgroundNode_2.zPosition = -10000
+        backgroundNode_2.size = CGSizeMake(self.size.width, self.size.width*25)
+        addChild(backgroundNode_2)
         
         
-        character.texture=SKTexture(imageNamed: character_images[game_mode]);
+        character.texture=SKTexture(imageNamed: "playerShip1_green.png");
         character.position=CGPointMake(self.size.width/2, 90);
         character.size=CGSizeMake(50, 38);
         addChild(character);
@@ -426,7 +425,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             game_starting_values()
             frame_counter=0
-            backgroundNode.position = CGPointMake(self.size.width/2, 7900)
+            backgroundNode_1.position = CGPointMake(self.size.width/2, 0)
+            backgroundNode_2.position = CGPointMake(self.size.width/2, self.size.width*7-self.size.width*25)
             play.hidden=false;
             main_panel.hidden=false;
             high_score_label.hidden=false
@@ -440,7 +440,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             emitterNode.hidden=false
             emitterNode.paused=true
             
-            backgroundNode.position = CGPointMake(self.size.width/2, self.size.height*30/2)
+            backgroundNode_1.position = CGPointMake(self.size.width/2, self.size.width*25/2)
+            backgroundNode_2.position = CGPointMake(self.size.width/2, (self.size.width*25/2)+self.size.width*25)
             play.hidden=true;
             main_panel.hidden=true;
             high_score_label.hidden=true
@@ -453,13 +454,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         
         if(frame_counter<=150){
-            backgroundNode.position = CGPointMake(self.size.width/2,backgroundNode.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+            backgroundNode_1.position = CGPointMake(self.size.width/2,backgroundNode_1.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+            
+            backgroundNode_2.position = CGPointMake(self.size.width/2,backgroundNode_2.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
             frame_counter++
         }
         else{
         
         emitterNode.paused=false
-        backgroundNode.position = CGPointMake(self.size.width/2, backgroundNode.position.y-1)
+        backgroundNode_1.position = CGPointMake(self.size.width/2, backgroundNode_1.position.y-1)
+        backgroundNode_2.position = CGPointMake(self.size.width/2, backgroundNode_2.position.y-1)
        
         
         if(life_bar.size.width<0){

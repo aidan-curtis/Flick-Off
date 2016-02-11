@@ -429,8 +429,14 @@
 		0E1DE0BC1C35E09000E0C28F /* b40014.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF4C1C35E09000E0C28F /* b40014.png */; };
 		0E1DE0BD1C35E09000E0C28F /* b40015.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF4D1C35E09000E0C28F /* b40015.png */; };
 		0E5924F01C6CBBDC00023713 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924EF1C6CBBDC00023713 /* Background7.png */; };
-		0E5924F71C6D310500023713 /* Background7_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924F51C6D310500023713 /* Background7_1.png */; };
-		0E5924F81C6D310500023713 /* Background7_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924F61C6D310500023713 /* Background7_2.png */; };
+		0E5925091C6D497A00023713 /* Background7_1k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925011C6D497A00023713 /* Background7_1k.png */; };
+		0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925021C6D497A00023713 /* Background7_2k.png */; };
+		0E59250B1C6D497A00023713 /* Background7_3k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925031C6D497A00023713 /* Background7_3k.png */; };
+		0E59250C1C6D497A00023713 /* Background7_4k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925041C6D497A00023713 /* Background7_4k.png */; };
+		0E59250D1C6D497A00023713 /* Background7_5k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925051C6D497A00023713 /* Background7_5k.png */; };
+		0E59250E1C6D497A00023713 /* Background7_6k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925061C6D497A00023713 /* Background7_6k.png */; };
+		0E59250F1C6D497A00023713 /* Background7_7k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925071C6D497A00023713 /* Background7_7k.png */; };
+		0E5925101C6D497A00023713 /* Background7_8k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925081C6D497A00023713 /* Background7_8k.png */; };
 		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
 		0EBF80E81C557C280090E585 /* ocean_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80DE1C557C280090E585 /* ocean_background.png */; };
@@ -942,8 +948,14 @@
 		0E1DDF4C1C35E09000E0C28F /* b40014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b40014.png; sourceTree = "<group>"; };
 		0E1DDF4D1C35E09000E0C28F /* b40015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b40015.png; sourceTree = "<group>"; };
 		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = Images/Background7.png; sourceTree = "<group>"; };
-		0E5924F51C6D310500023713 /* Background7_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_1.png; path = Images/Background7_1.png; sourceTree = "<group>"; };
-		0E5924F61C6D310500023713 /* Background7_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_2.png; path = Images/Background7_2.png; sourceTree = "<group>"; };
+		0E5925011C6D497A00023713 /* Background7_1k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_1k.png; path = Images/Background7_1k.png; sourceTree = "<group>"; };
+		0E5925021C6D497A00023713 /* Background7_2k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_2k.png; path = Images/Background7_2k.png; sourceTree = "<group>"; };
+		0E5925031C6D497A00023713 /* Background7_3k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_3k.png; path = Images/Background7_3k.png; sourceTree = "<group>"; };
+		0E5925041C6D497A00023713 /* Background7_4k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_4k.png; path = Images/Background7_4k.png; sourceTree = "<group>"; };
+		0E5925051C6D497A00023713 /* Background7_5k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_5k.png; path = Images/Background7_5k.png; sourceTree = "<group>"; };
+		0E5925061C6D497A00023713 /* Background7_6k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_6k.png; path = Images/Background7_6k.png; sourceTree = "<group>"; };
+		0E5925071C6D497A00023713 /* Background7_7k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_7k.png; path = Images/Background7_7k.png; sourceTree = "<group>"; };
+		0E5925081C6D497A00023713 /* Background7_8k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_8k.png; path = Images/Background7_8k.png; sourceTree = "<group>"; };
 		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
 		0EBF80DE1C557C280090E585 /* ocean_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ocean_background.png; sourceTree = "<group>"; };
@@ -1123,8 +1135,14 @@
 		0E1DDCFE1C34677000E0C28F /* Flick Off */ = {
 			isa = PBXGroup;
 			children = (
-				0E5924F51C6D310500023713 /* Background7_1.png */,
-				0E5924F61C6D310500023713 /* Background7_2.png */,
+				0E5925011C6D497A00023713 /* Background7_1k.png */,
+				0E5925021C6D497A00023713 /* Background7_2k.png */,
+				0E5925031C6D497A00023713 /* Background7_3k.png */,
+				0E5925041C6D497A00023713 /* Background7_4k.png */,
+				0E5925051C6D497A00023713 /* Background7_5k.png */,
+				0E5925061C6D497A00023713 /* Background7_6k.png */,
+				0E5925071C6D497A00023713 /* Background7_7k.png */,
+				0E5925081C6D497A00023713 /* Background7_8k.png */,
 				0E5924EF1C6CBBDC00023713 /* Background7.png */,
 				0EB3868F1C69785C008CA036 /* Main_Panel.png */,
 				0EB3868D1C696C7F008CA036 /* play_button.png */,
@@ -1803,6 +1821,7 @@
 				0E1DE09D1C35E09000E0C28F /* b10015.png in Resources */,
 				0E1DDFAE1C35E09000E0C28F /* c40000.png in Resources */,
 				0E197A451C552A9900AA5658 /* Rain.sks in Resources */,
+				0E5925101C6D497A00023713 /* Background7_8k.png in Resources */,
 				0E1DE0BD1C35E09000E0C28F /* b40015.png in Resources */,
 				0E1DE0231C35E09000E0C28F /* c40005.png in Resources */,
 				0E1DDF811C35E09000E0C28F /* b30003.png in Resources */,
@@ -1866,7 +1885,6 @@
 				0E1DE0641C35E09000E0C28F /* a10006.png in Resources */,
 				0E1DE0B41C35E09000E0C28F /* b40006.png in Resources */,
 				0E1DDFF61C35E09000E0C28F /* b40008.png in Resources */,
-				0E5924F71C6D310500023713 /* Background7_1.png in Resources */,
 				0E197A3E1C54467D00AA5658 /* red_glow.png in Resources */,
 				0E1DDFB61C35E09000E0C28F /* c40008.png in Resources */,
 				0E1DDFD41C35E09000E0C28F /* a30006.png in Resources */,
@@ -1878,8 +1896,8 @@
 				0E1DE0BB1C35E09000E0C28F /* b40013.png in Resources */,
 				0EBF812B1C5599EE0090E585 /* explosion_25.png in Resources */,
 				0E1DE0831C35E09000E0C28F /* a40005.png in Resources */,
-				0E5924F81C6D310500023713 /* Background7_2.png in Resources */,
 				0E1DDFC11C35E09000E0C28F /* a10003.png in Resources */,
+				0E5925091C6D497A00023713 /* Background7_1k.png in Resources */,
 				0E1DDDCF1C35CB3600E0C28F /* playerShip1_green.png in Resources */,
 				0ED77D451C5D435B00BF5D90 /* Gem v95.png in Resources */,
 				0E1DE0951C35E09000E0C28F /* b10007.png in Resources */,
@@ -1936,6 +1954,7 @@
 				0E1DDFD61C35E09000E0C28F /* a30008.png in Resources */,
 				0E1DDF541C35E09000E0C28F /* a10006.png in Resources */,
 				0E1DE0911C35E09000E0C28F /* b10003.png in Resources */,
+				0E59250C1C6D497A00023713 /* Background7_4k.png in Resources */,
 				0E1DDFB11C35E09000E0C28F /* c40003.png in Resources */,
 				0E1DDF561C35E09000E0C28F /* a10008.png in Resources */,
 				0E1DDFB51C35E09000E0C28F /* c40007.png in Resources */,
@@ -2003,6 +2022,7 @@
 				0E1DDFB01C35E09000E0C28F /* c40002.png in Resources */,
 				0E1DDF761C35E09000E0C28F /* b10008.png in Resources */,
 				0E1DDF8B1C35E09000E0C28F /* b30013.png in Resources */,
+				0E59250B1C6D497A00023713 /* Background7_3k.png in Resources */,
 				0E1DDFC61C35E09000E0C28F /* a10008.png in Resources */,
 				0E1DDD0E1C34677000E0C28F /* LaunchScreen.storyboard in Resources */,
 				0E1DE0471C35E09000E0C28F /* d30009.png in Resources */,
@@ -2015,6 +2035,7 @@
 				0E1DE0191C35E09000E0C28F /* c30011.png in Resources */,
 				0EBF80EF1C557C280090E585 /* credit in Resources */,
 				0E1DDF9A1C35E09000E0C28F /* c10012.png in Resources */,
+				0E59250F1C6D497A00023713 /* Background7_7k.png in Resources */,
 				0E1DE0601C35E09000E0C28F /* a10002.png in Resources */,
 				0E1DDF9B1C35E09000E0C28F /* c10013.png in Resources */,
 				0E1DDD321C3491D200E0C28F /* Star.png in Resources */,
@@ -2181,6 +2202,7 @@
 				0E1DDFE51C35E09000E0C28F /* a40007.png in Resources */,
 				0E1DDF5E1C35E09000E0C28F /* a30000.png in Resources */,
 				0E1DE08A1C35E09000E0C28F /* a40012.png in Resources */,
+				0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */,
 				0EBF81271C5599EE0090E585 /* explosion_21.png in Resources */,
 				0E1DE0521C35E09000E0C28F /* d40004.png in Resources */,
 				0EBF81231C5599EE0090E585 /* explosion_18.png in Resources */,
@@ -2204,12 +2226,14 @@
 				0E1DDF6A1C35E09000E0C28F /* a30012.png in Resources */,
 				0E1DDFA71C35E09000E0C28F /* c30009.png in Resources */,
 				0E1DE0B51C35E09000E0C28F /* b40007.png in Resources */,
+				0E59250D1C6D497A00023713 /* Background7_5k.png in Resources */,
 				0E1DE02D1C35E09000E0C28F /* c40015.png in Resources */,
 				0E1DDFCC1C35E09000E0C28F /* a10014.png in Resources */,
 				0E1DE0111C35E09000E0C28F /* c30003.png in Resources */,
 				0E1DE0AF1C35E09000E0C28F /* b40001.png in Resources */,
 				0E1DDDD81C35D71B00E0C28F /* MyParticle.sks in Resources */,
 				0E1DDFC01C35E09000E0C28F /* a10002.png in Resources */,
+				0E59250E1C6D497A00023713 /* Background7_6k.png in Resources */,
 				0E1DDFF91C35E09000E0C28F /* b40011.png in Resources */,
 				0E1DDF781C35E09000E0C28F /* b10010.png in Resources */,
 				0E1DDFB81C35E09000E0C28F /* c40010.png in Resources */,

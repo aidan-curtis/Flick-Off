@@ -40,8 +40,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let score = SKLabelNode()
     var score_number = 0;
     var gems = [SKSpriteNode]();
-    var backgroundNode_1=SKSpriteNode();
-    var backgroundNode_2=SKSpriteNode();
+    let number_of_backgrounds=8;
+    var backgroundNode=[SKSpriteNode]();
+
     
     
     var falling_objects=[SKSpriteNode]();
@@ -194,19 +195,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
+        for(var i=0; i<number_of_backgrounds; i++){
+            backgroundNode.append(SKSpriteNode())
+            backgroundNode[i].texture=SKTexture(imageNamed: "Background7_\(i+1)k.png");
+            backgroundNode[i].zPosition = -10000
+            backgroundNode[i].size = CGSizeMake(self.size.width, self.size.width*6)
+            addChild(backgroundNode[i])
+        }
+        
+        
 
         
-        backgroundNode_1.texture=SKTexture(imageNamed: "Background7_1.png");
-        backgroundNode_1.zPosition = -10000
-       
-        
-        backgroundNode_1.size = CGSizeMake(self.size.width, self.size.width*25)
-        addChild(backgroundNode_1)
-
-        backgroundNode_2.texture=SKTexture(imageNamed: "Background7_2.png");
-        backgroundNode_2.zPosition = -10000
-        backgroundNode_2.size = CGSizeMake(self.size.width, self.size.width*25)
-        addChild(backgroundNode_2)
         
         
         character.texture=SKTexture(imageNamed: "playerShip1_green.png");
@@ -425,8 +424,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             game_starting_values()
             frame_counter=0
-            backgroundNode_1.position = CGPointMake(self.size.width/2, 0)
-            backgroundNode_2.position = CGPointMake(self.size.width/2, self.size.width*7-self.size.width*25)
+            for(var i=0; i<number_of_backgrounds; i++){
+                if(i==0){
+                    backgroundNode[i].position = CGPointMake(self.size.width/2, 0)
+                }
+                else{
+                    backgroundNode[i].position = CGPointMake(self.size.width/2, self.size.width*7-self.size.width*6)
+                }
+            }
             play.hidden=false;
             main_panel.hidden=false;
             high_score_label.hidden=false
@@ -439,9 +444,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             emitterNode.resetSimulation()
             emitterNode.hidden=false
             emitterNode.paused=true
-            
-            backgroundNode_1.position = CGPointMake(self.size.width/2, self.size.width*25/2)
-            backgroundNode_2.position = CGPointMake(self.size.width/2, (self.size.width*25/2)+self.size.width*25)
+            for(var i=0; i<number_of_backgrounds; i++){
+                backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
+            }
             play.hidden=true;
             main_panel.hidden=true;
             high_score_label.hidden=true
@@ -454,17 +459,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         
         if(frame_counter<=150){
-            backgroundNode_1.position = CGPointMake(self.size.width/2,backgroundNode_1.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
-            
-            backgroundNode_2.position = CGPointMake(self.size.width/2,backgroundNode_2.position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+            for(var i=0; i<number_of_backgrounds; i++){
+            backgroundNode[i].position = CGPointMake(self.size.width/2,backgroundNode[i].position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+            }
+
             frame_counter++
         }
         else{
         
         emitterNode.paused=false
-        backgroundNode_1.position = CGPointMake(self.size.width/2, backgroundNode_1.position.y-1)
-        backgroundNode_2.position = CGPointMake(self.size.width/2, backgroundNode_2.position.y-1)
-       
+            for(var i=0; i<number_of_backgrounds; i++){
+                backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-1)
+            }
         
         if(life_bar.size.width<0){
             //game over
@@ -548,6 +554,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 falling.removeFromParent()
 
             }
+            if(falling.position.y<character.position.y-character.size.height*2){
+                falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                falling.removeFromParent()
+            }
         }
         
         //move coins
@@ -564,7 +574,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.runAction(SKAction.runBlock(a) )
             }
             coin.position=CGPointMake(coin.position.x, coin.position.y-5)
-            if(coin.position.y<character.position.y-character.size.height){
+            if(coin.position.y<character.position.y-character.size.height*2){
                 coins.removeAtIndex(coins.indexOf(coin)!)
                 coin.removeFromParent()
             }

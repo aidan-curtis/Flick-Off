@@ -564,7 +564,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.runAction(SKAction.runBlock(a) )
             }
             coin.position=CGPointMake(coin.position.x, coin.position.y-5)
+            if(coin.position.y<character.position.y-character.size.height){
+                coins.removeAtIndex(coins.indexOf(coin)!)
+                coin.removeFromParent()
+            }
         }
+
         //adding heart nodes
         if(frame_counter%600==0){
             let heart = addHeart(40)

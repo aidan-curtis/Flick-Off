@@ -425,12 +425,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             game_starting_values()
             frame_counter=0
             for(var i=0; i<number_of_backgrounds; i++){
-                if(i==0){
-                    backgroundNode[i].position = CGPointMake(self.size.width/2, 0)
-                }
-                else{
-                    backgroundNode[i].position = CGPointMake(self.size.width/2, self.size.width*7-self.size.width*6)
-                }
+                backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
             }
             play.hidden=false;
             main_panel.hidden=false;

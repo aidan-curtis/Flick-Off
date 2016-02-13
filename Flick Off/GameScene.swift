@@ -18,11 +18,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var main_panel = SKSpriteNode();
     var high_score_label = SKLabelNode();
     var score_label = SKLabelNode();
+
+    
+    var shield_activity=0
     
     
-    
-    var emitterNode = SKEmitterNode();
-    var backup_emitterNode = SKEmitterNode();
+    //var emitterNode = SKEmitterNode();
+    //var backup_emitterNode = SKEmitterNode();
     
     
     let MAX_HEALTH = 150
@@ -71,7 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var touched_location=CGPoint();
     var isTouching=false;
     var character = SKSpriteNode();
-    var fuel = SKEmitterNode(fileNamed: "MyParticle.sks");
+    var fuel = SKEmitterNode();
     
     
     var game_mode=GameMode.SPACE.rawValue
@@ -94,7 +96,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        print("contact!");
         var velocity1 = CGVector(), velocity2=CGVector();
         var location1 = CGPoint(), location2=CGPoint();
         var node1=SKSpriteNode(), node2=SKSpriteNode()
@@ -191,7 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.manager.deviceMotionUpdateInterval=1.0/60.0;
         self.manager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical);
     
-        fuel!.targetNode=self;
+      
         
         /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
@@ -209,23 +210,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         character.texture=SKTexture(imageNamed: "playerShip1_green.png");
-        character.position=CGPointMake(self.size.width/2, 90);
+        character.position=CGPointMake(3*self.size.width/5, 90);
         character.size=CGSizeMake(50, 38);
         addChild(character);
-        fuel!.position=CGPointMake(self.size.width/2, 73);
-        
-        addChild(fuel!);
-        
+        fuel = SKEmitterNode(fileNamed: "MyParticle.sks")!
+        fuel.position=CGPointMake(3*self.size.width/5, 73);
+        addChild(fuel);
+        fuel.targetNode=self
+        fuel.removeFromParent()
 
 
-        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
-        emitterNode.zPosition = -11
-        self.addChild(emitterNode)
-        emitterNode.paused=true
-        
-        backup_emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup:  true)
-        backup_emitterNode.zPosition = -11
-        self.addChild(backup_emitterNode)
+//        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
+//        emitterNode.zPosition = -11
+//        self.addChild(emitterNode)
+//        emitterNode.paused=true
+//        
+//        backup_emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup:  true)
+//        backup_emitterNode.zPosition = -11
+//        self.addChild(backup_emitterNode)
         
             
         
@@ -234,7 +236,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        self.addChild(emitterNode)
     }
     
-    func addFallingObject(){
+    func addFallingObject(speed : Int){
         let falling_object = SKSpriteNode();
         let num = Int(arc4random_uniform(UInt32(objects[game_mode].count)));
         NSLog("%i", num);
@@ -272,7 +274,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        falling_object.physicsBody!.velocity=CGVectorMake(0, -300);
+        falling_object.physicsBody!.velocity=CGVectorMake(0, CGFloat(speed));
         if(!(GameMode.UNDERWATER.rawValue==game_mode)){
             falling_object.physicsBody!.angularVelocity=CGFloat(arc4random_uniform(4));
         }
@@ -421,9 +423,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //score_label.text = "\(Int(score_label.text!)!+1)"
         if(game_status==0){
-            
             game_starting_values()
             frame_counter=0
+    
             for(var i=0; i<number_of_backgrounds; i++){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
             }
@@ -435,10 +437,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         else if(game_status==1){
-            backup_emitterNode.hidden=true
-            emitterNode.resetSimulation()
-            emitterNode.hidden=false
-            emitterNode.paused=true
+            addChild(fuel)
+            score.text="0"
+            score_number=0;
+//            backup_emitterNode.hidden=true
+//            emitterNode.resetSimulation()
+//            emitterNode.hidden=false
+//            emitterNode.paused=true
             for(var i=0; i<number_of_backgrounds; i++){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
             }
@@ -462,7 +467,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else{
         
-        emitterNode.paused=false
+       // emitterNode.paused=false
             for(var i=0; i<number_of_backgrounds; i++){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-1)
             }
@@ -497,7 +502,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         currentRoll=deviceMotion!.attitude.roll as Double;
         }
         character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
-        fuel!.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
+        fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
     
         //NSLog("pitch:%f", currentRoll);
         
@@ -524,7 +529,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gem.position=CGPointMake(gem.position.x, gem.position.y-5)
         }
         //falling objects enumerate
-        var falling_temp = falling_objects
+
         for falling: SKSpriteNode in falling_objects{
             let shrinkx:CGFloat=character.frame.width/2, shrinkx_m=character.frame.width/2
             let shrinky:CGFloat=character.frame.height/2, shrinky_m=character.frame.height/2
@@ -537,6 +542,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02))
                 falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
                 
+                explosion_size*=2
                 var change_health=0
                 var change_shield=shield_bar.size.width-explosion_size
          
@@ -582,22 +588,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hearts.append(heart);
         }
         //add falling objects
-        if(frame_counter%50==0 && !(frame_counter%600==0)){
-            addFallingObject();
+        var object_sequence = 50-frame_counter/100
+            if(object_sequence<5){
+                object_sequence = 5
+            }
+        let object_speed = -300-frame_counter/100
+            
+        if(frame_counter%(object_sequence)==0 && !(frame_counter%600==0)){
+            addFallingObject(object_speed);
         }
         }
         }
         else if (game_status==3){
-            score.text="0"
+            
             if(Int(score.text!)>Int(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))){
                 NSUserDefaults.standardUserDefaults().setInteger(Int(score.text!)!, forKey: "highscore")
             }
             
             high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
             score_label.text="\(Int(score.text!)!)"
-            backup_emitterNode.hidden=false
-            emitterNode.hidden=true
-            
+//            backup_emitterNode.hidden=false
+//            emitterNode.hidden=true
+        fuel.removeFromParent()
            game_status=0
         }
     }

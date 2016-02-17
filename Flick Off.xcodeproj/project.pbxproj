@@ -428,6 +428,7 @@
 		0E1DE0BB1C35E09000E0C28F /* b40013.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF4B1C35E09000E0C28F /* b40013.png */; };
 		0E1DE0BC1C35E09000E0C28F /* b40014.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF4C1C35E09000E0C28F /* b40014.png */; };
 		0E1DE0BD1C35E09000E0C28F /* b40015.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF4D1C35E09000E0C28F /* b40015.png */; };
+		0E29114B1C740C4A00DDE978 /* Magic2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E29114A1C740C4A00DDE978 /* Magic2.sks */; };
 		0E5924F01C6CBBDC00023713 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924EF1C6CBBDC00023713 /* Background7.png */; };
 		0E5925091C6D497A00023713 /* Background7_1k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925011C6D497A00023713 /* Background7_1k.png */; };
 		0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925021C6D497A00023713 /* Background7_2k.png */; };
@@ -947,6 +948,7 @@
 		0E1DDF4B1C35E09000E0C28F /* b40013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b40013.png; sourceTree = "<group>"; };
 		0E1DDF4C1C35E09000E0C28F /* b40014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b40014.png; sourceTree = "<group>"; };
 		0E1DDF4D1C35E09000E0C28F /* b40015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b40015.png; sourceTree = "<group>"; };
+		0E29114A1C740C4A00DDE978 /* Magic2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic2.sks; sourceTree = "<group>"; };
 		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = Images/Background7.png; sourceTree = "<group>"; };
 		0E5925011C6D497A00023713 /* Background7_1k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_1k.png; path = Images/Background7_1k.png; sourceTree = "<group>"; };
 		0E5925021C6D497A00023713 /* Background7_2k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_2k.png; path = Images/Background7_2k.png; sourceTree = "<group>"; };
@@ -1169,6 +1171,7 @@
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
 				0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */,
 				0ED77D4A1C5D69C900BF5D90 /* Magic.sks */,
+				0E29114A1C740C4A00DDE978 /* Magic2.sks */,
 				0E197A441C552A9900AA5658 /* Rain.sks */,
 				0E1DDDD31C35D6D200E0C28F /* spark.png */,
 				0E1DDD051C34677000E0C28F /* GameViewController.swift */,
@@ -1853,6 +1856,7 @@
 				0E1DE0321C35E09000E0C28F /* d10004.png in Resources */,
 				0E1DDFDC1C35E09000E0C28F /* a30014.png in Resources */,
 				0E1DDFF21C35E09000E0C28F /* b40004.png in Resources */,
+				0E29114B1C740C4A00DDE978 /* Magic2.sks in Resources */,
 				0E1DDF7E1C35E09000E0C28F /* b30000.png in Resources */,
 				0E1DE04D1C35E09000E0C28F /* d30015.png in Resources */,
 				0E1DDFE61C35E09000E0C28F /* a40008.png in Resources */,

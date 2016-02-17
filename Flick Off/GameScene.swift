@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shield_activity=0
     
     
-    //var emitterNode = SKEmitterNode();
+    var emitterNode = SKEmitterNode();
     //var backup_emitterNode = SKEmitterNode();
     
     
@@ -133,6 +133,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coin.removeFromParent()
         }
         coins.removeAll()
+        
+        for falling_object: SKSpriteNode in falling_objects{
+            falling_object.removeFromParent()
+        }
+        falling_objects.removeAll()
+        
+        for heart: SKSpriteNode in hearts{
+            heart.removeFromParent()
+        }
+        hearts.removeAll()
+        
+        
     }
     override func didMoveToView(view: SKView) {
         high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
@@ -210,21 +222,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         character.texture=SKTexture(imageNamed: "playerShip1_green.png");
-        character.position=CGPointMake(3*self.size.width/5, 90);
+        character.position=CGPointMake(3*self.size.width/5, 7*self.size.width/24);
         character.size=CGSizeMake(50, 38);
         addChild(character);
         fuel = SKEmitterNode(fileNamed: "MyParticle.sks")!
-        fuel.position=CGPointMake(3*self.size.width/5, 73);
+        fuel.position=CGPointMake(3*self.size.width/5, (7*self.size.width/24)-15);
         addChild(fuel);
         fuel.targetNode=self
         fuel.removeFromParent()
 
 
-//        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
-//        emitterNode.zPosition = -11
-//        self.addChild(emitterNode)
-//        emitterNode.paused=true
-//        
+        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
+        emitterNode.zPosition = -11
+        self.addChild(emitterNode)
+        emitterNode.paused=true
+//
 //        backup_emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup:  true)
 //        backup_emitterNode.zPosition = -11
 //        self.addChild(backup_emitterNode)
@@ -254,13 +266,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         if(arc4random_uniform(UInt32(11))==10){
-        falling_object.name="purple"
-        //add emitter_node
-        let emitterNode = SKEmitterNode(fileNamed: "Magic")!
-        emitterNode.zPosition = -11
-        emitterNode.position = CGPointMake(0, 0)
-        emitterNode.targetNode=self
-        falling_object.addChild(emitterNode)
+            falling_object.name="purple"
+            //add emitter_node
+            let emitterNode = SKEmitterNode(fileNamed: "Magic")!
+            emitterNode.zPosition = -11
+            emitterNode.position = CGPointMake(0, 0)
+            emitterNode.targetNode=self
+            falling_object.addChild(emitterNode)
+        }
+        else if(arc4random_uniform(UInt32(11))==10){
+            falling_object.name="blue"
+            //add emitter_node
+            let emitterNode = SKEmitterNode(fileNamed: "Magic2")!
+            
+            emitterNode.zPosition = -11
+            emitterNode.position = CGPointMake(0, 0)
+            emitterNode.targetNode=self
+            falling_object.addChild(emitterNode)
         }
         
         //add physics body
@@ -440,10 +462,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(fuel)
             score.text="0"
             score_number=0;
-//            backup_emitterNode.hidden=true
-//            emitterNode.resetSimulation()
-//            emitterNode.hidden=false
-//            emitterNode.paused=true
+            //backup_emitterNode.hidden=true
+            emitterNode.resetSimulation()
+            emitterNode.hidden=false
+            emitterNode.paused=true
             for(var i=0; i<number_of_backgrounds; i++){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
             }
@@ -467,7 +489,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else{
         
-       // emitterNode.paused=false
+        emitterNode.paused=false
             for(var i=0; i<number_of_backgrounds; i++){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-1)
             }
@@ -607,8 +629,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
             score_label.text="\(Int(score.text!)!)"
-//            backup_emitterNode.hidden=false
-//            emitterNode.hidden=true
+            //backup_emitterNode.hidden=false
+            emitterNode.hidden=true
         fuel.removeFromParent()
            game_status=0
         }

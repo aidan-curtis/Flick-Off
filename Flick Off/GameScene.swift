@@ -445,6 +445,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //score_label.text = "\(Int(score_label.text!)!+1)"
         if(game_status==0){
+            emitterNode.paused=true
             game_starting_values()
             frame_counter=0
     

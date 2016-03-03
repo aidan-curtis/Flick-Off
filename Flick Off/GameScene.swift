@@ -567,17 +567,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
             character.position.x=self.size.width;
             fuel.position.x=self.size.width;
-            shield_follow.position.x=self.size.width;
+      
             
         }
         if(character.position.x>self.size.width){
             
             character.position.x=0;
             fuel.position.x=0;
-            shield_follow.position.x=0;
+       
         }
                 
-            shield_follow.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
+            shield_follow.position=CGPointMake(character.position.x-3, character.position.y+3);
             character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
             fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
     
@@ -638,7 +638,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
             if(rocket_power==0){
-                 falling.physicsBody!.velocity=CGVector(dx: CGFloat((falling.physicsBody?.velocity.dx)!)*CGFloat(1/power_speed), dy: CGFloat((falling.physicsBody?.velocity.dy)!)*CGFloat(1/power_speed));
+                 falling.physicsBody!.velocity=CGVector(dx: CGFloat((falling.physicsBody?.velocity.dx)!)*CGFloat(1.0/Double(power_speed)), dy: CGFloat((falling.physicsBody?.velocity.dy)!)*CGFloat(1.0/Double(power_speed)));
                 falling.speed*=0.2;
                 
             }

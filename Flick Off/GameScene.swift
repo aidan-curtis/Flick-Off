@@ -10,6 +10,17 @@ import SpriteKit
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    //YOU CAN CHANGE THESE CONSTANTS
+    let power_speed=3
+    
+    
+    
+    
+    
+    //DO NOT EDIT BELOW
+    
+    
+    
     var game_status=0
     //menus
     var main_menu = SKSpriteNode();
@@ -18,7 +29,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var main_panel = SKSpriteNode();
     var high_score_label = SKLabelNode();
     var score_label = SKLabelNode();
-
     
     var shield_activity=0
     
@@ -36,16 +46,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     let next_coin: coin_dispenser = coin_dispenser()
-    
-    
+    var oldparticlecolor=UIColor.clearColor();
+    var oldparticlesize:CGFloat=20.0;
     //labels
     let score = SKLabelNode()
     var score_number = 0;
     var gems = [SKSpriteNode]();
     let number_of_backgrounds=8;
     var backgroundNode=[SKSpriteNode]();
-
-    
+    var rockets=[SKSpriteNode]();
+    var shields=[SKSpriteNode]();
+    var shield_power=0;
+    var rocket_power=0;
     
     var falling_objects=[SKSpriteNode]();
    
@@ -73,6 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var touched_location=CGPoint();
     var isTouching=false;
     var character = SKSpriteNode();
+    var shield_follow = Shield();
     var fuel = SKEmitterNode();
     
     
@@ -147,6 +160,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     override func didMoveToView(view: SKView) {
+        
+        shield_follow.setup(CGSizeMake(120,107))
         high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
         play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-100)
         play.size=CGSizeMake(130,70)
@@ -215,22 +230,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             backgroundNode[i].size = CGSizeMake(self.size.width, self.size.width*6)
             addChild(backgroundNode[i])
         }
-        
-        
-
-        
-        
+    
         
         character.texture=SKTexture(imageNamed: "playerShip1_green.png");
-        character.position=CGPointMake(3*self.size.width/5, 7*self.size.width/24);
+        character.position=CGPointMake(3*self.size.width/5, 4*self.size.height/24);
+        
         character.size=CGSizeMake(50, 38);
         addChild(character);
+        
+     
+        
+        shield_follow.position = CGPointMake(3*self.size.width/5-3, 4*self.size.height/24+3);
+        shield_follow.size = CGSizeMake(120, 107);
+        addChild(shield_follow);
+        shield_follow.hidden=true;
+        
         fuel = SKEmitterNode(fileNamed: "MyParticle.sks")!
-        fuel.position=CGPointMake(3*self.size.width/5, (7*self.size.width/24)-15);
+        fuel.position=CGPointMake(3*self.size.width/5, (4*self.size.height/24)-15);
         addChild(fuel);
         fuel.targetNode=self
         fuel.removeFromParent()
-
+        oldparticlecolor=fuel.particleColor;
+        oldparticlesize=fuel.particleScale;
 
         emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
         emitterNode.zPosition = -11
@@ -265,25 +286,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        if(arc4random_uniform(UInt32(11))==10){
-            falling_object.name="purple"
-            //add emitter_node
-            let emitterNode = SKEmitterNode(fileNamed: "Magic")!
-            emitterNode.zPosition = -11
-            emitterNode.position = CGPointMake(0, 0)
-            emitterNode.targetNode=self
-            falling_object.addChild(emitterNode)
-        }
-        else if(arc4random_uniform(UInt32(11))==10){
-            falling_object.name="blue"
-            //add emitter_node
-            let emitterNode = SKEmitterNode(fileNamed: "Magic2")!
-            
-            emitterNode.zPosition = -11
-            emitterNode.position = CGPointMake(0, 0)
-            emitterNode.targetNode=self
-            falling_object.addChild(emitterNode)
-        }
+//        if(arc4random_uniform(UInt32(11))==10){
+//            falling_object.name="purple"
+//            //add emitter_node
+//            let emitterNode = SKEmitterNode(fileNamed: "Magic")!
+//            emitterNode.zPosition = -11
+//            emitterNode.position = CGPointMake(0, 0)
+//            emitterNode.targetNode=self
+//            falling_object.addChild(emitterNode)
+//        }
+//        else if(arc4random_uniform(UInt32(11))==10){
+//            falling_object.name="blue"
+//            //add emitter_node
+//            let emitterNode = SKEmitterNode(fileNamed: "Magic2")!
+//            
+//            emitterNode.zPosition = -11
+//            emitterNode.position = CGPointMake(0, 0)
+//            emitterNode.targetNode=self
+//            falling_object.addChild(emitterNode)
+//        }
         
         //add physics body
         falling_object.physicsBody=SKPhysicsBody(circleOfRadius: falling_object.size.width/4);
@@ -292,11 +313,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         falling_object.physicsBody!.categoryBitMask = Objects.Meteor.rawValue
         falling_object.physicsBody!.usesPreciseCollisionDetection=true;
         falling_object.physicsBody!.contactTestBitMask = Objects.Meteor.rawValue
+      
+   
         
         
         
-        
-        falling_object.physicsBody!.velocity=CGVectorMake(0, CGFloat(speed));
+        if(rocket_power<=0){
+            falling_object.physicsBody!.velocity=CGVectorMake(0, CGFloat(speed));
+        }
+        else{
+            falling_object.physicsBody!.velocity=CGVectorMake(0, CGFloat(power_speed*speed));
+        }
         if(!(GameMode.UNDERWATER.rawValue==game_mode)){
             falling_object.physicsBody!.angularVelocity=CGFloat(arc4random_uniform(4));
         }
@@ -304,7 +331,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         falling_objects.append(falling_object);
         
         addChild(falling_object);
-
         
     
     }
@@ -320,7 +346,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Determine the time a star is visible on screen
         let lifetime =  frame.size.height * UIScreen.mainScreen().scale / starSpeedY
-        
+
         // Create the emitter node
         let emitterNode = SKEmitterNode()
         emitterNode.particleTexture = SKTexture(imageNamed: "spark")
@@ -397,29 +423,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coins.append(coin)
         }
     }
-    func addHeart(size: Int) -> SKSpriteNode{
-        let heart = SKSpriteNode()
-        let background = SKSpriteNode(texture: SKTexture(imageNamed: "red_glow"))
-        let heart_image = SKSpriteNode(texture: SKTexture(imageNamed: "heart"))
-        
-        
-        background.size=CGSizeMake(CGFloat(size),CGFloat(size))
-        background.position=CGPointMake(0, 5)
-        
-        heart_image.size=CGSizeMake(CGFloat(size),CGFloat(size))
-        heart_image.position=CGPointMake(0, 0)
-        heart.position=CGPointMake(CGFloat(Int(arc4random_uniform(UInt32(self.size.width)-40)+20)), self.size.height+25)
-        heart.runAction(SKAction.repeatActionForever( SKAction.sequence([SKAction.fadeAlphaTo(0.5, duration: 0.5),SKAction.fadeAlphaTo(1, duration: 0.5) ])))
-        heart.addChild(background);
-        heart.addChild(heart_image);
-        return heart
-        
-    }
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        
         for touches: AnyObject in touches{
-            
             let location = touches.locationInNode(self)
             if(self.nodeAtPoint(location).name=="play"){
                 game_status=1;
@@ -440,9 +447,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         isTouching=false
     }
+  
     override func update(currentTime: CFTimeInterval) {
+       
+        shield_power-=1;
+        rocket_power-=1;
+        if(shield_power==0){
+            
+            shield_follow.removeFromParent()
+            shield_follow=Shield();
+            shield_follow.setup(CGSizeMake(120, 107))
+            shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
+     
+            addChild(shield_follow);
+            shield_follow.hidden=true;
+            
+            shield_follow.hidden=true;
+        }
+        if(rocket_power==0){
+            
+            shield_follow.removeFromParent()
+  
+            shield_follow=Shield();
+            shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
+            shield_follow.setup(CGSizeMake(120, 107))
+            addChild(shield_follow);
+            shield_follow.hidden=true;
+            fuel.particleColor=oldparticlecolor;
+            fuel.particleColorBlendFactor=1
+     
+            fuel.particleScale=fuel.particleScale*0.5
+            
+        }
         //improve shield power
-        
         //score_label.text = "\(Int(score_label.text!)!+1)"
         if(game_status==0){
             emitterNode.paused=true
@@ -456,8 +493,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             main_panel.hidden=false;
             high_score_label.hidden=false
             score_label.hidden=false;
-            
-            
         }
         else if(game_status==1){
             addChild(fuel)
@@ -478,42 +513,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             game_status=2
         }
         if(game_status==2){
-        
-            
-        
-        if(frame_counter<=150){
-            for(var i=0; i<number_of_backgrounds; i++){
-            backgroundNode[i].position = CGPointMake(self.size.width/2,backgroundNode[i].position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+            if(frame_counter<=150){
+                for(var i=0; i<number_of_backgrounds; i++){
+                    backgroundNode[i].position = CGPointMake(self.size.width/2,backgroundNode[i].position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+                }
+                frame_counter++
             }
+            else{
+                emitterNode.paused=false
+                for(var i=0; i<number_of_backgrounds; i++){
+                    backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-1)
+                }
+                if(life_bar.size.width<0){
+                    print("game over");
+                    game_status=3
+                }
+                if(frame_counter%3==0 && shield_bar.size.width<CGFloat(MAX_HEALTH)){
+                    setShieldBar(Int(shield_bar.size.width+1))
+                }
+                if(frame_counter%5==0){
+                    if(shield_power<=0){
+                        score_number++;
+                        
+                    }
+                    else{
+                        score_number+=power_speed;
+                    }
+                    
+                    
+                    score.text = "\(score_number)"
+                }
+                if(frame_counter%450==0){
+                    let shield=Shield();
+                    shield.setup(CGSizeMake(60, 50))
+                    shield.position=CGPointMake(CGFloat(arc4random_uniform(UInt32 (self.size.width))),self.size.height);
+                    addChild(shield)
+                    
+                    shields.append(shield);
+                }
 
-            frame_counter++
-        }
-        else{
-        
-        emitterNode.paused=false
-            for(var i=0; i<number_of_backgrounds; i++){
-                backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-1)
-            }
-        
-        if(life_bar.size.width<0){
-            //game over
-            print("game over");
-            game_status=3
-        }
-        
-        if(frame_counter%3==0 && shield_bar.size.width<CGFloat(MAX_HEALTH)){
-            setShieldBar(Int(shield_bar.size.width+1))
-        }
-        
-        if(frame_counter%5==0){
-            score_number++
-            score.text = "\(score_number)"
-        }
-//        if(GameMode.UNDERWATER.rawValue==game_mode){
-//            for fish: AnyObject in falling_objects{
-//                fish.runAction(SKAction.rotateToAngle(, duration: 0.01))
-//            }
-//        }
         if(isTouching){
             //let force_vector = CGVectorMake(3*(touched_location.x - moving_object.position.x) , 3*(touched_location.y - moving_object.position.y))
             let velocity_vector = CGVectorMake(15*(touched_location.x - moving_object.position.x), 15*(touched_location.y - moving_object.position.y))
@@ -524,17 +562,57 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if((deviceMotion) != nil){
         currentRoll=deviceMotion!.attitude.roll as Double;
         }
-        character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
-        fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
+                
+        if(character.position.x<0){
+           
+            character.position.x=self.size.width;
+            fuel.position.x=self.size.width;
+            shield_follow.position.x=self.size.width;
+            
+        }
+        if(character.position.x>self.size.width){
+            
+            character.position.x=0;
+            fuel.position.x=0;
+            shield_follow.position.x=0;
+        }
+                
+            shield_follow.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
+            character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
+            fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
     
         //NSLog("pitch:%f", currentRoll);
-        
-//        NSLog("yaw:%i", (self.manager.deviceMotion?.attitude.yaw)!);
-//        NSLog("roll:%i", (self.manager.deviceMotion?.attitude.roll)!);
+        //NSLog("yaw:%i", (self.manager.deviceMotion?.attitude.yaw)!);
+        //NSLog("roll:%i", (self.manager.deviceMotion?.attitude.roll)!);
         
         //add coins
         if(frame_counter%7==0){
             addCoin();
+        }
+        for shield: SKSpriteNode in shields{
+            shield.position=CGPointMake(shield.position.x, shield.position.y-5)
+            if(CGRectIntersectsRect(shield.frame,character.frame)){
+                shield_power=200;
+                shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
+                shield_follow.physicsBody!.dynamic=false;
+                shield_follow.hidden=false;
+                shield.removeFromParent()
+                shields.removeAtIndex(shields.indexOf(shield)!)
+            }
+        }
+        for rocket: SKSpriteNode in rockets{
+            rocket.position=CGPointMake(rocket.position.x, rocket.position.y-5)
+            if(CGRectIntersectsRect(rocket.frame,character.frame)){
+                rocket_power=200;
+                shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
+                shield_follow.physicsBody!.dynamic=false;
+                fuel.particleColorSequence = nil;
+                fuel.particleColorBlendFactor = 0.9;
+                fuel.particleColor = SKColor.blueColor();
+                fuel.particleScale=fuel.particleScale*2
+                rockets.removeAtIndex(rockets.indexOf(rocket)!)
+                rocket.removeFromParent()
+            }
         }
         //move hearts
         for heart: SKSpriteNode in hearts{
@@ -554,6 +632,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //falling objects enumerate
 
         for falling: SKSpriteNode in falling_objects{
+            if(rocket_power==199){
+                falling.physicsBody!.velocity=CGVector(dx: CGFloat((falling.physicsBody?.velocity.dx)!)*CGFloat(power_speed), dy: CGFloat((falling.physicsBody?.velocity.dy)!)*CGFloat(power_speed));
+                
+                
+            }
+            if(rocket_power==0){
+                 falling.physicsBody!.velocity=CGVector(dx: CGFloat((falling.physicsBody?.velocity.dx)!)*CGFloat(1/power_speed), dy: CGFloat((falling.physicsBody?.velocity.dy)!)*CGFloat(1/power_speed));
+                falling.speed*=0.2;
+                
+            }
             let shrinkx:CGFloat=character.frame.width/2, shrinkx_m=character.frame.width/2
             let shrinky:CGFloat=character.frame.height/2, shrinky_m=character.frame.height/2
             if(CGRectIntersectsRect(CGRectMake(falling.frame.origin.x+shrinkx_m, falling.frame.origin.y+shrinky_m, 70, 70), CGRectMake(character.frame.origin.x+shrinkx, character.frame.origin.y+shrinky, 1, 1))){
@@ -606,9 +694,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         //adding heart nodes
         if(frame_counter%600==0){
-            let heart = addHeart(40)
+            let heart = Heart();
+            heart.setup(30, parentsize: self.size)
             addChild(heart)
             hearts.append(heart);
+        }
+                
+        if(frame_counter%912==0){
+            let rocket = Rocket();
+            rocket.setup();
+            
+            rocket.position=CGPointMake(CGFloat(arc4random_uniform(UInt32(self.size.width))), self.size.height)
+            addChild(rocket);
+            rockets.append(rocket);
         }
         //add falling objects
         var object_sequence = 50-frame_counter/100
@@ -623,11 +721,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         }
         else if (game_status==3){
-            
             if(Int(score.text!)>Int(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))){
                 NSUserDefaults.standardUserDefaults().setInteger(Int(score.text!)!, forKey: "highscore")
             }
-            
             high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
             score_label.text="\(Int(score.text!)!)"
             //backup_emitterNode.hidden=false

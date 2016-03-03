@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1420C31C853249003785D5 /* shield10.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420B91C853249003785D5 /* shield10.png */; };
+		0E1420C41C853249003785D5 /* shield11.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BA1C853249003785D5 /* shield11.png */; };
+		0E1420C51C853249003785D5 /* shield2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BB1C853249003785D5 /* shield2.png */; };
+		0E1420C61C853249003785D5 /* shield3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BC1C853249003785D5 /* shield3.png */; };
+		0E1420C71C853249003785D5 /* shield4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BD1C853249003785D5 /* shield4.png */; };
+		0E1420C81C853249003785D5 /* shield5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BE1C853249003785D5 /* shield5.png */; };
+		0E1420C91C853249003785D5 /* shield6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BF1C853249003785D5 /* shield6.png */; };
+		0E1420CA1C853249003785D5 /* shield7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420C01C853249003785D5 /* shield7.png */; };
+		0E1420CB1C853249003785D5 /* shield8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420C11C853249003785D5 /* shield8.png */; };
+		0E1420CC1C853249003785D5 /* shield9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420C21C853249003785D5 /* shield9.png */; };
+		0E1420D01C8532B6003785D5 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1420CF1C8532B6003785D5 /* Shield.swift */; };
+		0E1420D21C853322003785D5 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1420D11C853322003785D5 /* Heart.swift */; };
 		0E197A311C54291B00AA5658 /* spinning_coin_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A281C54291B00AA5658 /* spinning_coin_gold.png */; };
 		0E197A321C54291B00AA5658 /* spinning_coin_gold_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A291C54291B00AA5658 /* spinning_coin_gold_1.png */; };
 		0E197A331C54291B00AA5658 /* spinning_coin_gold_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E197A2A1C54291B00AA5658 /* spinning_coin_gold_2.png */; };
@@ -429,6 +441,18 @@
 		0E1DE0BC1C35E09000E0C28F /* b40014.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF4C1C35E09000E0C28F /* b40014.png */; };
 		0E1DE0BD1C35E09000E0C28F /* b40015.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF4D1C35E09000E0C28F /* b40015.png */; };
 		0E29114B1C740C4A00DDE978 /* Magic2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E29114A1C740C4A00DDE978 /* Magic2.sks */; };
+		0E363BE91C87D5FF0018C2F2 /* Rocket for app v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BDD1C87D5FF0018C2F2 /* Rocket for app v1.png */; };
+		0E363BEA1C87D5FF0018C2F2 /* Rocket for app v10.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BDE1C87D5FF0018C2F2 /* Rocket for app v10.png */; };
+		0E363BEB1C87D5FF0018C2F2 /* Rocket for app v11.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BDF1C87D5FF0018C2F2 /* Rocket for app v11.png */; };
+		0E363BEC1C87D5FF0018C2F2 /* Rocket for app v12.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE01C87D5FF0018C2F2 /* Rocket for app v12.png */; };
+		0E363BED1C87D5FF0018C2F2 /* Rocket for app v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE11C87D5FF0018C2F2 /* Rocket for app v2.png */; };
+		0E363BEE1C87D5FF0018C2F2 /* Rocket for app v3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE21C87D5FF0018C2F2 /* Rocket for app v3.png */; };
+		0E363BEF1C87D5FF0018C2F2 /* Rocket for app v4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE31C87D5FF0018C2F2 /* Rocket for app v4.png */; };
+		0E363BF01C87D5FF0018C2F2 /* Rocket for app v5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE41C87D5FF0018C2F2 /* Rocket for app v5.png */; };
+		0E363BF11C87D5FF0018C2F2 /* Rocket for app v6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE51C87D5FF0018C2F2 /* Rocket for app v6.png */; };
+		0E363BF21C87D5FF0018C2F2 /* Rocket for app v7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE61C87D5FF0018C2F2 /* Rocket for app v7.png */; };
+		0E363BF31C87D5FF0018C2F2 /* Rocket for app v8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE71C87D5FF0018C2F2 /* Rocket for app v8.png */; };
+		0E363BF41C87D5FF0018C2F2 /* Rocket for app v9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BE81C87D5FF0018C2F2 /* Rocket for app v9.png */; };
 		0E5924F01C6CBBDC00023713 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924EF1C6CBBDC00023713 /* Background7.png */; };
 		0E5925091C6D497A00023713 /* Background7_1k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925011C6D497A00023713 /* Background7_1k.png */; };
 		0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925021C6D497A00023713 /* Background7_2k.png */; };
@@ -440,7 +464,6 @@
 		0E5925101C6D497A00023713 /* Background7_8k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925081C6D497A00023713 /* Background7_8k.png */; };
 		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
-		0EBF80E81C557C280090E585 /* ocean_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80DE1C557C280090E585 /* ocean_background.png */; };
 		0EBF80E91C557C280090E585 /* color_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E11C557C280090E585 /* color_fish.png */; };
 		0EBF80EA1C557C280090E585 /* color_fish_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E21C557C280090E585 /* color_fish_1.png */; };
 		0EBF80EB1C557C280090E585 /* color_fish_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E31C557C280090E585 /* color_fish_2.png */; };
@@ -486,6 +509,7 @@
 		0EBF813B1C5599EE0090E585 /* explosion_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF81171C5599EE0090E585 /* explosion_9.png */; };
 		0EBF813C1C5599EE0090E585 /* spritesheet2-150x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF81181C5599EE0090E585 /* spritesheet2-150x150.png */; };
 		0EBF813D1C5599EE0090E585 /* spritesheet9-150x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF81191C5599EE0090E585 /* spritesheet9-150x150.png */; };
+		0ED481AB1C7F2FF80041F8E7 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */; };
 		0ED77CEB1C5D435B00BF5D90 /* Gem v103.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C881C5D435B00BF5D90 /* Gem v103.png */; };
 		0ED77CF21C5D435B00BF5D90 /* Gem v15.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C8F1C5D435B00BF5D90 /* Gem v15.png */; };
 		0ED77CFA1C5D435B00BF5D90 /* Gem v23.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C971C5D435B00BF5D90 /* Gem v23.png */; };
@@ -521,6 +545,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E1420B91C853249003785D5 /* shield10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield10.png; sourceTree = "<group>"; };
+		0E1420BA1C853249003785D5 /* shield11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield11.png; sourceTree = "<group>"; };
+		0E1420BB1C853249003785D5 /* shield2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield2.png; sourceTree = "<group>"; };
+		0E1420BC1C853249003785D5 /* shield3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield3.png; sourceTree = "<group>"; };
+		0E1420BD1C853249003785D5 /* shield4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield4.png; sourceTree = "<group>"; };
+		0E1420BE1C853249003785D5 /* shield5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield5.png; sourceTree = "<group>"; };
+		0E1420BF1C853249003785D5 /* shield6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield6.png; sourceTree = "<group>"; };
+		0E1420C01C853249003785D5 /* shield7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield7.png; sourceTree = "<group>"; };
+		0E1420C11C853249003785D5 /* shield8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield8.png; sourceTree = "<group>"; };
+		0E1420C21C853249003785D5 /* shield9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield9.png; sourceTree = "<group>"; };
+		0E1420CF1C8532B6003785D5 /* Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shield.swift; path = ../Shield.swift; sourceTree = "<group>"; };
+		0E1420D11C853322003785D5 /* Heart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 		0E197A281C54291B00AA5658 /* spinning_coin_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_gold.png; sourceTree = "<group>"; };
 		0E197A291C54291B00AA5658 /* spinning_coin_gold_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_gold_1.png; sourceTree = "<group>"; };
 		0E197A2A1C54291B00AA5658 /* spinning_coin_gold_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_gold_2.png; sourceTree = "<group>"; };
@@ -949,18 +985,29 @@
 		0E1DDF4C1C35E09000E0C28F /* b40014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b40014.png; sourceTree = "<group>"; };
 		0E1DDF4D1C35E09000E0C28F /* b40015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b40015.png; sourceTree = "<group>"; };
 		0E29114A1C740C4A00DDE978 /* Magic2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic2.sks; sourceTree = "<group>"; };
-		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = Images/Background7.png; sourceTree = "<group>"; };
-		0E5925011C6D497A00023713 /* Background7_1k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_1k.png; path = Images/Background7_1k.png; sourceTree = "<group>"; };
-		0E5925021C6D497A00023713 /* Background7_2k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_2k.png; path = Images/Background7_2k.png; sourceTree = "<group>"; };
-		0E5925031C6D497A00023713 /* Background7_3k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_3k.png; path = Images/Background7_3k.png; sourceTree = "<group>"; };
-		0E5925041C6D497A00023713 /* Background7_4k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_4k.png; path = Images/Background7_4k.png; sourceTree = "<group>"; };
-		0E5925051C6D497A00023713 /* Background7_5k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_5k.png; path = Images/Background7_5k.png; sourceTree = "<group>"; };
-		0E5925061C6D497A00023713 /* Background7_6k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_6k.png; path = Images/Background7_6k.png; sourceTree = "<group>"; };
-		0E5925071C6D497A00023713 /* Background7_7k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_7k.png; path = Images/Background7_7k.png; sourceTree = "<group>"; };
-		0E5925081C6D497A00023713 /* Background7_8k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_8k.png; path = Images/Background7_8k.png; sourceTree = "<group>"; };
+		0E363BDD1C87D5FF0018C2F2 /* Rocket for app v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v1.png"; sourceTree = "<group>"; };
+		0E363BDE1C87D5FF0018C2F2 /* Rocket for app v10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v10.png"; sourceTree = "<group>"; };
+		0E363BDF1C87D5FF0018C2F2 /* Rocket for app v11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v11.png"; sourceTree = "<group>"; };
+		0E363BE01C87D5FF0018C2F2 /* Rocket for app v12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v12.png"; sourceTree = "<group>"; };
+		0E363BE11C87D5FF0018C2F2 /* Rocket for app v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v2.png"; sourceTree = "<group>"; };
+		0E363BE21C87D5FF0018C2F2 /* Rocket for app v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v3.png"; sourceTree = "<group>"; };
+		0E363BE31C87D5FF0018C2F2 /* Rocket for app v4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v4.png"; sourceTree = "<group>"; };
+		0E363BE41C87D5FF0018C2F2 /* Rocket for app v5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v5.png"; sourceTree = "<group>"; };
+		0E363BE51C87D5FF0018C2F2 /* Rocket for app v6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v6.png"; sourceTree = "<group>"; };
+		0E363BE61C87D5FF0018C2F2 /* Rocket for app v7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v7.png"; sourceTree = "<group>"; };
+		0E363BE71C87D5FF0018C2F2 /* Rocket for app v8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v8.png"; sourceTree = "<group>"; };
+		0E363BE81C87D5FF0018C2F2 /* Rocket for app v9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v9.png"; sourceTree = "<group>"; };
+		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = "Flick Off/Images/Background7.png"; sourceTree = SOURCE_ROOT; };
+		0E5925011C6D497A00023713 /* Background7_1k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_1k.png; path = "Flick Off/Images/Background7_1k.png"; sourceTree = SOURCE_ROOT; };
+		0E5925021C6D497A00023713 /* Background7_2k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_2k.png; path = "Flick Off/Images/Background7_2k.png"; sourceTree = SOURCE_ROOT; };
+		0E5925031C6D497A00023713 /* Background7_3k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_3k.png; path = "Flick Off/Images/Background7_3k.png"; sourceTree = SOURCE_ROOT; };
+		0E5925041C6D497A00023713 /* Background7_4k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_4k.png; path = "Flick Off/Images/Background7_4k.png"; sourceTree = SOURCE_ROOT; };
+		0E5925051C6D497A00023713 /* Background7_5k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_5k.png; path = "Flick Off/Images/Background7_5k.png"; sourceTree = SOURCE_ROOT; };
+		0E5925061C6D497A00023713 /* Background7_6k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_6k.png; path = "Flick Off/Images/Background7_6k.png"; sourceTree = SOURCE_ROOT; };
+		0E5925071C6D497A00023713 /* Background7_7k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_7k.png; path = "Flick Off/Images/Background7_7k.png"; sourceTree = SOURCE_ROOT; };
+		0E5925081C6D497A00023713 /* Background7_8k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_8k.png; path = "Flick Off/Images/Background7_8k.png"; sourceTree = SOURCE_ROOT; };
 		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
-		0EBF80DE1C557C280090E585 /* ocean_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ocean_background.png; sourceTree = "<group>"; };
 		0EBF80E11C557C280090E585 /* color_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish.png; sourceTree = "<group>"; };
 		0EBF80E21C557C280090E585 /* color_fish_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish_1.png; sourceTree = "<group>"; };
 		0EBF80E31C557C280090E585 /* color_fish_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish_2.png; sourceTree = "<group>"; };
@@ -1006,6 +1053,7 @@
 		0EBF81171C5599EE0090E585 /* explosion_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_9.png; sourceTree = "<group>"; };
 		0EBF81181C5599EE0090E585 /* spritesheet2-150x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spritesheet2-150x150.png"; sourceTree = "<group>"; };
 		0EBF81191C5599EE0090E585 /* spritesheet9-150x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spritesheet9-150x150.png"; sourceTree = "<group>"; };
+		0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		0ED77C881C5D435B00BF5D90 /* Gem v103.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v103.png"; sourceTree = "<group>"; };
 		0ED77C8F1C5D435B00BF5D90 /* Gem v15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v15.png"; sourceTree = "<group>"; };
 		0ED77C971C5D435B00BF5D90 /* Gem v23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v23.png"; sourceTree = "<group>"; };
@@ -1048,6 +1096,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E1420B81C853249003785D5 /* Shield */ = {
+			isa = PBXGroup;
+			children = (
+				0E1420B91C853249003785D5 /* shield10.png */,
+				0E1420BA1C853249003785D5 /* shield11.png */,
+				0E1420BB1C853249003785D5 /* shield2.png */,
+				0E1420BC1C853249003785D5 /* shield3.png */,
+				0E1420BD1C853249003785D5 /* shield4.png */,
+				0E1420BE1C853249003785D5 /* shield5.png */,
+				0E1420BF1C853249003785D5 /* shield6.png */,
+				0E1420C01C853249003785D5 /* shield7.png */,
+				0E1420C11C853249003785D5 /* shield8.png */,
+				0E1420C21C853249003785D5 /* shield9.png */,
+			);
+			name = Shield;
+			path = "Flick Off/Images/Shield";
+			sourceTree = "<group>";
+		};
 		0E197A271C54291B00AA5658 /* Coin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1117,6 +1183,8 @@
 		0E1DDCF31C34677000E0C28F = {
 			isa = PBXGroup;
 			children = (
+				0E363BDC1C87D5FF0018C2F2 /* Rocket */,
+				0E1420B81C853249003785D5 /* Shield */,
 				0E1DDCFE1C34677000E0C28F /* Flick Off */,
 				0E1DDD171C34677000E0C28F /* Flick OffTests */,
 				0E1DDD221C34677000E0C28F /* Flick OffUITests */,
@@ -1137,15 +1205,6 @@
 		0E1DDCFE1C34677000E0C28F /* Flick Off */ = {
 			isa = PBXGroup;
 			children = (
-				0E5925011C6D497A00023713 /* Background7_1k.png */,
-				0E5925021C6D497A00023713 /* Background7_2k.png */,
-				0E5925031C6D497A00023713 /* Background7_3k.png */,
-				0E5925041C6D497A00023713 /* Background7_4k.png */,
-				0E5925051C6D497A00023713 /* Background7_5k.png */,
-				0E5925061C6D497A00023713 /* Background7_6k.png */,
-				0E5925071C6D497A00023713 /* Background7_7k.png */,
-				0E5925081C6D497A00023713 /* Background7_8k.png */,
-				0E5924EF1C6CBBDC00023713 /* Background7.png */,
 				0EB3868F1C69785C008CA036 /* Main_Panel.png */,
 				0EB3868D1C696C7F008CA036 /* play_button.png */,
 				0ED77C831C5D435B00BF5D90 /* PURPLE GEMS */,
@@ -1162,13 +1221,16 @@
 				0E1DDDD71C35D71B00E0C28F /* spark.png */,
 				0E197A481C5575FA00AA5658 /* Bubbles.sks */,
 				0E1DDDCE1C35CB3600E0C28F /* playerShip1_green.png */,
+				0E1420CF1C8532B6003785D5 /* Shield.swift */,
 				0E1DDDD01C35D54800E0C28F /* black.png */,
 				0E1DDD331C3495D000E0C28F /* garaxee.png */,
 				0E1DDD311C3491D200E0C28F /* Star.png */,
 				0E1DDCFF1C34677000E0C28F /* AppDelegate.swift */,
+				0E1420D11C853322003785D5 /* Heart.swift */,
 				0E1DDD011C34677000E0C28F /* GameScene.sks */,
 				0E1DDD351C359A2800E0C28F /* spark.png */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
+				0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */,
 				0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */,
 				0ED77D4A1C5D69C900BF5D90 /* Magic.sks */,
 				0E29114A1C740C4A00DDE978 /* Magic2.sks */,
@@ -1601,10 +1663,38 @@
 			path = small;
 			sourceTree = "<group>";
 		};
+		0E363BDC1C87D5FF0018C2F2 /* Rocket */ = {
+			isa = PBXGroup;
+			children = (
+				0E363BDD1C87D5FF0018C2F2 /* Rocket for app v1.png */,
+				0E363BDE1C87D5FF0018C2F2 /* Rocket for app v10.png */,
+				0E363BDF1C87D5FF0018C2F2 /* Rocket for app v11.png */,
+				0E363BE01C87D5FF0018C2F2 /* Rocket for app v12.png */,
+				0E363BE11C87D5FF0018C2F2 /* Rocket for app v2.png */,
+				0E363BE21C87D5FF0018C2F2 /* Rocket for app v3.png */,
+				0E363BE31C87D5FF0018C2F2 /* Rocket for app v4.png */,
+				0E363BE41C87D5FF0018C2F2 /* Rocket for app v5.png */,
+				0E363BE51C87D5FF0018C2F2 /* Rocket for app v6.png */,
+				0E363BE61C87D5FF0018C2F2 /* Rocket for app v7.png */,
+				0E363BE71C87D5FF0018C2F2 /* Rocket for app v8.png */,
+				0E363BE81C87D5FF0018C2F2 /* Rocket for app v9.png */,
+			);
+			name = Rocket;
+			path = "Flick Off/Images/Rocket";
+			sourceTree = "<group>";
+		};
 		0EBF80DD1C557C280090E585 /* Background */ = {
 			isa = PBXGroup;
 			children = (
-				0EBF80DE1C557C280090E585 /* ocean_background.png */,
+				0E5925011C6D497A00023713 /* Background7_1k.png */,
+				0E5925021C6D497A00023713 /* Background7_2k.png */,
+				0E5925031C6D497A00023713 /* Background7_3k.png */,
+				0E5925041C6D497A00023713 /* Background7_4k.png */,
+				0E5925051C6D497A00023713 /* Background7_5k.png */,
+				0E5925061C6D497A00023713 /* Background7_6k.png */,
+				0E5925071C6D497A00023713 /* Background7_7k.png */,
+				0E5925081C6D497A00023713 /* Background7_8k.png */,
+				0E5924EF1C6CBBDC00023713 /* Background7.png */,
 			);
 			name = Background;
 			path = Images/Background;
@@ -1821,6 +1911,7 @@
 				0E1DE0061C35E09000E0C28F /* c10008.png in Resources */,
 				0EBF81371C5599EE0090E585 /* explosion_5.png in Resources */,
 				0E1DDFCA1C35E09000E0C28F /* a10012.png in Resources */,
+				0E1420C31C853249003785D5 /* shield10.png in Resources */,
 				0E1DE09D1C35E09000E0C28F /* b10015.png in Resources */,
 				0E1DDFAE1C35E09000E0C28F /* c40000.png in Resources */,
 				0E197A451C552A9900AA5658 /* Rain.sks in Resources */,
@@ -1932,11 +2023,13 @@
 				0E1DDF7C1C35E09000E0C28F /* b10014.png in Resources */,
 				0E1DE0051C35E09000E0C28F /* c10007.png in Resources */,
 				0EBF81211C5599EE0090E585 /* explosion_16.png in Resources */,
+				0E1420C51C853249003785D5 /* shield2.png in Resources */,
 				0E1DDFE11C35E09000E0C28F /* a40003.png in Resources */,
 				0E1DE0B91C35E09000E0C28F /* b40011.png in Resources */,
 				0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */,
 				0E1DDF9F1C35E09000E0C28F /* c30001.png in Resources */,
 				0E1DDFF01C35E09000E0C28F /* b40002.png in Resources */,
+				0E363BEC1C87D5FF0018C2F2 /* Rocket for app v12.png in Resources */,
 				0E1DE0B31C35E09000E0C28F /* b40005.png in Resources */,
 				0EBF812C1C5599EE0090E585 /* explosion_26.png in Resources */,
 				0E1DE0141C35E09000E0C28F /* c30006.png in Resources */,
@@ -1987,6 +2080,7 @@
 				0E197A8B1C5577B500AA5658 /* bubsv20001.png in Resources */,
 				0E1DE0371C35E09000E0C28F /* d10009.png in Resources */,
 				0E1DE0681C35E09000E0C28F /* a10010.png in Resources */,
+				0E1420C91C853249003785D5 /* shield6.png in Resources */,
 				0E1DE06A1C35E09000E0C28F /* a10012.png in Resources */,
 				0E1DE0121C35E09000E0C28F /* c30004.png in Resources */,
 				0E1DDFC81C35E09000E0C28F /* a10010.png in Resources */,
@@ -1997,7 +2091,6 @@
 				0E1DE0731C35E09000E0C28F /* a30005.png in Resources */,
 				0E1DDFEC1C35E09000E0C28F /* a40014.png in Resources */,
 				0E1DDFD51C35E09000E0C28F /* a30007.png in Resources */,
-				0EBF80E81C557C280090E585 /* ocean_background.png in Resources */,
 				0E1DDFD81C35E09000E0C28F /* a30010.png in Resources */,
 				0E1DDF7B1C35E09000E0C28F /* b10013.png in Resources */,
 				0E197A371C54291B00AA5658 /* spinning_coin_gold_6.png in Resources */,
@@ -2027,6 +2120,7 @@
 				0E1DDF761C35E09000E0C28F /* b10008.png in Resources */,
 				0E1DDF8B1C35E09000E0C28F /* b30013.png in Resources */,
 				0E59250B1C6D497A00023713 /* Background7_3k.png in Resources */,
+				0E363BEE1C87D5FF0018C2F2 /* Rocket for app v3.png in Resources */,
 				0E1DDFC61C35E09000E0C28F /* a10008.png in Resources */,
 				0E1DDD0E1C34677000E0C28F /* LaunchScreen.storyboard in Resources */,
 				0E1DE0471C35E09000E0C28F /* d30009.png in Resources */,
@@ -2047,8 +2141,11 @@
 				0E1DDFDD1C35E09000E0C28F /* a30015.png in Resources */,
 				0E1DDF5C1C35E09000E0C28F /* a10014.png in Resources */,
 				0E1DE0131C35E09000E0C28F /* c30005.png in Resources */,
+				0E363BF41C87D5FF0018C2F2 /* Rocket for app v9.png in Resources */,
 				0E1DE0751C35E09000E0C28F /* a30007.png in Resources */,
+				0E1420C81C853249003785D5 /* shield5.png in Resources */,
 				0EBF81281C5599EE0090E585 /* explosion_22.png in Resources */,
+				0E363BF11C87D5FF0018C2F2 /* Rocket for app v6.png in Resources */,
 				0E1DDFBB1C35E09000E0C28F /* c40013.png in Resources */,
 				0E1DDF701C35E09000E0C28F /* b10002.png in Resources */,
 				0E1DE00B1C35E09000E0C28F /* c10013.png in Resources */,
@@ -2074,6 +2171,7 @@
 				0E1DE0A81C35E09000E0C28F /* b30010.png in Resources */,
 				0EBF80F41C558AD40090E585 /* flappy.TTF in Resources */,
 				0EBF81331C5599EE0090E585 /* explosion_32.png in Resources */,
+				0E363BF21C87D5FF0018C2F2 /* Rocket for app v7.png in Resources */,
 				0EBF812F1C5599EE0090E585 /* explosion_29.png in Resources */,
 				0E1DDFB21C35E09000E0C28F /* c40004.png in Resources */,
 				0E1DE0AC1C35E09000E0C28F /* b30014.png in Resources */,
@@ -2081,6 +2179,7 @@
 				0E1DE07F1C35E09000E0C28F /* a40001.png in Resources */,
 				0E1DDF7D1C35E09000E0C28F /* b10015.png in Resources */,
 				0E197A321C54291B00AA5658 /* spinning_coin_gold_1.png in Resources */,
+				0E363BEF1C87D5FF0018C2F2 /* Rocket for app v4.png in Resources */,
 				0E1DE03E1C35E09000E0C28F /* d30000.png in Resources */,
 				0E1DE0581C35E09000E0C28F /* d40010.png in Resources */,
 				0E1DDFC71C35E09000E0C28F /* a10009.png in Resources */,
@@ -2096,7 +2195,9 @@
 				0E1DDFA21C35E09000E0C28F /* c30004.png in Resources */,
 				0E1DDF591C35E09000E0C28F /* a10011.png in Resources */,
 				0E1DE0741C35E09000E0C28F /* a30006.png in Resources */,
+				0E1420CB1C853249003785D5 /* shield8.png in Resources */,
 				0E1DDFEB1C35E09000E0C28F /* a40013.png in Resources */,
+				0E1420C41C853249003785D5 /* shield11.png in Resources */,
 				0E1DDF691C35E09000E0C28F /* a30011.png in Resources */,
 				0E1DE0991C35E09000E0C28F /* b10011.png in Resources */,
 				0E1DDFB41C35E09000E0C28F /* c40006.png in Resources */,
@@ -2114,6 +2215,7 @@
 				0E1DDFB71C35E09000E0C28F /* c40009.png in Resources */,
 				0E1DE0801C35E09000E0C28F /* a40002.png in Resources */,
 				0EBF811F1C5599EE0090E585 /* explosion_14.png in Resources */,
+				0E363BE91C87D5FF0018C2F2 /* Rocket for app v1.png in Resources */,
 				0E1DE0461C35E09000E0C28F /* d30008.png in Resources */,
 				0E1DE0891C35E09000E0C28F /* a40011.png in Resources */,
 				0E197A431C551CC400AA5658 /* urban-landscape-background-Preview.png in Resources */,
@@ -2134,6 +2236,7 @@
 				0E1DDD0B1C34677000E0C28F /* Assets.xcassets in Resources */,
 				0EBF80EE1C557C280090E585 /* color_fish_5.png in Resources */,
 				0E1DE07E1C35E09000E0C28F /* a40000.png in Resources */,
+				0E1420CA1C853249003785D5 /* shield7.png in Resources */,
 				0EBF811E1C5599EE0090E585 /* explosion_13.png in Resources */,
 				0E1DDFBA1C35E09000E0C28F /* c40012.png in Resources */,
 				0E1DDF711C35E09000E0C28F /* b10003.png in Resources */,
@@ -2174,6 +2277,7 @@
 				0E1DE0571C35E09000E0C28F /* d40009.png in Resources */,
 				0E1DDF521C35E09000E0C28F /* a10004.png in Resources */,
 				0E1DE0B71C35E09000E0C28F /* b40009.png in Resources */,
+				0E363BEA1C87D5FF0018C2F2 /* Rocket for app v10.png in Resources */,
 				0E1DE0671C35E09000E0C28F /* a10009.png in Resources */,
 				0E1DE05A1C35E09000E0C28F /* d40012.png in Resources */,
 				0EBF80EB1C557C280090E585 /* color_fish_2.png in Resources */,
@@ -2181,6 +2285,7 @@
 				0E1DE02B1C35E09000E0C28F /* c40013.png in Resources */,
 				0E1DE0071C35E09000E0C28F /* c10009.png in Resources */,
 				0E1DDFD01C35E09000E0C28F /* a30002.png in Resources */,
+				0E363BED1C87D5FF0018C2F2 /* Rocket for app v2.png in Resources */,
 				0EBF80ED1C557C280090E585 /* color_fish_4.png in Resources */,
 				0E1DE0781C35E09000E0C28F /* a30010.png in Resources */,
 				0E1DE0381C35E09000E0C28F /* d10010.png in Resources */,
@@ -2217,9 +2322,11 @@
 				0E1DE0281C35E09000E0C28F /* c40010.png in Resources */,
 				0E1DDF651C35E09000E0C28F /* a30007.png in Resources */,
 				0E197A341C54291B00AA5658 /* spinning_coin_gold_3.png in Resources */,
+				0E1420C71C853249003785D5 /* shield4.png in Resources */,
 				0E1DDFBE1C35E09000E0C28F /* a10000.png in Resources */,
 				0E1DE01C1C35E09000E0C28F /* c30014.png in Resources */,
 				0E1DDF6F1C35E09000E0C28F /* b10001.png in Resources */,
+				0E363BEB1C87D5FF0018C2F2 /* Rocket for app v11.png in Resources */,
 				0E1DE0B01C35E09000E0C28F /* b40002.png in Resources */,
 				0E1DDF571C35E09000E0C28F /* a10009.png in Resources */,
 				0E1DDF751C35E09000E0C28F /* b10007.png in Resources */,
@@ -2253,6 +2360,8 @@
 				0E1DE00F1C35E09000E0C28F /* c30001.png in Resources */,
 				0E1DE0021C35E09000E0C28F /* c10004.png in Resources */,
 				0E1DDFC41C35E09000E0C28F /* a10006.png in Resources */,
+				0E1420C61C853249003785D5 /* shield3.png in Resources */,
+				0E363BF31C87D5FF0018C2F2 /* Rocket for app v8.png in Resources */,
 				0EBF812A1C5599EE0090E585 /* explosion_24.png in Resources */,
 				0E1DDF801C35E09000E0C28F /* b30002.png in Resources */,
 				0E1DE06B1C35E09000E0C28F /* a10013.png in Resources */,
@@ -2277,11 +2386,13 @@
 				0E1DE0011C35E09000E0C28F /* c10003.png in Resources */,
 				0E1DDF871C35E09000E0C28F /* b30009.png in Resources */,
 				0E1DDF5B1C35E09000E0C28F /* a10013.png in Resources */,
+				0E363BF01C87D5FF0018C2F2 /* Rocket for app v5.png in Resources */,
 				0E1DE02C1C35E09000E0C28F /* c40014.png in Resources */,
 				0ED77D0A1C5D435B00BF5D90 /* Gem v39.png in Resources */,
 				0E1DE0161C35E09000E0C28F /* c30008.png in Resources */,
 				0E197A421C551CC400AA5658 /* credit in Resources */,
 				0EBF80F31C558AD40090E585 /* about.gif in Resources */,
+				0E1420CC1C853249003785D5 /* shield9.png in Resources */,
 				0E1DDF551C35E09000E0C28F /* a10007.png in Resources */,
 				0E1DDF741C35E09000E0C28F /* b10006.png in Resources */,
 				0E1DE0841C35E09000E0C28F /* a40006.png in Resources */,
@@ -2327,6 +2438,9 @@
 				0ED77D4D1C67B4B800BF5D90 /* coin_dispenser.swift in Sources */,
 				0E1DDD041C34677000E0C28F /* GameScene.swift in Sources */,
 				0E1DDD061C34677000E0C28F /* GameViewController.swift in Sources */,
+				0ED481AB1C7F2FF80041F8E7 /* Rocket.swift in Sources */,
+				0E1420D01C8532B6003785D5 /* Shield.swift in Sources */,
+				0E1420D21C853322003785D5 /* Heart.swift in Sources */,
 				0E1DDD001C34677000E0C28F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

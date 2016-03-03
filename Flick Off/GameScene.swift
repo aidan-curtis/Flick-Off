@@ -11,8 +11,12 @@ import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     //YOU CAN CHANGE THESE CONSTANTS
-    let power_speed=3
-    
+    let power_speed=3;
+    let regular_speed=1;
+    let heart_frequency=450;
+    let rocket_frequency=600;
+    let shield_frequency=963;
+
     
     
     
@@ -543,7 +547,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     score.text = "\(score_number)"
                 }
-                if(frame_counter%450==0){
+                if(frame_counter%shield_frequency==0){
                     let shield=Shield();
                     shield.setup(CGSizeMake(60, 50))
                     shield.position=CGPointMake(CGFloat(arc4random_uniform(UInt32 (self.size.width))),self.size.height);
@@ -693,14 +697,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         //adding heart nodes
-        if(frame_counter%600==0){
+        if(frame_counter%heart_frequency==0){
             let heart = Heart();
             heart.setup(30, parentsize: self.size)
             addChild(heart)
             hearts.append(heart);
         }
                 
-        if(frame_counter%912==0){
+        if(frame_counter%rocket_frequency==0){
             let rocket = Rocket();
             rocket.setup();
             

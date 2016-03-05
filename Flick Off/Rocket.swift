@@ -10,8 +10,8 @@ import Foundation
 import SpriteKit
 
 class Rocket: SKSpriteNode{
-    func setup(){
-        self.size=CGSizeMake(60, 60);
+    func setup(size: CGSize){
+        self.size=size
         var textures=[SKTexture]();
         for(var a=1; a<=12; a+=1){
             textures.append(SKTexture(imageNamed: "Rocket for app v\(a)"))

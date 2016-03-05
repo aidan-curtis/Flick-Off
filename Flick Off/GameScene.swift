@@ -14,9 +14,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let power_speed=3;
     let regular_speed=1;
     let heart_frequency=1450;
-    let rocket_frequency=1600;
+    let rocket_frequency=600;
     let shield_frequency=1963;
-    let UFO_frequency=1000;
+    let UFO_frequency=3000;
     let MAX_HEALTH = 150
     //DO NOT EDIT BELOW
     
@@ -60,6 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shields=[SKSpriteNode]();
     var shield_power=0;
     var rocket_power=0;
+    var number_of_rockets=0;
     
     var falling_objects=[SKSpriteNode]();
    
@@ -486,7 +487,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-  
+    var static_rockets=[Rocket]();
+    func rocketIter(number: Int){
+        for rocket: Rocket in static_rockets{
+            rocket.removeFromParent()
+        }
+        static_rockets.removeAll();
+        var rocket_temp=Rocket();
+        for (var i=0; i<number; i++){
+            rocket_temp=Rocket();
+            rocket_temp.setup(CGSizeMake(30, 30));
+            rocket_temp.position=CGPointMake(CGFloat(Int(self.size.width)-(20*i+20)), CGFloat(Int(self.size.height)-(30)))
+            static_rockets.append(rocket_temp);
+        }
+        for rocket: Rocket in static_rockets{
+            addChild(rocket);
+        }
+        
+        
+    }
+    func blastOff(){
+        rocket_power=200;
+        shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
+        shield_follow.physicsBody!.dynamic=false;
+        fuel.particleColorSequence = nil;
+        fuel.particleColorBlendFactor = 0.9;
+        fuel.particleColor = SKColor.blueColor();
+        fuel.particleScale=fuel.particleScale*2
+        
+    }
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         moving_object.runAction(SKAction.rotateToAngle(atan2(CGFloat((touched_location.y - moving_object.position.y)),CGFloat((touched_location.x - moving_object.position.x))), duration: 0.01))
         for touches: AnyObject in touches{
@@ -506,16 +535,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shield_follow=Shield();
             shield_follow.setup(CGSizeMake(120, 107))
             shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
-     
             addChild(shield_follow);
             shield_follow.hidden=true;
             shield_bar.hidden=true;
         }
-        if(rocket_power==0){
-
         
+        if(rocket_power==0){
             shield_follow.removeFromParent()
-  
             shield_follow=Shield();
             shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
             shield_follow.setup(CGSizeMake(120, 107))
@@ -523,7 +549,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shield_follow.hidden=true;
             fuel.particleColor=oldparticlecolor;
             fuel.particleColorBlendFactor=1
-     
             fuel.particleScale=fuel.particleScale*0.5
             
         }
@@ -634,8 +659,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     else{
                         score_number+=power_speed;
                     }
-                    
-                    
                     score.text = "\(score_number)"
                 }
                 if(arc4random_uniform(UInt32(shield_frequency))==0  && coin_alternator==false){
@@ -657,21 +680,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let deviceMotion = self.manager.deviceMotion;
         if((deviceMotion) != nil){
-        currentRoll=deviceMotion!.attitude.roll as Double;
+            currentRoll=deviceMotion!.attitude.roll as Double;
         }
                 
         if(character.position.x<0){
-           
             character.position.x=self.size.width;
             fuel.position.x=self.size.width;
-      
-            
         }
+                
         if(character.position.x>self.size.width){
-            
             character.position.x=0;
             fuel.position.x=0;
-       
         }
                 
             shield_follow.position=CGPointMake(character.position.x-3, character.position.y+3);
@@ -707,13 +726,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for rocket: SKSpriteNode in rockets{
             rocket.position=CGPointMake(rocket.position.x, rocket.position.y-5)
             if(CGRectIntersectsRect(rocket.frame,character.frame)){
-                rocket_power=200;
-                shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
-                shield_follow.physicsBody!.dynamic=false;
-                fuel.particleColorSequence = nil;
-                fuel.particleColorBlendFactor = 0.9;
-                fuel.particleColor = SKColor.blueColor();
-                fuel.particleScale=fuel.particleScale*2
+                number_of_rockets++;
+                rocketIter(number_of_rockets);
                 rockets.removeAtIndex(rockets.indexOf(rocket)!)
                 rocket.removeFromParent()
             }
@@ -780,7 +794,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             if(UFO_set==true){
             if(CGRectIntersectsRect(
-                falling.frame, CGRectMake(UFO.position.x, UFO.position.y, 2, 2)
+                falling.frame, CGRectMake(UFO.position.x, UFO.position.y, 50, 50)
                 )){
                 explode(CGSizeMake(100, 100), location: UFO.position, speed: 0.02, explosion_color: "blue");
                 UFO.removeFromParent();
@@ -796,6 +810,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
                 
         }
+        
+        //blast off
+                if(number_of_rockets==3){
+                    number_of_rockets=0 ;
+                    rocketIter(number_of_rockets);
+                    blastOff();
+                }
         
         //move coins
         for coin: SKSpriteNode in coins{
@@ -832,7 +853,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
         if(arc4random_uniform(UInt32(rocket_frequency))==0 && coin_alternator==false){
             let rocket = Rocket();
-            rocket.setup();
+            rocket.setup(CGSizeMake(60, 60));
             
             rocket.position=CGPointMake(CGFloat(arc4random_uniform(UInt32(self.size.width))), self.size.height)
             addChild(rocket);

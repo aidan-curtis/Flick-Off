@@ -13,17 +13,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //YOU CAN CHANGE THESE CONSTANTS
     let power_speed=3;
     let regular_speed=1;
-    let heart_frequency=450;
-    let rocket_frequency=600;
-    let shield_frequency=963;
-
-    
-    
-    
-    
+    let heart_frequency=1450;
+    let rocket_frequency=1600;
+    let shield_frequency=1963;
+    let UFO_frequency=1000;
+    let MAX_HEALTH = 150
     //DO NOT EDIT BELOW
-    
-    
     
     var game_status=0
     //menus
@@ -34,14 +29,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var high_score_label = SKLabelNode();
     var score_label = SKLabelNode();
     
-    var shield_activity=0
-    
-    
+    var shield_activity:Int = 0
+    var UFO_Column:CGPoint=CGPointMake(-1000,0);
+    var UFO = SKSpriteNode();
     var emitterNode = SKEmitterNode();
+    var UFO_set = false;
+    
+    var laser=SKEmitterNode();
     //var backup_emitterNode = SKEmitterNode();
     
     
-    let MAX_HEALTH = 150
+    
     enum GameMode : Int {
         case SPACE=0,CITY,UNDERWATER,MARS
     }
@@ -76,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //fix later to stramline string formatting
     let paralax=["Rain.sks", "Bubbles.sks"]
     
-    let space_objects: [String] = ["a30000","a10000", "b10000", "b30000", "c10000", "c30000", "c40000"];
+    let space_objects: [String] = ["a30000","a10000", "a40000","b10000", "b30000", "b40000"];
     let city_objects: [String] = ["cat", "dog"]
     let underwater_objects: [String] = ["color_fish_1","color_fish_2","color_fish_3","color_fish_4","color_fish_5"]
     let mars_objects: [String] = ["UFO1", "UFO2", "UFO3"]
@@ -95,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var game_mode=GameMode.SPACE.rawValue
     
-    
+    var coin_alternator=false;
     var spinning_asteroid = SKAction();
     let manager = CMMotionManager();
     var currentRoll = Double();
@@ -140,7 +138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             falling_objects.removeAtIndex(falling_objects.indexOf(node1)!)
             falling_objects.removeAtIndex(falling_objects.indexOf(node2)!)
-            explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01)
+            explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01, explosion_color: "gray")
         }
     }
     func game_starting_values(){
@@ -160,7 +158,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             heart.removeFromParent()
         }
         hearts.removeAll()
+        UFO.removeFromParent()
+        laser.removeFromParent()
+        UFO_Column=CGPointMake(-1000, 0);
+        for rocket: SKSpriteNode in rockets{
+            rocket.removeFromParent()
+        }
+        rockets.removeAll()
         
+        for shield: SKSpriteNode in shields{
+            shield.removeFromParent()
+        }
+        shields.removeAll()
+        character.position=CGPointMake(3*self.size.width/5, 4*self.size.height/24);
         
     }
     override func didMoveToView(view: SKView) {
@@ -238,7 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         character.texture=SKTexture(imageNamed: "playerShip1_green.png");
         character.position=CGPointMake(3*self.size.width/5, 4*self.size.height/24);
-        
+        character.zPosition=0
         character.size=CGSizeMake(50, 38);
         addChild(character);
         
@@ -280,7 +290,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         falling_object.zPosition=1000
         //falling_object.runAction(SKAction.repeatActionForever(space_actions[1]));
         falling_object.texture=SKTexture(imageNamed: objects[game_mode][num]);
-        falling_object.position = CGPointMake( CGFloat(arc4random_uniform(UInt32(self.size.width))),self.size.height+25);
+        var temp_position:CGPoint=CGPointMake(CGFloat(arc4random_uniform(UInt32(self.size.width))),self.size.height+25);
+        while(temp_position.x>UFO_Column.x-70 && temp_position.x<UFO_Column.x+70){
+            temp_position=CGPointMake( CGFloat(arc4random_uniform(UInt32(self.size.width))),self.size.height+25);
+        }
+
+        falling_object.position = temp_position;
         falling_object.zRotation = CGFloat(3*M_PI/2)
         if(game_mode==GameMode.SPACE.rawValue){
             falling_object.size = CGSizeMake(100, 100);
@@ -311,6 +326,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        }
         
         //add physics body
+        
         falling_object.physicsBody=SKPhysicsBody(circleOfRadius: falling_object.size.width/4);
         falling_object.physicsBody!.dynamic=true;
         falling_object.physicsBody!.allowsRotation=true;
@@ -338,13 +354,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     
     }
-    func explode(size: CGSize, location: CGPoint, speed: Double){
-        let explosion_node = SKSpriteNode()
-        explosion_node.size = size
-        explosion_node.position = location
-        explosion_node.zPosition = 50
-        explosion_node.runAction(SKAction.animateWithTextures(explosion, timePerFrame: speed), completion:{explosion_node.removeFromParent()})
-        addChild(explosion_node)
+    func explode(size: CGSize, location: CGPoint, speed: Double, explosion_color: String){
+        var explosion_node=SKEmitterNode();
+        if(explosion_color=="blue"){
+            explosion_node=SKEmitterNode(fileNamed: "Blue_Explosion.sks")!;
+        }
+        else if(explosion_color=="gray"){
+            explosion_node=SKEmitterNode(fileNamed: "Gray_Explosion.sks")!;
+        }
+        else{
+            explosion_node=SKEmitterNode(fileNamed: "Fire_Explosion.sks")!;
+        }
+        
+        explosion_node.position=location;
+        explosion_node.zPosition=5000;
+        explosion_node.particleAlpha=1
+        explosion_node.targetNode=self;
+        
+        explosion_node.particleSpeed=CGFloat(Int(explosion_node.particleSpeed)*Int(size.width)/90)
+        addChild(explosion_node);
+        
+//        let explosion_node = SKSpriteNode()
+//        explosion_node.size = size
+//        explosion_node.position = location
+//        explosion_node.zPosition = 50
+//        explosion_node.runAction(SKAction.animateWithTextures(explosion, timePerFrame: speed), completion:{explosion_node.removeFromParent()})
+//        addChild(explosion_node)
     }
     func starfieldEmitter(color: SKColor, starSpeedY: CGFloat, starsPerSecond: CGFloat, starScaleFactor: CGFloat, backup: Bool) -> SKEmitterNode {
         
@@ -406,14 +441,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addCoin(){
         let coin = SKSpriteNode()
         if(arc4random_uniform(20)==0){
+            if(coin_alternator==true){
             let mode=Int(arc4random_uniform(3))
             next_coin.begin_action(mode, starting_location: Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
             next_coin.setAlternate(Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
             next_coin.setWidth(Int(arc4random_uniform(15))+10)
             next_coin.power(Int(arc4random_uniform(2)))
+                coin_alternator=false;
+            }
+            else{
+                coin_alternator=true;
+            }
         }
+        if(coin_alternator==true){
         coins_position_x=next_coin.fetch_next_coin()
-        if(coins_position_x<Int(self.size.width) && next_coin.status==1){
+        if(next_coin.status==1){
         //coin.texture=SKTexture(imageNamed:"spinning_coin_gold_1")
         var coin_textures=[SKTexture]()
         for (var i=0; i<8; i=i+1){
@@ -425,6 +467,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coin.size=CGSizeMake(30, 30);
         addChild(coin)
         coins.append(coin)
+        }
         }
     }
 
@@ -442,6 +485,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+  
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         moving_object.runAction(SKAction.rotateToAngle(atan2(CGFloat((touched_location.y - moving_object.position.y)),CGFloat((touched_location.x - moving_object.position.x))), duration: 0.01))
         for touches: AnyObject in touches{
@@ -469,7 +513,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shield_follow.hidden=true;
         }
         if(rocket_power==0){
-            
+
+        
             shield_follow.removeFromParent()
   
             shield_follow=Shield();
@@ -524,6 +569,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 frame_counter++
             }
             else{
+                
+                
+                if(UFO_set==true && character.position.x>UFO_Column.x-50 && character.position.x<UFO_Column.x+50){
+                    explode(CGSizeMake(50, 50), location: character.position, speed: 0.02, explosion_color: "blue");
+                    life_bar.size.width = -1;
+                    shield_bar.size.width = -1;
+                }
+                //UFO Special
+                if(UFO_Column.x == -1000){
+                if(arc4random_uniform(UInt32(UFO_frequency))==0){
+                    
+                    var texture_list=[SKTexture]();
+                    for(var i=1; i<=12; i++){
+                        texture_list.append(SKTexture(imageNamed: "UFO_\(i)"))
+                        
+                    }
+                    UFO.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(texture_list, timePerFrame: 0.02)));
+                    UFO.size=CGSizeMake(106,62);
+                    UFO.position=CGPointMake(0,self.size.height*3/4);
+                    let destination_point=CGPointMake(CGFloat(arc4random_uniform(UInt32(self.size.width-200))+100),self.size.height*3/4);
+                    UFO_Column=destination_point;
+                    UFO.runAction(SKAction.moveTo(destination_point, duration: 1));
+                    
+                    //laser
+                    laser=SKEmitterNode(fileNamed: "Laser.sks")!;
+                    laser.particleBirthRate=0
+                    laser.targetNode=self;
+                    laser.position=CGPointMake(destination_point.x, destination_point.y-30);
+                    laser.runAction(
+                        SKAction.sequence([
+                        SKAction.waitForDuration(1),
+                        SKAction.repeatAction(
+                           SKAction.sequence([
+                            SKAction.runBlock({ () -> Void in
+                                self.laser.particleBirthRate=1934
+                        self.laser.particlePositionRange=CGVectorMake(self.laser.particlePositionRange.dx, self.laser.particlePositionRange.dy+10)
+                                self.laser.position=CGPointMake(self.laser.position.x, self.laser.position.y-5);
+                            }), SKAction.waitForDuration(0.025)])
+                            , count: 50), SKAction.runBlock({ () -> Void in
+                                self.UFO_set=true;
+                            })]) );
+             
+                    addChild(laser)
+                    addChild(UFO)
+                }
+                }
+                //end UFO special
+                
                 emitterNode.paused=false
                 for(var i=0; i<number_of_backgrounds; i++){
                     backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-1)
@@ -547,7 +640,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     score.text = "\(score_number)"
                 }
-                if(frame_counter%shield_frequency==0){
+                if(arc4random_uniform(UInt32(shield_frequency))==0  && coin_alternator==false){
                     let shield=Shield();
                     shield.setup(CGSizeMake(60, 50))
                     shield.position=CGPointMake(CGFloat(arc4random_uniform(UInt32 (self.size.width))),self.size.height);
@@ -561,7 +654,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let velocity_vector = CGVectorMake(15*(touched_location.x - moving_object.position.x), 15*(touched_location.y - moving_object.position.y))
             moving_object.physicsBody?.velocity=velocity_vector
         }
-        frame_counter++;
+        
+        frame_counter+=1;
+        
         let deviceMotion = self.manager.deviceMotion;
         if((deviceMotion) != nil){
         currentRoll=deviceMotion!.attitude.roll as Double;
@@ -585,17 +680,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
             fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
     
-        //NSLog("pitch:%f", currentRoll);
-        //NSLog("yaw:%i", (self.manager.deviceMotion?.attitude.yaw)!);
-        //NSLog("roll:%i", (self.manager.deviceMotion?.attitude.roll)!);
         
         //add coins
-        if(frame_counter%7==0){
-            addCoin();
-        }
+                if(rocket_power>=0){
+          
+                    if(frame_counter%(Int(7/power_speed)+1)==0){
+                        addCoin();
+                    }
+                }
+                else{
+                    if(frame_counter%7==0){
+                        addCoin();
+                    }
+                }
         for shield: SKSpriteNode in shields{
             shield.position=CGPointMake(shield.position.x, shield.position.y-5)
             if(CGRectIntersectsRect(shield.frame,character.frame)){
+                
                 shield_power=200;
                 shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
                 shield_follow.physicsBody!.dynamic=false;
@@ -654,7 +755,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     explosion_size = 60
                 }
 
-                self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02))
+                self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
                 falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
                 
                 explosion_size*=2
@@ -670,10 +771,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 falling.removeFromParent()
 
             }
+            if(UFO_set==true){
+            if(CGRectIntersectsRect(
+                falling.frame, CGRectMake(UFO.position.x, UFO.position.y, 2, 2)
+                )){
+                explode(CGSizeMake(100, 100), location: UFO.position, speed: 0.02, explosion_color: "blue");
+                UFO.removeFromParent();
+                laser.removeFromParent()
+                UFO=SKSpriteNode();
+                UFO_Column=CGPointMake(-1000, 0);
+                UFO_set=false;
+            }
+            }
             if(falling.position.y<character.position.y-character.size.height*2){
                 falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
                 falling.removeFromParent()
             }
+                
         }
         
         //move coins
@@ -689,7 +803,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 coin.runAction(SKAction.runBlock(a) )
             }
-            coin.position=CGPointMake(coin.position.x, coin.position.y-5)
+            if(rocket_power>0){
+            coin.position=CGPointMake(coin.position.x, coin.position.y-CGFloat(5*power_speed))
+            }
+            else{
+                coin.position=CGPointMake(coin.position.x, coin.position.y-CGFloat(5))
+            }
             if(coin.position.y<character.position.y-character.size.height*2){
                 coins.removeAtIndex(coins.indexOf(coin)!)
                 coin.removeFromParent()
@@ -697,14 +816,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         //adding heart nodes
-        if(frame_counter%heart_frequency==0){
+        if(arc4random_uniform(UInt32(heart_frequency))==0 && coin_alternator==false){
             let heart = Heart();
             heart.setup(30, parentsize: self.size)
             addChild(heart)
             hearts.append(heart);
         }
                 
-        if(frame_counter%rocket_frequency==0){
+        if(arc4random_uniform(UInt32(rocket_frequency))==0 && coin_alternator==false){
             let rocket = Rocket();
             rocket.setup();
             
@@ -713,15 +832,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rockets.append(rocket);
         }
         //add falling objects
-        var object_sequence = 50-frame_counter/100
+        var object_sequence = 50-frame_counter/200
             if(object_sequence<5){
                 object_sequence = 5
             }
-        let object_speed = -300-frame_counter/100
-            
+        let object_speed = -300-frame_counter/50
+        
         if(frame_counter%(object_sequence)==0 && !(frame_counter%600==0)){
             addFallingObject(object_speed);
-        }
+            }
         }
         }
         else if (game_status==3){

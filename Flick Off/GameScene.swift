@@ -171,6 +171,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         shields.removeAll()
         character.position=CGPointMake(3*self.size.width/5, 4*self.size.height/24);
+        fuel.position=CGPointMake(3*self.size.width/5, (4*self.size.height/24)-15);
         
     }
     override func didMoveToView(view: SKView) {
@@ -225,6 +226,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(score)
         
         game_starting_values()
+        shield_bar.hidden=true;
         addChild(shield_bar)
         addChild(life_bar)
         
@@ -333,7 +335,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         falling_object.physicsBody!.categoryBitMask = Objects.Meteor.rawValue
         falling_object.physicsBody!.usesPreciseCollisionDetection=true;
         falling_object.physicsBody!.contactTestBitMask = Objects.Meteor.rawValue
-      
    
         
         
@@ -501,7 +502,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shield_power-=1;
         rocket_power-=1;
         if(shield_power==0){
-            
             shield_follow.removeFromParent()
             shield_follow=Shield();
             shield_follow.setup(CGSizeMake(120, 107))
@@ -509,8 +509,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      
             addChild(shield_follow);
             shield_follow.hidden=true;
-            
-            shield_follow.hidden=true;
+            shield_bar.hidden=true;
         }
         if(rocket_power==0){
 
@@ -573,6 +572,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if(UFO_set==true && character.position.x>UFO_Column.x-50 && character.position.x<UFO_Column.x+50){
                     explode(CGSizeMake(50, 50), location: character.position, speed: 0.02, explosion_color: "blue");
+                    laser.removeFromParent()
                     life_bar.size.width = -1;
                     shield_bar.size.width = -1;
                 }
@@ -625,9 +625,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print("game over");
                     game_status=3
                 }
-                if(frame_counter%3==0 && shield_bar.size.width<CGFloat(MAX_HEALTH)){
-                    setShieldBar(Int(shield_bar.size.width+1))
-                }
+                
                 if(frame_counter%5==0){
                     if(shield_power<=0){
                         score_number++;
@@ -697,10 +695,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shield.position=CGPointMake(shield.position.x, shield.position.y-5)
             if(CGRectIntersectsRect(shield.frame,character.frame)){
                 
-                shield_power=200;
-                shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
-                shield_follow.physicsBody!.dynamic=false;
+                shield_power=500;
+                //shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
+                //shield_follow.physicsBody!.dynamic=false;
                 shield_follow.hidden=false;
+                shield_bar.hidden=false;
                 shield.removeFromParent()
                 shields.removeAtIndex(shields.indexOf(shield)!)
             }
@@ -750,25 +749,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let shrinkx:CGFloat=character.frame.width/2, shrinkx_m=character.frame.width/2
             let shrinky:CGFloat=character.frame.height/2, shrinky_m=character.frame.height/2
             if(CGRectIntersectsRect(CGRectMake(falling.frame.origin.x+shrinkx_m, falling.frame.origin.y+shrinky_m, 70, 70), CGRectMake(character.frame.origin.x+shrinkx, character.frame.origin.y+shrinky, 1, 1))){
+                
+                
                 var explosion_size = 0.1*pow(pow((falling.physicsBody?.velocity.dx)!, 2)+pow((falling.physicsBody?.velocity.dy)!, 2), 0.5)
                 if(explosion_size < 60){
                     explosion_size = 60
                 }
-
-                self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
+                if(shield_follow.hidden==true){
+                    self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
+                    
+                    setStaticHearts(Int(life_bar.size.width) - Int(explosion_size))
+                }
+                else{
+                    
+                    self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "gray")
+                    let change_shield=shield_bar.size.width-explosion_size
+                    setShieldBar(Int(change_shield))
+                    if(change_shield<0){
+                        shield_bar.hidden=true;
+                        shield_follow.hidden=true;
+                    }
+                }
                 falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
                 
-                explosion_size*=2
-                var change_health=0
-                var change_shield=shield_bar.size.width-explosion_size
-         
-                if(change_shield<0){
-                    change_health=abs(Int(change_shield))
-                    change_shield=0
-                }
-                setShieldBar(Int(change_shield))
-                setStaticHearts(Int(life_bar.size.width) - change_health)
+                
                 falling.removeFromParent()
+                
+                
 
             }
             if(UFO_set==true){

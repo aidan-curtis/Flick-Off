@@ -21,13 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //DO NOT EDIT BELOW
     
     var game_status=0
-    //menus
-    var main_menu = SKSpriteNode();
-    var sub_menu_1 = SKSpriteNode();
-    var play = SKSpriteNode();
-    var main_panel = SKSpriteNode();
-    var high_score_label = SKLabelNode();
-    var score_label = SKLabelNode();
+
     
     var shield_activity:Int = 0
     var UFO_Column:CGPoint=CGPointMake(-1000,0);
@@ -181,36 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         shield_follow.setup(CGSizeMake(120,107))
-        high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
-        play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-100)
-        play.size=CGSizeMake(130,70)
-        play.texture=SKTexture(imageNamed: "play_button")
-        play.name="play"
-        
-        main_panel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+100)
-        main_panel.size=CGSizeMake(290,270)
-        main_panel.texture=SKTexture(imageNamed: "Main_Panel")
-        
-        high_score_label.position = CGPointMake(self.frame.size.width/2,(self.frame.size.height/2)+30)
-        score_label.position = CGPointMake(self.frame.size.width/2,(self.frame.size.height/2)+120)
-        high_score_label.fontColor=UIColor.greenColor()
-        score_label.fontColor=UIColor.greenColor()
-        high_score_label.text = "0"
-        score_label.text = "0"
-        high_score_label.fontName = "04b_19"
-        score_label.fontName = "04b_19"
-        high_score_label.zPosition = 900
-        score_label.zPosition = 900
- 
-        
-        addChild(high_score_label)
-        addChild(score_label)
-        
-        
-        
-        addChild(main_panel)
-        addChild(play)
-        
+      
         self.physicsWorld.contactDelegate = self
         for(var i=0; i<34; i+=1){
             explosion.append(SKTexture(imageNamed: "explosion_\(i+1)"))
@@ -492,9 +457,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
-            if(self.nodeAtPoint(location).name=="play"){
-                game_status=1;
-            }
              if(Mirror(reflecting: self.nodeAtPoint(location)).subjectType == SKSpriteNode.self && falling_objects.contains((self.nodeAtPoint(location) as! SKSpriteNode))){
                 touched_location = touches.locationInNode(self)
                 isTouching=true
@@ -578,10 +540,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for(var i=0; i<number_of_backgrounds; i++){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
             }
-            play.hidden=false;
-            main_panel.hidden=false;
-            high_score_label.hidden=false
-            score_label.hidden=false;
+            game_status=1
         }
         else if(game_status==1){
             addChild(fuel)
@@ -594,10 +553,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for(var i=0; i<number_of_backgrounds; i++){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
             }
-            play.hidden=true;
-            main_panel.hidden=true;
-            high_score_label.hidden=true
-            score_label.hidden=true;
             
             game_status=2
         }
@@ -900,16 +855,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //holding pattern
         }
         else if(game_status==5){
-            if(Int(score.text!)>Int(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))){
-                NSUserDefaults.standardUserDefaults().setInteger(Int(score.text!)!, forKey: "highscore")
-            }
-            high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
-            score_label.text="\(Int(score.text!)!)"
-            //backup_emitterNode.hidden=false
-            emitterNode.hidden=true
-            fuel.removeFromParent()
-            game_status=0
+            let scene = TitleScene()
+            // Configure the view.
+            let skView = self.view as SKView?
+            let transition = SKTransition.fadeWithDuration(1)
+            skView!.showsFPS = false
+            skView!.showsNodeCount = false
+            /* Sprite Kit applies additional optimizations to improve rendering performance */
+            skView!.ignoresSiblingOrder = true
+            
+            /* Set the scale mode to scale to fit the window */
+            scene.size=skView!.bounds.size;
+            scene.scaleMode = .AspectFill
+            skView!.presentScene(scene, transition:  transition)
+            
         }
+        
     }
     
 }

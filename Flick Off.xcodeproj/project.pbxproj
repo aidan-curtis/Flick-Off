@@ -112,6 +112,9 @@
 		0E363C1F1C8B6E050018C2F2 /* ufo_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C101C8B6E050018C2F2 /* ufo_map.png */; };
 		0E363C231C8BD4E60018C2F2 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E363C221C8BD4E60018C2F2 /* Life.swift */; };
 		0E363C251C8BD5130018C2F2 /* Life.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C241C8BD5130018C2F2 /* Life.png */; };
+		0E363C271C8C94390018C2F2 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E363C261C8C94390018C2F2 /* TitleScene.swift */; };
+		0E363C291C8CAC2A0018C2F2 /* store_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C281C8CAC2A0018C2F2 /* store_button.png */; };
+		0E363C2B1C8CB0040018C2F2 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C2A1C8CB0040018C2F2 /* title.png */; };
 		0E5924F01C6CBBDC00023713 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924EF1C6CBBDC00023713 /* Background7.png */; };
 		0E5925091C6D497A00023713 /* Background7_1k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925011C6D497A00023713 /* Background7_1k.png */; };
 		0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925021C6D497A00023713 /* Background7_2k.png */; };
@@ -315,6 +318,9 @@
 		0E363C101C8B6E050018C2F2 /* ufo_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_map.png; sourceTree = "<group>"; };
 		0E363C221C8BD4E60018C2F2 /* Life.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 		0E363C241C8BD5130018C2F2 /* Life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life.png; path = Images/Life.png; sourceTree = "<group>"; };
+		0E363C261C8C94390018C2F2 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
+		0E363C281C8CAC2A0018C2F2 /* store_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = store_button.png; path = Images/store_button.png; sourceTree = "<group>"; };
+		0E363C2A1C8CB0040018C2F2 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = Images/title.png; sourceTree = "<group>"; };
 		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = "Flick Off/Images/Background7.png"; sourceTree = SOURCE_ROOT; };
 		0E5925011C6D497A00023713 /* Background7_1k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_1k.png; path = "Flick Off/Images/Background7_1k.png"; sourceTree = SOURCE_ROOT; };
 		0E5925021C6D497A00023713 /* Background7_2k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_2k.png; path = "Flick Off/Images/Background7_2k.png"; sourceTree = SOURCE_ROOT; };
@@ -527,6 +533,7 @@
 				0E363BDC1C87D5FF0018C2F2 /* Rocket */,
 				0E1420B81C853249003785D5 /* Shield */,
 				0EB3868F1C69785C008CA036 /* Main_Panel.png */,
+				0E363C281C8CAC2A0018C2F2 /* store_button.png */,
 				0EB3868D1C696C7F008CA036 /* play_button.png */,
 				0ED77C831C5D435B00BF5D90 /* PURPLE GEMS */,
 				0EBF80F51C5599EE0090E585 /* Explosion */,
@@ -542,6 +549,7 @@
 				0E363BFF1C8B6A5F0018C2F2 /* Laser.sks */,
 				0E363C241C8BD5130018C2F2 /* Life.png */,
 				0E1DDDD71C35D71B00E0C28F /* spark.png */,
+				0E363C2A1C8CB0040018C2F2 /* title.png */,
 				0E197A481C5575FA00AA5658 /* Bubbles.sks */,
 				0E1DDDCE1C35CB3600E0C28F /* playerShip1_green.png */,
 				0E363BFB1C8B51B00018C2F2 /* Gray_Explosion.sks */,
@@ -554,6 +562,7 @@
 				0E1DDD011C34677000E0C28F /* GameScene.sks */,
 				0E1DDD351C359A2800E0C28F /* spark.png */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
+				0E363C261C8C94390018C2F2 /* TitleScene.swift */,
 				0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */,
 				0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */,
 				0ED77D4A1C5D69C900BF5D90 /* Magic.sks */,
@@ -913,6 +922,7 @@
 				0E197A9B1C5577B500AA5658 /* bubsv20017.png in Resources */,
 				0EBF81211C5599EE0090E585 /* explosion_16.png in Resources */,
 				0E1420C51C853249003785D5 /* shield2.png in Resources */,
+				0E363C2B1C8CB0040018C2F2 /* title.png in Resources */,
 				0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */,
 				0E363BEC1C87D5FF0018C2F2 /* Rocket for app v12.png in Resources */,
 				0EBF812C1C5599EE0090E585 /* explosion_26.png in Resources */,
@@ -955,6 +965,7 @@
 				0E363BF41C87D5FF0018C2F2 /* Rocket for app v9.png in Resources */,
 				0E1420C81C853249003785D5 /* shield5.png in Resources */,
 				0EBF81281C5599EE0090E585 /* explosion_22.png in Resources */,
+				0E363C291C8CAC2A0018C2F2 /* store_button.png in Resources */,
 				0E363BF11C87D5FF0018C2F2 /* Rocket for app v6.png in Resources */,
 				0E1DE0AE1C35E09000E0C28F /* b40000.png in Resources */,
 				0EBF80EA1C557C280090E585 /* color_fish_1.png in Resources */,
@@ -1068,6 +1079,7 @@
 				0E1DDD061C34677000E0C28F /* GameViewController.swift in Sources */,
 				0ED481AB1C7F2FF80041F8E7 /* Rocket.swift in Sources */,
 				0E1420D01C8532B6003785D5 /* Shield.swift in Sources */,
+				0E363C271C8C94390018C2F2 /* TitleScene.swift in Sources */,
 				0E363C231C8BD4E60018C2F2 /* Life.swift in Sources */,
 				0E1420D21C853322003785D5 /* Heart.swift in Sources */,
 				0E1DDD001C34677000E0C28F /* AppDelegate.swift in Sources */,

@@ -20,24 +20,19 @@ class GameViewController: UIViewController {
         return true
     }
     override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews();
-        if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
-
-            
-            let skView = self.view as! SKView
-            skView.showsFPS = false
-            skView.showsNodeCount = false
         
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.size=skView.bounds.size;
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
-        }
+        super.viewWillLayoutSubviews();
+        let scene = TitleScene()
+        // Configure the view.
+        let skView = self.view as! SKView
+        skView.showsFPS = false
+        skView.showsNodeCount = false
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        /* Set the scale mode to scale to fit the window */
+        scene.size=skView.bounds.size;
+        scene.scaleMode = .AspectFill
+        skView.presentScene(scene)
 
         
     }

@@ -30,9 +30,9 @@ class TitleScene: SKScene{
         self.backgroundColor=UIColor.blackColor();
         background_node.size=CGSizeMake(self.size.width, self.size.width*6);
         background_node.texture=SKTexture(imageNamed: "Background7_4k");
-        background_node.position=CGPointMake(self.size.width/2, (self.size.width*6/2));
+        background_node.position=CGPointMake(self.size.width/2, -self.size.width);
         background_node.zPosition = -1000;
-
+        print("node width \(self.size.width)")
         
         
         high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
@@ -81,9 +81,9 @@ class TitleScene: SKScene{
 //        emitterNode.zPosition = -11;
 //        self.addChild(emitterNode);
 //     
-        emitterNode = starfieldEmitter(SKColor.darkGrayColor(), starSpeedY: 1, starsPerSecond: 2, starScaleFactor: 0.05, backup: false)
-        emitterNode.zPosition = -12
-        self.addChild(emitterNode)
+//        emitterNode = starfieldEmitter(SKColor.darkGrayColor(), starSpeedY: 1, starsPerSecond: 2, starScaleFactor: 0.05, backup: false)
+//        emitterNode.zPosition = -12
+//        self.addChild(emitterNode)
 
         
 //          saving score
@@ -103,13 +103,27 @@ class TitleScene: SKScene{
 //    }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         print("touched");
-        let gameScene = GameScene(fileNamed: "GameScene")!;
-        let transition = SKTransition.fadeWithDuration(1)
-        let skView = self.view as SKView!;
-        skView.ignoresSiblingOrder = true;
-        gameScene.size=skView.bounds.size;
-        gameScene.scaleMode = .AspectFill
-        skView.presentScene(gameScene, transition: transition)
+        
+        for touches: AnyObject in touches{
+            
+            let location = touches.locationInNode(self)
+            
+            if(self.nodeAtPoint(location) == play){
+                let gameScene = GameScene(fileNamed: "GameScene")!;
+                let transition = SKTransition.fadeWithDuration(1)
+                let skView = self.view as SKView!;
+                skView.ignoresSiblingOrder = true;
+                gameScene.size=skView.bounds.size;
+                gameScene.scaleMode = .AspectFill
+                skView.presentScene(gameScene, transition: transition)
+            }
+            if(self.nodeAtPoint(location) == store){
+                let presenting = self.view?.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("UI_Store");
+                presenting?.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                self.view?.window?.rootViewController?.presentViewController(presenting!, animated: true, completion: nil);
+            }
+        }
+        
     }
     
     func starfieldEmitter(color: SKColor, starSpeedY: CGFloat, starsPerSecond: CGFloat, starScaleFactor: CGFloat, backup: Bool) -> SKEmitterNode {

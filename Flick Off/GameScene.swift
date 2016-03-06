@@ -238,10 +238,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         oldparticlecolor=fuel.particleColor;
         oldparticlesize=fuel.particleScale;
 
+        
         emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
         emitterNode.zPosition = -11
         self.addChild(emitterNode)
         emitterNode.paused=true
+        
 //
 //        backup_emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup:  true)
 //        backup_emitterNode.zPosition = -11

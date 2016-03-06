@@ -145,6 +145,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func game_starting_values(){
         setStaticHearts(MAX_HEALTH)
         setShieldBar(MAX_HEALTH)
+        
+        number_of_rockets=0;
+        rocketIter(number_of_rockets);
         for coin: SKSpriteNode in coins{
             coin.removeFromParent()
         }

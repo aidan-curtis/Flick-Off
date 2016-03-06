@@ -110,6 +110,8 @@
 		0E363C1D1C8B6E050018C2F2 /* UFO_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C0E1C8B6E050018C2F2 /* UFO_8.png */; };
 		0E363C1E1C8B6E050018C2F2 /* UFO_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C0F1C8B6E050018C2F2 /* UFO_9.png */; };
 		0E363C1F1C8B6E050018C2F2 /* ufo_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C101C8B6E050018C2F2 /* ufo_map.png */; };
+		0E363C231C8BD4E60018C2F2 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E363C221C8BD4E60018C2F2 /* Life.swift */; };
+		0E363C251C8BD5130018C2F2 /* Life.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C241C8BD5130018C2F2 /* Life.png */; };
 		0E5924F01C6CBBDC00023713 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924EF1C6CBBDC00023713 /* Background7.png */; };
 		0E5925091C6D497A00023713 /* Background7_1k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925011C6D497A00023713 /* Background7_1k.png */; };
 		0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925021C6D497A00023713 /* Background7_2k.png */; };
@@ -311,6 +313,8 @@
 		0E363C0E1C8B6E050018C2F2 /* UFO_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UFO_8.png; sourceTree = "<group>"; };
 		0E363C0F1C8B6E050018C2F2 /* UFO_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UFO_9.png; sourceTree = "<group>"; };
 		0E363C101C8B6E050018C2F2 /* ufo_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_map.png; sourceTree = "<group>"; };
+		0E363C221C8BD4E60018C2F2 /* Life.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
+		0E363C241C8BD5130018C2F2 /* Life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life.png; path = Images/Life.png; sourceTree = "<group>"; };
 		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = "Flick Off/Images/Background7.png"; sourceTree = SOURCE_ROOT; };
 		0E5925011C6D497A00023713 /* Background7_1k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_1k.png; path = "Flick Off/Images/Background7_1k.png"; sourceTree = SOURCE_ROOT; };
 		0E5925021C6D497A00023713 /* Background7_2k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_2k.png; path = "Flick Off/Images/Background7_2k.png"; sourceTree = SOURCE_ROOT; };
@@ -536,6 +540,7 @@
 				0E1DDDDA1C35E09000E0C28F /* asteroids (1) */,
 				0E1DDDD61C35D71B00E0C28F /* MyParticle.sks */,
 				0E363BFF1C8B6A5F0018C2F2 /* Laser.sks */,
+				0E363C241C8BD5130018C2F2 /* Life.png */,
 				0E1DDDD71C35D71B00E0C28F /* spark.png */,
 				0E197A481C5575FA00AA5658 /* Bubbles.sks */,
 				0E1DDDCE1C35CB3600E0C28F /* playerShip1_green.png */,
@@ -553,6 +558,7 @@
 				0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */,
 				0ED77D4A1C5D69C900BF5D90 /* Magic.sks */,
 				0E29114A1C740C4A00DDE978 /* Magic2.sks */,
+				0E363C221C8BD4E60018C2F2 /* Life.swift */,
 				0E197A441C552A9900AA5658 /* Rain.sks */,
 				0E1DDDD31C35D6D200E0C28F /* spark.png */,
 				0E1DDD051C34677000E0C28F /* GameViewController.swift */,
@@ -993,6 +999,7 @@
 				0EBF80EB1C557C280090E585 /* color_fish_2.png in Resources */,
 				0E363BED1C87D5FF0018C2F2 /* Rocket for app v2.png in Resources */,
 				0EBF80ED1C557C280090E585 /* color_fish_4.png in Resources */,
+				0E363C251C8BD5130018C2F2 /* Life.png in Resources */,
 				0E363BFC1C8B51B00018C2F2 /* Gray_Explosion.sks in Resources */,
 				0E363C171C8B6E050018C2F2 /* UFO_2.png in Resources */,
 				0E363C1F1C8B6E050018C2F2 /* ufo_map.png in Resources */,
@@ -1061,6 +1068,7 @@
 				0E1DDD061C34677000E0C28F /* GameViewController.swift in Sources */,
 				0ED481AB1C7F2FF80041F8E7 /* Rocket.swift in Sources */,
 				0E1420D01C8532B6003785D5 /* Shield.swift in Sources */,
+				0E363C231C8BD4E60018C2F2 /* Life.swift in Sources */,
 				0E1420D21C853322003785D5 /* Heart.swift in Sources */,
 				0E1DDD001C34677000E0C28F /* AppDelegate.swift in Sources */,
 			);

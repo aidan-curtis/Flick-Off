@@ -46,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     enum Objects : UInt32{
         case Meteor=100
     }
-    
+    let life = Life();
     let next_coin: coin_dispenser = coin_dispenser()
     var oldparticlecolor=UIColor.clearColor();
     var oldparticlesize:CGFloat=20.0;
@@ -477,9 +477,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+   
         for touches: AnyObject in touches{
+            
             let location = touches.locationInNode(self)
+
+            if(game_status==4){
+                //check for X button
+                
+                if(location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
+                    if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30){
+                        life.runAction(SKAction.moveToY(-500, duration: 0.8));
+                        game_status=5;
+                    }
+                }
+            }
             if(self.nodeAtPoint(location).name=="play"){
                 game_status=1;
             }
@@ -519,6 +531,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fuel.particleScale=fuel.particleScale*2
         
     }
+    
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         moving_object.runAction(SKAction.rotateToAngle(atan2(CGFloat((touched_location.y - moving_object.position.y)),CGFloat((touched_location.x - moving_object.position.x))), duration: 0.01))
         for touches: AnyObject in touches{
@@ -875,6 +888,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         }
         else if (game_status==3){
+           
+            life.setup(self.size);
+            life.position = CGPointMake(self.size.width/2.0, -500);
+            addChild(life);
+            life.runAction(SKAction.moveToY(self.size.height/2.0, duration: 0.8))
+            game_status=4;
+        
+        }
+        else if (game_status==4){
+            //holding pattern
+        }
+        else if(game_status==5){
             if(Int(score.text!)>Int(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))){
                 NSUserDefaults.standardUserDefaults().setInteger(Int(score.text!)!, forKey: "highscore")
             }
@@ -882,8 +907,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             score_label.text="\(Int(score.text!)!)"
             //backup_emitterNode.hidden=false
             emitterNode.hidden=true
-        fuel.removeFromParent()
-           game_status=0
+            fuel.removeFromParent()
+            game_status=0
         }
     }
     

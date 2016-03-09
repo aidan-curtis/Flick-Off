@@ -137,7 +137,6 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     func carousel(carousel: iCarousel, didSelectItemAtIndex index: Int) {
         home_button.hidden=true;
         buy.hidden=false;
-        
         current_index = index
         home_button.imageView!.image = UIImage(named: "buy_button");
         carousel.reloadData()
@@ -146,10 +145,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     func carouselCurrentItemIndexDidChange(carousel: iCarousel) {
         home_button.hidden=false;
         buy.hidden=true;
-        current_index = -1;
         print(carousel.currentItemIndex);
         cost.text="\(descriptions[carousel.currentItemIndex])"
-        carousel.reloadData()
+        if(current_index != -1){
+        current_index = -1;
+         carousel.reloadData()
+        }
+        
   
     }
     

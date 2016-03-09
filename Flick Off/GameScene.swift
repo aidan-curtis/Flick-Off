@@ -14,8 +14,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let power_speed=3;
     let regular_speed=1;
     let heart_frequency=1450;
-    let rocket_frequency=600;
-    let shield_frequency=1963;
+    let rocket_frequency=1600;
+    let shield_frequency=963;
     let UFO_frequency=3000;
     let MAX_HEALTH = 150
     //DO NOT EDIT BELOW
@@ -98,7 +98,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let life_bar=SKSpriteNode();
     let shield_bar=SKSpriteNode();
-
+    var health_cover=SKSpriteNode();
+    var shield_cover=SKSpriteNode();
     
     func presentMenu(){
         menu.size=CGSizeMake(200, 100)
@@ -180,6 +181,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for(var i=0; i<34; i+=1){
             explosion.append(SKTexture(imageNamed: "explosion_\(i+1)"))
         }
+        health_cover.position = CGPointMake(100, 18);
+        health_cover.size = CGSizeMake(200,40);
+        health_cover.texture = SKTexture(imageNamed: "Health Bar")
+        addChild(health_cover)
+        
+        shield_cover.position = CGPointMake(100, 54);
+        shield_cover.size = CGSizeMake(200,40);
+        shield_cover.texture = SKTexture(imageNamed: "Shield Bar")
+        shield_cover.hidden=true;
+    
+        addChild(shield_cover)
         
         
         //present menu at beginning and after death
@@ -216,8 +228,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(backgroundNode[i])
         }
     
+        if(NSUserDefaults.standardUserDefaults().objectForKey("ship") == nil){
+            NSUserDefaults.standardUserDefaults().setObject("playerShip1_green.png", forKey: "ship")
+            
+        }
+        character.texture=SKTexture(imageNamed: NSUserDefaults.standardUserDefaults().objectForKey("ship") as! String);
         
-        character.texture=SKTexture(imageNamed: "playerShip1_green.png");
+        
         character.position=CGPointMake(3*self.size.width/5, 4*self.size.height/24);
         character.zPosition=0
         character.size=CGSizeMake(50, 38);
@@ -383,16 +400,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func setStaticHearts(num : Int){
         
-        life_bar.size=CGSizeMake(CGFloat(num), 8);
+        life_bar.size=CGSizeMake(CGFloat(num+10), 14);
         life_bar.color=UIColor.redColor()
-        life_bar.alpha=0.5
-        life_bar.position=CGPointMake(CGFloat(num/2), 4)
+
+        life_bar.position=CGPointMake(CGFloat((num+10)/2)+3, 18)
     }
     func setShieldBar(num : Int){
-        shield_bar.size=CGSizeMake(CGFloat(num), 8);
+        shield_bar.size=CGSizeMake(CGFloat((num+10))+4, 14);
         shield_bar.color=UIColor.blueColor()
-        shield_bar.alpha=0.5
-        shield_bar.position=CGPointMake(CGFloat(num/2), 12)
+
+        shield_bar.position=CGPointMake(CGFloat((num+10)/2)+4, 54)
     }
     
     func addGem(location:CGPoint){
@@ -691,6 +708,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
                 //shield_follow.physicsBody!.dynamic=false;
                 shield_follow.hidden=false;
+                shield_cover.hidden=false;
+            
                 shield_bar.hidden=false;
                 shield.removeFromParent()
                 shields.removeAtIndex(shields.indexOf(shield)!)

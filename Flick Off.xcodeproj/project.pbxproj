@@ -127,6 +127,9 @@
 		0E59250E1C6D497A00023713 /* Background7_6k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925061C6D497A00023713 /* Background7_6k.png */; };
 		0E59250F1C6D497A00023713 /* Background7_7k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925071C6D497A00023713 /* Background7_7k.png */; };
 		0E5925101C6D497A00023713 /* Background7_8k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925081C6D497A00023713 /* Background7_8k.png */; };
+		0E6B05481C8FC5FB00D557E0 /* Health Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B05471C8FC5FB00D557E0 /* Health Bar.png */; };
+		0E6B054A1C8FC72000D557E0 /* schatzkiste-300px.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B05491C8FC72000D557E0 /* schatzkiste-300px.png */; };
+		0E6B054E1C8FCE8800D557E0 /* Shield Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B054D1C8FCE8800D557E0 /* Shield Bar.png */; };
 		0E84C3E51C8FA18600F2ADCA /* playerShip1_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3E21C8FA18600F2ADCA /* playerShip1_blue.png */; };
 		0E84C3E61C8FA18600F2ADCA /* playerShip1_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3E31C8FA18600F2ADCA /* playerShip1_orange.png */; };
 		0E84C3E71C8FA18600F2ADCA /* playerShip1_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3E41C8FA18600F2ADCA /* playerShip1_red.png */; };
@@ -362,6 +365,9 @@
 		0E5925061C6D497A00023713 /* Background7_6k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_6k.png; path = "Flick Off/Images/Background7_6k.png"; sourceTree = SOURCE_ROOT; };
 		0E5925071C6D497A00023713 /* Background7_7k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_7k.png; path = "Flick Off/Images/Background7_7k.png"; sourceTree = SOURCE_ROOT; };
 		0E5925081C6D497A00023713 /* Background7_8k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_8k.png; path = "Flick Off/Images/Background7_8k.png"; sourceTree = SOURCE_ROOT; };
+		0E6B05471C8FC5FB00D557E0 /* Health Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Health Bar.png"; path = "Images/Health Bar.png"; sourceTree = "<group>"; };
+		0E6B05491C8FC72000D557E0 /* schatzkiste-300px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "schatzkiste-300px.png"; path = "Images/schatzkiste-300px.png"; sourceTree = "<group>"; };
+		0E6B054D1C8FCE8800D557E0 /* Shield Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shield Bar.png"; sourceTree = "<group>"; };
 		0E84C3E21C8FA18600F2ADCA /* playerShip1_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerShip1_blue.png; path = Images/SpaceShip/playerShip1_blue.png; sourceTree = "<group>"; };
 		0E84C3E31C8FA18600F2ADCA /* playerShip1_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerShip1_orange.png; path = Images/SpaceShip/playerShip1_orange.png; sourceTree = "<group>"; };
 		0E84C3E41C8FA18600F2ADCA /* playerShip1_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerShip1_red.png; path = Images/SpaceShip/playerShip1_red.png; sourceTree = "<group>"; };
@@ -619,6 +625,8 @@
 				0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */,
 				0E363BFB1C8B51B00018C2F2 /* Gray_Explosion.sks */,
 				0E84C40D1C8FB1B100F2ADCA /* buy_object.png */,
+				0E6B05491C8FC72000D557E0 /* schatzkiste-300px.png */,
+				0E6B054D1C8FCE8800D557E0 /* Shield Bar.png */,
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
 				0E1DDDD01C35D54800E0C28F /* black.png */,
 				0E1DDD331C3495D000E0C28F /* garaxee.png */,
@@ -627,6 +635,7 @@
 				0E1420D11C853322003785D5 /* Heart.swift */,
 				0E1DDD011C34677000E0C28F /* GameScene.sks */,
 				0E1DDD351C359A2800E0C28F /* spark.png */,
+				0E6B05471C8FC5FB00D557E0 /* Health Bar.png */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
 				0E363C261C8C94390018C2F2 /* TitleScene.swift */,
 				0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */,
@@ -1036,6 +1045,7 @@
 				0EBF81301C5599EE0090E585 /* explosion_3.png in Resources */,
 				0ED77CF21C5D435B00BF5D90 /* Gem v15.png in Resources */,
 				0E197A971C5577B500AA5658 /* bubsv20013.png in Resources */,
+				0E6B05481C8FC5FB00D557E0 /* Health Bar.png in Resources */,
 				0E363C1E1C8B6E050018C2F2 /* UFO_9.png in Resources */,
 				0EBF81351C5599EE0090E585 /* explosion_34.png in Resources */,
 				0E197A901C5577B500AA5658 /* bubsv20006.png in Resources */,
@@ -1147,10 +1157,12 @@
 				0E197A921C5577B500AA5658 /* bubsv20008.png in Resources */,
 				0E84C3E71C8FA18600F2ADCA /* playerShip1_red.png in Resources */,
 				0EBF811A1C5599EE0090E585 /* explosion_1.png in Resources */,
+				0E6B054A1C8FC72000D557E0 /* schatzkiste-300px.png in Resources */,
 				0E1420C61C853249003785D5 /* shield3.png in Resources */,
 				0E363BF31C87D5FF0018C2F2 /* Rocket for app v8.png in Resources */,
 				0EBF812A1C5599EE0090E585 /* explosion_24.png in Resources */,
 				0ED77D4B1C5D69C900BF5D90 /* Magic.sks in Resources */,
+				0E6B054E1C8FCE8800D557E0 /* Shield Bar.png in Resources */,
 				0E84C4101C8FB81200F2ADCA /* Bag-300px.png in Resources */,
 				0EBF812D1C5599EE0090E585 /* explosion_27.png in Resources */,
 				0E197A331C54291B00AA5658 /* spinning_coin_gold_2.png in Resources */,

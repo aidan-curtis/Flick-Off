@@ -19,7 +19,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         "25,000 coins for $10.99",
         "500 Gems for $0.99",
         "1,000 Gems for $3.99",
-        "1,500 Gems for 10.99",
+        "1,500 Gems for $10.99",
         "Beginning Blast for 50 Gems",
         "Bubble Shield for 500 Coins",
         "Red Ship for 100 Coins",
@@ -34,6 +34,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         "Bag-300px",
         "Gem v95",
         "Gem v95",
+        "Gem v95",
         "Rocket for app v1",
         "bubble shield 13",
         "playerShip1_red",
@@ -42,6 +43,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         "heart",
         "heart"]);
     var sizes:[CGSize]=[
+        CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
@@ -88,7 +90,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         home_button.titleLabel!.font = UIFont(name: "04b_19", size: 30)
         
         cost.font = UIFont(name: "04b_19", size: 20)
-        cost.text = images.objectAtIndex(0) as! String
+        cost.text = descriptions.objectAtIndex(0) as! String
         //background_node.position=CGPointMake(self.size.width/2, (self.size.width*6/2));
     
         var background_image: UIImageView = UIImageView();
@@ -110,9 +112,11 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         
             var itemView: UIView
         
-                
-                itemView = UIView(frame:CGRect(x:0, y:0, width:200, height:200))
-                itemView.contentMode = .ScaleAspectFit
+
+            itemView = UIView(frame:CGRect(x:0, y:0, width:200, height:200))
+            itemView.contentMode = .ScaleAspectFit
+            
+       
             
     
         

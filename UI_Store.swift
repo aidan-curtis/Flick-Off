@@ -29,9 +29,9 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         "Three Saves for $1.99"]);
     
     var images = NSMutableArray(array: [
-        "spinning_coin_gold_1",
-        "spinning_coin_gold_1",
-        "spinning_coin_gold_1",
+        "Bag-300px",
+        "Bag-300px",
+        "Bag-300px",
         "Gem v95",
         "Gem v95",
         "Rocket for app v1",
@@ -42,9 +42,9 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         "heart",
         "heart"]);
     var sizes:[CGSize]=[
-        CGSizeMake(40, 40),
-        CGSizeMake(40, 40),
-        CGSizeMake(40, 40),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),

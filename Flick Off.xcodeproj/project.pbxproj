@@ -149,6 +149,7 @@
 		0E84C40A1C8FAAC600F2ADCA /* BlueBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C4091C8FAAC500F2ADCA /* BlueBorder.png */; };
 		0E84C40C1C8FABE800F2ADCA /* GreenBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */; };
 		0E84C40E1C8FB1B100F2ADCA /* buy_object.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40D1C8FB1B100F2ADCA /* buy_object.png */; };
+		0E84C4101C8FB81200F2ADCA /* Bag-300px.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */; };
 		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
 		0EBF80E91C557C280090E585 /* color_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E11C557C280090E585 /* color_fish.png */; };
@@ -383,6 +384,7 @@
 		0E84C4091C8FAAC500F2ADCA /* BlueBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueBorder.png; path = Images/BlueBorder.png; sourceTree = "<group>"; };
 		0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GreenBorder.png; path = Images/GreenBorder.png; sourceTree = "<group>"; };
 		0E84C40D1C8FB1B100F2ADCA /* buy_object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buy_object.png; path = Images/buy_object.png; sourceTree = "<group>"; };
+		0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bag-300px.png"; path = "Images/Bag-300px.png"; sourceTree = "<group>"; };
 		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
 		0EBF80E11C557C280090E585 /* color_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish.png; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 				0E363C2A1C8CB0040018C2F2 /* title.png */,
 				0E197A481C5575FA00AA5658 /* Bubbles.sks */,
 				0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */,
+				0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */,
 				0E363BFB1C8B51B00018C2F2 /* Gray_Explosion.sks */,
 				0E84C40D1C8FB1B100F2ADCA /* buy_object.png */,
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
@@ -1148,6 +1151,7 @@
 				0E363BF31C87D5FF0018C2F2 /* Rocket for app v8.png in Resources */,
 				0EBF812A1C5599EE0090E585 /* explosion_24.png in Resources */,
 				0ED77D4B1C5D69C900BF5D90 /* Magic.sks in Resources */,
+				0E84C4101C8FB81200F2ADCA /* Bag-300px.png in Resources */,
 				0EBF812D1C5599EE0090E585 /* explosion_27.png in Resources */,
 				0E197A331C54291B00AA5658 /* spinning_coin_gold_2.png in Resources */,
 				0E5924F01C6CBBDC00023713 /* Background7.png in Resources */,

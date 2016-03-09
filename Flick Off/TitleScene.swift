@@ -75,7 +75,7 @@ class TitleScene: SKScene{
         addChild(store)
         addChild(main_panel)
         addChild(play)
-        
+        print("added");
         
 //        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 3, starsPerSecond: 10, starScaleFactor: 0.08,backup: false);
 //        emitterNode.zPosition = -11;
@@ -120,7 +120,7 @@ class TitleScene: SKScene{
             if(self.nodeAtPoint(location) == store){
                 let presenting = self.view?.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("UI_Store");
                 presenting?.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-                self.view?.window?.rootViewController?.presentViewController(presenting!, animated: true, completion: nil);
+                self.view?.window?.rootViewController?.showViewController(presenting!, sender: nil)
             }
         }
         

@@ -127,6 +127,25 @@
 		0E59250E1C6D497A00023713 /* Background7_6k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925061C6D497A00023713 /* Background7_6k.png */; };
 		0E59250F1C6D497A00023713 /* Background7_7k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925071C6D497A00023713 /* Background7_7k.png */; };
 		0E5925101C6D497A00023713 /* Background7_8k.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5925081C6D497A00023713 /* Background7_8k.png */; };
+		0E84C3E51C8FA18600F2ADCA /* playerShip1_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3E21C8FA18600F2ADCA /* playerShip1_blue.png */; };
+		0E84C3E61C8FA18600F2ADCA /* playerShip1_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3E31C8FA18600F2ADCA /* playerShip1_orange.png */; };
+		0E84C3E71C8FA18600F2ADCA /* playerShip1_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3E41C8FA18600F2ADCA /* playerShip1_red.png */; };
+		0E84C3F91C8FA4E100F2ADCA /* bubble shield 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3E91C8FA4E100F2ADCA /* bubble shield 1.png */; };
+		0E84C3FA1C8FA4E100F2ADCA /* bubble shield 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3EA1C8FA4E100F2ADCA /* bubble shield 10.png */; };
+		0E84C3FB1C8FA4E100F2ADCA /* bubble shield 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3EB1C8FA4E100F2ADCA /* bubble shield 11.png */; };
+		0E84C3FC1C8FA4E100F2ADCA /* bubble shield 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3EC1C8FA4E100F2ADCA /* bubble shield 12.png */; };
+		0E84C3FD1C8FA4E100F2ADCA /* bubble shield 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3ED1C8FA4E100F2ADCA /* bubble shield 13.png */; };
+		0E84C3FE1C8FA4E100F2ADCA /* bubble shield 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3EE1C8FA4E100F2ADCA /* bubble shield 14.png */; };
+		0E84C3FF1C8FA4E100F2ADCA /* bubble shield 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3EF1C8FA4E100F2ADCA /* bubble shield 15.png */; };
+		0E84C4001C8FA4E100F2ADCA /* bubble shield 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F01C8FA4E100F2ADCA /* bubble shield 16.png */; };
+		0E84C4011C8FA4E100F2ADCA /* bubble shield 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F11C8FA4E100F2ADCA /* bubble shield 2.png */; };
+		0E84C4021C8FA4E100F2ADCA /* bubble shield 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F21C8FA4E100F2ADCA /* bubble shield 3.png */; };
+		0E84C4031C8FA4E100F2ADCA /* bubble shield 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F31C8FA4E100F2ADCA /* bubble shield 4.png */; };
+		0E84C4041C8FA4E100F2ADCA /* bubble shield 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F41C8FA4E100F2ADCA /* bubble shield 5.png */; };
+		0E84C4051C8FA4E100F2ADCA /* bubble shield 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F51C8FA4E100F2ADCA /* bubble shield 6.png */; };
+		0E84C4061C8FA4E100F2ADCA /* bubble shield 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F61C8FA4E100F2ADCA /* bubble shield 7.png */; };
+		0E84C4071C8FA4E100F2ADCA /* bubble shield 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F71C8FA4E100F2ADCA /* bubble shield 8.png */; };
+		0E84C4081C8FA4E100F2ADCA /* bubble shield 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F81C8FA4E100F2ADCA /* bubble shield 9.png */; };
 		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
 		0EBF80E91C557C280090E585 /* color_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E11C557C280090E585 /* color_fish.png */; };
@@ -339,6 +358,25 @@
 		0E5925061C6D497A00023713 /* Background7_6k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_6k.png; path = "Flick Off/Images/Background7_6k.png"; sourceTree = SOURCE_ROOT; };
 		0E5925071C6D497A00023713 /* Background7_7k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_7k.png; path = "Flick Off/Images/Background7_7k.png"; sourceTree = SOURCE_ROOT; };
 		0E5925081C6D497A00023713 /* Background7_8k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7_8k.png; path = "Flick Off/Images/Background7_8k.png"; sourceTree = SOURCE_ROOT; };
+		0E84C3E21C8FA18600F2ADCA /* playerShip1_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerShip1_blue.png; path = Images/SpaceShip/playerShip1_blue.png; sourceTree = "<group>"; };
+		0E84C3E31C8FA18600F2ADCA /* playerShip1_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerShip1_orange.png; path = Images/SpaceShip/playerShip1_orange.png; sourceTree = "<group>"; };
+		0E84C3E41C8FA18600F2ADCA /* playerShip1_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerShip1_red.png; path = Images/SpaceShip/playerShip1_red.png; sourceTree = "<group>"; };
+		0E84C3E91C8FA4E100F2ADCA /* bubble shield 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 1.png"; sourceTree = "<group>"; };
+		0E84C3EA1C8FA4E100F2ADCA /* bubble shield 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 10.png"; sourceTree = "<group>"; };
+		0E84C3EB1C8FA4E100F2ADCA /* bubble shield 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 11.png"; sourceTree = "<group>"; };
+		0E84C3EC1C8FA4E100F2ADCA /* bubble shield 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 12.png"; sourceTree = "<group>"; };
+		0E84C3ED1C8FA4E100F2ADCA /* bubble shield 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 13.png"; sourceTree = "<group>"; };
+		0E84C3EE1C8FA4E100F2ADCA /* bubble shield 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 14.png"; sourceTree = "<group>"; };
+		0E84C3EF1C8FA4E100F2ADCA /* bubble shield 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 15.png"; sourceTree = "<group>"; };
+		0E84C3F01C8FA4E100F2ADCA /* bubble shield 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 16.png"; sourceTree = "<group>"; };
+		0E84C3F11C8FA4E100F2ADCA /* bubble shield 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 2.png"; sourceTree = "<group>"; };
+		0E84C3F21C8FA4E100F2ADCA /* bubble shield 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 3.png"; sourceTree = "<group>"; };
+		0E84C3F31C8FA4E100F2ADCA /* bubble shield 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 4.png"; sourceTree = "<group>"; };
+		0E84C3F41C8FA4E100F2ADCA /* bubble shield 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 5.png"; sourceTree = "<group>"; };
+		0E84C3F51C8FA4E100F2ADCA /* bubble shield 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 6.png"; sourceTree = "<group>"; };
+		0E84C3F61C8FA4E100F2ADCA /* bubble shield 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 7.png"; sourceTree = "<group>"; };
+		0E84C3F71C8FA4E100F2ADCA /* bubble shield 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 8.png"; sourceTree = "<group>"; };
+		0E84C3F81C8FA4E100F2ADCA /* bubble shield 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 9.png"; sourceTree = "<group>"; };
 		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
 		0EBF80E11C557C280090E585 /* color_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish.png; sourceTree = "<group>"; };
@@ -557,7 +595,9 @@
 				0E1DDDDA1C35E09000E0C28F /* asteroids (1) */,
 				0E1DDDD61C35D71B00E0C28F /* MyParticle.sks */,
 				0E363C2F1C8CC13E0018C2F2 /* iCarousel.h */,
+				0E84C3E11C8FA17400F2ADCA /* Ships */,
 				0E363C301C8CC13E0018C2F2 /* iCarousel.m */,
+				0E84C3E81C8FA4E100F2ADCA /* Bubble Shield */,
 				0E363BFF1C8B6A5F0018C2F2 /* Laser.sks */,
 				0E363C241C8BD5130018C2F2 /* Life.png */,
 				0E363C341C8CD28A0018C2F2 /* search.jpg */,
@@ -566,7 +606,6 @@
 				0EED8F2B1C8CEA7700A515A9 /* back_home.png */,
 				0E363C2A1C8CB0040018C2F2 /* title.png */,
 				0E197A481C5575FA00AA5658 /* Bubbles.sks */,
-				0E1DDDCE1C35CB3600E0C28F /* playerShip1_green.png */,
 				0E363BFB1C8B51B00018C2F2 /* Gray_Explosion.sks */,
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
 				0E1DDDD01C35D54800E0C28F /* black.png */,
@@ -668,6 +707,41 @@
 			);
 			name = "UFO Animaton";
 			path = "Images/UFO Animaton";
+			sourceTree = "<group>";
+		};
+		0E84C3E11C8FA17400F2ADCA /* Ships */ = {
+			isa = PBXGroup;
+			children = (
+				0E84C3E21C8FA18600F2ADCA /* playerShip1_blue.png */,
+				0E84C3E31C8FA18600F2ADCA /* playerShip1_orange.png */,
+				0E84C3E41C8FA18600F2ADCA /* playerShip1_red.png */,
+				0E1DDDCE1C35CB3600E0C28F /* playerShip1_green.png */,
+			);
+			name = Ships;
+			sourceTree = "<group>";
+		};
+		0E84C3E81C8FA4E100F2ADCA /* Bubble Shield */ = {
+			isa = PBXGroup;
+			children = (
+				0E84C3E91C8FA4E100F2ADCA /* bubble shield 1.png */,
+				0E84C3EA1C8FA4E100F2ADCA /* bubble shield 10.png */,
+				0E84C3EB1C8FA4E100F2ADCA /* bubble shield 11.png */,
+				0E84C3EC1C8FA4E100F2ADCA /* bubble shield 12.png */,
+				0E84C3ED1C8FA4E100F2ADCA /* bubble shield 13.png */,
+				0E84C3EE1C8FA4E100F2ADCA /* bubble shield 14.png */,
+				0E84C3EF1C8FA4E100F2ADCA /* bubble shield 15.png */,
+				0E84C3F01C8FA4E100F2ADCA /* bubble shield 16.png */,
+				0E84C3F11C8FA4E100F2ADCA /* bubble shield 2.png */,
+				0E84C3F21C8FA4E100F2ADCA /* bubble shield 3.png */,
+				0E84C3F31C8FA4E100F2ADCA /* bubble shield 4.png */,
+				0E84C3F41C8FA4E100F2ADCA /* bubble shield 5.png */,
+				0E84C3F51C8FA4E100F2ADCA /* bubble shield 6.png */,
+				0E84C3F61C8FA4E100F2ADCA /* bubble shield 7.png */,
+				0E84C3F71C8FA4E100F2ADCA /* bubble shield 8.png */,
+				0E84C3F81C8FA4E100F2ADCA /* bubble shield 9.png */,
+			);
+			name = "Bubble Shield";
+			path = "Images/Bubble Shield";
 			sourceTree = "<group>";
 		};
 		0EBF80DD1C557C280090E585 /* Background */ = {
@@ -900,25 +974,31 @@
 				0EBF80EC1C557C280090E585 /* color_fish_3.png in Resources */,
 				0EB386901C69785C008CA036 /* Main_Panel.png in Resources */,
 				0EBF81261C5599EE0090E585 /* explosion_20.png in Resources */,
+				0E84C3E61C8FA18600F2ADCA /* playerShip1_orange.png in Resources */,
 				0E29114B1C740C4A00DDE978 /* Magic2.sks in Resources */,
 				0E363BF91C8B4B010018C2F2 /* Blue_Explosion.sks in Resources */,
 				0E197A911C5577B500AA5658 /* bubsv20007.png in Resources */,
+				0E84C3FC1C8FA4E100F2ADCA /* bubble shield 12.png in Resources */,
+				0E84C3FB1C8FA4E100F2ADCA /* bubble shield 11.png in Resources */,
 				0EBF80E91C557C280090E585 /* color_fish.png in Resources */,
 				0E197A991C5577B500AA5658 /* bubsv20015.png in Resources */,
 				0ED77D221C5D435B00BF5D90 /* Gem v63.png in Resources */,
 				0EBF81201C5599EE0090E585 /* explosion_15.png in Resources */,
 				0E363C001C8B6A5F0018C2F2 /* Laser.sks in Resources */,
 				0E1DE08E1C35E09000E0C28F /* b10000.png in Resources */,
+				0E84C3FF1C8FA4E100F2ADCA /* bubble shield 15.png in Resources */,
 				0E1DE06E1C35E09000E0C28F /* a30000.png in Resources */,
 				0E1DDDD51C35D6D200E0C28F /* spark.png in Resources */,
 				0E363BFA1C8B4B010018C2F2 /* Fire_Explosion.sks in Resources */,
 				0EBF81251C5599EE0090E585 /* explosion_2.png in Resources */,
 				0E363C181C8B6E050018C2F2 /* UFO_3.png in Resources */,
 				0E197A3E1C54467D00AA5658 /* red_glow.png in Resources */,
+				0E84C4021C8FA4E100F2ADCA /* bubble shield 3.png in Resources */,
 				0EBF81361C5599EE0090E585 /* explosion_4.png in Resources */,
 				0EBF813B1C5599EE0090E585 /* explosion_9.png in Resources */,
 				0EBF812B1C5599EE0090E585 /* explosion_25.png in Resources */,
 				0E363C1C1C8B6E050018C2F2 /* UFO_7.png in Resources */,
+				0E84C3FE1C8FA4E100F2ADCA /* bubble shield 14.png in Resources */,
 				0E5925091C6D497A00023713 /* Background7_1k.png in Resources */,
 				0E1DDDCF1C35CB3600E0C28F /* playerShip1_green.png in Resources */,
 				0E363C161C8B6E050018C2F2 /* UFO_12.png in Resources */,
@@ -927,14 +1007,18 @@
 				0E197A9C1C5577B500AA5658 /* bubsv20018.png in Resources */,
 				0E197A391C54291B00AA5658 /* spinning_coin_gold_8.png in Resources */,
 				0E197A8C1C5577B500AA5658 /* bubsv20002.png in Resources */,
+				0E84C4071C8FA4E100F2ADCA /* bubble shield 8.png in Resources */,
+				0E84C4041C8FA4E100F2ADCA /* bubble shield 5.png in Resources */,
 				0EBF813D1C5599EE0090E585 /* spritesheet9-150x150.png in Resources */,
 				0E197A9B1C5577B500AA5658 /* bubsv20017.png in Resources */,
 				0EBF81211C5599EE0090E585 /* explosion_16.png in Resources */,
 				0E1420C51C853249003785D5 /* shield2.png in Resources */,
 				0E363C2B1C8CB0040018C2F2 /* title.png in Resources */,
 				0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */,
+				0E84C3E51C8FA18600F2ADCA /* playerShip1_blue.png in Resources */,
 				0E363BEC1C87D5FF0018C2F2 /* Rocket for app v12.png in Resources */,
 				0EBF812C1C5599EE0090E585 /* explosion_26.png in Resources */,
+				0E84C4061C8FA4E100F2ADCA /* bubble shield 7.png in Resources */,
 				0EBF81301C5599EE0090E585 /* explosion_3.png in Resources */,
 				0ED77CF21C5D435B00BF5D90 /* Gem v15.png in Resources */,
 				0E197A971C5577B500AA5658 /* bubsv20013.png in Resources */,
@@ -954,6 +1038,7 @@
 				0E363C191C8B6E050018C2F2 /* UFO_4.png in Resources */,
 				0EBF81291C5599EE0090E585 /* explosion_23.png in Resources */,
 				0E197A8B1C5577B500AA5658 /* bubsv20001.png in Resources */,
+				0E84C3FD1C8FA4E100F2ADCA /* bubble shield 13.png in Resources */,
 				0E1420C91C853249003785D5 /* shield6.png in Resources */,
 				0E197A371C54291B00AA5658 /* spinning_coin_gold_6.png in Resources */,
 				0E197A361C54291B00AA5658 /* spinning_coin_gold_5.png in Resources */,
@@ -1022,13 +1107,16 @@
 				0EBF80ED1C557C280090E585 /* color_fish_4.png in Resources */,
 				0E363C251C8BD5130018C2F2 /* Life.png in Resources */,
 				0E363BFC1C8B51B00018C2F2 /* Gray_Explosion.sks in Resources */,
+				0E84C4081C8FA4E100F2ADCA /* bubble shield 9.png in Resources */,
 				0E363C171C8B6E050018C2F2 /* UFO_2.png in Resources */,
 				0E363C1F1C8B6E050018C2F2 /* ufo_map.png in Resources */,
 				0E363C121C8B6E050018C2F2 /* ufo.gif in Resources */,
 				0EBF81341C5599EE0090E585 /* explosion_33.png in Resources */,
 				0E197A351C54291B00AA5658 /* spinning_coin_gold_4.png in Resources */,
 				0ED77D121C5D435B00BF5D90 /* Gem v47.png in Resources */,
+				0E84C3FA1C8FA4E100F2ADCA /* bubble shield 10.png in Resources */,
 				0E1DE09E1C35E09000E0C28F /* b30000.png in Resources */,
+				0E84C3F91C8FA4E100F2ADCA /* bubble shield 1.png in Resources */,
 				0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */,
 				0EBF81271C5599EE0090E585 /* explosion_21.png in Resources */,
 				0EBF81231C5599EE0090E585 /* explosion_18.png in Resources */,
@@ -1038,9 +1126,11 @@
 				0E363BEB1C87D5FF0018C2F2 /* Rocket for app v11.png in Resources */,
 				0E59250D1C6D497A00023713 /* Background7_5k.png in Resources */,
 				0E1DDDD81C35D71B00E0C28F /* MyParticle.sks in Resources */,
+				0E84C4011C8FA4E100F2ADCA /* bubble shield 2.png in Resources */,
 				0E59250E1C6D497A00023713 /* Background7_6k.png in Resources */,
 				0E1DDDD91C35D71B00E0C28F /* spark.png in Resources */,
 				0E197A921C5577B500AA5658 /* bubsv20008.png in Resources */,
+				0E84C3E71C8FA18600F2ADCA /* playerShip1_red.png in Resources */,
 				0EBF811A1C5599EE0090E585 /* explosion_1.png in Resources */,
 				0E1420C61C853249003785D5 /* shield3.png in Resources */,
 				0E363BF31C87D5FF0018C2F2 /* Rocket for app v8.png in Resources */,
@@ -1049,8 +1139,10 @@
 				0EBF812D1C5599EE0090E585 /* explosion_27.png in Resources */,
 				0E197A331C54291B00AA5658 /* spinning_coin_gold_2.png in Resources */,
 				0E5924F01C6CBBDC00023713 /* Background7.png in Resources */,
+				0E84C4051C8FA4E100F2ADCA /* bubble shield 6.png in Resources */,
 				0ED77CFA1C5D435B00BF5D90 /* Gem v23.png in Resources */,
 				0E363BF01C87D5FF0018C2F2 /* Rocket for app v5.png in Resources */,
+				0E84C4031C8FA4E100F2ADCA /* bubble shield 4.png in Resources */,
 				0ED77D0A1C5D435B00BF5D90 /* Gem v39.png in Resources */,
 				0E197A421C551CC400AA5658 /* credit in Resources */,
 				0EBF80F31C558AD40090E585 /* about.gif in Resources */,
@@ -1060,6 +1152,7 @@
 				0E197A941C5577B500AA5658 /* bubsv20010.png in Resources */,
 				0E1DDDD11C35D54800E0C28F /* black.png in Resources */,
 				0ED77D291C5D435B00BF5D90 /* Gem v7.png in Resources */,
+				0E84C4001C8FA4E100F2ADCA /* bubble shield 16.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

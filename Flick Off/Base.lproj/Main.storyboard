@@ -157,14 +157,14 @@
                                     <mask key="constraints">
                                         <exclude reference="ixD-cu-EXh"/>
                                         <exclude reference="rq0-7S-whH"/>
-                                        <exclude reference="io4-oG-ES8"/>
-                                        <exclude reference="r3K-8p-C2y"/>
-                                        <exclude reference="imE-TX-Tf6"/>
-                                        <exclude reference="myJ-7W-hap"/>
-                                        <exclude reference="ITd-JF-YsJ"/>
-                                        <exclude reference="g3i-8S-vZH"/>
                                         <exclude reference="d1s-IH-gv0"/>
                                         <exclude reference="fOD-XL-Ccf"/>
+                                        <exclude reference="ITd-JF-YsJ"/>
+                                        <exclude reference="g3i-8S-vZH"/>
+                                        <exclude reference="imE-TX-Tf6"/>
+                                        <exclude reference="myJ-7W-hap"/>
+                                        <exclude reference="io4-oG-ES8"/>
+                                        <exclude reference="r3K-8p-C2y"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -177,14 +177,14 @@
                                     <mask key="constraints">
                                         <include reference="ixD-cu-EXh"/>
                                         <include reference="rq0-7S-whH"/>
-                                        <include reference="io4-oG-ES8"/>
-                                        <include reference="r3K-8p-C2y"/>
-                                        <include reference="imE-TX-Tf6"/>
-                                        <include reference="myJ-7W-hap"/>
-                                        <include reference="ITd-JF-YsJ"/>
-                                        <include reference="g3i-8S-vZH"/>
                                         <include reference="d1s-IH-gv0"/>
                                         <include reference="fOD-XL-Ccf"/>
+                                        <include reference="ITd-JF-YsJ"/>
+                                        <include reference="g3i-8S-vZH"/>
+                                        <include reference="imE-TX-Tf6"/>
+                                        <include reference="myJ-7W-hap"/>
+                                        <include reference="io4-oG-ES8"/>
+                                        <include reference="r3K-8p-C2y"/>
                                     </mask>
                                 </variation>
                             </view>

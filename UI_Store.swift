@@ -13,7 +13,48 @@ import UIKit
 
 class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
    
-    var images = NSMutableArray(array: ["a30000.png","a10000.png", "a40000.png","b10000.png", "b30000.png", "b40000.png"]);
+    var descriptions = NSMutableArray(array: [
+        "1000 Coins for $0.99",
+        "10,000 Coins for $3.99",
+        "25,000 coins for $10.99",
+        "500 Gems for $0.99",
+        "1,000 Gems for $3.99",
+        "1,500 Gems for 10.99",
+        "Beginning Blast for 50 Gems",
+        "Bubble Shield for 500 Coins",
+        "Red Ship for 100 Coins",
+        "Blue Ship for 1000 Coins",
+        "Orange Ship for 1000 Coins",
+        "One Save for $0.99",
+        "Three Saves for $1.99"]);
+    
+    var images = NSMutableArray(array: [
+        "spinning_coin_gold_1",
+        "spinning_coin_gold_1",
+        "spinning_coin_gold_1",
+        "Gem v95",
+        "Gem v95",
+        "Rocket for app v1",
+        "bubble shield 13",
+        "playerShip1_red",
+        "playerShip1_blue",
+        "playerShip1_orange",
+        "heart",
+        "heart"]);
+    var sizes:[CGSize]=[
+        CGSizeMake(40, 40),
+        CGSizeMake(40, 40),
+        CGSizeMake(40, 40),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100),
+        CGSizeMake(100, 100)
+    ]
     
   
     
@@ -21,8 +62,16 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     
     @IBOutlet weak var cost: UILabel!
     @IBAction func home(sender: AnyObject) {
+      
+      
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                print("wating");
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+           
     }
     @IBOutlet weak var home_button: UIButton!
     override func viewDidLoad() {
@@ -52,19 +101,18 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
 
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView
     {
-        print("looking for images")
         
-            var itemView: UIImageView
-            if (view == nil)
-            {
-                itemView = UIImageView(frame:CGRect(x:0, y:0, width:200, height:200))
+            var itemView: UIView
+        
+                
+                itemView = UIView(frame:CGRect(x:0, y:0, width:200, height:200))
                 itemView.contentMode = .ScaleAspectFit
-            }
-            else
-            {
-                itemView = view as! UIImageView;
-            }
-            itemView.image = UIImage(named: "\(images.objectAtIndex(index))")
+            
+    
+        
+        let imageView = UIImageView(frame: CGRectMake(100-(sizes[index].width/2), 100-(sizes[index].height/2), sizes[index].width, sizes[index].height))
+        imageView.image = UIImage(named: "\(images.objectAtIndex(index))")
+        itemView.addSubview(imageView);
             return itemView
         
         
@@ -73,7 +121,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     
     
     func carouselCurrentItemIndexDidChange(carousel: iCarousel) {
-        cost.text="\(images[carousel.currentItemIndex])"
+        cost.text="\(descriptions[carousel.currentItemIndex])"
   
     }
     

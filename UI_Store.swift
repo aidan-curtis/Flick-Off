@@ -12,7 +12,7 @@ import UIKit
 
 
 class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
-   
+    var current_index = -1;
     var descriptions = NSMutableArray(array: [
         "1000 Coins for $0.99",
         "10,000 Coins for $3.99",
@@ -74,8 +74,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
            
     }
     @IBOutlet weak var home_button: UIButton!
+    @IBOutlet weak var buy: UIButton!
+    
+    @IBAction func buy_object(sender: AnyObject) {
+    }
     override func viewDidLoad() {
-        
+        home_button.hidden=false;
+        buy.hidden=true;
         Carousel.dataSource=self;
         Carousel.delegate=self;
         Carousel.type = iCarouselType.CoverFlow;
@@ -102,6 +107,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView
     {
         
+        
             var itemView: UIView
         
                 
@@ -113,15 +119,37 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         let imageView = UIImageView(frame: CGRectMake(100-(sizes[index].width/2), 100-(sizes[index].height/2), sizes[index].width, sizes[index].height))
         imageView.image = UIImage(named: "\(images.objectAtIndex(index))")
         itemView.addSubview(imageView);
-            return itemView
+        
+        
+        let borderView = UIImageView(frame: CGRectMake(0,0, 200, 200))
+        if(current_index==index){
+            borderView.image = UIImage(named: "GreenBorder")
+        }
+        else{
+            borderView.image = UIImage(named: "BlueBorder")
+        }
+        itemView.addSubview(borderView);
+        return itemView
         
         
     }
    
-    
+    func carousel(carousel: iCarousel, didSelectItemAtIndex index: Int) {
+        home_button.hidden=true;
+        buy.hidden=false;
+        
+        current_index = index
+        home_button.imageView!.image = UIImage(named: "buy_button");
+        carousel.reloadData()
+    }
     
     func carouselCurrentItemIndexDidChange(carousel: iCarousel) {
+        home_button.hidden=false;
+        buy.hidden=true;
+        current_index = -1;
+        print(carousel.currentItemIndex);
         cost.text="\(descriptions[carousel.currentItemIndex])"
+        carousel.reloadData()
   
     }
     

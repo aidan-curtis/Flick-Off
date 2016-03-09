@@ -46,7 +46,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Cost">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.46653988486842107" green="0.47661389802631576" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="NSColor" red="0.57565789473684215" green="0.58344469572368418" blue="0.58881578947368418" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="18" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -134,9 +134,42 @@
                                             <action selector="home:" destination="9iO-Le-Bwf" eventType="touchUpInside" id="irK-ku-G8N"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Home" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTE-CC-zYe">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="270" id="MWf-G4-LRi"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="oS6-e0-F4Y"/>
+                                            <constraint firstAttribute="height" constant="72" id="plj-k9-e8S"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="270" id="sea-wf-cqL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" backgroundImage="buy_object.png">
+                                            <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="MWf-G4-LRi"/>
+                                                <exclude reference="oS6-e0-F4Y"/>
+                                                <exclude reference="plj-k9-e8S"/>
+                                                <exclude reference="sea-wf-cqL"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="MWf-G4-LRi"/>
+                                                <include reference="oS6-e0-F4Y"/>
+                                                <include reference="plj-k9-e8S"/>
+                                                <include reference="sea-wf-cqL"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="buy_object:" destination="9iO-Le-Bwf" eventType="touchUpInside" id="XTg-eg-Y8f"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ecW-mK-dj7" firstAttribute="top" secondItem="jfJ-Ux-yOe" secondAttribute="bottom" constant="8" id="ITd-JF-YsJ"/>
+                                    <constraint firstItem="FTE-CC-zYe" firstAttribute="leading" secondItem="Ism-yD-Ufm" secondAttribute="leading" constant="45" id="QR3-Ed-uEp"/>
                                     <constraint firstItem="iHi-YF-QP5" firstAttribute="top" secondItem="ecW-mK-dj7" secondAttribute="bottom" constant="8" id="d1s-IH-gv0"/>
                                     <constraint firstItem="iHi-YF-QP5" firstAttribute="leading" secondItem="Ism-yD-Ufm" secondAttribute="leading" constant="45" id="fOD-XL-Ccf"/>
                                     <constraint firstItem="ecW-mK-dj7" firstAttribute="leading" secondItem="Ism-yD-Ufm" secondAttribute="leading" constant="8" id="g3i-8S-vZH"/>
@@ -146,6 +179,7 @@
                                     <constraint firstItem="jfJ-Ux-yOe" firstAttribute="top" secondItem="rRI-8b-5Nr" secondAttribute="bottom" constant="50" id="myJ-7W-hap"/>
                                     <constraint firstItem="rRI-8b-5Nr" firstAttribute="leading" secondItem="Ism-yD-Ufm" secondAttribute="leading" constant="45" id="r3K-8p-C2y"/>
                                     <constraint firstAttribute="width" constant="360" id="rq0-7S-whH"/>
+                                    <constraint firstItem="FTE-CC-zYe" firstAttribute="top" secondItem="ecW-mK-dj7" secondAttribute="bottom" constant="8" id="xV6-Nh-alj"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -153,18 +187,21 @@
                                         <exclude reference="rRI-8b-5Nr"/>
                                         <exclude reference="jfJ-Ux-yOe"/>
                                         <exclude reference="iHi-YF-QP5"/>
+                                        <exclude reference="FTE-CC-zYe"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="ixD-cu-EXh"/>
                                         <exclude reference="rq0-7S-whH"/>
-                                        <exclude reference="d1s-IH-gv0"/>
-                                        <exclude reference="fOD-XL-Ccf"/>
-                                        <exclude reference="ITd-JF-YsJ"/>
-                                        <exclude reference="g3i-8S-vZH"/>
-                                        <exclude reference="imE-TX-Tf6"/>
-                                        <exclude reference="myJ-7W-hap"/>
                                         <exclude reference="io4-oG-ES8"/>
                                         <exclude reference="r3K-8p-C2y"/>
+                                        <exclude reference="imE-TX-Tf6"/>
+                                        <exclude reference="myJ-7W-hap"/>
+                                        <exclude reference="ITd-JF-YsJ"/>
+                                        <exclude reference="g3i-8S-vZH"/>
+                                        <exclude reference="QR3-Ed-uEp"/>
+                                        <exclude reference="xV6-Nh-alj"/>
+                                        <exclude reference="d1s-IH-gv0"/>
+                                        <exclude reference="fOD-XL-Ccf"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -173,18 +210,21 @@
                                         <include reference="rRI-8b-5Nr"/>
                                         <include reference="jfJ-Ux-yOe"/>
                                         <include reference="iHi-YF-QP5"/>
+                                        <include reference="FTE-CC-zYe"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="ixD-cu-EXh"/>
                                         <include reference="rq0-7S-whH"/>
-                                        <include reference="d1s-IH-gv0"/>
-                                        <include reference="fOD-XL-Ccf"/>
-                                        <include reference="ITd-JF-YsJ"/>
-                                        <include reference="g3i-8S-vZH"/>
-                                        <include reference="imE-TX-Tf6"/>
-                                        <include reference="myJ-7W-hap"/>
                                         <include reference="io4-oG-ES8"/>
                                         <include reference="r3K-8p-C2y"/>
+                                        <include reference="imE-TX-Tf6"/>
+                                        <include reference="myJ-7W-hap"/>
+                                        <include reference="ITd-JF-YsJ"/>
+                                        <include reference="g3i-8S-vZH"/>
+                                        <include reference="QR3-Ed-uEp"/>
+                                        <include reference="xV6-Nh-alj"/>
+                                        <include reference="d1s-IH-gv0"/>
+                                        <include reference="fOD-XL-Ccf"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -215,6 +255,7 @@
                     </view>
                     <connections>
                         <outlet property="Carousel" destination="jfJ-Ux-yOe" id="8O6-JS-iI8"/>
+                        <outlet property="buy" destination="FTE-CC-zYe" id="YWo-0a-7aH"/>
                         <outlet property="cost" destination="ecW-mK-dj7" id="Ic2-Bl-2Zu"/>
                         <outlet property="home_button" destination="iHi-YF-QP5" id="UjP-dp-23Z"/>
                     </connections>
@@ -226,6 +267,7 @@
     </scenes>
     <resources>
         <image name="back_home.png" width="300" height="86"/>
+        <image name="buy_object.png" width="300" height="86"/>
         <image name="title" width="1000" height="300"/>
     </resources>
 </document>

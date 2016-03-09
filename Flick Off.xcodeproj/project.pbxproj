@@ -146,6 +146,9 @@
 		0E84C4061C8FA4E100F2ADCA /* bubble shield 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F61C8FA4E100F2ADCA /* bubble shield 7.png */; };
 		0E84C4071C8FA4E100F2ADCA /* bubble shield 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F71C8FA4E100F2ADCA /* bubble shield 8.png */; };
 		0E84C4081C8FA4E100F2ADCA /* bubble shield 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C3F81C8FA4E100F2ADCA /* bubble shield 9.png */; };
+		0E84C40A1C8FAAC600F2ADCA /* BlueBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C4091C8FAAC500F2ADCA /* BlueBorder.png */; };
+		0E84C40C1C8FABE800F2ADCA /* GreenBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */; };
+		0E84C40E1C8FB1B100F2ADCA /* buy_object.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40D1C8FB1B100F2ADCA /* buy_object.png */; };
 		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
 		0EBF80E91C557C280090E585 /* color_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E11C557C280090E585 /* color_fish.png */; };
@@ -377,6 +380,9 @@
 		0E84C3F61C8FA4E100F2ADCA /* bubble shield 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 7.png"; sourceTree = "<group>"; };
 		0E84C3F71C8FA4E100F2ADCA /* bubble shield 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 8.png"; sourceTree = "<group>"; };
 		0E84C3F81C8FA4E100F2ADCA /* bubble shield 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble shield 9.png"; sourceTree = "<group>"; };
+		0E84C4091C8FAAC500F2ADCA /* BlueBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueBorder.png; path = Images/BlueBorder.png; sourceTree = "<group>"; };
+		0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GreenBorder.png; path = Images/GreenBorder.png; sourceTree = "<group>"; };
+		0E84C40D1C8FB1B100F2ADCA /* buy_object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buy_object.png; path = Images/buy_object.png; sourceTree = "<group>"; };
 		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
 		0EBF80E11C557C280090E585 /* color_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish.png; sourceTree = "<group>"; };
@@ -602,11 +608,14 @@
 				0E363C241C8BD5130018C2F2 /* Life.png */,
 				0E363C341C8CD28A0018C2F2 /* search.jpg */,
 				0E1DDDD71C35D71B00E0C28F /* spark.png */,
+				0E84C4091C8FAAC500F2ADCA /* BlueBorder.png */,
 				0E363C321C8CC4320018C2F2 /* UI_Store.swift */,
 				0EED8F2B1C8CEA7700A515A9 /* back_home.png */,
 				0E363C2A1C8CB0040018C2F2 /* title.png */,
 				0E197A481C5575FA00AA5658 /* Bubbles.sks */,
+				0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */,
 				0E363BFB1C8B51B00018C2F2 /* Gray_Explosion.sks */,
+				0E84C40D1C8FB1B100F2ADCA /* buy_object.png */,
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
 				0E1DDDD01C35D54800E0C28F /* black.png */,
 				0E1DDD331C3495D000E0C28F /* garaxee.png */,
@@ -980,6 +989,7 @@
 				0E197A911C5577B500AA5658 /* bubsv20007.png in Resources */,
 				0E84C3FC1C8FA4E100F2ADCA /* bubble shield 12.png in Resources */,
 				0E84C3FB1C8FA4E100F2ADCA /* bubble shield 11.png in Resources */,
+				0E84C40C1C8FABE800F2ADCA /* GreenBorder.png in Resources */,
 				0EBF80E91C557C280090E585 /* color_fish.png in Resources */,
 				0E197A991C5577B500AA5658 /* bubsv20015.png in Resources */,
 				0ED77D221C5D435B00BF5D90 /* Gem v63.png in Resources */,
@@ -995,6 +1005,7 @@
 				0E197A3E1C54467D00AA5658 /* red_glow.png in Resources */,
 				0E84C4021C8FA4E100F2ADCA /* bubble shield 3.png in Resources */,
 				0EBF81361C5599EE0090E585 /* explosion_4.png in Resources */,
+				0E84C40E1C8FB1B100F2ADCA /* buy_object.png in Resources */,
 				0EBF813B1C5599EE0090E585 /* explosion_9.png in Resources */,
 				0EBF812B1C5599EE0090E585 /* explosion_25.png in Resources */,
 				0E363C1C1C8B6E050018C2F2 /* UFO_7.png in Resources */,
@@ -1122,6 +1133,7 @@
 				0EBF81231C5599EE0090E585 /* explosion_18.png in Resources */,
 				0EBF81381C5599EE0090E585 /* explosion_6.png in Resources */,
 				0E197A341C54291B00AA5658 /* spinning_coin_gold_3.png in Resources */,
+				0E84C40A1C8FAAC600F2ADCA /* BlueBorder.png in Resources */,
 				0E1420C71C853249003785D5 /* shield4.png in Resources */,
 				0E363BEB1C87D5FF0018C2F2 /* Rocket for app v11.png in Resources */,
 				0E59250D1C6D497A00023713 /* Background7_5k.png in Resources */,

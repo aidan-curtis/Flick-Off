@@ -690,7 +690,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //add coins
                 if(rocket_power>=0){
-          
                     if(frame_counter%(Int(7/power_speed)+1)==0){
                         addCoin();
                     }
@@ -709,7 +708,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //shield_follow.physicsBody!.dynamic=false;
                 shield_follow.hidden=false;
                 shield_cover.hidden=false;
-            
+                setShieldBar(MAX_HEALTH)
                 shield_bar.hidden=false;
                 shield.removeFromParent()
                 shields.removeAtIndex(shields.indexOf(shield)!)
@@ -772,6 +771,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     let change_shield=shield_bar.size.width-explosion_size
                     setShieldBar(Int(change_shield))
                     if(change_shield<0){
+                        shield_cover.hidden=true;
                         shield_bar.hidden=true;
                         shield_follow.hidden=true;
                     }

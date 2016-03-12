@@ -153,6 +153,7 @@
 		0E84C40C1C8FABE800F2ADCA /* GreenBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */; };
 		0E84C40E1C8FB1B100F2ADCA /* buy_object.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40D1C8FB1B100F2ADCA /* buy_object.png */; };
 		0E84C4101C8FB81200F2ADCA /* Bag-300px.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */; };
+		0E8896931C90EA6F000D9E51 /* coin_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8896921C90EA6F000D9E51 /* coin_cover.png */; };
 		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
 		0EBF80E91C557C280090E585 /* color_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E11C557C280090E585 /* color_fish.png */; };
@@ -391,6 +392,7 @@
 		0E84C40B1C8FABE800F2ADCA /* GreenBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GreenBorder.png; path = Images/GreenBorder.png; sourceTree = "<group>"; };
 		0E84C40D1C8FB1B100F2ADCA /* buy_object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buy_object.png; path = Images/buy_object.png; sourceTree = "<group>"; };
 		0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bag-300px.png"; path = "Images/Bag-300px.png"; sourceTree = "<group>"; };
+		0E8896921C90EA6F000D9E51 /* coin_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin_cover.png; path = Images/coin_cover.png; sourceTree = "<group>"; };
 		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
 		0EBF80E11C557C280090E585 /* color_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish.png; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				0E363C301C8CC13E0018C2F2 /* iCarousel.m */,
 				0E84C3E81C8FA4E100F2ADCA /* Bubble Shield */,
 				0E363BFF1C8B6A5F0018C2F2 /* Laser.sks */,
+				0E8896921C90EA6F000D9E51 /* coin_cover.png */,
 				0E363C241C8BD5130018C2F2 /* Life.png */,
 				0E363C341C8CD28A0018C2F2 /* search.jpg */,
 				0E1DDDD71C35D71B00E0C28F /* spark.png */,
@@ -1072,6 +1075,7 @@
 				0E197A951C5577B500AA5658 /* bubsv20011.png in Resources */,
 				0E59250B1C6D497A00023713 /* Background7_3k.png in Resources */,
 				0E363C111C8B6E050018C2F2 /* Credit in Resources */,
+				0E8896931C90EA6F000D9E51 /* coin_cover.png in Resources */,
 				0E363BEE1C87D5FF0018C2F2 /* Rocket for app v3.png in Resources */,
 				0E1DDD0E1C34677000E0C28F /* LaunchScreen.storyboard in Resources */,
 				0E197A961C5577B500AA5658 /* bubsv20012.png in Resources */,

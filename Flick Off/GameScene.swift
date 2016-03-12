@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var game_status=0
 
-    
+    var current_coins=0;
     var shield_activity:Int = 0
     var UFO_Column:CGPoint=CGPointMake(-1000,0);
     var UFO = SKSpriteNode();
@@ -52,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundNode=[SKSpriteNode]();
     var rockets=[SKSpriteNode]();
     var shields=[SKSpriteNode]();
-    var shield_power=0;
+    
     var rocket_power=0;
     var number_of_rockets=0;
     
@@ -100,83 +100,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let shield_bar=SKSpriteNode();
     var health_cover=SKSpriteNode();
     var shield_cover=SKSpriteNode();
-    
+    var coin_cover=SKSpriteNode();
+    var coin_image = SKSpriteNode();
+    var coin_label = SKLabelNode();
     func presentMenu(){
         menu.size=CGSizeMake(200, 100)
         menu.color=UIColor.redColor()
     }
     
-    func didBeginContact(contact: SKPhysicsContact) {
-        var velocity1 = CGVector(), velocity2=CGVector();
-        var location1 = CGPoint(), location2=CGPoint();
-        var node1=SKSpriteNode(), node2=SKSpriteNode()
-        for node: SKSpriteNode in falling_objects{
-            if(node.physicsBody==contact.bodyA){
-
-                velocity1=(node.physicsBody?.velocity)!
-                location1=node.position;
-                node1=node;
-            }
-            if(node.physicsBody==contact.bodyB){
-
-                velocity2=(node.physicsBody?.velocity)!
-                location2=node.position;
-                node2=node;
-            }
-        }
-        let power = pow(pow(velocity1.dx,2)+pow(velocity1.dy,2),0.5)+pow(pow(velocity2.dx,2)+pow(velocity2.dy,2),0.5) ;
-        if(power>1000){
-            if(node1.name=="purple" || node2.name=="purple"){
-                addGem(node1.position)
-            }
-            node1.removeFromParent()
-            node2.removeFromParent()
-            
-            falling_objects.removeAtIndex(falling_objects.indexOf(node1)!)
-            falling_objects.removeAtIndex(falling_objects.indexOf(node2)!)
-            explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01, explosion_color: "gray")
-        }
-    }
-    func game_starting_values(){
-        setStaticHearts(MAX_HEALTH)
-        setShieldBar(MAX_HEALTH)
-        
-        number_of_rockets=0;
-        rocketIter(number_of_rockets);
-        for coin: SKSpriteNode in coins{
-            coin.removeFromParent()
-        }
-        coins.removeAll()
-        
-        for falling_object: SKSpriteNode in falling_objects{
-            falling_object.removeFromParent()
-        }
-        falling_objects.removeAll()
-        
-        for heart: SKSpriteNode in hearts{
-            heart.removeFromParent()
-        }
-        hearts.removeAll()
-        UFO.removeFromParent()
-        laser.removeFromParent()
-        UFO_Column=CGPointMake(-1000, 0);
-        for rocket: SKSpriteNode in rockets{
-            rocket.removeFromParent()
-        }
-        rockets.removeAll()
-        
-        for shield: SKSpriteNode in shields{
-            shield.removeFromParent()
-        }
-        shields.removeAll()
-        character.position=CGPointMake(3*self.size.width/5, 4*self.size.height/24);
-        fuel.position=CGPointMake(3*self.size.width/5, (4*self.size.height/24)-15);
-        
-    }
+    
     override func didMoveToView(view: SKView) {
+        
+        current_coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
         
         shield_follow.setup(CGSizeMake(120,107))
       
+        
+        
+        
         self.physicsWorld.contactDelegate = self
         for(var i=0; i<34; i+=1){
             explosion.append(SKTexture(imageNamed: "explosion_\(i+1)"))
@@ -184,15 +125,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         health_cover.position = CGPointMake(100, 18);
         health_cover.size = CGSizeMake(200,40);
         health_cover.texture = SKTexture(imageNamed: "Health Bar")
-        addChild(health_cover)
+        
+        addChild(health_cover);
         
         shield_cover.position = CGPointMake(100, 54);
         shield_cover.size = CGSizeMake(200,40);
         shield_cover.texture = SKTexture(imageNamed: "Shield Bar")
         shield_cover.hidden=true;
     
-        addChild(shield_cover)
+        addChild(shield_cover);
         
+        coin_cover.position = CGPointMake(self.size.width-50, 18);
+        coin_cover.size = CGSizeMake(1, 1);
+        coin_cover.texture = SKTexture(imageNamed: "coin_cover");
+       
+        addChild(coin_cover);
+        
+        coin_image.position = CGPointMake(self.size.width+20, 18);
+        coin_image.size = CGSizeMake(1 ,1)
+        var coin_textures=[SKTexture]()
+        for (var i=0; i<8; i=i+1){
+            let name="spinning_coin_gold_"+(i+1 as NSNumber).stringValue
+            coin_textures.append(SKTexture(imageNamed: name))
+        }
+        coin_image.runAction(SKAction.repeatActionForever( SKAction.animateWithTextures(coin_textures, timePerFrame: 0.1)))
+
+        addChild(coin_image);
+        
+        coin_label.position = CGPointMake(self.size.width-30, 12);
+        coin_label.fontName="04b_19"
+        coin_label.fontSize=20
+        coin_label.fontColor=UIColor.yellowColor()
+        coin_label.text="\(current_coins)"
+        coin_label.hidden=true;
+        addChild(coin_label);
         
         //present menu at beginning and after death
         presentMenu()
@@ -240,8 +206,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         character.size=CGSizeMake(50, 38);
         addChild(character);
         
-     
-        
         shield_follow.position = CGPointMake(3*self.size.width/5-3, 4*self.size.height/24+3);
         shield_follow.size = CGSizeMake(120, 107);
         addChild(shield_follow);
@@ -272,7 +236,71 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        emitterNode.zPosition = -12
         //        self.addChild(emitterNode)
     }
-    
+    func didBeginContact(contact: SKPhysicsContact) {
+        var velocity1 = CGVector(), velocity2=CGVector();
+        var location1 = CGPoint(), location2=CGPoint();
+        var node1=SKSpriteNode(), node2=SKSpriteNode()
+        for node: SKSpriteNode in falling_objects{
+            if(node.physicsBody==contact.bodyA){
+                
+                velocity1=(node.physicsBody?.velocity)!
+                location1=node.position;
+                node1=node;
+            }
+            if(node.physicsBody==contact.bodyB){
+                
+                velocity2=(node.physicsBody?.velocity)!
+                location2=node.position;
+                node2=node;
+            }
+        }
+        let power = pow(pow(velocity1.dx,2)+pow(velocity1.dy,2),0.5)+pow(pow(velocity2.dx,2)+pow(velocity2.dy,2),0.5) ;
+        if(power>1000){
+            if(node1.name=="purple" || node2.name=="purple"){
+                addGem(node1.position)
+            }
+            node1.removeFromParent()
+            node2.removeFromParent()
+            
+            falling_objects.removeAtIndex(falling_objects.indexOf(node1)!)
+            falling_objects.removeAtIndex(falling_objects.indexOf(node2)!)
+            explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01, explosion_color: "gray")
+        }
+    }
+    func game_starting_values(){
+        setStaticHearts(MAX_HEALTH)
+        setShieldBar(MAX_HEALTH)
+        
+        number_of_rockets=0;
+        rocketIter(number_of_rockets);
+        for coin: SKSpriteNode in coins{
+            coin.removeFromParent()
+        }
+        coins.removeAll()
+        for falling_object: SKSpriteNode in falling_objects{
+            falling_object.removeFromParent()
+        }
+        falling_objects.removeAll()
+        
+        for heart: SKSpriteNode in hearts{
+            heart.removeFromParent()
+        }
+        hearts.removeAll()
+        UFO.removeFromParent()
+        laser.removeFromParent()
+        UFO_Column=CGPointMake(-1000, 0);
+        for rocket: SKSpriteNode in rockets{
+            rocket.removeFromParent()
+        }
+        rockets.removeAll()
+        for shield: SKSpriteNode in shields{
+            shield.removeFromParent()
+        }
+        shields.removeAll()
+        character.position=CGPointMake(3*self.size.width/5, 4*self.size.height/24);
+        fuel.position=CGPointMake(3*self.size.width/5, (4*self.size.height/24)-15);
+        
+    }
     func addFallingObject(speed : Int){
         let falling_object = SKSpriteNode();
         let num = Int(arc4random_uniform(UInt32(objects[game_mode].count)));
@@ -406,6 +434,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         life_bar.position=CGPointMake(CGFloat((num+10)/2)+3, 18)
     }
     func setShieldBar(num : Int){
+        if(num<=0){
+            shield_bar.hidden=true;
+        }
         shield_bar.size=CGSizeMake(CGFloat((num+10))+4, 14);
         shield_bar.color=UIColor.blueColor()
 
@@ -522,20 +553,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         isTouching=false
     }
-  
+    var last_coin_submit=0;
     override func update(currentTime: CFTimeInterval) {
-       
-        shield_power-=1;
-        rocket_power-=1;
-        if(shield_power==0){
-            shield_follow.removeFromParent()
-            shield_follow=Shield();
-            shield_follow.setup(CGSizeMake(120, 107))
-            shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
-            addChild(shield_follow);
-            shield_follow.hidden=true;
-            shield_bar.hidden=true;
+        last_coin_submit--;
+        if (last_coin_submit<=0){
+            self.coin_cover.runAction(SKAction.scaleXTo(1, duration: 0.1));
+            self.coin_cover.runAction(SKAction.scaleYTo(1, duration: 0.1));
+            self.coin_image.runAction(SKAction.scaleXTo(1, duration: 0.1));
+            self.coin_image.runAction(SKAction.scaleYTo(1, duration: 0.1));
+            coin_label.hidden=true;
+            self.coin_image.runAction(SKAction.moveToX(self.size.width+25, duration: 0.1))
         }
+        if( last_coin_submit == 40){
+             self.coin_label.hidden=false
+        }
+       coin_label.text="\(current_coins)"
+
+        rocket_power-=1;
+//        if(shield_power==0){
+//            shield_follow.removeFromParent()
+//            shield_follow=Shield();
+//            shield_follow.setup(CGSizeMake(120, 107))
+//            shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
+//            addChild(shield_follow);
+//            shield_follow.hidden=true;
+//            shield_bar.hidden=true;
+//        }
         
         if(rocket_power==0){
             shield_follow.removeFromParent()
@@ -543,7 +586,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
             shield_follow.setup(CGSizeMake(120, 107))
             addChild(shield_follow);
-            shield_follow.hidden=true;
+            //shield_follow.hidden=true;
             fuel.particleColor=oldparticlecolor;
             fuel.particleColorBlendFactor=1
             fuel.particleScale=fuel.particleScale*0.5
@@ -642,7 +685,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
                 if(frame_counter%5==0){
-                    if(shield_power<=0){
+                    if(rocket_power<=0){
                         score_number++;
                         
                     }
@@ -703,7 +746,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shield.position=CGPointMake(shield.position.x, shield.position.y-5)
             if(CGRectIntersectsRect(shield.frame,character.frame)){
                 
-                shield_power=500;
+                //shield_power=500;
                 //shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
                 //shield_follow.physicsBody!.dynamic=false;
                 shield_follow.hidden=false;
@@ -813,15 +856,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //move coins
         for coin: SKSpriteNode in coins{
             if(CGRectIntersectsRect(coin.frame,character.frame)){
+                current_coins++;
+                
+                
                 let b = { () -> Void in
+                  
                     coin.removeFromParent()
+                    
                     
                 }
                 let a = { () -> Void in
+                    self.coin_label.hidden=false;
                     coin.runAction(SKAction.moveTo(CGPointMake(self.size.width,0), duration: 0.5), completion: b)
+                    self.coin_cover.runAction(SKAction.scaleXTo(100, duration: 0.1));
+                    self.coin_cover.runAction(SKAction.scaleYTo(40, duration: 0.1));
+                    self.coin_image.runAction(SKAction.scaleXTo(20, duration: 0.1));
+                    self.coin_image.runAction(SKAction.scaleYTo(20, duration: 0.1));
+                    self.last_coin_submit=50;
+                    self.coin_image.runAction(SKAction.moveToX(self.size.width-75, duration: 0.1))
+                    
+                
                     //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
                 }
-                coin.runAction(SKAction.runBlock(a) )
+               
+             
+                coin.runAction(SKAction.runBlock(a))
             }
             if(rocket_power>0){
             coin.position=CGPointMake(coin.position.x, coin.position.y-CGFloat(5*power_speed))
@@ -876,6 +935,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //holding pattern
         }
         else if(game_status==5){
+            
+            NSUserDefaults.standardUserDefaults().setObject(current_coins, forKey: "coins");
+            
             let scene = TitleScene()
             // Configure the view.
             let skView = self.view as SKView?

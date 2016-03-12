@@ -14,7 +14,7 @@ import UIKit
 class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     var current_index = -1;
     var descriptions = NSMutableArray(array: [
-        "1000 Coins for $0.99",
+        "1,000 Coins for $0.99",
         "10,000 Coins for $3.99",
         "25,000 coins for $10.99",
         "500 Gems for $0.99",
@@ -79,6 +79,52 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     @IBOutlet weak var buy: UIButton!
     
     @IBAction func buy_object(sender: AnyObject) {
+        let coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
+        
+        print("buying object...");
+        if(current_index==0){
+            //IAP
+        }
+        else if(current_index==1){
+            //IAP
+        }
+        else if(current_index==2){
+            //IAP
+        }
+        else if(current_index==3){
+            //IAP
+        }
+        else if(current_index==4){
+            //IAP
+        }
+        else if(current_index==5){
+            //IAP
+        }
+        else if(current_index==4){
+            
+        }
+        else if(current_index==5){
+            
+        }
+        else if(current_index==8){
+            if(coins>=1000){
+                NSUserDefaults.standardUserDefaults().setInteger(coins-1000, forKey: "coins")
+                NSUserDefaults.standardUserDefaults().setObject("playerShip1_red", forKey: "ship")
+            }
+        }
+        else if(current_index==9){
+            if(coins>=10000){
+                NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
+                NSUserDefaults.standardUserDefaults().setObject("playerShip1_blue", forKey: "ship")
+            }
+        }
+        else if(current_index==10){
+            if(coins>=25000){
+                NSUserDefaults.standardUserDefaults().setInteger(coins-25000, forKey: "coins")
+                NSUserDefaults.standardUserDefaults().setObject("playerShip1_orange", forKey: "ship")
+            }
+        }
+        
     }
     override func viewDidLoad() {
         home_button.hidden=false;
@@ -102,7 +148,6 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     }
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int
     {
-        
         return images.count
     }
 
@@ -117,8 +162,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
             itemView.contentMode = .ScaleAspectFit
             
        
-            
-    
+        
         
         let imageView = UIImageView(frame: CGRectMake(100-(sizes[index].width/2), 100-(sizes[index].height/2), sizes[index].width, sizes[index].height))
         imageView.image = UIImage(named: "\(images.objectAtIndex(index))")

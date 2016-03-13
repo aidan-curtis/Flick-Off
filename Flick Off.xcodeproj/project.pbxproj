@@ -154,6 +154,7 @@
 		0E84C40E1C8FB1B100F2ADCA /* buy_object.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40D1C8FB1B100F2ADCA /* buy_object.png */; };
 		0E84C4101C8FB81200F2ADCA /* Bag-300px.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */; };
 		0E8896931C90EA6F000D9E51 /* coin_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8896921C90EA6F000D9E51 /* coin_cover.png */; };
+		0E8E64331C95155800E3D92F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8E64321C95155800E3D92F /* StoreKit.framework */; };
 		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
 		0EBF80E91C557C280090E585 /* color_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80E11C557C280090E585 /* color_fish.png */; };
@@ -393,6 +394,7 @@
 		0E84C40D1C8FB1B100F2ADCA /* buy_object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buy_object.png; path = Images/buy_object.png; sourceTree = "<group>"; };
 		0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bag-300px.png"; path = "Images/Bag-300px.png"; sourceTree = "<group>"; };
 		0E8896921C90EA6F000D9E51 /* coin_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin_cover.png; path = Images/coin_cover.png; sourceTree = "<group>"; };
+		0E8E64321C95155800E3D92F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
 		0EBF80E11C557C280090E585 /* color_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_fish.png; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E8E64331C95155800E3D92F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +574,7 @@
 		0E1DDCF31C34677000E0C28F = {
 			isa = PBXGroup;
 			children = (
+				0E8E64321C95155800E3D92F /* StoreKit.framework */,
 				0E1DDCFE1C34677000E0C28F /* Flick Off */,
 				0E1DDD171C34677000E0C28F /* Flick OffTests */,
 				0E1DDD221C34677000E0C28F /* Flick OffUITests */,
@@ -951,6 +955,15 @@
 				TargetAttributes = {
 					0E1DDCFB1C34677000E0C28F = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 56W2NPXKTS;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					0E1DDD131C34677000E0C28F = {
 						CreatedOnToolsVersion = 7.2;
@@ -1362,10 +1375,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Flick Off/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "southpawac.Flick-Off";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.curtisbarlow.Flick-Off";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flick Off/Flick Off-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1376,10 +1392,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Flick Off/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "southpawac.Flick-Off";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.curtisbarlow.Flick-Off";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flick Off/Flick Off-Bridging-Header.h";
 			};
 			name = Release;

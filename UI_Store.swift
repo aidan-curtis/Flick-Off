@@ -8,18 +8,18 @@
 
 import Foundation
 import UIKit
+import StoreKit
 
 
-
-class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
+class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver{
     var current_index = -1;
     var descriptions = NSMutableArray(array: [
-        "1,000 Coins for $0.99",
-        "10,000 Coins for $3.99",
-        "25,000 coins for $10.99",
-        "500 Gems for $0.99",
+        "25,000 Coins for $0.99",
+        "50,000 Coins for $3.99",
+        "100,000 Coins for $10.99",
+        "100 Gems for $0.99",
         "1,000 Gems for $3.99",
-        "1,500 Gems for $10.99",
+        "2,500 Gems for $10.99",
         "Beginning Blast for 50 Gems",
         "Bubble Shield for 500 Coins",
         "Red Ship for 100 Coins",
@@ -27,6 +27,10 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         "Orange Ship for 1000 Coins",
         "One Save for $0.99",
         "Three Saves for $1.99"]);
+    
+
+
+    var current_ProductID:String = ""
     
     var images = NSMutableArray(array: [
         "Bag-300px",
@@ -81,38 +85,30 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
     @IBAction func buy_object(sender: AnyObject) {
         let coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
         
-        print("buying object...");
-        if(current_index==0){
-            //IAP
-        }
-        else if(current_index==1){
-            //IAP
-        }
-        else if(current_index==2){
-            //IAP
-        }
-        else if(current_index==3){
-            //IAP
-        }
-        else if(current_index==4){
-            //IAP
-        }
-        else if(current_index==5){
-            //IAP
-        }
-        else if(current_index==4){
+        
+        if((current_index>=0 && current_index<=5) || current_index==11 || current_index==12){
+            print("buying object...\(descriptions[current_index])");
+            if(SKPaymentQueue.canMakePayments()){
+                current_ProductID="000\(current_index+1)"
+                let productID:NSSet = NSSet(object: current_ProductID)
+                let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
+                productsRequest.delegate = self;
+                productsRequest.start();
+                print("Fething Products");
+            }else{
+                print("can not make purchases");
+            }
+        }else if(current_index==6){
             
-        }
-        else if(current_index==5){
+        }else if(current_index==7){
             
-        }
-        else if(current_index==8){
+        }else if(current_index==8){
             if(coins>=1000){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-1000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_red", forKey: "ship")
+            
             }
-        }
-        else if(current_index==9){
+        }else if(current_index==9){
             if(coins>=10000){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_blue", forKey: "ship")
@@ -124,6 +120,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_orange", forKey: "ship")
             }
         }
+       
         
     }
     override func viewDidLoad() {
@@ -202,7 +199,55 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate{
         
   
     }
-    
- 
+    func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        print("got the request from Apple")
+        let count : Int = response.products.count
+        if (count>0) {
+            let validProducts = response.products
+            let validProduct: SKProduct = response.products[0] as SKProduct
+            if (validProduct.productIdentifier == current_ProductID) {
+                print(validProduct.localizedTitle)
+                print(validProduct.localizedDescription)
+                print(validProduct.price)
+                buyProduct(validProduct);
+            } else {
+                print(validProduct.productIdentifier)
+            }
+        } else {
+            print("nothing")
+        }
+    }
+    func buyProduct(product: SKProduct){
+        print("Sending the Payment Request to Apple");
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addPayment(payment);
+    }
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
+        print("Received Payment Transaction Response from Apple");
+        
+        for transaction:AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+                switch trans.transactionState {
+                case .Purchased:
+                    print("Product Purchased");
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    break;
+                case .Failed:
+                    print("Purchased Failed");
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    break;
+                    // case .Restored:
+                    //[self restoreTransaction:transaction];
+                default:
+                    break;
+                }
+            }
+        }
+    }
+   
+    func paymentQueue(queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
+        
+    }
+  
     
 }

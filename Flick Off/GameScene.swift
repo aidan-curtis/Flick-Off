@@ -923,7 +923,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         }
         else if (game_status==3){
-           
+            
             life.setup(self.size);
             life.position = CGPointMake(self.size.width/2.0, -500);
             addChild(life);
@@ -938,6 +938,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             NSUserDefaults.standardUserDefaults().setObject(current_coins, forKey: "coins");
             
+            
             let scene = TitleScene()
             // Configure the view.
             let skView = self.view as SKView?
@@ -946,6 +947,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             skView!.showsNodeCount = false
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView!.ignoresSiblingOrder = true
+            
             
             /* Set the scale mode to scale to fit the window */
             scene.size=skView!.bounds.size;

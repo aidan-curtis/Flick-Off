@@ -63,9 +63,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     ]
     
   
+    @IBAction func use(sender: AnyObject) {
+    }
     
+    @IBOutlet weak var use_object: UIButton!
     @IBOutlet weak var Carousel: iCarousel!
     
+    @IBOutlet weak var bank: UILabel!
     @IBOutlet weak var cost: UILabel!
     @IBAction func home(sender: AnyObject) {
       
@@ -84,7 +88,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     
     @IBAction func buy_object(sender: AnyObject) {
         let coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
-        
+        let gems = NSUserDefaults.standardUserDefaults().integerForKey("gems");
         
         if((current_index>=0 && current_index<=5) || current_index==11 || current_index==12){
             print("buying object...\(descriptions[current_index])");
@@ -99,14 +103,25 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 print("can not make purchases");
             }
         }else if(current_index==6){
+            if(gems>=50){
+                NSUserDefaults.standardUserDefaults().setInteger(coins-50, forKey: "gems")
+                let number_of_temp_shields = NSUserDefaults.standardUserDefaults().integerForKey("blast")
+                NSUserDefaults.standardUserDefaults().setInteger(number_of_temp_shields+1, forKey: "blast")
+                print("bought shield");
+            }
             
         }else if(current_index==7){
+            if(coins>=500){
+                NSUserDefaults.standardUserDefaults().setInteger(coins-500, forKey: "coins")
+                let number_of_temp_shields = NSUserDefaults.standardUserDefaults().integerForKey("temp_shields")
+                NSUserDefaults.standardUserDefaults().setInteger(number_of_temp_shields+1, forKey: "temp_shields")
+                print("bought shield");
+            }
             
         }else if(current_index==8){
             if(coins>=1000){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-1000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_red", forKey: "ship")
-            
             }
         }else if(current_index==9){
             if(coins>=10000){
@@ -120,10 +135,18 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_orange", forKey: "ship")
             }
         }
-       
+    
+       bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
         
     }
+
     override func viewDidLoad() {
+        bank.textColor=UIColor.yellowColor()
+        bank.font=UIFont(name: "04b_19", size: 20);
+        bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
+        
+    
+        use_object.hidden=true;
         home_button.hidden=false;
         buy.hidden=true;
         Carousel.dataSource=self;
@@ -135,7 +158,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         cost.font = UIFont(name: "04b_19", size: 20)
         cost.text = descriptions.objectAtIndex(0) as! String
         //background_node.position=CGPointMake(self.size.width/2, (self.size.width*6/2));
-    
+        
         var background_image: UIImageView = UIImageView();
         print("bounds width: \(self.view.bounds.size.width)")
         background_image.frame=CGRectMake(0, -self.view.bounds.size.width*2+(self.view.bounds.size.height),self.view.bounds.size.width,self.view.bounds.size.width*6);
@@ -180,16 +203,25 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     }
    
     func carousel(carousel: iCarousel, didSelectItemAtIndex index: Int) {
+        
+        if((current_index == 8 || current_index == 9 || current_index == 10) && (NSUserDefaults.standardUserDefaults().objectForKey("ship") as! String) != images[current_index] as! String){
+            
+             use_object.hidden=false;
+        }
+        else{
+             buy.hidden=false;
+            
+        }
         home_button.hidden=true;
-        buy.hidden=false;
+       
         current_index = index
-        home_button.imageView!.image = UIImage(named: "buy_button");
         carousel.reloadData()
     }
     
     func carouselCurrentItemIndexDidChange(carousel: iCarousel) {
         home_button.hidden=false;
         buy.hidden=true;
+        use_object.hidden=true;
         print(carousel.currentItemIndex);
         cost.text="\(descriptions[carousel.currentItemIndex])"
         if(current_index != -1){
@@ -247,6 +279,9 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
    
     func paymentQueue(queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
         
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
   
     

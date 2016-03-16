@@ -10,15 +10,15 @@ import Foundation
 
 import SpriteKit
 
-class Shield: SKSpriteNode{
-  
+class BubbleShield: SKSpriteNode{
+    
     func setup(size: CGSize){
         zPosition=2000;
         self.size=size;
         position=CGPointMake(100,110)
         var textures=[SKTexture]();
-        for(var a=2; a<=10; a+=1){
-            textures.append(SKTexture(imageNamed: "shield\(a)"))
+        for(var a=1; a<=16; a+=1){
+            textures.append(SKTexture(imageNamed: "bubble shield \(a)"))
         }
         self.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.06)))
     }

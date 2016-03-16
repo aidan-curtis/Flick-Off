@@ -28,14 +28,12 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "One Save for $0.99",
         "Three Saves for $1.99"]);
     
-
-
     var current_ProductID:String = ""
     
     var images = NSMutableArray(array: [
         "Bag-300px",
-        "Bag-300px",
         "schatzkiste-300px",
+        "coin chest",
         "gem_bag_0",
         "gem_bag_1",
         "gem_bag_2",
@@ -45,7 +43,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "playerShip1_blue",
         "playerShip1_orange",
         "heart",
-        "heart"]);
+        "Three Hearts"]);
     var sizes:[CGSize]=[
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
@@ -59,16 +57,21 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
-        CGSizeMake(100, 100)
+        CGSizeMake(125, 100)
     ]
     
   
     @IBAction func use(sender: AnyObject) {
+        
+        NSUserDefaults.standardUserDefaults().setObject(images[current_index] as! String, forKey: "ship");
     }
     
     @IBOutlet weak var use_object: UIButton!
     @IBOutlet weak var Carousel: iCarousel!
     
+    @IBOutlet weak var purple_gem: UILabel!
+
+    @IBOutlet weak var shield_bank: UILabel!
     @IBOutlet weak var bank: UILabel!
     @IBOutlet weak var cost: UILabel!
     @IBAction func home(sender: AnyObject) {
@@ -78,10 +81,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 
                 print("wating");
                 self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        
-        
-           
+        }
     }
     @IBOutlet weak var home_button: UIButton!
     @IBOutlet weak var buy: UIButton!
@@ -122,17 +122,20 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             if(coins>=1000){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-1000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_red", forKey: "ship")
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_red")
             }
         }else if(current_index==9){
             if(coins>=10000){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_blue", forKey: "ship")
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_blue")
             }
         }
         else if(current_index==10){
             if(coins>=25000){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-25000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_orange", forKey: "ship")
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_orange")
             }
         }
     
@@ -141,10 +144,18 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     }
 
     override func viewDidLoad() {
+        NSUserDefaults.standardUserDefaults().setInteger(10000, forKey: "coins");
         bank.textColor=UIColor.yellowColor()
-        bank.font=UIFont(name: "04b_19", size: 20);
+        bank.font=UIFont(name: "04b_19", size: 12);
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
         
+        purple_gem.textColor=UIColor.magentaColor()
+        purple_gem.font=UIFont(name: "04b_19", size: 12);
+        purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("gems"))";
+        
+        shield_bank.textColor=UIColor.cyanColor()
+        shield_bank.font=UIFont(name: "04b_19", size: 12);
+        shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("shields"))";
     
         use_object.hidden=true;
         home_button.hidden=false;
@@ -173,21 +184,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
 
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView
     {
-        
-        
-            var itemView: UIView
-        
-
-            itemView = UIView(frame:CGRect(x:0, y:0, width:200, height:200))
-            itemView.contentMode = .ScaleAspectFit
-            
-       
-        
+        var itemView: UIView
+        itemView = UIView(frame:CGRect(x:0, y:0, width:200, height:200))
+        itemView.contentMode = .ScaleAspectFit
         
         let imageView = UIImageView(frame: CGRectMake(100-(sizes[index].width/2), 100-(sizes[index].height/2), sizes[index].width, sizes[index].height))
         imageView.image = UIImage(named: "\(images.objectAtIndex(index))")
         itemView.addSubview(imageView);
-        
         
         let borderView = UIImageView(frame: CGRectMake(0,0, 200, 200))
         if(current_index==index){
@@ -203,9 +206,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     }
    
     func carousel(carousel: iCarousel, didSelectItemAtIndex index: Int) {
-        
-        if((current_index == 8 || current_index == 9 || current_index == 10) && (NSUserDefaults.standardUserDefaults().objectForKey("ship") as! String) != images[current_index] as! String){
-            
+      
+    
+        print(NSUserDefaults.standardUserDefaults().boolForKey(images[index] as! String))
+        print("\(index)")
+        if((index == 8 || index == 9 || index == 10) && NSUserDefaults.standardUserDefaults().boolForKey(
+            (images[index] as! String)) == true){
+            print("using object now")
              use_object.hidden=false;
         }
         else{
@@ -228,8 +235,6 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         current_index = -1;
          carousel.reloadData()
         }
-        
-  
     }
     func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         print("got the request from Apple")
@@ -276,7 +281,6 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             }
         }
     }
-   
     func paymentQueue(queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
         
     }

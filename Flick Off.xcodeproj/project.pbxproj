@@ -193,6 +193,12 @@
 		0EE368601C96DF1F003639C8 /* gem_bag_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE3685D1C96DF1F003639C8 /* gem_bag_0.png */; };
 		0EE368611C96DF1F003639C8 /* gem_bag_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE3685E1C96DF1F003639C8 /* gem_bag_1.png */; };
 		0EE368621C96DF1F003639C8 /* gem_bag_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE3685F1C96DF1F003639C8 /* gem_bag_2.png */; };
+		0EE368641C98A8D7003639C8 /* Three Hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE368631C98A8D7003639C8 /* Three Hearts.png */; };
+		0EE368661C98A958003639C8 /* coin chest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE368651C98A958003639C8 /* coin chest.png */; };
+		0EE368691C98B578003639C8 /* gem_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE368671C98B577003639C8 /* gem_cover.png */; };
+		0EE3686A1C98B578003639C8 /* shield_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE368681C98B577003639C8 /* shield_cover.png */; };
+		0EE3686C1C98D0DA003639C8 /* use_object.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE3686B1C98D0DA003639C8 /* use_object.png */; };
+		0EE3686E1C99832A003639C8 /* BubbleShield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE3686D1C99832A003639C8 /* BubbleShield.swift */; };
 		0EED8F2C1C8CEA7700A515A9 /* back_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EED8F2B1C8CEA7700A515A9 /* back_home.png */; };
 /* End PBXBuildFile section */
 
@@ -408,6 +414,12 @@
 		0EE3685D1C96DF1F003639C8 /* gem_bag_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gem_bag_0.png; path = Images/gem_bag_0.png; sourceTree = "<group>"; };
 		0EE3685E1C96DF1F003639C8 /* gem_bag_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gem_bag_1.png; path = Images/gem_bag_1.png; sourceTree = "<group>"; };
 		0EE3685F1C96DF1F003639C8 /* gem_bag_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gem_bag_2.png; path = Images/gem_bag_2.png; sourceTree = "<group>"; };
+		0EE368631C98A8D7003639C8 /* Three Hearts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Three Hearts.png"; path = "Images/Three Hearts.png"; sourceTree = "<group>"; };
+		0EE368651C98A958003639C8 /* coin chest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coin chest.png"; path = "Images/coin chest.png"; sourceTree = "<group>"; };
+		0EE368671C98B577003639C8 /* gem_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gem_cover.png; path = Images/gem_cover.png; sourceTree = "<group>"; };
+		0EE368681C98B577003639C8 /* shield_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_cover.png; path = Images/shield_cover.png; sourceTree = "<group>"; };
+		0EE3686B1C98D0DA003639C8 /* use_object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = use_object.png; path = Images/use_object.png; sourceTree = "<group>"; };
+		0EE3686D1C99832A003639C8 /* BubbleShield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleShield.swift; sourceTree = "<group>"; };
 		0EED8F2B1C8CEA7700A515A9 /* back_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_home.png; path = Images/back_home.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -524,6 +536,7 @@
 				0E84C3E81C8FA4E100F2ADCA /* Bubble Shield */,
 				0E363C321C8CC4320018C2F2 /* UI_Store.swift */,
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
+				0EE3686D1C99832A003639C8 /* BubbleShield.swift */,
 				0E1DDCFF1C34677000E0C28F /* AppDelegate.swift */,
 				0E1420D11C853322003785D5 /* Heart.swift */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
@@ -746,6 +759,9 @@
 		0EE3685B1C96DD54003639C8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0EE3686B1C98D0DA003639C8 /* use_object.png */,
+				0EE368671C98B577003639C8 /* gem_cover.png */,
+				0EE368681C98B577003639C8 /* shield_cover.png */,
 				0EED8F2B1C8CEA7700A515A9 /* back_home.png */,
 				0E84C40F1C8FB81100F2ADCA /* Bag-300px.png */,
 				0E1DDDD01C35D54800E0C28F /* black.png */,
@@ -768,6 +784,8 @@
 				0E1DDDD71C35D71B00E0C28F /* spark.png */,
 				0E1DDD351C359A2800E0C28F /* spark.png */,
 				0E1DDDD31C35D6D200E0C28F /* spark.png */,
+				0EE368631C98A8D7003639C8 /* Three Hearts.png */,
+				0EE368651C98A958003639C8 /* coin chest.png */,
 				0E1DDD311C3491D200E0C28F /* Star.png */,
 				0E363C281C8CAC2A0018C2F2 /* store_button.png */,
 				0E363C2A1C8CB0040018C2F2 /* title.png */,
@@ -919,6 +937,7 @@
 				0E363BF91C8B4B010018C2F2 /* Blue_Explosion.sks in Resources */,
 				0E84C3FC1C8FA4E100F2ADCA /* bubble shield 12.png in Resources */,
 				0E84C3FB1C8FA4E100F2ADCA /* bubble shield 11.png in Resources */,
+				0EE3686A1C98B578003639C8 /* shield_cover.png in Resources */,
 				0E84C40C1C8FABE800F2ADCA /* GreenBorder.png in Resources */,
 				0ED77D221C5D435B00BF5D90 /* Gem v63.png in Resources */,
 				0EBF81201C5599EE0090E585 /* explosion_15.png in Resources */,
@@ -993,6 +1012,7 @@
 				0E363BF11C87D5FF0018C2F2 /* Rocket for app v6.png in Resources */,
 				0E1DE0AE1C35E09000E0C28F /* b40000.png in Resources */,
 				0E197A3D1C54467D00AA5658 /* heart.png in Resources */,
+				0EE368691C98B578003639C8 /* gem_cover.png in Resources */,
 				0EBF80F41C558AD40090E585 /* flappy.TTF in Resources */,
 				0EBF81331C5599EE0090E585 /* explosion_32.png in Resources */,
 				0E363BF21C87D5FF0018C2F2 /* Rocket for app v7.png in Resources */,
@@ -1026,12 +1046,14 @@
 				0EE368621C96DF1F003639C8 /* gem_bag_2.png in Resources */,
 				0E1DDD341C3495D000E0C28F /* garaxee.png in Resources */,
 				0E363C1B1C8B6E050018C2F2 /* UFO_6.png in Resources */,
+				0EE3686C1C98D0DA003639C8 /* use_object.png in Resources */,
 				0E363BEA1C87D5FF0018C2F2 /* Rocket for app v10.png in Resources */,
 				0E363BED1C87D5FF0018C2F2 /* Rocket for app v2.png in Resources */,
 				0E363C251C8BD5130018C2F2 /* Life.png in Resources */,
 				0E363BFC1C8B51B00018C2F2 /* Gray_Explosion.sks in Resources */,
 				0E84C4081C8FA4E100F2ADCA /* bubble shield 9.png in Resources */,
 				0E363C171C8B6E050018C2F2 /* UFO_2.png in Resources */,
+				0EE368641C98A8D7003639C8 /* Three Hearts.png in Resources */,
 				0E363C1F1C8B6E050018C2F2 /* ufo_map.png in Resources */,
 				0E363C121C8B6E050018C2F2 /* ufo.gif in Resources */,
 				0EBF81341C5599EE0090E585 /* explosion_33.png in Resources */,
@@ -1039,6 +1061,7 @@
 				0ED77D121C5D435B00BF5D90 /* Gem v47.png in Resources */,
 				0E84C3FA1C8FA4E100F2ADCA /* bubble shield 10.png in Resources */,
 				0E1DE09E1C35E09000E0C28F /* b30000.png in Resources */,
+				0EE368661C98A958003639C8 /* coin chest.png in Resources */,
 				0E84C3F91C8FA4E100F2ADCA /* bubble shield 1.png in Resources */,
 				0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */,
 				0EBF81271C5599EE0090E585 /* explosion_21.png in Resources */,
@@ -1105,6 +1128,7 @@
 			files = (
 				0ED77D4D1C67B4B800BF5D90 /* coin_dispenser.swift in Sources */,
 				0E1DDD041C34677000E0C28F /* GameScene.swift in Sources */,
+				0EE3686E1C99832A003639C8 /* BubbleShield.swift in Sources */,
 				0E1DDD061C34677000E0C28F /* GameViewController.swift in Sources */,
 				0ED481AB1C7F2FF80041F8E7 /* Rocket.swift in Sources */,
 				0E363C331C8CC4320018C2F2 /* UI_Store.swift in Sources */,

@@ -31,9 +31,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var laser=SKEmitterNode();
     //var backup_emitterNode = SKEmitterNode();
-    
-    
-    
     enum GameMode : Int {
         case SPACE=0,CITY,UNDERWATER,MARS
     }
@@ -83,6 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isTouching=false;
     var character = SKSpriteNode();
     var shield_follow = Shield();
+    var bubble_shield = BubbleShield();
     var fuel = SKEmitterNode();
     
     
@@ -100,9 +98,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let shield_bar=SKSpriteNode();
     var health_cover=SKSpriteNode();
     var shield_cover=SKSpriteNode();
+    
+    
     var coin_cover=SKSpriteNode();
     var coin_image = SKSpriteNode();
     var coin_label = SKLabelNode();
+    
+    var gem_cover=SKSpriteNode();
+    var gem_image = SKSpriteNode();
+    var gem_label = SKLabelNode();
+    
+    
+    
+    
     func presentMenu(){
         menu.size=CGSizeMake(200, 100)
         menu.color=UIColor.redColor()
@@ -141,6 +149,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        
         addChild(coin_cover);
         
+
+        
         coin_image.position = CGPointMake(self.size.width+20, 18);
         coin_image.size = CGSizeMake(1 ,1)
         var coin_textures=[SKTexture]()
@@ -152,13 +162,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         addChild(coin_image);
         
-        coin_label.position = CGPointMake(self.size.width-30, 12);
+        coin_label.position = CGPointMake(self.size.width-30, 11);
         coin_label.fontName="04b_19"
         coin_label.fontSize=20
         coin_label.fontColor=UIColor.yellowColor()
         coin_label.text="\(current_coins)"
         coin_label.hidden=true;
         addChild(coin_label);
+        
+        
+        
+        
+        
+        //Coin repeat for gem popup
+        
+        
+        gem_cover.position = CGPointMake(self.size.width-50, 18);
+        gem_cover.size = CGSizeMake(1, 1);
+        gem_cover.texture = SKTexture(imageNamed: "gem_cover");
+        
+        addChild(gem_cover);
+        
+        
+        
+        gem_image.position = CGPointMake(self.size.width+20, 18);
+        gem_image.size = CGSizeMake(1 ,1)
+        var gem_textures=[SKTexture]()
+        for (var i=7; i<=103; i=i+8){
+            let name="Gem v"+(i as NSNumber).stringValue
+            gem_textures.append(SKTexture(imageNamed: name))
+        }
+        gem_image.runAction(SKAction.repeatActionForever( SKAction.animateWithTextures(gem_textures, timePerFrame: 0.1)))
+        
+        addChild(gem_image);
+        
+        gem_label.position = CGPointMake(self.size.width-30, 11);
+        gem_label.fontName="04b_19"
+        gem_label.fontSize=20
+        gem_label.fontColor=UIColor.magentaColor()
+        gem_label.text="\(current_coins)"
+        gem_label.hidden=true;
+        addChild(gem_label);
         
         //present menu at beginning and after death
         presentMenu()
@@ -205,6 +249,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         character.zPosition=0
         character.size=CGSizeMake(50, 38);
         addChild(character);
+        
+        bubble_shield.setup(CGSizeMake(100, 90));
+        bubble_shield.position = CGPointMake(3*self.size.width/5, 4*self.size.height/24);
+        addChild(bubble_shield);
         
         shield_follow.position = CGPointMake(3*self.size.width/5-3, 4*self.size.height/24+3);
         shield_follow.size = CGSizeMake(120, 107);
@@ -256,9 +304,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         let power = pow(pow(velocity1.dx,2)+pow(velocity1.dy,2),0.5)+pow(pow(velocity2.dx,2)+pow(velocity2.dy,2),0.5) ;
         if(power>1000){
-            if(node1.name=="purple" || node2.name=="purple"){
+            if(arc4random_uniform(2)==0){
                 addGem(node1.position)
             }
+            
             node1.removeFromParent()
             node2.removeFromParent()
             
@@ -462,11 +511,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let coin = SKSpriteNode()
         if(arc4random_uniform(20)==0){
             if(coin_alternator==true){
-            let mode=Int(arc4random_uniform(3))
-            next_coin.begin_action(mode, starting_location: Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
-            next_coin.setAlternate(Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
-            next_coin.setWidth(Int(arc4random_uniform(15))+10)
-            next_coin.power(Int(arc4random_uniform(2)))
+                let mode=Int(arc4random_uniform(3))
+                next_coin.begin_action(mode, starting_location: Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
+                next_coin.setAlternate(Int(arc4random_uniform(UInt32(self.size.width)-40)+20))
+                next_coin.setWidth(Int(arc4random_uniform(15))+10)
+                next_coin.power(Int(arc4random_uniform(2)))
                 coin_alternator=false;
             }
             else{
@@ -541,7 +590,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fuel.particleColorBlendFactor = 0.9;
         fuel.particleColor = SKColor.blueColor();
         fuel.particleScale=fuel.particleScale*2
-        
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -554,8 +602,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isTouching=false
     }
     var last_coin_submit=0;
+    var last_gem_submit=0;
     override func update(currentTime: CFTimeInterval) {
+       
+        
+        
+        
+        
+        
+        
         last_coin_submit--;
+        last_gem_submit--;
         if (last_coin_submit<=0){
             self.coin_cover.runAction(SKAction.scaleXTo(1, duration: 0.1));
             self.coin_cover.runAction(SKAction.scaleYTo(1, duration: 0.1));
@@ -567,7 +624,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if( last_coin_submit == 40){
              self.coin_label.hidden=false
         }
-       coin_label.text="\(current_coins)"
+        //same for gem
+        if (last_gem_submit<=0){
+            self.gem_cover.runAction(SKAction.scaleXTo(1, duration: 0.1));
+            self.gem_cover.runAction(SKAction.scaleYTo(1, duration: 0.1));
+            self.gem_image.runAction(SKAction.scaleXTo(1, duration: 0.1));
+            self.gem_image.runAction(SKAction.scaleYTo(1, duration: 0.1));
+            gem_label.hidden=true;
+            self.gem_image.runAction(SKAction.moveToX(self.size.width+25, duration: 0.1))
+        }
+        if( last_gem_submit == 40){
+            self.gem_label.hidden=false
+        }
+        
+        
+        coin_label.text="\(current_coins)"
+        gem_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("gems"))"
 
         rocket_power-=1;
 //        if(shield_power==0){
@@ -579,6 +651,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            shield_follow.hidden=true;
 //            shield_bar.hidden=true;
 //        }
+        
         
         if(rocket_power==0){
             shield_follow.removeFromParent()
@@ -605,6 +678,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             game_status=1
         }
         else if(game_status==1){
+            
+            
             addChild(fuel)
             score.text="0"
             score_number=0;
@@ -727,6 +802,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
                 
             shield_follow.position=CGPointMake(character.position.x-3, character.position.y+3);
+            bubble_shield.position=CGPointMake(character.position.x, character.position.y);
             character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
             fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
     
@@ -780,14 +856,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         for gem: SKSpriteNode in gems{
             gem.position=CGPointMake(gem.position.x, gem.position.y-5)
+            if(CGRectIntersectsRect(gem.frame,character.frame)){
+
+        
+                let number_of_gems = NSUserDefaults.standardUserDefaults().integerForKey("gems") ;
+                NSUserDefaults.standardUserDefaults().setInteger(Int(CGFloat(number_of_gems)+1.0), forKey: "gems")
+                let b = { () -> Void in
+                    gem.removeFromParent()
+                }
+                let a = { () -> Void in
+                    self.gem_label.hidden=false;
+                    self.gem_cover.runAction(SKAction.scaleXTo(100, duration: 0.1));
+                    self.gem_cover.runAction(SKAction.scaleYTo(40, duration: 0.1));
+                    self.gem_image.runAction(SKAction.scaleXTo(20, duration: 0.1));
+                    self.gem_image.runAction(SKAction.scaleYTo(20, duration: 0.1));
+                    self.last_gem_submit=50;
+                    self.gem_image.runAction(SKAction.moveToX(self.size.width-75, duration: 0.1))
+                    gem.removeFromParent()
+                    
+                    //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
+                }
+                
+                if(last_coin_submit<=0){
+                gem.runAction(SKAction.runBlock(a))
+                gems.removeAtIndex(gems.indexOf(gem)!);
+                }
+            }
+            
         }
         //falling objects enumerate
 
         for falling: SKSpriteNode in falling_objects{
+            //bubble shield
+            if(CGRectIntersectsRect(bubble_shield.frame, falling.frame)){
+                bubble_shield.removeFromParent();
+                
+            }
+            
             if(rocket_power==199){
                 falling.physicsBody!.velocity=CGVector(dx: CGFloat((falling.physicsBody?.velocity.dx)!)*CGFloat(power_speed), dy: CGFloat((falling.physicsBody?.velocity.dy)!)*CGFloat(power_speed));
-                
-                
             }
             if(rocket_power==0){
                  falling.physicsBody!.velocity=CGVector(dx: CGFloat((falling.physicsBody?.velocity.dx)!)*CGFloat(1.0/Double(power_speed)), dy: CGFloat((falling.physicsBody?.velocity.dy)!)*CGFloat(1.0/Double(power_speed)));
@@ -860,10 +967,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 
                 let b = { () -> Void in
-                  
                     coin.removeFromParent()
-                    
-                    
                 }
                 let a = { () -> Void in
                     self.coin_label.hidden=false;
@@ -879,8 +983,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
                 }
                
-             
+                if(last_gem_submit>=0){
                 coin.runAction(SKAction.runBlock(a))
+                }
             }
             if(rocket_power>0){
             coin.position=CGPointMake(coin.position.x, coin.position.y-CGFloat(5*power_speed))

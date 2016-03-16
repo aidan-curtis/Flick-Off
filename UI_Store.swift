@@ -167,10 +167,10 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         home_button.titleLabel!.font = UIFont(name: "04b_19", size: 30)
         
         cost.font = UIFont(name: "04b_19", size: 20)
-        cost.text = descriptions.objectAtIndex(0) as! String
+        cost.text = descriptions.objectAtIndex(0) as? String
         //background_node.position=CGPointMake(self.size.width/2, (self.size.width*6/2));
         
-        var background_image: UIImageView = UIImageView();
+        let background_image: UIImageView = UIImageView();
         print("bounds width: \(self.view.bounds.size.width)")
         background_image.frame=CGRectMake(0, -self.view.bounds.size.width*2+(self.view.bounds.size.height),self.view.bounds.size.width,self.view.bounds.size.width*6);
         background_image.image=UIImage(named: "Background7_4k")

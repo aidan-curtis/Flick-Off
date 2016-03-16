@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //DO NOT EDIT BELOW
     
     var game_status=0
-
+    var bubble_shield_active = false;
     var current_coins=0;
     var shield_activity:Int = 0
     var UFO_Column:CGPoint=CGPointMake(-1000,0);
@@ -250,10 +250,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         character.size=CGSizeMake(50, 38);
         addChild(character);
         
-        bubble_shield.setup(CGSizeMake(100, 90));
-        bubble_shield.position = CGPointMake(3*self.size.width/5, 4*self.size.height/24);
-        addChild(bubble_shield);
         
+        if(NSUserDefaults.standardUserDefaults().integerForKey("shield")>0){
+            bubble_shield_active=true;
+            bubble_shield.setup(CGSizeMake(100, 90));
+            bubble_shield.position = CGPointMake(3*self.size.width/5, 4*self.size.height/24);
+            addChild(bubble_shield);
+            NSUserDefaults.standardUserDefaults().setInteger(NSUserDefaults.standardUserDefaults().integerForKey("shield")-1, forKey: "shield");
+        }
         shield_follow.position = CGPointMake(3*self.size.width/5-3, 4*self.size.height/24+3);
         shield_follow.size = CGSizeMake(120, 107);
         addChild(shield_follow);
@@ -262,7 +266,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fuel = SKEmitterNode(fileNamed: "MyParticle.sks")!
         fuel.position=CGPointMake(3*self.size.width/5, (4*self.size.height/24)-15);
         addChild(fuel);
-        fuel.targetNode=self
+        fuel.targetNode=self;
         fuel.removeFromParent()
         oldparticlecolor=fuel.particleColor;
         oldparticlesize=fuel.particleScale;
@@ -800,12 +804,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             character.position.x=0;
             fuel.position.x=0;
         }
-                
-            shield_follow.position=CGPointMake(character.position.x-3, character.position.y+3);
-            bubble_shield.position=CGPointMake(character.position.x, character.position.y);
-            character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
-            fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
-    
+        
+        shield_follow.position=CGPointMake(character.position.x-3, character.position.y+3);
+        bubble_shield.position=CGPointMake(character.position.x, character.position.y);
+        character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
+        fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
         
         //add coins
                 if(rocket_power>=0){
@@ -857,13 +860,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for gem: SKSpriteNode in gems{
             gem.position=CGPointMake(gem.position.x, gem.position.y-5)
             if(CGRectIntersectsRect(gem.frame,character.frame)){
-
-        
                 let number_of_gems = NSUserDefaults.standardUserDefaults().integerForKey("gems") ;
                 NSUserDefaults.standardUserDefaults().setInteger(Int(CGFloat(number_of_gems)+1.0), forKey: "gems")
-                let b = { () -> Void in
-                    gem.removeFromParent()
-                }
+                
                 let a = { () -> Void in
                     self.gem_label.hidden=false;
                     self.gem_cover.runAction(SKAction.scaleXTo(100, duration: 0.1));
@@ -888,10 +887,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         for falling: SKSpriteNode in falling_objects{
             //bubble shield
-            if(CGRectIntersectsRect(bubble_shield.frame, falling.frame)){
-                bubble_shield.removeFromParent();
-                
-            }
             
             if(rocket_power==199){
                 falling.physicsBody!.velocity=CGVector(dx: CGFloat((falling.physicsBody?.velocity.dx)!)*CGFloat(power_speed), dy: CGFloat((falling.physicsBody?.velocity.dy)!)*CGFloat(power_speed));
@@ -904,6 +899,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let shrinkx:CGFloat=character.frame.width/2, shrinkx_m=character.frame.width/2
             let shrinky:CGFloat=character.frame.height/2, shrinky_m=character.frame.height/2
             if(CGRectIntersectsRect(CGRectMake(falling.frame.origin.x+shrinkx_m, falling.frame.origin.y+shrinky_m, 70, 70), CGRectMake(character.frame.origin.x+shrinkx, character.frame.origin.y+shrinky, 1, 1))){
+                
+                if(bubble_shield_active){
+                    
+                    bubble_shield.removeFromParent();
+                    self.explode(CGSizeMake(40, 40), location: falling.position, speed: 0.02, explosion_color: "gray")
+                    falling.removeFromParent()
+                
+                    falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                    bubble_shield_active = false;
+                }
                 
                 
                 var explosion_size = 0.1*pow(pow((falling.physicsBody?.velocity.dx)!, 2)+pow((falling.physicsBody?.velocity.dy)!, 2), 0.5)

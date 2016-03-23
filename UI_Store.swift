@@ -13,8 +13,9 @@ import StoreKit
 
 class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver{
     var current_index = -1;
+    var buying_index = -1;
     var descriptions = NSMutableArray(array: [
-        "25,000 Coins for $0.99",
+        "10,000 Coins for $0.99",
         "50,000 Coins for $3.99",
         "100,000 Coins for $10.99",
         "100 Gems for $0.99",
@@ -89,8 +90,9 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     @IBAction func buy_object(sender: AnyObject) {
         let coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
         let gems = NSUserDefaults.standardUserDefaults().integerForKey("gems");
-        
+        buying_index = current_index;
         if((current_index>=0 && current_index<=5) || current_index==11 || current_index==12){
+            
             print("buying object...\(descriptions[current_index])");
             if(SKPaymentQueue.canMakePayments()){
                 current_ProductID="000\(current_index+1)"
@@ -104,7 +106,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             }
         }else if(current_index==6){
             if(gems>=50){
-                NSUserDefaults.standardUserDefaults().setInteger(coins-50, forKey: "gems")
+                NSUserDefaults.standardUserDefaults().setInteger(gems-50, forKey: "gems")
                 let number_of_temp_shields = NSUserDefaults.standardUserDefaults().integerForKey("blast")
                 NSUserDefaults.standardUserDefaults().setInteger(number_of_temp_shields+1, forKey: "blast")
                 print("bought shield");
@@ -119,8 +121,8 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             }
             
         }else if(current_index==8){
-            if(coins>=1000){
-                NSUserDefaults.standardUserDefaults().setInteger(coins-1000, forKey: "coins")
+            if(coins>=10000){
+                NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_red", forKey: "ship")
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_red")
             }
@@ -132,19 +134,22 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             }
         }
         else if(current_index==10){
-            if(coins>=25000){
-                NSUserDefaults.standardUserDefaults().setInteger(coins-25000, forKey: "coins")
+            if(coins>=10000){
+                NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_orange", forKey: "ship")
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_orange")
             }
         }
     
-       bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
+        bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
+        purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
+        shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
         
     }
 
     override func viewDidLoad() {
         NSUserDefaults.standardUserDefaults().setInteger(10000, forKey: "coins");
+         NSUserDefaults.standardUserDefaults().setInteger(10000, forKey: "gems");
         bank.textColor=UIColor.yellowColor()
         bank.font=UIFont(name: "04b_19", size: 12);
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
@@ -267,6 +272,36 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 switch trans.transactionState {
                 case .Purchased:
                     print("Product Purchased");
+                    
+                    let temp_coins = NSUserDefaults.standardUserDefaults().integerForKey("coins")
+                    let temp_gems = NSUserDefaults.standardUserDefaults().integerForKey("gems");
+                    let temp_saves = NSUserDefaults.standardUserDefaults().integerForKey("saves")
+                    
+                    if(buying_index==0){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_coins+10000, forKey: "coins")
+                    }
+                    else if(buying_index==1){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_coins+25000, forKey: "coins")
+                    }
+                    else if(buying_index==2){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_coins+50000, forKey: "coins")
+                    }
+                    else if(buying_index==3){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_gems+100, forKey: "gems")
+                    }
+                    else if(buying_index==4){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_gems+1000, forKey: "gems")
+                    }
+                    else if(buying_index==5){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_gems+2500, forKey: "gems")
+                    }
+                    else if(buying_index==11){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_saves+1, forKey: "saves")
+                    }
+                    else if(buying_index==12){
+                        NSUserDefaults.standardUserDefaults().setInteger(temp_saves+3, forKey: "saves")
+                    }
+                    
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                     break;
                 case .Failed:

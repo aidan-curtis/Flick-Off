@@ -119,6 +119,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         
+        
+        //initial blast
+      
+        
         current_coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
         
         shield_follow.setup(CGSizeMake(120,107))
@@ -164,7 +168,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         coin_label.position = CGPointMake(self.size.width-30, 11);
         coin_label.fontName="04b_19"
-        coin_label.fontSize=20
+        coin_label.fontSize=15
         coin_label.fontColor=UIColor.yellowColor()
         coin_label.text="\(current_coins)"
         coin_label.hidden=true;
@@ -198,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         gem_label.position = CGPointMake(self.size.width-30, 11);
         gem_label.fontName="04b_19"
-        gem_label.fontSize=20
+        gem_label.fontSize=15
         gem_label.fontColor=UIColor.magentaColor()
         gem_label.text="\(current_coins)"
         gem_label.hidden=true;
@@ -287,6 +291,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        emitterNode = starfieldEmitter(SKColor.darkGrayColor(), starSpeedY: 1, starsPerSecond: 4, starScaleFactor: 0.05)
         //        emitterNode.zPosition = -12
         //        self.addChild(emitterNode)
+        
+        
+        let initial_rocket = NSUserDefaults.standardUserDefaults().integerForKey("blast")
+        if(initial_rocket>0){
+            blastOff(500);
+        }
     }
     func didBeginContact(contact: SKPhysicsContact) {
         var velocity1 = CGVector(), velocity2=CGVector();
@@ -586,8 +596,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    func blastOff(){
-        rocket_power=200;
+    func blastOff(power: Int){
+        shield_follow.hidden=true;
+        rocket_power=power;
         shield_follow.physicsBody=SKPhysicsBody(circleOfRadius: 50);
         shield_follow.physicsBody!.dynamic=false;
         fuel.particleColorSequence = nil;
@@ -662,6 +673,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shield_follow=Shield();
             shield_follow.position = CGPointMake(character.position.x-3, character.position.y+3);
             shield_follow.setup(CGSizeMake(120, 107))
+            shield_follow.hidden = true;
             addChild(shield_follow);
             //shield_follow.hidden=true;
             fuel.particleColor=oldparticlecolor;
@@ -698,9 +710,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             game_status=2
         }
         if(game_status==2){
+            var lambda:CGFloat = 2.0;
+            if(rocket_power<=0){
+                lambda = 1.0
+            }
+            
             if(frame_counter<=150){
                 for(var i=0; i<number_of_backgrounds; i++){
-                    backgroundNode[i].position = CGPointMake(self.size.width/2,backgroundNode[i].position.y-(25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0))))
+                   
+                    backgroundNode[i].position = CGPointMake(self.size.width/2,backgroundNode[i].position.y-((25-24.0*CGFloat(1-CGFloat(CGFloat(frame_counter)/150.0)))))
                 }
                 frame_counter++
             }
@@ -756,7 +774,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 emitterNode.paused=false
                 for(var i=0; i<number_of_backgrounds; i++){
-                    backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-1)
+                    backgroundNode[i].position = CGPointMake(self.size.width/2, backgroundNode[i].position.y-lambda)
                 }
                 if(life_bar.size.width<0){
                     print("game over");
@@ -962,7 +980,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if(number_of_rockets==3){
                     number_of_rockets=0 ;
                     rocketIter(number_of_rockets);
-                    blastOff();
+                    blastOff(200);
                 }
         
         //move coins
@@ -987,10 +1005,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                     //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
                 }
-               
-                if(last_gem_submit>=0){
                 coin.runAction(SKAction.runBlock(a))
-                }
             }
             if(rocket_power>0){
             coin.position=CGPointMake(coin.position.x, coin.position.y-CGFloat(5*power_speed))
@@ -1047,8 +1062,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if(game_status==5){
             
             NSUserDefaults.standardUserDefaults().setObject(current_coins, forKey: "coins");
-            
-            
             let scene = TitleScene()
             // Configure the view.
             let skView = self.view as SKView?
@@ -1057,8 +1070,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             skView!.showsNodeCount = false
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView!.ignoresSiblingOrder = true
-            
-            
             /* Set the scale mode to scale to fit the window */
             scene.size=skView!.bounds.size;
             scene.scaleMode = .AspectFill

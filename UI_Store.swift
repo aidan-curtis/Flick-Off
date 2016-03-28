@@ -142,8 +142,8 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         }
     
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
-        purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
-        shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
+        purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("gems"))";
+        shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("sheilds"))";
         
     }
 

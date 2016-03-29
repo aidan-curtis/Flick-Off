@@ -125,12 +125,18 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_red", forKey: "ship")
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_red")
+                use_object.hidden=false;
+                home_button.hidden=true;
+                buy.hidden=true;
             }
         }else if(current_index==9){
             if(coins>=10000){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_blue", forKey: "ship")
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_blue")
+                use_object.hidden=false;
+                home_button.hidden=true;
+                buy.hidden=true;
             }
         }
         else if(current_index==10){
@@ -138,6 +144,9 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 NSUserDefaults.standardUserDefaults().setInteger(coins-10000, forKey: "coins")
                 NSUserDefaults.standardUserDefaults().setObject("playerShip1_orange", forKey: "ship")
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_orange")
+                use_object.hidden=false;
+                home_button.hidden=true;
+                buy.hidden=true;
             }
         }
     

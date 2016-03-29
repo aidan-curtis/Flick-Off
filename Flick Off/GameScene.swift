@@ -53,8 +53,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rocket_power=0;
     var number_of_rockets=0;
     
-    var falling_objects=[SKSpriteNode]();
-   
+    var falling_objects = [SKSpriteNode]();
+    var falling_objects_speeds = [CGVector]();
     
     var coins=[SKSpriteNode]()
     var coins_position_x=0
@@ -118,7 +118,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMoveToView(view: SKView) {
-        
+        life.setup(self.size);
+        life.position = CGPointMake(self.size.width/2.0, -300);
+        addChild(life);
         
         //initial blast
       
@@ -562,13 +564,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             if(game_status==4){
                 //check for X button
+                print("location y")
+                print(location.y)
+                print("location x")
+                print (location.x);
                 
-                if(location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
-                    if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30){
-                        life.runAction(SKAction.moveToY(-500, duration: 0.8));
+                print(CGFloat(life.position.y)-CGFloat(life.size.height/2.0)+20)
+                print(CGFloat(life.position.y)+CGFloat(life.size.height/2.0)-140)
+                print(CGFloat(life.position.x)-CGFloat(life.size.width/2.0)+20 )
+                print(CGFloat(life.position.x)+CGFloat(life.size.width/2.0)-20)
+                
+                    if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30 && location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
+                        //life.runAction(SKAction.moveToY(-500, duration: 0.8));
                         game_status=5;
                     }
-                }
+                    else if(location.y > CGFloat(life.position.y)-CGFloat(life.size.height/2.0)+20 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0)-140 && location.x > CGFloat(life.position.x)-CGFloat(life.size.width/2.0)+20 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0)-20){
+                        //print("touched")
+                         dispatch_async(dispatch_get_main_queue()) {
+                            self.life.runAction(SKAction.moveToY(-500, duration: 0.3));
+                        }
+                        
+                        for falling_object: SKSpriteNode in falling_objects{
+                            
+                            falling_object.physicsBody!.dynamic=true;
+                            falling_object.physicsBody!.velocity = falling_objects_speeds[falling_objects.indexOf(falling_object)!] as CGVector
+                        }
+                        setStaticHearts(MAX_HEALTH);
+                        game_status=2;
+                    }
             }
              if(Mirror(reflecting: self.nodeAtPoint(location)).subjectType == SKSpriteNode.self && falling_objects.contains((self.nodeAtPoint(location) as! SKSpriteNode))){
                 touched_location = touches.locationInNode(self)
@@ -620,12 +643,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var last_gem_submit=0;
     override func update(currentTime: CFTimeInterval) {
        
-        
-        
-        
-        
-        
-        
         last_coin_submit--;
         last_gem_submit--;
         if (last_coin_submit<=0){
@@ -1049,11 +1066,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else if (game_status==3){
             
-            life.setup(self.size);
-            life.position = CGPointMake(self.size.width/2.0, -500);
-            addChild(life);
-            life.runAction(SKAction.moveToY(self.size.height/2.0, duration: 0.8))
+            
+            life.runAction(SKAction.moveToY(self.size.height/2.0, duration: 0.3))
             game_status=4;
+            falling_objects_speeds.removeAll()
+            for falling_object: SKSpriteNode in falling_objects{
+                falling_objects_speeds.append(falling_object.physicsBody!.velocity)
+                falling_object.physicsBody!.dynamic=false;
+            }
+            
         
         }
         else if (game_status==4){

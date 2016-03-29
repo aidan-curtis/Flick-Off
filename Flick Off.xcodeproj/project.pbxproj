@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E12C0591CA9EB650026879B /* Life2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E12C0581CA9EB650026879B /* Life2.png */; };
 		0E1420C31C853249003785D5 /* shield10.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420B91C853249003785D5 /* shield10.png */; };
 		0E1420C41C853249003785D5 /* shield11.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BA1C853249003785D5 /* shield11.png */; };
 		0E1420C51C853249003785D5 /* shield2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1420BB1C853249003785D5 /* shield2.png */; };
@@ -220,6 +221,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E12C0581CA9EB650026879B /* Life2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life2.png; path = Fonts/Flappy_Font/Life2.png; sourceTree = "<group>"; };
 		0E1420B91C853249003785D5 /* shield10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield10.png; sourceTree = "<group>"; };
 		0E1420BA1C853249003785D5 /* shield11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield11.png; sourceTree = "<group>"; };
 		0E1420BB1C853249003785D5 /* shield2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield2.png; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 				0E363C281C8CAC2A0018C2F2 /* store_button.png */,
 				0E363C2A1C8CB0040018C2F2 /* title.png */,
 				0E6B05491C8FC72000D557E0 /* schatzkiste-300px.png */,
+				0E12C0581CA9EB650026879B /* Life2.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				0E1DDDD81C35D71B00E0C28F /* MyParticle.sks in Resources */,
 				0EE368601C96DF1F003639C8 /* gem_bag_0.png in Resources */,
 				0E84C4011C8FA4E100F2ADCA /* bubble shield 2.png in Resources */,
+				0E12C0591CA9EB650026879B /* Life2.png in Resources */,
 				0E59250E1C6D497A00023713 /* Background7_6k.png in Resources */,
 				0E1DDDD91C35D71B00E0C28F /* spark.png in Resources */,
 				0EE3685A1C96DD48003639C8 /* rocket_image.png in Resources */,

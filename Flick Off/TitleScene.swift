@@ -22,7 +22,7 @@ class TitleScene: SKScene{
     var high_score_label = SKLabelNode();
     var title = SKSpriteNode();
     var score_label=SKLabelNode();
-    
+
     
     
     
@@ -34,7 +34,7 @@ class TitleScene: SKScene{
         background_node.zPosition = -1000;
         print("node width \(self.size.width)")
         
-        
+        print("scene highscore \(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))")
         high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
         play.position=CGPointMake(self.frame.size.width/2, self.frame.size.height/2-120)
         play.size=CGSizeMake(270,70)
@@ -59,8 +59,12 @@ class TitleScene: SKScene{
         score_label.position = CGPointMake(self.frame.size.width/2,(self.frame.size.height/2)+60)
         high_score_label.fontColor=UIColor.greenColor()
         score_label.fontColor=UIColor.greenColor()
-        high_score_label.text = "0"
-        score_label.text = "0"
+        if( (score_label.text == nil) ){
+            score_label.text = "0"
+        }
+        if( (high_score_label.text == nil) ){
+            high_score_label.text = "0"
+        }
         high_score_label.fontName = "04b_19"
         score_label.fontName = "04b_19"
         high_score_label.zPosition = 900

@@ -16,11 +16,11 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     var buying_index = -1;
     var descriptions = NSMutableArray(array: [
         "10,000 Coins for $0.99",
-        "50,000 Coins for $3.99",
-        "100,000 Coins for $10.99",
+        "50,000 Coins for $2.99",
+        "100,000 Coins for $4.99",
         "100 Gems for $0.99",
-        "1,000 Gems for $3.99",
-        "2,500 Gems for $10.99",
+        "500 Gems for $2.99",
+        "1,000 Gems for $4.99",
         "Beginning Blast for 50 Gems",
         "Bubble Shield for 500 Coins",
         "Red Ship for 100 Coins",
@@ -63,7 +63,6 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     
   
     @IBAction func use(sender: AnyObject) {
-        
         NSUserDefaults.standardUserDefaults().setObject(images[current_index] as! String, forKey: "ship");
     }
     
@@ -95,7 +94,15 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             
             print("buying object...\(descriptions[current_index])");
             if(SKPaymentQueue.canMakePayments()){
-                current_ProductID="000\(current_index+1)"
+                if(current_index+1==11){
+                    current_ProductID="7"
+                }
+                else if(current_index+1==12){
+                    current_ProductID="8"
+                }
+                else{
+                    current_ProductID="\(current_index+1)"
+                }
                 let productID:NSSet = NSSet(object: current_ProductID)
                 let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
                 productsRequest.delegate = self;
@@ -107,16 +114,16 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         }else if(current_index==6){
             if(gems>=50){
                 NSUserDefaults.standardUserDefaults().setInteger(gems-50, forKey: "gems")
-                let number_of_temp_shields = NSUserDefaults.standardUserDefaults().integerForKey("blast")
-                NSUserDefaults.standardUserDefaults().setInteger(number_of_temp_shields+1, forKey: "blast")
-                print("bought shield");
+                let number_of_temp_blast = NSUserDefaults.standardUserDefaults().integerForKey("blast")
+                NSUserDefaults.standardUserDefaults().setInteger(number_of_temp_blast+1, forKey: "blast")
+                print("bought blast");
             }
             
         }else if(current_index==7){
             if(coins>=500){
                 NSUserDefaults.standardUserDefaults().setInteger(coins-500, forKey: "coins")
-                let number_of_temp_shields = NSUserDefaults.standardUserDefaults().integerForKey("temp_shields")
-                NSUserDefaults.standardUserDefaults().setInteger(number_of_temp_shields+1, forKey: "temp_shields")
+                let number_of_temp_shields = NSUserDefaults.standardUserDefaults().integerForKey("shield")
+                NSUserDefaults.standardUserDefaults().setInteger(number_of_temp_shields+1, forKey: "shield")
                 print("bought shield");
             }
             
@@ -152,7 +159,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
         purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("gems"))";
-        shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("sheilds"))";
+        shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("sheild"))";
         
     }
 

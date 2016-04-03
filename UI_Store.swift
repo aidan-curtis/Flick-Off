@@ -32,13 +32,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     var current_ProductID:String = ""
     
     var images = NSMutableArray(array: [
-        "Bag-300px",
+        "Pile of coins",
         "schatzkiste-300px",
         "coin chest",
         "gem_bag_0",
         "gem_bag_1",
         "gem_bag_2",
-        "rocket_image",
+        "3 blast rocket",
         "bubble shield 13",
         "playerShip1_red",
         "playerShip1_blue",
@@ -46,13 +46,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "heart",
         "Three Hearts"]);
     var sizes:[CGSize]=[
+        CGSizeMake(200, 200),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
-        CGSizeMake(100, 100),
-        CGSizeMake(100, 100),
+        CGSizeMake(150, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),

@@ -33,7 +33,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     
     var images = NSMutableArray(array: [
         "Pile of coins",
-        "schatzkiste-300px",
+        "Bag-300px",
         "coin chest",
         "gem_bag_0",
         "gem_bag_1",

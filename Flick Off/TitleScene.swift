@@ -151,7 +151,7 @@ class TitleScene: SKScene{
         
 
         if(NSUserDefaults.standardUserDefaults().boolForKey("launch")==true){
-            print("zooming");
+            //print("zooming");
                   NSUserDefaults.standardUserDefaults().setBool(false, forKey: "launch");
             fuel.position=CGPointMake(self.frame.size.width/2, -100);
             fuel.runAction(SKAction.moveToY(self.size.height/2-30, duration: 2));

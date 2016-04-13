@@ -219,6 +219,7 @@
 		0EF3E1461CBE9B67005C73A3 /* back_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1441CBE9B67005C73A3 /* back_button_white.png */; };
 		0EF3E1471CBE9B67005C73A3 /* buy_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */; };
 		0EF3E1491CBE9CF6005C73A3 /* WhiteBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */; };
+		0EF3E14B1CBEA0B8005C73A3 /* aplotita.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E14A1CBEA0B8005C73A3 /* aplotita.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -460,6 +461,7 @@
 		0EF3E1441CBE9B67005C73A3 /* back_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_button_white.png; path = Images/back_button_white.png; sourceTree = "<group>"; };
 		0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buy_button_white.png; path = Images/buy_button_white.png; sourceTree = "<group>"; };
 		0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBorder.png; path = Images/WhiteBorder.png; sourceTree = "<group>"; };
+		0EF3E14A1CBEA0B8005C73A3 /* aplotita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aplotita.png; path = Images/aplotita.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,6 +586,7 @@
 				0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */,
 				0EE3686D1C99832A003639C8 /* BubbleShield.swift */,
 				0E0DBB271CBDD1EB006CB6AC /* title_image.png */,
+				0EF3E14A1CBEA0B8005C73A3 /* aplotita.png */,
 				0E1DDCFF1C34677000E0C28F /* AppDelegate.swift */,
 				0E1420D11C853322003785D5 /* Heart.swift */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
@@ -1134,6 +1137,7 @@
 				0E84C3FA1C8FA4E100F2ADCA /* bubble shield 10.png in Resources */,
 				0E1DE09E1C35E09000E0C28F /* b30000.png in Resources */,
 				0EE368661C98A958003639C8 /* coin chest.png in Resources */,
+				0EF3E14B1CBEA0B8005C73A3 /* aplotita.png in Resources */,
 				0E84C3F91C8FA4E100F2ADCA /* bubble shield 1.png in Resources */,
 				0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */,
 				0EBF81271C5599EE0090E585 /* explosion_21.png in Resources */,

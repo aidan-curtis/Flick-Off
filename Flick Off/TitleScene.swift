@@ -37,9 +37,21 @@ class TitleScene: SKScene{
     var currentRoll = Double();
     var launch = false;
 
+    var black_background_node = SKSpriteNode();
     override func didMoveToView(view: SKView){
+        black_background_node.alpha=0;
+        black_background_node.size = CGSizeMake(self.size.width, self.size.height);
+        black_background_node.position = CGPointMake(self.size.width/2, self.size.height/2);
+        black_background_node.color = UIColor.blackColor();
+        black_background_node.zPosition = 20000;
+        self.addChild(black_background_node);
         
-  
+        if(NSUserDefaults.standardUserDefaults().boolForKey("black_screen")==true){
+            black_background_node.alpha=1.0;
+        }
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "black_screen");
+       
+        
         self.physicsWorld.gravity=CGVectorMake(0, 0);
         self.manager.deviceMotionUpdateInterval=1.0/60.0;
         self.manager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical);
@@ -65,15 +77,12 @@ class TitleScene: SKScene{
         addChild(character);
         
         self.backgroundColor=UIColor.blackColor();
-        if(self.size.width>self.size.height*0.5873){
-            background_node.size=CGSizeMake(self.size.height, self.size.height*(1/0.5873) );
-        }
-        else{
-            background_node.size=CGSizeMake(self.size.height*0.5873, self.size.height );
-        }
+        
+        background_node.size=CGSizeMake(self.size.width, self.size.width*4.0 );
+        background_node.anchorPoint=CGPoint(x: 0.0,y: 0.0);
        
-        background_node.texture=SKTexture(imageNamed: "background_title");
-        background_node.position=CGPointMake(self.size.width/2, self.size.height/2);
+        background_node.texture=SKTexture(imageNamed: "title_image_long");
+        background_node.position=CGPointMake(0.0, 0.0);
         background_node.zPosition = -1000;
         //print("node width \(self.size.width)")
         
@@ -149,7 +158,8 @@ class TitleScene: SKScene{
         addChild(store)
         addChild(play)
         
-
+        
+        
         if(NSUserDefaults.standardUserDefaults().boolForKey("launch")==true){
             //print("zooming");
                   NSUserDefaults.standardUserDefaults().setBool(false, forKey: "launch");
@@ -243,7 +253,7 @@ class TitleScene: SKScene{
         if((deviceMotion) != nil){
             currentRoll=deviceMotion!.attitude.roll as Double;
         }
-        //print (currentRoll);
+        
         character.position = CGPointMake(self.frame.size.width/2.0+35.0*CGFloat(currentRoll), character.position.y);
         fuel.position = CGPointMake(self.frame.size.width/2.0+35.0*CGFloat(currentRoll) ,fuel.position.y)
         
@@ -256,18 +266,151 @@ class TitleScene: SKScene{
             let location = touches.locationInNode(self)
             
             if(self.nodeAtPoint(location) == play){
-                let gameScene = GameScene(fileNamed: "GameScene")!;
-                let transition = SKTransition.fadeWithDuration(1)
-                let skView = self.view as SKView!;
-                skView.ignoresSiblingOrder = true;
-                gameScene.size=skView.bounds.size;
-                gameScene.scaleMode = .AspectFill
-                skView.presentScene(gameScene, transition: transition)
+                
+                let a = { () -> Void in
+                    
+                    self.title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let b = { () -> Void in
+                    
+                    self.play.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.play.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                
+                let c = { () -> Void in
+                    
+                    self.store.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.store.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let d = { () -> Void in
+                    
+                    self.high_score_label.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.high_score_label.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let e = { () -> Void in
+                    
+                    self.high_score_label_title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.high_score_label_title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3))
+                    
+                }
+                let f = { () -> Void in
+                    
+                    self.score_label.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.score_label.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let g = { () -> Void in
+                    
+                    self.score_label_title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.score_label_title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let h = { () -> Void in
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "black_screen");
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        
+                        let gameScene = GameScene(fileNamed: "GameScene")!;
+                        let transition = SKTransition.fadeWithDuration(1)
+                        let skView = self.view as SKView!;
+                        skView.ignoresSiblingOrder = true;
+                        gameScene.size=skView.bounds.size;
+                        gameScene.scaleMode = .AspectFill
+                        skView.presentScene(gameScene, transition: transition)
+                    })
+                    
+                }
+                
+                store.runAction(SKAction.runBlock(c));
+                high_score_label.runAction(SKAction.runBlock(d));
+                high_score_label_title.runAction(SKAction.runBlock(e));
+                score_label.runAction(SKAction.runBlock(f));
+                score_label_title.runAction(SKAction.runBlock(g));
+                self.play.runAction(SKAction.runBlock(a));
+                self.title.runAction(SKAction.runBlock(b));
+                
+                // SKAction.moveTo(CGPointMake(background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0)
+                let title_blast = { () -> Void in
+                    
+                    self.background_node.runAction( SKAction.moveTo(CGPointMake(self.background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0));
+                    self.black_background_node.runAction(SKAction.fadeAlphaTo(1, duration: 1));
+                    
+                }
+                self.background_node.runAction(SKAction.sequence([SKAction.runBlock(title_blast),SKAction.waitForDuration(1.0), SKAction.runBlock(h)]))
+                
+
             }
             if(self.nodeAtPoint(location) == store){
-                let presenting = self.view?.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("UI_Store");
-                presenting?.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-                self.view?.window?.rootViewController?.showViewController(presenting!, sender: nil)
+               
+                
+                let a = { () -> Void in
+
+                    self.title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let b = { () -> Void in
+                 
+                    self.play.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.play.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                
+                let c = { () -> Void in
+ 
+                    self.store.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.store.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let d = { () -> Void in
+    
+                    self.high_score_label.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.high_score_label.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let e = { () -> Void in
+                   
+                    self.high_score_label_title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.high_score_label_title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3))
+                    
+                }
+                let f = { () -> Void in
+           
+                    self.score_label.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.score_label.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let g = { () -> Void in
+                    
+                    self.score_label_title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
+                    self.score_label_title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
+                }
+                let h = { () -> Void in
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "black_screen");
+                    dispatch_async(dispatch_get_main_queue(), {
+                       
+                    let presenting=self.view?.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("UI_Store");
+                        presenting?.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                        UIApplication.sharedApplication().keyWindow!.rootViewController!.showViewController(presenting!, sender: nil)
+                    })
+                    
+                }
+        
+                store.runAction(SKAction.runBlock(c));
+                high_score_label.runAction(SKAction.runBlock(d));
+                high_score_label_title.runAction(SKAction.runBlock(e));
+                score_label.runAction(SKAction.runBlock(f));
+                score_label_title.runAction(SKAction.runBlock(g));
+                self.play.runAction(SKAction.runBlock(a));
+                self.title.runAction(SKAction.runBlock(b));
+                
+               // SKAction.moveTo(CGPointMake(background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0)
+                let title_blast = { () -> Void in
+                   
+                    self.background_node.runAction( SKAction.moveTo(CGPointMake(self.background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0));
+                    self.black_background_node.runAction(SKAction.fadeAlphaTo(1, duration: 1));
+                    
+                }
+                self.background_node.runAction(SKAction.sequence([SKAction.runBlock(title_blast),SKAction.waitForDuration(1.0), SKAction.runBlock(h)]))
+                
+                    
+                
+                
+                
             }
         }
         

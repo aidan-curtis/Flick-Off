@@ -220,6 +220,7 @@
 		0EF3E1471CBE9B67005C73A3 /* buy_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */; };
 		0EF3E1491CBE9CF6005C73A3 /* WhiteBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */; };
 		0EF3E14B1CBEA0B8005C73A3 /* aplotita.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E14A1CBEA0B8005C73A3 /* aplotita.png */; };
+		0EF3E14D1CBEA826005C73A3 /* title_image_long.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E14C1CBEA826005C73A3 /* title_image_long.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,6 +463,7 @@
 		0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buy_button_white.png; path = Images/buy_button_white.png; sourceTree = "<group>"; };
 		0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBorder.png; path = Images/WhiteBorder.png; sourceTree = "<group>"; };
 		0EF3E14A1CBEA0B8005C73A3 /* aplotita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aplotita.png; path = Images/aplotita.png; sourceTree = "<group>"; };
+		0EF3E14C1CBEA826005C73A3 /* title_image_long.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title_image_long.png; path = Images/title_image_long.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -591,6 +593,7 @@
 				0E1420D11C853322003785D5 /* Heart.swift */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
 				0E363C261C8C94390018C2F2 /* TitleScene.swift */,
+				0EF3E14C1CBEA826005C73A3 /* title_image_long.png */,
 				0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */,
 				0ED77D4C1C67B4B800BF5D90 /* coin_dispenser.swift */,
 				0E363C221C8BD4E60018C2F2 /* Life.swift */,
@@ -1075,6 +1078,7 @@
 				0E363C151C8B6E050018C2F2 /* UFO_11.png in Resources */,
 				0EE368611C96DF1F003639C8 /* gem_bag_1.png in Resources */,
 				0E1DDD321C3491D200E0C28F /* Star.png in Resources */,
+				0EF3E14D1CBEA826005C73A3 /* title_image_long.png in Resources */,
 				0E363BF41C87D5FF0018C2F2 /* Rocket for app v9.png in Resources */,
 				0E1420C81C853249003785D5 /* shield5.png in Resources */,
 				0EBF81281C5599EE0090E585 /* explosion_22.png in Resources */,

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0DBB261CBDD040006CB6AC /* background_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DBB251CBDD040006CB6AC /* background_title.png */; };
+		0E0DBB281CBDD1EB006CB6AC /* title_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DBB271CBDD1EB006CB6AC /* title_image.png */; };
+		0E0DBB2A1CBDD410006CB6AC /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DBB291CBDD410006CB6AC /* play_button.png */; };
 		0E12C0591CA9EB650026879B /* Life2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E12C0581CA9EB650026879B /* Life2.png */; };
 		0E12C05B1CAA23CD0026879B /* Life3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E12C05A1CAA23CD0026879B /* Life3.png */; };
 		0E12C0641CAD7B170026879B /* Coins_tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E12C05F1CAD7B170026879B /* Coins_tutorial.png */; };
@@ -99,7 +102,6 @@
 		0E363C251C8BD5130018C2F2 /* Life.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C241C8BD5130018C2F2 /* Life.png */; };
 		0E363C271C8C94390018C2F2 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E363C261C8C94390018C2F2 /* TitleScene.swift */; };
 		0E363C291C8CAC2A0018C2F2 /* store_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C281C8CAC2A0018C2F2 /* store_button.png */; };
-		0E363C2B1C8CB0040018C2F2 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C2A1C8CB0040018C2F2 /* title.png */; };
 		0E363C311C8CC13E0018C2F2 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E363C301C8CC13E0018C2F2 /* iCarousel.m */; };
 		0E363C331C8CC4320018C2F2 /* UI_Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E363C321C8CC4320018C2F2 /* UI_Store.swift */; };
 		0E363C351C8CD28A0018C2F2 /* search.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C341C8CD28A0018C2F2 /* search.jpg */; };
@@ -145,7 +147,6 @@
 		0EA6C1F41CADB5EC00ED16FF /* Start_Flicking.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EA6C1F31CADB5EC00ED16FF /* Start_Flicking.png */; };
 		0EA6C1F71CADBBAF00ED16FF /* Life2v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EA6C1F51CADBBAF00ED16FF /* Life2v2.png */; };
 		0EA6C1F81CADBBAF00ED16FF /* Life3v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EA6C1F61CADBBAF00ED16FF /* Life3v2.png */; };
-		0EB3868E1C696C7F008CA036 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868D1C696C7F008CA036 /* play_button.png */; };
 		0EB386901C69785C008CA036 /* Main_Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3868F1C69785C008CA036 /* Main_Panel.png */; };
 		0EBF80F31C558AD40090E585 /* about.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80F11C558AD40090E585 /* about.gif */; };
 		0EBF80F41C558AD40090E585 /* flappy.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF80F21C558AD40090E585 /* flappy.TTF */; };
@@ -213,6 +214,11 @@
 		0EE3686C1C98D0DA003639C8 /* use_object.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE3686B1C98D0DA003639C8 /* use_object.png */; };
 		0EE3686E1C99832A003639C8 /* BubbleShield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE3686D1C99832A003639C8 /* BubbleShield.swift */; };
 		0EED8F2C1C8CEA7700A515A9 /* back_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EED8F2B1C8CEA7700A515A9 /* back_home.png */; };
+		0EF3E1401CBDDE4C005C73A3 /* store_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E13F1CBDDE4C005C73A3 /* store_icon.png */; };
+		0EF3E1431CBE98E5005C73A3 /* play_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1421CBE98E5005C73A3 /* play_button_white.png */; };
+		0EF3E1461CBE9B67005C73A3 /* back_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1441CBE9B67005C73A3 /* back_button_white.png */; };
+		0EF3E1471CBE9B67005C73A3 /* buy_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */; };
+		0EF3E1491CBE9CF6005C73A3 /* WhiteBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +239,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E0DBB251CBDD040006CB6AC /* background_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_title.png; path = Images/background_title.png; sourceTree = "<group>"; };
+		0E0DBB271CBDD1EB006CB6AC /* title_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title_image.png; path = Images/title_image.png; sourceTree = "<group>"; };
+		0E0DBB291CBDD410006CB6AC /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0E12C0581CA9EB650026879B /* Life2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life2.png; path = Fonts/Flappy_Font/Life2.png; sourceTree = "<group>"; };
 		0E12C05A1CAA23CD0026879B /* Life3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life3.png; path = Images/Life3.png; sourceTree = "<group>"; };
 		0E12C05F1CAD7B170026879B /* Coins_tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coins_tutorial.png; path = "Images/tutorial images/Coins_tutorial.png"; sourceTree = "<group>"; };
@@ -331,7 +340,6 @@
 		0E363C241C8BD5130018C2F2 /* Life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life.png; path = Images/Life.png; sourceTree = "<group>"; };
 		0E363C261C8C94390018C2F2 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		0E363C281C8CAC2A0018C2F2 /* store_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = store_button.png; path = Images/store_button.png; sourceTree = "<group>"; };
-		0E363C2A1C8CB0040018C2F2 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = Images/title.png; sourceTree = "<group>"; };
 		0E363C2E1C8CC13D0018C2F2 /* Flick Off-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flick Off-Bridging-Header.h"; sourceTree = "<group>"; };
 		0E363C2F1C8CC13E0018C2F2 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		0E363C301C8CC13E0018C2F2 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -379,7 +387,6 @@
 		0EA6C1F31CADB5EC00ED16FF /* Start_Flicking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Start_Flicking.png; path = "Images/tutorial images/Start_Flicking.png"; sourceTree = "<group>"; };
 		0EA6C1F51CADBBAF00ED16FF /* Life2v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life2v2.png; path = Images/Life2v2.png; sourceTree = "<group>"; };
 		0EA6C1F61CADBBAF00ED16FF /* Life3v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Life3v2.png; path = Images/Life3v2.png; sourceTree = "<group>"; };
-		0EB3868D1C696C7F008CA036 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
 		0EB3868F1C69785C008CA036 /* Main_Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Main_Panel.png; path = Images/Main_Panel.png; sourceTree = "<group>"; };
 		0EBF80F11C558AD40090E585 /* about.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = about.gif; sourceTree = "<group>"; };
 		0EBF80F21C558AD40090E585 /* flappy.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = flappy.TTF; sourceTree = "<group>"; };
@@ -447,6 +454,12 @@
 		0EE3686B1C98D0DA003639C8 /* use_object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = use_object.png; path = Images/use_object.png; sourceTree = "<group>"; };
 		0EE3686D1C99832A003639C8 /* BubbleShield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleShield.swift; sourceTree = "<group>"; };
 		0EED8F2B1C8CEA7700A515A9 /* back_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_home.png; path = Images/back_home.png; sourceTree = "<group>"; };
+		0EF3E13F1CBDDE4C005C73A3 /* store_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = store_icon.png; path = Images/store_icon.png; sourceTree = "<group>"; };
+		0EF3E1411CBDDF7D005C73A3 /* Corbert-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Corbert-Regular.otf"; path = "Fonts/Corbert-Regular.otf"; sourceTree = "<group>"; };
+		0EF3E1421CBE98E5005C73A3 /* play_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button_white.png; path = Images/play_button_white.png; sourceTree = "<group>"; };
+		0EF3E1441CBE9B67005C73A3 /* back_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_button_white.png; path = Images/back_button_white.png; sourceTree = "<group>"; };
+		0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buy_button_white.png; path = Images/buy_button_white.png; sourceTree = "<group>"; };
+		0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBorder.png; path = Images/WhiteBorder.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,12 +570,20 @@
 				0E197A271C54291B00AA5658 /* Coin */,
 				0E1DDDDA1C35E09000E0C28F /* asteroids (1) */,
 				0E363C2F1C8CC13E0018C2F2 /* iCarousel.h */,
+				0E0DBB291CBDD410006CB6AC /* play_button.png */,
 				0E84C3E11C8FA17400F2ADCA /* Ships */,
 				0E363C301C8CC13E0018C2F2 /* iCarousel.m */,
 				0E84C3E81C8FA4E100F2ADCA /* Bubble Shield */,
 				0E363C321C8CC4320018C2F2 /* UI_Store.swift */,
+				0EF3E1421CBE98E5005C73A3 /* play_button_white.png */,
+				0EF3E1411CBDDF7D005C73A3 /* Corbert-Regular.otf */,
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
+				0E0DBB251CBDD040006CB6AC /* background_title.png */,
+				0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */,
+				0EF3E1441CBE9B67005C73A3 /* back_button_white.png */,
+				0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */,
 				0EE3686D1C99832A003639C8 /* BubbleShield.swift */,
+				0E0DBB271CBDD1EB006CB6AC /* title_image.png */,
 				0E1DDCFF1C34677000E0C28F /* AppDelegate.swift */,
 				0E1420D11C853322003785D5 /* Heart.swift */,
 				0E1DDD031C34677000E0C28F /* GameScene.swift */,
@@ -805,7 +826,6 @@
 				0E363C241C8BD5130018C2F2 /* Life.png */,
 				0E12C05A1CAA23CD0026879B /* Life3.png */,
 				0EB3868F1C69785C008CA036 /* Main_Panel.png */,
-				0EB3868D1C696C7F008CA036 /* play_button.png */,
 				0EE368591C96DD48003639C8 /* rocket_image.png */,
 				0EE368571C96DD2A003639C8 /* schatzkiste-300px.png */,
 				0E363C341C8CD28A0018C2F2 /* search.jpg */,
@@ -817,7 +837,6 @@
 				0EE368651C98A958003639C8 /* coin chest.png */,
 				0E1DDD311C3491D200E0C28F /* Star.png */,
 				0E363C281C8CAC2A0018C2F2 /* store_button.png */,
-				0E363C2A1C8CB0040018C2F2 /* title.png */,
 				0E6B05491C8FC72000D557E0 /* schatzkiste-300px.png */,
 				0E12C0581CA9EB650026879B /* Life2.png */,
 				0E12C05F1CAD7B170026879B /* Coins_tutorial.png */,
@@ -826,6 +845,7 @@
 				0EA6C1F31CADB5EC00ED16FF /* Start_Flicking.png */,
 				0E12C0611CAD7B170026879B /* Tilt_to_move.png */,
 				0E12C0621CAD7B170026879B /* Tutorial_Cover_smash.png */,
+				0EF3E13F1CBDDE4C005C73A3 /* store_icon.png */,
 				0E12C0631CAD7B170026879B /* UFO_tutorial.png */,
 				0EA6C1F51CADBBAF00ED16FF /* Life2v2.png */,
 				0EA6C1F61CADBBAF00ED16FF /* Life3v2.png */,
@@ -983,6 +1003,7 @@
 				0EBF81201C5599EE0090E585 /* explosion_15.png in Resources */,
 				0E363C001C8B6A5F0018C2F2 /* Laser.sks in Resources */,
 				0E1DE08E1C35E09000E0C28F /* b10000.png in Resources */,
+				0EF3E1401CBDDE4C005C73A3 /* store_icon.png in Resources */,
 				0E84C3FF1C8FA4E100F2ADCA /* bubble shield 15.png in Resources */,
 				0E1DE06E1C35E09000E0C28F /* a30000.png in Resources */,
 				0E1DDDD51C35D6D200E0C28F /* spark.png in Resources */,
@@ -1011,12 +1032,13 @@
 				0EBF813D1C5599EE0090E585 /* spritesheet9-150x150.png in Resources */,
 				0EBF81211C5599EE0090E585 /* explosion_16.png in Resources */,
 				0E1420C51C853249003785D5 /* shield2.png in Resources */,
-				0E363C2B1C8CB0040018C2F2 /* title.png in Resources */,
 				0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */,
 				0E84C3E51C8FA18600F2ADCA /* playerShip1_blue.png in Resources */,
 				0E363BEC1C87D5FF0018C2F2 /* Rocket for app v12.png in Resources */,
 				0EBF812C1C5599EE0090E585 /* explosion_26.png in Resources */,
 				0E84C4061C8FA4E100F2ADCA /* bubble shield 7.png in Resources */,
+				0EF3E1471CBE9B67005C73A3 /* buy_button_white.png in Resources */,
+				0E0DBB281CBDD1EB006CB6AC /* title_image.png in Resources */,
 				0EBF81301C5599EE0090E585 /* explosion_3.png in Resources */,
 				0ED77CF21C5D435B00BF5D90 /* Gem v15.png in Resources */,
 				0E6B05481C8FC5FB00D557E0 /* Health Bar.png in Resources */,
@@ -1027,6 +1049,7 @@
 				0EBF811D1C5599EE0090E585 /* explosion_12.png in Resources */,
 				0E1DDD021C34677000E0C28F /* GameScene.sks in Resources */,
 				0EBF81311C5599EE0090E585 /* explosion_30.png in Resources */,
+				0E0DBB2A1CBDD410006CB6AC /* play_button.png in Resources */,
 				0ED77D3C1C5D435B00BF5D90 /* Gem v87.png in Resources */,
 				0EBF813C1C5599EE0090E585 /* spritesheet2-150x150.png in Resources */,
 				0EBF81391C5599EE0090E585 /* explosion_7.png in Resources */,
@@ -1034,6 +1057,7 @@
 				0EBF81291C5599EE0090E585 /* explosion_23.png in Resources */,
 				0E84C3FD1C8FA4E100F2ADCA /* bubble shield 13.png in Resources */,
 				0E1420C91C853249003785D5 /* shield6.png in Resources */,
+				0EF3E1491CBE9CF6005C73A3 /* WhiteBorder.png in Resources */,
 				0E197A371C54291B00AA5658 /* spinning_coin_gold_6.png in Resources */,
 				0E197A361C54291B00AA5658 /* spinning_coin_gold_5.png in Resources */,
 				0EBF81241C5599EE0090E585 /* explosion_19.png in Resources */,
@@ -1067,6 +1091,7 @@
 				0E363BEF1C87D5FF0018C2F2 /* Rocket for app v4.png in Resources */,
 				0E363C131C8B6E050018C2F2 /* UFO_1.png in Resources */,
 				0E197A491C5575FA00AA5658 /* Bubbles.sks in Resources */,
+				0E0DBB261CBDD040006CB6AC /* background_title.png in Resources */,
 				0E1420CB1C853249003785D5 /* shield8.png in Resources */,
 				0E1420C41C853249003785D5 /* shield11.png in Resources */,
 				0ED77D021C5D435B00BF5D90 /* Gem v31.png in Resources */,
@@ -1076,10 +1101,10 @@
 				0EBF811F1C5599EE0090E585 /* explosion_14.png in Resources */,
 				0E363BE91C87D5FF0018C2F2 /* Rocket for app v1.png in Resources */,
 				0EE368581C96DD2A003639C8 /* schatzkiste-300px.png in Resources */,
-				0EB3868E1C696C7F008CA036 /* play_button.png in Resources */,
 				0EED8F2C1C8CEA7700A515A9 /* back_home.png in Resources */,
 				0E1DDD361C359A2800E0C28F /* spark.png in Resources */,
 				0E1DDD0B1C34677000E0C28F /* Assets.xcassets in Resources */,
+				0EF3E1431CBE98E5005C73A3 /* play_button_white.png in Resources */,
 				0E1DE07E1C35E09000E0C28F /* a40000.png in Resources */,
 				0E363C141C8B6E050018C2F2 /* UFO_10.png in Resources */,
 				0E1420CA1C853249003785D5 /* shield7.png in Resources */,
@@ -1090,6 +1115,7 @@
 				0EE368621C96DF1F003639C8 /* gem_bag_2.png in Resources */,
 				0E1DDD341C3495D000E0C28F /* garaxee.png in Resources */,
 				0E363C1B1C8B6E050018C2F2 /* UFO_6.png in Resources */,
+				0EF3E1461CBE9B67005C73A3 /* back_button_white.png in Resources */,
 				0EE3686C1C98D0DA003639C8 /* use_object.png in Resources */,
 				0E363BEA1C87D5FF0018C2F2 /* Rocket for app v10.png in Resources */,
 				0E363BED1C87D5FF0018C2F2 /* Rocket for app v2.png in Resources */,
@@ -1338,7 +1364,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.curtisbarlow.Flick-Off";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c14855e9-cea4-4a6c-805a-13c512f9c32d";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flick Off/Flick Off-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1355,7 +1381,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.curtisbarlow.Flick-Off";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c14855e9-cea4-4a6c-805a-13c512f9c32d";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flick Off/Flick Off-Bridging-Header.h";
 			};
 			name = Release;

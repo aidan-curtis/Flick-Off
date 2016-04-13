@@ -167,15 +167,15 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         NSUserDefaults.standardUserDefaults().setInteger(10000, forKey: "coins");
          NSUserDefaults.standardUserDefaults().setInteger(10000, forKey: "gems");
         bank.textColor=UIColor.yellowColor()
-        bank.font=UIFont(name: "04b_19", size: 12);
+        bank.font=UIFont(name: "Corbert", size: 12);
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
         
         purple_gem.textColor=UIColor.magentaColor()
-        purple_gem.font=UIFont(name: "04b_19", size: 12);
+        purple_gem.font=UIFont(name: "Corbert", size: 12);
         purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("gems"))";
         
         shield_bank.textColor=UIColor.cyanColor()
-        shield_bank.font=UIFont(name: "04b_19", size: 12);
+        shield_bank.font=UIFont(name: "Corbert", size: 12);
         shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("shields"))";
     
         use_object.hidden=true;
@@ -187,7 +187,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         Carousel.bounces=false;
         home_button.titleLabel!.font = UIFont(name: "04b_19", size: 30)
         
-        cost.font = UIFont(name: "04b_19", size: 20)
+        cost.font = UIFont(name: "Corbert", size: 20)
         cost.text = descriptions.objectAtIndex(0) as? String
         //background_node.position=CGPointMake(self.size.width/2, (self.size.width*6/2));
         
@@ -218,7 +218,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             borderView.image = UIImage(named: "GreenBorder")
         }
         else{
-            borderView.image = UIImage(named: "BlueBorder")
+            borderView.image = UIImage(named: "WhiteBorder")
         }
         itemView.addSubview(borderView);
         return itemView

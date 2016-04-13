@@ -14,13 +14,15 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("Setting default to true");
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launch");
             }
 
     override func shouldAutorotate() -> Bool {
         return true
     }
     override func viewWillLayoutSubviews() {
-        
+       
         super.viewWillLayoutSubviews();
         let scene = TitleScene()
         // Configure the view.

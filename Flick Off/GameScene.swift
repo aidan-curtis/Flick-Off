@@ -1104,17 +1104,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, S
             let shrinkx:CGFloat=character.frame.width/2, shrinkx_m=character.frame.width/2
             let shrinky:CGFloat=character.frame.height/2, shrinky_m=character.frame.height/2
             if(CGRectIntersectsRect(CGRectMake(falling.frame.origin.x+shrinkx_m, falling.frame.origin.y+shrinky_m, 70, 70), CGRectMake(character.frame.origin.x+shrinkx, character.frame.origin.y+shrinky, 1, 1))){
-                
                 if(bubble_shield_active){
                     
                     bubble_shield.removeFromParent();
                     self.explode(CGSizeMake(40, 40), location: falling.position, speed: 0.02, explosion_color: "gray")
                     falling.removeFromParent()
                 
-                    falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                    //falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
                     bubble_shield_active = false;
                 }
-                
+                else{
                 
                 var explosion_size = 0.1*pow(pow((falling.physicsBody?.velocity.dx)!, 2)+pow((falling.physicsBody?.velocity.dy)!, 2), 0.5)
                 if(explosion_size < 60){
@@ -1135,6 +1134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, S
                         shield_bar.hidden=true;
                         shield_follow.hidden=true;
                     }
+                }
                 }
                 falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
                 

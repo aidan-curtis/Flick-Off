@@ -12,7 +12,7 @@ import SpriteKit
 
 class Life: SKSpriteNode{
     func setup(size: CGSize){
-        self.texture=SKTexture(imageNamed: "Life2v2");
+        self.texture=SKTexture(imageNamed: "Life_intro");
         self.size = CGSizeMake(CGFloat(size.width*3/4.0), CGFloat(size.width*3/4.0));
         zPosition=10001
     }

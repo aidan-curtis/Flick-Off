@@ -802,6 +802,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                     explode(CGSizeMake(50, 50), location: character.position, speed: 0.02, explosion_color: "blue");
                     laser.removeFromParent()
                     health_number=0;
+                    
                     life_bar.size.width = -1;
                     shield_bar.size.width = -1;
                 }
@@ -1045,9 +1046,11 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                                 explosion_size = 60
                             }
                             if(shield_follow.hidden==true){
+                                if(tutorial_status>=12){
                                 self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
                                 health_number = health_number - Int(explosion_size);
                                 setStaticHearts(health_number - Int(explosion_size))
+                                }
                             }
                             else{
                                 

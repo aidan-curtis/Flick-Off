@@ -18,10 +18,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     //YOU CAN CHANGE THESE CONSTANTS
     let power_speed=3;
     let regular_speed=1;
-    let heart_frequency=1450;
-    let rocket_frequency=1600;
-    let shield_frequency=963;
-    let UFO_frequency=3000;
+    let heart_frequency=2450;
+    let rocket_frequency=2600;
+    let shield_frequency=1963;
+    let UFO_frequency=300;
     let MAX_HEALTH = 150
     //DO NOT EDIT BELOW
     
@@ -303,32 +303,24 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         oldparticlesize=fuel.particleScale;
         
         
-        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
-        emitterNode.zPosition = -11
-        self.addChild(emitterNode)
-        emitterNode.paused=true
         
-        //
-        //        backup_emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup:  true)
-        //        backup_emitterNode.zPosition = -11
-        //        self.addChild(backup_emitterNode)
-        
-        
-        
-        //        emitterNode = starfieldEmitter(SKColor.darkGrayColor(), starSpeedY: 1, starsPerSecond: 4, starScaleFactor: 0.05)
-        //        emitterNode.zPosition = -12
-        //        self.addChild(emitterNode)
         
         
         let initial_rocket = NSUserDefaults.standardUserDefaults().integerForKey("blast")
         if(initial_rocket>0){
             blastOff(500);
         }
+
+        
+        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
+        emitterNode.zPosition = -9
+        self.addChild(emitterNode)
         emitterNode.paused=true
+
+        
         game_starting_values()
         frame_counter=0
         game_status=1
-        
         print("ending setup");
     }
     func didBeginContact(contact: SKPhysicsContact) {
@@ -351,7 +343,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         }
         let power = pow(pow(velocity1.dx,2)+pow(velocity1.dy,2),0.5)+pow(pow(velocity2.dx,2)+pow(velocity2.dy,2),0.5) ;
         if(power>700){
-            if(arc4random_uniform(2)==0){
+            if(arc4random_uniform(4)==0){
                 if(tutorial_status>4){
                     addGem(node1.position)
                 }
@@ -650,6 +642,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     var last_coin_submit=0;
     var last_gem_submit=0;
     func update_game() {
+        //emitterNode.paused=false;
         
        
 
@@ -710,8 +703,8 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         }
         //improve shield power
         //score_label.text = "\(Int(score_label.text!)!+1)"
-        
-        else if(game_status==1){
+
+        if(game_status==1 || game_status == 0){
             
    
             addChild(fuel)
@@ -720,7 +713,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             //backup_emitterNode.hidden=true
             emitterNode.resetSimulation()
             emitterNode.hidden=false
-            emitterNode.paused=true
+            emitterNode.paused=false
             game_status=2
         }
         if(game_status==2){
@@ -821,6 +814,16 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         }
                         UFO.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(texture_list, timePerFrame: 0.02)));
                         UFO.size=CGSizeMake(106,62);
+                        UFO.zPosition = 1000000;
+                        
+                        UFO.physicsBody=SKPhysicsBody(circleOfRadius: UFO.size.width/4);
+                        UFO.physicsBody!.dynamic=false;
+                        UFO.physicsBody!.allowsRotation=false;
+                        UFO.physicsBody!.categoryBitMask = Objects.Meteor.rawValue
+                        UFO.physicsBody!.usesPreciseCollisionDetection=true;
+                        UFO.physicsBody!.contactTestBitMask = Objects.Meteor.rawValue
+                        
+                        
                         UFO.position=CGPointMake(0,self.size.height*3/4);
                         let destination_point=CGPointMake(CGFloat(arc4random_uniform(UInt32(self.size.width-200))+100),self.size.height*3/4);
                         UFO_Column=destination_point;
@@ -1066,17 +1069,34 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         
                     }
                     if(UFO_set==true){
+                 
+                        
+                     
+                        //UFO.anchorPoint=CGPoint(x: 0.0,y: 0.0);
+                        
                         if(CGRectIntersectsRect(
-                            falling.frame, CGRectMake(UFO.position.x, UFO.position.y, 50, 50)
+                            CGRectMake(falling.position.x, falling.position.y, falling.size.width, falling.size.height), CGRectMake(UFO.position.x, UFO.position.y, UFO.size.width, UFO.size.height)
                             )){
-                            explode(CGSizeMake(100, 100), location: UFO.position, speed: 0.02, explosion_color: "blue");
-                            tutorial_status+=1;
-                            UFO.removeFromParent();
-                            laser.removeFromParent()
-                            UFO=SKSpriteNode();
-                            UFO_Column=CGPointMake(-1000, 0);
-                            UFO_set=false;
+                             print("power_value: \(CGFloat(sqrt(pow((falling.physicsBody?.velocity.dx)!,2)+pow((falling.physicsBody?.velocity.dy)!,2))))")
+                            if(sqrt(pow((falling.physicsBody?.velocity.dx)!,2)+pow((falling.physicsBody?.velocity.dy)!,2))>=700 ){
+                                explode(CGSizeMake(100, 100), location: UFO.position, speed: 0.02, explosion_color: "blue");
+                                explode(CGSizeMake(100, 100), location: falling.position, speed: 0.02, explosion_color: "gray");
+                                falling.removeFromParent()
+                                falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                                tutorial_status+=1;
+                                UFO.removeFromParent();
+                                laser.removeFromParent()
+                                UFO=SKSpriteNode();
+                                UFO_Column=CGPointMake(-1000, 0);
+                                UFO_set=false;
+                            }
+                            
+                            
+                            
+                            
+                            
                         }
+                        //UFO.anchorPoint=CGPoint(x: 0.5,y: 0.5);
                     }
                     if(falling.position.y<character.position.y-character.size.height*2){
                         falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
@@ -1439,25 +1459,8 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             score_label.runAction(SKAction.sequence([SKAction.waitForDuration(2.0),SKAction.runBlock(f)]));
             score_label_title.alpha=0;
             score_label_title.runAction(SKAction.sequence([SKAction.waitForDuration(2.0),SKAction.runBlock(g)]));
-//        emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 3, starsPerSecond: 10, starScaleFactor: 0.08,backup: false);
-//        emitterNode.zPosition = -11;
-//        self.addChild(emitterNode);
-//     
-//        emitterNode = starfieldEmitter(SKColor.darkGrayColor(), starSpeedY: 1, starsPerSecond: 2, starScaleFactor: 0.05, backup: false)
-//        emitterNode.zPosition = -12
-//        self.addChild(emitterNode)
+          
 
-        
-//          saving score
-//            if(Int(score.text!)>Int(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))){
-//                NSUserDefaults.standardUserDefaults().setInteger(Int(score.text!)!, forKey: "highscore")
-//            }
-//            high_score_label.text="\(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))"
-//            score_label.text="\(Int(score.text!)!)"
-//            //backup_emitterNode.hidden=false
-//            emitterNode.hidden=true
-//            fuel.removeFromParent()
-//            game_status=0
         }
         for(var i=0; i<number_of_backgrounds; i++){
                     backgroundNode.append(SKSpriteNode())
@@ -1473,10 +1476,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                 }
         
     }
-    var check = 0;
+
     override func update(currentTime: CFTimeInterval){
-        print("check :\(check)");
-        check+=1;
+
+     
         
 
         if(action==true){

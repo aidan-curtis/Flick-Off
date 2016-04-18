@@ -308,7 +308,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, S
 
         
         emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
-        emitterNode.zPosition = -11
+        emitterNode.zPosition = 100000
+        
         self.addChild(emitterNode)
         emitterNode.paused=true
         
@@ -791,7 +792,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, S
             //backup_emitterNode.hidden=true
             emitterNode.resetSimulation()
             emitterNode.hidden=false
-            emitterNode.paused=true
+            emitterNode.paused=false
             for(var i=0; i<number_of_backgrounds; i+=1){
                 backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)))
             }
@@ -1119,7 +1120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, S
                 if(explosion_size < 60){
                     explosion_size = 60
                 }
-                if(shield_follow.hidden==true){
+                if(shield_follow.hidden==true && tutorial_status>=12){
                     self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
                     
                     setStaticHearts(Int(life_bar.size.width) - Int(explosion_size))

@@ -23,10 +23,10 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "1,000 Gems for $4.99",
         "Beginning Blast for 50 Gems",
         "Bubble Shield for 500 Coins",
-        "Green Ship for FREE",
-        "Red Ship for 100 Coins",
-        "Blue Ship for 1000 Coins",
-        "Orange Ship for 1000 Coins",
+        "Red Ship for 10,000 Coins",
+        "Blue Ship for 10,000 Coins",
+        "Orange Ship for 10,000 Coins",
+         "Green Ship for FREE",
         "One Save for $0.99",
         "Three Saves for $1.99"]);
     

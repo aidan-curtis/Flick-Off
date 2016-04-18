@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E05E3F21CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3EC1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png */; };
+		0E05E3F31CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3ED1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png */; };
+		0E05E3F41CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3EE1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png */; };
+		0E05E3F51CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3EF1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 3x.png */; };
+		0E05E3F61CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3F01CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 2x.png */; };
+		0E05E3F71CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3F11CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 3x.png */; };
 		0E0DBB261CBDD040006CB6AC /* background_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DBB251CBDD040006CB6AC /* background_title.png */; };
 		0E0DBB281CBDD1EB006CB6AC /* title_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DBB271CBDD1EB006CB6AC /* title_image.png */; };
 		0E0DBB2A1CBDD410006CB6AC /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DBB291CBDD410006CB6AC /* play_button.png */; };
@@ -67,11 +73,6 @@
 		0E1DE09E1C35E09000E0C28F /* b30000.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF2E1C35E09000E0C28F /* b30000.png */; };
 		0E1DE0AE1C35E09000E0C28F /* b40000.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1DDF3E1C35E09000E0C28F /* b40000.png */; };
 		0E29114B1C740C4A00DDE978 /* Magic2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E29114A1C740C4A00DDE978 /* Magic2.sks */; };
-		0E2CBED91CC440600025727B /* Flick-Off-Icon 29 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E2CBED41CC440600025727B /* Flick-Off-Icon 29 2x.png */; };
-		0E2CBEDA1CC440600025727B /* Flick-Off-Icon 29 3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E2CBED51CC440600025727B /* Flick-Off-Icon 29 3x.png */; };
-		0E2CBEDB1CC440600025727B /* Flick-Off-Icon 40pt 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E2CBED61CC440600025727B /* Flick-Off-Icon 40pt 2x.png */; };
-		0E2CBEDC1CC440600025727B /* Flick-Off-Icon 60pt 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E2CBED71CC440600025727B /* Flick-Off-Icon 60pt 2x.png */; };
-		0E2CBEDD1CC440600025727B /* Flick-Off-Icon 60pt 3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E2CBED81CC440600025727B /* Flick-Off-Icon 60pt 3x.png */; };
 		0E363BE91C87D5FF0018C2F2 /* Rocket for app v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BDD1C87D5FF0018C2F2 /* Rocket for app v1.png */; };
 		0E363BEA1C87D5FF0018C2F2 /* Rocket for app v10.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BDE1C87D5FF0018C2F2 /* Rocket for app v10.png */; };
 		0E363BEB1C87D5FF0018C2F2 /* Rocket for app v11.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E363BDF1C87D5FF0018C2F2 /* Rocket for app v11.png */; };
@@ -249,6 +250,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E05E3EC1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 29pt 2x.png"; sourceTree = "<group>"; };
+		0E05E3ED1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 29pt 3x.png"; sourceTree = "<group>"; };
+		0E05E3EE1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 40pt 2x.png"; sourceTree = "<group>"; };
+		0E05E3EF1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 40pt 3x.png"; sourceTree = "<group>"; };
+		0E05E3F01CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 60pt 2x.png"; sourceTree = "<group>"; };
+		0E05E3F11CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 60pt 3x.png"; sourceTree = "<group>"; };
 		0E0DBB251CBDD040006CB6AC /* background_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_title.png; path = Images/background_title.png; sourceTree = "<group>"; };
 		0E0DBB271CBDD1EB006CB6AC /* title_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title_image.png; path = Images/title_image.png; sourceTree = "<group>"; };
 		0E0DBB291CBDD410006CB6AC /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_button.png; path = Images/play_button.png; sourceTree = "<group>"; };
@@ -315,11 +322,6 @@
 		0E1DDF2E1C35E09000E0C28F /* b30000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b30000.png; path = small/b30000.png; sourceTree = "<group>"; };
 		0E1DDF3E1C35E09000E0C28F /* b40000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b40000.png; path = small/b40000.png; sourceTree = "<group>"; };
 		0E29114A1C740C4A00DDE978 /* Magic2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic2.sks; sourceTree = "<group>"; };
-		0E2CBED41CC440600025727B /* Flick-Off-Icon 29 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 29 2x.png"; sourceTree = "<group>"; };
-		0E2CBED51CC440600025727B /* Flick-Off-Icon 29 3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 29 3x.png"; sourceTree = "<group>"; };
-		0E2CBED61CC440600025727B /* Flick-Off-Icon 40pt 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 40pt 2x.png"; sourceTree = "<group>"; };
-		0E2CBED71CC440600025727B /* Flick-Off-Icon 60pt 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 60pt 2x.png"; sourceTree = "<group>"; };
-		0E2CBED81CC440600025727B /* Flick-Off-Icon 60pt 3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 60pt 3x.png"; sourceTree = "<group>"; };
 		0E363BDD1C87D5FF0018C2F2 /* Rocket for app v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v1.png"; sourceTree = "<group>"; };
 		0E363BDE1C87D5FF0018C2F2 /* Rocket for app v10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v10.png"; sourceTree = "<group>"; };
 		0E363BDF1C87D5FF0018C2F2 /* Rocket for app v11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket for app v11.png"; sourceTree = "<group>"; };
@@ -508,6 +510,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E05E3EB1CC4FDBC00AF0A01 /* Flick-Off-Icons */ = {
+			isa = PBXGroup;
+			children = (
+				0E05E3EC1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png */,
+				0E05E3ED1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png */,
+				0E05E3EE1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png */,
+				0E05E3EF1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 3x.png */,
+				0E05E3F01CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 2x.png */,
+				0E05E3F11CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 3x.png */,
+			);
+			path = "Flick-Off-Icons";
+			sourceTree = SOURCE_ROOT;
+		};
 		0E1420B81C853249003785D5 /* Shield */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,11 +609,11 @@
 				0E84C3E11C8FA17400F2ADCA /* Ships */,
 				0E363C301C8CC13E0018C2F2 /* iCarousel.m */,
 				0E84C3E81C8FA4E100F2ADCA /* Bubble Shield */,
-				0E2CBED31CC440600025727B /* Flick-Off-Icons */,
 				0E363C321C8CC4320018C2F2 /* UI_Store.swift */,
 				0EF3E1421CBE98E5005C73A3 /* play_button_white.png */,
 				0EF3E1411CBDDF7D005C73A3 /* Corbert-Regular.otf */,
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
+				0E05E3EB1CC4FDBC00AF0A01 /* Flick-Off-Icons */,
 				0E0DBB251CBDD040006CB6AC /* background_title.png */,
 				0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */,
 				0EF3E1441CBE9B67005C73A3 /* back_button_white.png */,
@@ -654,18 +669,6 @@
 			);
 			name = "asteroids (1)";
 			path = "Images/asteroids (1)";
-			sourceTree = "<group>";
-		};
-		0E2CBED31CC440600025727B /* Flick-Off-Icons */ = {
-			isa = PBXGroup;
-			children = (
-				0E2CBED41CC440600025727B /* Flick-Off-Icon 29 2x.png */,
-				0E2CBED51CC440600025727B /* Flick-Off-Icon 29 3x.png */,
-				0E2CBED61CC440600025727B /* Flick-Off-Icon 40pt 2x.png */,
-				0E2CBED71CC440600025727B /* Flick-Off-Icon 60pt 2x.png */,
-				0E2CBED81CC440600025727B /* Flick-Off-Icon 60pt 3x.png */,
-			);
-			path = "Flick-Off-Icons";
 			sourceTree = "<group>";
 		};
 		0E363BDC1C87D5FF0018C2F2 /* Rocket */ = {
@@ -1027,7 +1030,6 @@
 				0E197A451C552A9900AA5658 /* Rain.sks in Resources */,
 				0E5925101C6D497A00023713 /* Background7_8k.png in Resources */,
 				0E363C351C8CD28A0018C2F2 /* search.jpg in Resources */,
-				0E2CBEDC1CC440600025727B /* Flick-Off-Icon 60pt 2x.png in Resources */,
 				0ED77CEB1C5D435B00BF5D90 /* Gem v103.png in Resources */,
 				0EB386901C69785C008CA036 /* Main_Panel.png in Resources */,
 				0EBF81261C5599EE0090E585 /* explosion_20.png in Resources */,
@@ -1038,7 +1040,7 @@
 				0E84C3FB1C8FA4E100F2ADCA /* bubble shield 11.png in Resources */,
 				0EE3686A1C98B578003639C8 /* shield_cover.png in Resources */,
 				0E84C40C1C8FABE800F2ADCA /* GreenBorder.png in Resources */,
-				0E2CBEDB1CC440600025727B /* Flick-Off-Icon 40pt 2x.png in Resources */,
+				0E05E3F41CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png in Resources */,
 				0ED77D221C5D435B00BF5D90 /* Gem v63.png in Resources */,
 				0EBF81201C5599EE0090E585 /* explosion_15.png in Resources */,
 				0E363C001C8B6A5F0018C2F2 /* Laser.sks in Resources */,
@@ -1061,6 +1063,7 @@
 				0E363C1C1C8B6E050018C2F2 /* UFO_7.png in Resources */,
 				0E84C3FE1C8FA4E100F2ADCA /* bubble shield 14.png in Resources */,
 				0E5925091C6D497A00023713 /* Background7_1k.png in Resources */,
+				0E05E3F31CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png in Resources */,
 				0EF3E1581CBF1A87005C73A3 /* Life_buy.png in Resources */,
 				0E1DDDCF1C35CB3600E0C28F /* playerShip1_green.png in Resources */,
 				0E363C161C8B6E050018C2F2 /* UFO_12.png in Resources */,
@@ -1075,7 +1078,6 @@
 				0E1420C51C853249003785D5 /* shield2.png in Resources */,
 				0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */,
 				0E84C3E51C8FA18600F2ADCA /* playerShip1_blue.png in Resources */,
-				0E2CBEDA1CC440600025727B /* Flick-Off-Icon 29 3x.png in Resources */,
 				0E363BEC1C87D5FF0018C2F2 /* Rocket for app v12.png in Resources */,
 				0EBF812C1C5599EE0090E585 /* explosion_26.png in Resources */,
 				0E84C4061C8FA4E100F2ADCA /* bubble shield 7.png in Resources */,
@@ -1087,6 +1089,7 @@
 				0E363C1E1C8B6E050018C2F2 /* UFO_9.png in Resources */,
 				0EBF81351C5599EE0090E585 /* explosion_34.png in Resources */,
 				0E363C1A1C8B6E050018C2F2 /* UFO_5.png in Resources */,
+				0E05E3F51CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 3x.png in Resources */,
 				0E59250C1C6D497A00023713 /* Background7_4k.png in Resources */,
 				0EBF811D1C5599EE0090E585 /* explosion_12.png in Resources */,
 				0E1DDD021C34677000E0C28F /* GameScene.sks in Resources */,
@@ -1127,7 +1130,6 @@
 				0E12C06A1CAD80DC0026879B /* complete_tutorial.png in Resources */,
 				0EBF81331C5599EE0090E585 /* explosion_32.png in Resources */,
 				0E363BF21C87D5FF0018C2F2 /* Rocket for app v7.png in Resources */,
-				0E2CBED91CC440600025727B /* Flick-Off-Icon 29 2x.png in Resources */,
 				0E363C1D1C8B6E050018C2F2 /* UFO_8.png in Resources */,
 				0EBF812F1C5599EE0090E585 /* explosion_29.png in Resources */,
 				0E1DE05E1C35E09000E0C28F /* a10000.png in Resources */,
@@ -1155,7 +1157,6 @@
 				0EBF811E1C5599EE0090E585 /* explosion_13.png in Resources */,
 				0EF3E1531CBEF9EE005C73A3 /* Health_badge.png in Resources */,
 				0ED77D331C5D435B00BF5D90 /* Gem v79.png in Resources */,
-				0E2CBEDD1CC440600025727B /* Flick-Off-Icon 60pt 3x.png in Resources */,
 				0EBF81321C5599EE0090E585 /* explosion_31.png in Resources */,
 				0E1DDD091C34677000E0C28F /* Main.storyboard in Resources */,
 				0EE368621C96DF1F003639C8 /* gem_bag_2.png in Resources */,
@@ -1176,6 +1177,7 @@
 				0EBF81341C5599EE0090E585 /* explosion_33.png in Resources */,
 				0E197A351C54291B00AA5658 /* spinning_coin_gold_4.png in Resources */,
 				0ED77D121C5D435B00BF5D90 /* Gem v47.png in Resources */,
+				0E05E3F71CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 3x.png in Resources */,
 				0E586D791CB1D7CA001F995E /* 3 blast rocket.png in Resources */,
 				0E84C3FA1C8FA4E100F2ADCA /* bubble shield 10.png in Resources */,
 				0E1DE09E1C35E09000E0C28F /* b30000.png in Resources */,
@@ -1184,6 +1186,7 @@
 				0E84C3F91C8FA4E100F2ADCA /* bubble shield 1.png in Resources */,
 				0E59250A1C6D497A00023713 /* Background7_2k.png in Resources */,
 				0EBF81271C5599EE0090E585 /* explosion_21.png in Resources */,
+				0E05E3F61CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 2x.png in Resources */,
 				0EBF81231C5599EE0090E585 /* explosion_18.png in Resources */,
 				0EBF81381C5599EE0090E585 /* explosion_6.png in Resources */,
 				0E197A341C54291B00AA5658 /* spinning_coin_gold_3.png in Resources */,
@@ -1204,6 +1207,7 @@
 				0EE3685A1C96DD48003639C8 /* rocket_image.png in Resources */,
 				0E84C3E71C8FA18600F2ADCA /* playerShip1_red.png in Resources */,
 				0EBF811A1C5599EE0090E585 /* explosion_1.png in Resources */,
+				0E05E3F21CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png in Resources */,
 				0E6B054A1C8FC72000D557E0 /* schatzkiste-300px.png in Resources */,
 				0E1420C61C853249003785D5 /* shield3.png in Resources */,
 				0E363BF31C87D5FF0018C2F2 /* Rocket for app v8.png in Resources */,

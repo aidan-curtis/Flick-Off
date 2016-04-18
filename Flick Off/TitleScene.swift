@@ -11,6 +11,7 @@ import SpriteKit
 import CoreMotion
 import StoreKit
 
+
 class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver{
     
     
@@ -21,7 +22,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     let heart_frequency=2450;
     let rocket_frequency=2600;
     let shield_frequency=1963;
-    let UFO_frequency=300;
+    let UFO_frequency=3000;
     let MAX_HEALTH = 150
     //DO NOT EDIT BELOW
     

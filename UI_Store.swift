@@ -14,6 +14,9 @@ import StoreKit
 class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver{
     var current_index = -1;
     var buying_index = -1;
+    
+    var loading = UIActivityIndicatorView();
+    
     var descriptions = NSMutableArray(array: [
         "10,000 Coins for $0.99",
         "50,000 Coins for $2.99",
@@ -88,14 +91,31 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     }
     @IBOutlet weak var home_button: UIButton!
     @IBOutlet weak var buy: UIButton!
-    
+    var boxView = UIView()
     @IBAction func buy_object(sender: AnyObject) {
         let coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
         let gems = NSUserDefaults.standardUserDefaults().integerForKey("gems");
         buying_index = current_index;
+        
         if((current_index>=0 && current_index<=5) || current_index==12 || current_index==13){
+      
+            boxView=UIView(frame: CGRect(x: 0, y:0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            boxView.backgroundColor = UIColor.blackColor()
+            boxView.alpha = 0.5
             
+            boxView.layer.cornerRadius = 10
+            self.view.addSubview(boxView);
+
+            loading.frame = CGRectMake(self.view.center.x, self.view.center.y, 100, 100);
+            loading.center = self.view.center;
+            loading.hidesWhenStopped = true;
+            //loading.tintColor = UIColor.whiteColor();
+            
+            loading.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+            self.view.addSubview(loading);
+            loading.startAnimating();
             print("buying object...\(descriptions[current_index])");
+    
             if(SKPaymentQueue.canMakePayments()){
                 if(current_index+1==12){
                     current_ProductID="7"
@@ -170,8 +190,8 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
       
         
         
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_green");
         
+
         
         
         bank.textColor=UIColor.yellowColor()
@@ -204,6 +224,9 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         background_image.frame=CGRectMake(0, -self.view.bounds.size.width*2+(self.view.bounds.size.height),self.view.bounds.size.width,self.view.bounds.size.width*6);
         background_image.image=UIImage(named: "Background7_4k")
         self.view.addSubview(background_image);
+        
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_green");
+       
     
     }
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int
@@ -219,6 +242,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         
         let imageView = UIImageView(frame: CGRectMake(100-(sizes[index].width/2), 100-(sizes[index].height/2), sizes[index].width, sizes[index].height))
         imageView.image = UIImage(named: "\(images.objectAtIndex(index))")
+        
         itemView.addSubview(imageView);
         
         let borderView = UIImageView(frame: CGRectMake(0,0, 200, 200))
@@ -285,8 +309,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     }
     func buyProduct(product: SKProduct){
         print("Sending the Payment Request to Apple");
+        
+      
+        
         let payment = SKPayment(product: product)
         SKPaymentQueue.defaultQueue().addPayment(payment);
+        boxView.removeFromSuperview();
+        loading.removeFromSuperview();
     }
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
         print("Received Payment Transaction Response from Apple");
@@ -296,7 +325,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 switch trans.transactionState {
                 case .Purchased:
                     print("Product Purchased");
-                    
+
                     let temp_coins = NSUserDefaults.standardUserDefaults().integerForKey("coins")
                     let temp_gems = NSUserDefaults.standardUserDefaults().integerForKey("gems");
                     let temp_saves = NSUserDefaults.standardUserDefaults().integerForKey("saves")

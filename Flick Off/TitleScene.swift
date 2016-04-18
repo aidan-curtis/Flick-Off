@@ -1082,8 +1082,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                             if(sqrt(pow((falling.physicsBody?.velocity.dx)!,2)+pow((falling.physicsBody?.velocity.dy)!,2))>=700 ){
                                 explode(CGSizeMake(100, 100), location: UFO.position, speed: 0.02, explosion_color: "blue");
                                 explode(CGSizeMake(100, 100), location: falling.position, speed: 0.02, explosion_color: "gray");
+                     
                                 falling.removeFromParent()
-                                falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                                
                                 tutorial_status+=1;
                                 UFO.removeFromParent();
                                 laser.removeFromParent()

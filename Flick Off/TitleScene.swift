@@ -127,7 +127,8 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     
     
     func game_scene_begin() {
-     
+        
+        
         print("starting setup")
         tutorial_status=NSUserDefaults.standardUserDefaults().floatForKey("tutorial_status");
         //tutorial_status=12;
@@ -160,7 +161,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         addChild(life);
         
         //initial blast
-        
+
         
         current_coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
         
@@ -188,8 +189,8 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         coin_cover.texture = SKTexture(imageNamed: "coin_cover");
         
         addChild(coin_cover);
-        
-        
+//
+//        
         
         coin_image.position = CGPointMake(self.size.width+20, 18);
         coin_image.size = CGSizeMake(1 ,1)
@@ -210,9 +211,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         coin_label.hidden=true;
         addChild(coin_label);
         
-        
-        
-        
+//
+//        
+//        
         
         //Coin repeat for gem popup
         
@@ -243,7 +244,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         gem_label.text="\(current_coins)"
         gem_label.hidden=true;
         addChild(gem_label);
-        
+
         //present menu at beginning and after death
         presentMenu()
         
@@ -265,20 +266,14 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         
         objects=[space_objects, city_objects,underwater_objects, mars_objects]
         self.physicsWorld.gravity=CGVectorMake(0, 0);
-        self.manager.deviceMotionUpdateInterval=1.0/60.0;
-        self.manager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical);
-        
-        
-        
-        /* Setup your scene here */
+//
+//      
+//        
+//        
+//        
+//        /* Setup your scene here */
         self.backgroundColor = UIColor.blackColor()
-        for(var i=0; i<number_of_backgrounds; i++){
-            backgroundNode.append(SKSpriteNode())
-            backgroundNode[i].texture=SKTexture(imageNamed: "Background7_\(i+1)k.png");
-            backgroundNode[i].zPosition = -10000
-            backgroundNode[i].size = CGSizeMake(self.size.width, self.size.width*6)
-            addChild(backgroundNode[i])
-        }
+
         
         if(NSUserDefaults.standardUserDefaults().objectForKey("ship") == nil){
             NSUserDefaults.standardUserDefaults().setObject("playerShip1_green.png", forKey: "ship")
@@ -329,6 +324,11 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         if(initial_rocket>0){
             blastOff(500);
         }
+        emitterNode.paused=true
+        game_starting_values()
+        frame_counter=0
+        game_status=1
+        
         print("ending setup");
     }
     func didBeginContact(contact: SKPhysicsContact) {
@@ -650,6 +650,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     var last_coin_submit=0;
     var last_gem_submit=0;
     func update_game() {
+        
+       
+
         last_coin_submit-=1;
         last_gem_submit-=1;
         if (last_coin_submit<=0){
@@ -707,20 +710,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         }
         //improve shield power
         //score_label.text = "\(Int(score_label.text!)!+1)"
-        if(game_status==0){
-                     print("game_status0");
-            emitterNode.paused=true
-            game_starting_values()
-            frame_counter=0
-            
-            for(var i=0; i<number_of_backgrounds; i+=1){
-                backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)) - self.size.width*5.75);
-            }
-            game_status=1
-        }
+        
         else if(game_status==1){
             
-                     print("game_status1");
+   
             addChild(fuel)
             score.text="0"
             score_number=0;
@@ -728,14 +721,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             emitterNode.resetSimulation()
             emitterNode.hidden=false
             emitterNode.paused=true
-            for(var i=0; i<number_of_backgrounds; i+=1){
-                backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)) - self.size.width*5.75)
-            }
-            
             game_status=2
         }
         if(game_status==2){
-            print("game_status2");
+    
             var lambda:CGFloat = 2.0;
             if(rocket_power<=0){
                 lambda = 1.0
@@ -869,7 +858,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                     }
                 }
                 if(health_number<=0){
-                    print("game over");
+            
                     game_status=3
                 }
                 
@@ -921,9 +910,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                 shield_follow.position=CGPointMake(character.position.x-3, character.position.y+3);
                 bubble_shield.position=CGPointMake(character.position.x, character.position.y);
                 if(tutorial_status<1){
-                    print("\(abs(Float(currentRoll)/50))");
+               
                     tutorial_status+=abs(Float(currentRoll)/50)
-                    print("tutorial_total_status: \(tutorial_status)")
+                   
                 }
                 character.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
                 fuel.runAction(SKAction.moveBy(CGVectorMake(CGFloat(10.0*currentRoll),0), duration: 0.10));
@@ -996,25 +985,27 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         NSUserDefaults.standardUserDefaults().setInteger(Int(CGFloat(number_of_gems)+1.0), forKey: "gems")
                         
                         let a = { () -> Void in
-                            self.gem_label.hidden=false;
-                            self.gem_cover.runAction(SKAction.scaleXTo(100, duration: 0.1));
-                            self.gem_cover.runAction(SKAction.scaleYTo(40, duration: 0.1));
-                            self.gem_image.runAction(SKAction.scaleXTo(20, duration: 0.1));
-                            self.gem_image.runAction(SKAction.scaleYTo(20, duration: 0.1));
-                            self.last_gem_submit=50;
+                            if(self.last_coin_submit<=0){
+                                self.gem_label.hidden=false;
+                                self.gem_cover.runAction(SKAction.scaleXTo(100, duration: 0.1));
+                                self.gem_cover.runAction(SKAction.scaleYTo(40, duration: 0.1));
+                                self.gem_image.runAction(SKAction.scaleXTo(20, duration: 0.1));
+                                self.gem_image.runAction(SKAction.scaleYTo(20, duration: 0.1));
+                                self.last_gem_submit=50;
+                            }
                             self.gem_image.runAction(SKAction.moveToX(self.size.width-75, duration: 0.1))
                             gem.removeFromParent()
                             
                             //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
                         }
                         
-                        if(last_coin_submit<=0){
+                 
                             if(tutorial_status<5){
                                 tutorial_status+=1;
                             }
                             gem.runAction(SKAction.runBlock(a))
                             gems.removeAtIndex(gems.indexOf(gem)!);
-                        }
+                        
                     }
                     
                 }
@@ -1116,11 +1107,13 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         let a = { () -> Void in
                             self.coin_label.hidden=false;
                             coin.runAction(SKAction.moveTo(CGPointMake(self.size.width,0), duration: 0.5), completion: b)
-                            self.coin_cover.runAction(SKAction.scaleXTo(100, duration: 0.1));
-                            self.coin_cover.runAction(SKAction.scaleYTo(40, duration: 0.1));
-                            self.coin_image.runAction(SKAction.scaleXTo(20, duration: 0.1));
-                            self.coin_image.runAction(SKAction.scaleYTo(20, duration: 0.1));
-                            self.last_coin_submit=50;
+                            if(self.last_gem_submit<=0){
+                                self.coin_cover.runAction(SKAction.scaleXTo(100, duration: 0.1));
+                                self.coin_cover.runAction(SKAction.scaleYTo(40, duration: 0.1));
+                                self.coin_image.runAction(SKAction.scaleXTo(20, duration: 0.1));
+                                self.coin_image.runAction(SKAction.scaleYTo(20, duration: 0.1));
+                                self.last_coin_submit=50;
+                            }
                             self.coin_image.runAction(SKAction.moveToX(self.size.width-75, duration: 0.1))
                             
                             
@@ -1189,15 +1182,14 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             //holding pattern
         }
         else if(game_status==5){
-            print(score_number);
+         
             NSUserDefaults.standardUserDefaults().setObject(current_coins, forKey: "coins");
             let scene = TitleScene()
             scene.score_label.text = "\(score_number)"
             let highscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore");
-            print("game highscore \(highscore)")
-            print("game score \(score_number)");
+        
             if(score_number > highscore){
-                print("game highscore \(highscore)")
+ 
                 NSUserDefaults.standardUserDefaults().setInteger(score_number, forKey: "highscore");
             }
             // Configure the view.
@@ -1234,28 +1226,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         print("in the payment queue");
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     //TITLE SCENE
     var temp_score=0;
@@ -1275,14 +1246,14 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     var score_label_title=SKLabelNode();
     
     var title = SKSpriteNode();
-
-   
-    
   
     var launch = false;
 
     var black_background_node = SKSpriteNode();
     override func didMoveToView(view: SKView){
+        
+        
+   
         black_background_node.alpha=0;
         black_background_node.size = CGSizeMake(self.size.width, self.size.height);
         black_background_node.position = CGPointMake(self.size.width/2, self.size.height/2);
@@ -1488,15 +1459,28 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
 //            fuel.removeFromParent()
 //            game_status=0
         }
+        for(var i=0; i<number_of_backgrounds; i++){
+                    backgroundNode.append(SKSpriteNode())
+                    backgroundNode[i].texture=SKTexture(imageNamed: "Background7_\(i+1)k.png");
+                    backgroundNode[i].zPosition = -1000000
+                    backgroundNode[i].size = CGSizeMake(self.size.width, self.size.width*6)
+                    backgroundNode[i].hidden=true;
+                    addChild(backgroundNode[i])
+            
+        }
+        for(var i=0; i<number_of_backgrounds; i+=1){
+                backgroundNode[i].position = CGPointMake(self.size.width/2, (self.size.width*6/2)+CGFloat(i*Int(self.size.width*6)) - self.size.width*5.75);
+                }
         
     }
-
+    var check = 0;
     override func update(currentTime: CFTimeInterval){
+        print("check :\(check)");
+        check+=1;
         
-        
-        print("checking_action")
+
         if(action==true){
-            print("checking_action=true")
+         
             update_game();
         }
         else{
@@ -1515,8 +1499,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         for touches: AnyObject in touches{
             
             let location = touches.locationInNode(self)
-            print("locationx: \(location.x-life.position.x)");
-            print("locationy: \(location.y-life.position.y)");
+           
             if(game_status==4){
                 if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30 && location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
                     //life.runAction(SKAction.moveToY(-500, duration: 0.8));
@@ -1551,7 +1534,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                                 let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
                                 productsRequest.delegate = self;
                                 productsRequest.start();
-                                print("Fething Products");
+                        
                             }
                         }
                         buy_hearts.runAction(SKAction.moveToY(self.size.height/2.0, duration: 0.3));
@@ -1578,7 +1561,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         }
 //TITLE TOUCHES BEGAN
         
-        print("touched");
+        
         
         for touches: AnyObject in touches{
             
@@ -1635,7 +1618,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                 
                 // SKAction.moveTo(CGPointMake(background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0)
                 let title_blast = { () -> Void in
-                    
+                    for(var i=0; i<self.number_of_backgrounds; i+=1){
+                        self.backgroundNode[i].hidden=false
+                    }
+
                     self.background_node.runAction( SKAction.moveTo(CGPointMake(self.background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0));
                     self.character.runAction(SKAction.scaleBy((1/(1.5)), duration: 1));
                     self.character.runAction(SKAction.moveToY(4*self.size.height/24, duration: 1))
@@ -1645,9 +1631,11 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                     
                 }
                 let begin_game = { () -> Void in
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
+                    for(var i=0; i<self.number_of_backgrounds; i+=1){
                         
+                        self.backgroundNode[i].zPosition = -10;
+                    }
+                    dispatch_async(dispatch_get_main_queue(), {
                         self.action = true;
                         self.game_scene_begin();
                     })

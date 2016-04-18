@@ -23,6 +23,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "1,000 Gems for $4.99",
         "Beginning Blast for 50 Gems",
         "Bubble Shield for 500 Coins",
+        "Green Ship for FREE",
         "Red Ship for 100 Coins",
         "Blue Ship for 1000 Coins",
         "Orange Ship for 1000 Coins",
@@ -43,6 +44,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "playerShip1_red",
         "playerShip1_blue",
         "playerShip1_orange",
+        "playerShip1_green",
         "heart",
         "Three Hearts"]);
     var sizes:[CGSize]=[
@@ -53,6 +55,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(150, 100),
+        CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
@@ -90,14 +93,14 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         let coins = NSUserDefaults.standardUserDefaults().integerForKey("coins");
         let gems = NSUserDefaults.standardUserDefaults().integerForKey("gems");
         buying_index = current_index;
-        if((current_index>=0 && current_index<=5) || current_index==11 || current_index==12){
+        if((current_index>=0 && current_index<=5) || current_index==12 || current_index==13){
             
             print("buying object...\(descriptions[current_index])");
             if(SKPaymentQueue.canMakePayments()){
-                if(current_index+1==11){
+                if(current_index+1==12){
                     current_ProductID="7"
                 }
-                else if(current_index+1==12){
+                else if(current_index+1==13){
                     current_ProductID="8"
                 }
                 else{
@@ -164,8 +167,13 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     }
 
     override func viewDidLoad() {
-        NSUserDefaults.standardUserDefaults().setInteger(10000, forKey: "coins");
-         NSUserDefaults.standardUserDefaults().setInteger(10000, forKey: "gems");
+      
+        
+        
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_green");
+        
+        
+        
         bank.textColor=UIColor.yellowColor()
         bank.font=UIFont(name: "Corbert", size: 12);
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
@@ -229,11 +237,11 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
     func carousel(carousel: iCarousel, didSelectItemAtIndex index: Int) {
       
     
-        print(NSUserDefaults.standardUserDefaults().boolForKey(images[index] as! String))
-        print("\(index)")
-        if((index == 8 || index == 9 || index == 10) && NSUserDefaults.standardUserDefaults().boolForKey(
+        //print(NSUserDefaults.standardUserDefaults().boolForKey(images[index] as! String))
+        //print("\(index)")
+        if((index == 8 || index == 9 || index == 10 || index == 11) && NSUserDefaults.standardUserDefaults().boolForKey(
             (images[index] as! String)) == true){
-            print("using object now")
+            //print("using object now")
              use_object.hidden=false;
         }
         else{
@@ -311,10 +319,10 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                     else if(buying_index==5){
                         NSUserDefaults.standardUserDefaults().setInteger(temp_gems+2500, forKey: "gems")
                     }
-                    else if(buying_index==11){
+                    else if(buying_index==12){
                         NSUserDefaults.standardUserDefaults().setInteger(temp_saves+1, forKey: "saves")
                     }
-                    else if(buying_index==12){
+                    else if(buying_index==13){
                         NSUserDefaults.standardUserDefaults().setInteger(temp_saves+3, forKey: "saves")
                     }
                     

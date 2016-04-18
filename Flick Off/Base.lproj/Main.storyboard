@@ -237,14 +237,6 @@
                                     <mask key="constraints">
                                         <exclude reference="ixD-cu-EXh"/>
                                         <exclude reference="rq0-7S-whH"/>
-                                        <exclude reference="P1m-MI-cQn"/>
-                                        <exclude reference="SGg-g1-scB"/>
-                                        <exclude reference="ehJ-uQ-V64"/>
-                                        <exclude reference="mwX-NY-naz"/>
-                                        <exclude reference="Yag-5p-FJ8"/>
-                                        <exclude reference="imE-TX-Tf6"/>
-                                        <exclude reference="6t4-wq-2xW"/>
-                                        <exclude reference="g3i-8S-vZH"/>
                                         <exclude reference="DMS-fb-dEu"/>
                                         <exclude reference="Ee6-jm-W6Q"/>
                                         <exclude reference="QR3-Ed-uEp"/>
@@ -257,6 +249,14 @@
                                         <exclude reference="N4B-bA-lfI"/>
                                         <exclude reference="d1s-IH-gv0"/>
                                         <exclude reference="fOD-XL-Ccf"/>
+                                        <exclude reference="6t4-wq-2xW"/>
+                                        <exclude reference="g3i-8S-vZH"/>
+                                        <exclude reference="Yag-5p-FJ8"/>
+                                        <exclude reference="imE-TX-Tf6"/>
+                                        <exclude reference="P1m-MI-cQn"/>
+                                        <exclude reference="SGg-g1-scB"/>
+                                        <exclude reference="ehJ-uQ-V64"/>
+                                        <exclude reference="mwX-NY-naz"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -271,14 +271,6 @@
                                     <mask key="constraints">
                                         <include reference="ixD-cu-EXh"/>
                                         <include reference="rq0-7S-whH"/>
-                                        <include reference="P1m-MI-cQn"/>
-                                        <include reference="SGg-g1-scB"/>
-                                        <include reference="ehJ-uQ-V64"/>
-                                        <include reference="mwX-NY-naz"/>
-                                        <include reference="Yag-5p-FJ8"/>
-                                        <include reference="imE-TX-Tf6"/>
-                                        <include reference="6t4-wq-2xW"/>
-                                        <include reference="g3i-8S-vZH"/>
                                         <include reference="DMS-fb-dEu"/>
                                         <include reference="Ee6-jm-W6Q"/>
                                         <include reference="QR3-Ed-uEp"/>
@@ -291,6 +283,14 @@
                                         <include reference="N4B-bA-lfI"/>
                                         <include reference="d1s-IH-gv0"/>
                                         <include reference="fOD-XL-Ccf"/>
+                                        <include reference="6t4-wq-2xW"/>
+                                        <include reference="g3i-8S-vZH"/>
+                                        <include reference="Yag-5p-FJ8"/>
+                                        <include reference="imE-TX-Tf6"/>
+                                        <include reference="P1m-MI-cQn"/>
+                                        <include reference="SGg-g1-scB"/>
+                                        <include reference="ehJ-uQ-V64"/>
+                                        <include reference="mwX-NY-naz"/>
                                     </mask>
                                 </variation>
                             </view>

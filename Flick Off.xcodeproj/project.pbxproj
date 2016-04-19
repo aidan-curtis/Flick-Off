@@ -1417,7 +1417,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.curtisbarlow.Flick-Off";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29ebc8d6-3c04-41a4-bb43-304b13ea2944";
+				PROVISIONING_PROFILE = "004334e4-af88-427c-8bc7-237fe73308f3";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flick Off/Flick Off-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1435,7 +1435,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.curtisbarlow.Flick-Off";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29ebc8d6-3c04-41a4-bb43-304b13ea2944";
+				PROVISIONING_PROFILE = "004334e4-af88-427c-8bc7-237fe73308f3";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flick Off/Flick Off-Bridging-Header.h";
 			};
 			name = Release;

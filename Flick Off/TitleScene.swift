@@ -802,7 +802,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                     explode(CGSizeMake(50, 50), location: character.position, speed: 0.02, explosion_color: "blue");
                     laser.removeFromParent()
                     health_number=0;
-                    
                     life_bar.size.width = -1;
                     shield_bar.size.width = -1;
                 }
@@ -1046,11 +1045,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                                 explosion_size = 60
                             }
                             if(shield_follow.hidden==true){
-                                if(tutorial_status>=12){
                                 self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
                                 health_number = health_number - Int(explosion_size);
                                 setStaticHearts(health_number - Int(explosion_size))
-                                }
                             }
                             else{
                                 
@@ -1085,6 +1082,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                             if(sqrt(pow((falling.physicsBody?.velocity.dx)!,2)+pow((falling.physicsBody?.velocity.dy)!,2))>=700 ){
                                 explode(CGSizeMake(100, 100), location: UFO.position, speed: 0.02, explosion_color: "blue");
                                 explode(CGSizeMake(100, 100), location: falling.position, speed: 0.02, explosion_color: "gray");
+                        
                      
                                 falling.removeFromParent()
                                 
@@ -1104,8 +1102,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         //UFO.anchorPoint=CGPoint(x: 0.5,y: 0.5);
                     }
                     if(falling.position.y<character.position.y-character.size.height*2){
-                        falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
-                        falling.removeFromParent()
+                        if(falling_objects.indexOf(falling) != nil){
+                            falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                            falling.removeFromParent()
+                        }
                     }
                     
                 }
@@ -1153,8 +1153,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         coin.position=CGPointMake(coin.position.x, coin.position.y-CGFloat(5))
                     }
                     if(coin.position.y<character.position.y-character.size.height*2){
-                        coins.removeAtIndex(coins.indexOf(coin)!)
-                        coin.removeFromParent()
+                        if(coins.indexOf(coin) != nil){
+                            coins.removeAtIndex(coins.indexOf(coin)!)
+                            coin.removeFromParent()
+                        }
                     }
                 }
                 

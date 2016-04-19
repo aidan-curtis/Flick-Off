@@ -117,10 +117,10 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             print("buying object...\(descriptions[current_index])");
     
             if(SKPaymentQueue.canMakePayments()){
-                if(current_index+1==12){
+                if(current_index+1==13){
                     current_ProductID="7"
                 }
-                else if(current_index+1==13){
+                else if(current_index+1==14){
                     current_ProductID="8"
                 }
                 else{
@@ -296,15 +296,8 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
             let validProducts = response.products
             let validProduct: SKProduct = response.products[0] as SKProduct
             if (validProduct.productIdentifier == current_ProductID) {
-                print(validProduct.localizedTitle)
-                print(validProduct.localizedDescription)
-                print(validProduct.price)
                 buyProduct(validProduct);
-            } else {
-                print(validProduct.productIdentifier)
             }
-        } else {
-            print("nothing")
         }
     }
     func buyProduct(product: SKProduct){
@@ -313,6 +306,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
       
         
         let payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self);
         SKPaymentQueue.defaultQueue().addPayment(payment);
         boxView.removeFromSuperview();
         loading.removeFromSuperview();
@@ -368,12 +362,22 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 }
             }
         }
+        
+        bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
+        purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("gems"))";
+        shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("sheild"))";
     }
     func paymentQueue(queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
         
     }
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    private func completeTransaction(transaction: SKPaymentTransaction) {
+        print("completeTransaction...")
+        //deliverPurchaseNotificatioForIdentifier(transaction.payment.productIdentifier)
+        SKPaymentQueue.defaultQueue().finishTransaction(transaction)
     }
   
     

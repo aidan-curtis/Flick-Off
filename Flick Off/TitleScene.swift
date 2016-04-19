@@ -25,7 +25,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     let UFO_frequency=3000;
     let MAX_HEALTH = 150
     //DO NOT EDIT BELOW
-    
+    var temp_prod_id = ""
     var game_status:Float=0.0
     var bubble_shield_active = false;
     var current_coins=0;
@@ -591,6 +591,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     func continueGame(){
         dispatch_async(dispatch_get_main_queue()) {
             self.life.runAction(SKAction.moveToY(-500, duration: 0.3));
+            self.buy_hearts.runAction(SKAction.moveToY(-500, duration: 0.3));
         }
         
         for falling_object: SKSpriteNode in falling_objects{
@@ -598,6 +599,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             falling_object.physicsBody!.dynamic=true;
             falling_object.physicsBody!.velocity = falling_objects_speeds[falling_objects.indexOf(falling_object)!] as CGVector
         }
+        health_number = MAX_HEALTH;
         setStaticHearts(MAX_HEALTH);
         game_status=2;
     }
@@ -1239,18 +1241,77 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         print("got the request from Apple")
         
+        let count : Int = response.products.count
+        if (count>0) {
+            let validProducts = response.products
+            let validProduct: SKProduct = response.products[0] as SKProduct
+            if (validProduct.productIdentifier == temp_prod_id) {
+                buyProduct(validProduct);
+            }
+            else{
+                print("err1");
+            }
+        }
+        else{
+            print("err2");
+        }
+        
+        
+        
     }
     func buyProduct(product: SKProduct){
         print("Sending the Payment Request to Apple");
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self);
+        SKPaymentQueue.defaultQueue().addPayment(payment);
         
     }
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
         print("Received Payment Transaction Response from Apple");
         
         
+        for transaction in transactions {
+            switch (transaction.transactionState) {
+            case .Purchased:
+                let current_lives = NSUserDefaults.standardUserDefaults().integerForKey("saves");
+                if(temp_prod_id=="7"){
+                    self.continueGame()
+                    
+                }
+                else if(temp_prod_id=="8"){
+                    NSUserDefaults.standardUserDefaults().setInteger(current_lives+2, forKey: "saves");
+                    self.continueGame()
+                }
+                else if(temp_prod_id=="9"){
+                    NSUserDefaults.standardUserDefaults().setInteger(current_lives+4, forKey: "saves");
+                    self.continueGame()
+                }
+                completeTransaction(transaction)
+                break
+            case .Failed:
+    
+                break
+            case .Restored:
+
+                break
+            case .Deferred:
+                break
+            case .Purchasing:
+                break
+            }
+        }
+        
+        
+        
+        
     }
     func paymentQueue(queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
         print("in the payment queue");
+    }
+    private func completeTransaction(transaction: SKPaymentTransaction) {
+        print("completeTransaction...")
+        //deliverPurchaseNotificatioForIdentifier(transaction.payment.productIdentifier)
+        SKPaymentQueue.defaultQueue().finishTransaction(transaction)
     }
     
 
@@ -1510,22 +1571,25 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             
             let location = touches.locationInNode(self)
            
-            if(game_status==4){
+            if(game_status==4 || game_status==4.5){
                 if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30 && location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
                     //life.runAction(SKAction.moveToY(-500, duration: 0.8));
                     game_status=5;
                 }
                 else if(location.y > CGFloat(life.position.y)-CGFloat(life.size.height/2.0)+20 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0)-140 && location.x > CGFloat(life.position.x)-CGFloat(life.size.width/2.0)+20 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0)-20){
-                    var number_of_lives = NSUserDefaults.standardUserDefaults().integerForKey("Lives");
+                    var number_of_lives = NSUserDefaults.standardUserDefaults().integerForKey("saves");
                     if(number_of_lives>0){
                         self.continueGame();
+                        game_status=2;
                         number_of_lives-=1;
-                        NSUserDefaults.standardUserDefaults().setInteger(number_of_lives, forKey: "Lives")
+                        NSUserDefaults.standardUserDefaults().setInteger(number_of_lives, forKey: "saves")
                     }
                     else{
-                        game_status=4.5;
+                     
+                        if(game_status==4.5){
                         if(location.x-life.position.x < 106.0 && location.x-life.position.x > -106.0){
-                            var temp_prod_id = ""
+                            print("location pass one for buying lives.");
+                  
                             //button 1
                             if(location.y-life.position.y < -24 && location.y-life.position.y > -48){
                                 temp_prod_id = "7"
@@ -1539,6 +1603,8 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                                 temp_prod_id = "9"
                             }
                             
+                               print("buying hearts \(temp_prod_id)");
+                            
                             if(SKPaymentQueue.canMakePayments()){
                                 let productID:NSSet = NSSet(object: temp_prod_id)
                                 let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
@@ -1547,22 +1613,24 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         
                             }
                         }
+                        }
                         buy_hearts.runAction(SKAction.moveToY(self.size.height/2.0, duration: 0.3));
+                        game_status=4.5;
                     }
                     
                 }
             }
-            else if(game_status==4.5){
-                if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30 && location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
-                    //life.runAction(SKAction.moveToY(-500, duration: 0.8));
-                    game_status=5;
-                }
-                else if(location.y > CGFloat(life.position.y)-CGFloat(life.size.height/2.0)+20 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0)-140 && location.x > CGFloat(life.position.x)-CGFloat(life.size.width/2.0)+20 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0)-20){
-                    
-                }
-                
-                
-            }
+//            else if(game_status==4.5){
+//                if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30 && location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
+//                    //life.runAction(SKAction.moveToY(-500, duration: 0.8));
+//                    game_status=5;
+//                }
+//                else if(location.y > CGFloat(life.position.y)-CGFloat(life.size.height/2.0)+20 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0)-140 && location.x > CGFloat(life.position.x)-CGFloat(life.size.width/2.0)+20 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0)-20){
+//                    
+//                }
+//                
+//                
+//            }
             if(Mirror(reflecting: self.nodeAtPoint(location)).subjectType == SKSpriteNode.self && falling_objects.contains((self.nodeAtPoint(location) as! SKSpriteNode))){
                 touched_location = touches.locationInNode(self)
                 isTouching=true

@@ -1047,9 +1047,11 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                                 explosion_size = 60
                             }
                             if(shield_follow.hidden==true){
+                                if(tutorial_status>=11){
                                 self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
                                 health_number = health_number - Int(explosion_size);
                                 setStaticHearts(health_number - Int(explosion_size))
+                                }
                             }
                             else{
                                 

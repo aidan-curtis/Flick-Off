@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E03714B1CC5CA1B009E7CBC /* Flick-Off-Icon  iPad 152.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0371481CC5CA1B009E7CBC /* Flick-Off-Icon  iPad 152.png */; };
+		0E03714C1CC5CA1B009E7CBC /* Flick-Off-Icon iPad 76.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0371491CC5CA1B009E7CBC /* Flick-Off-Icon iPad 76.png */; };
+		0E03714D1CC5CA1B009E7CBC /* Flick-Off-Icon iPad 167.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E03714A1CC5CA1B009E7CBC /* Flick-Off-Icon iPad 167.png */; };
 		0E05E3F21CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3EC1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png */; };
 		0E05E3F31CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3ED1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png */; };
 		0E05E3F41CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E05E3EE1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png */; };
@@ -250,6 +253,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E0371481CC5CA1B009E7CBC /* Flick-Off-Icon  iPad 152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon  iPad 152.png"; sourceTree = "<group>"; };
+		0E0371491CC5CA1B009E7CBC /* Flick-Off-Icon iPad 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon iPad 76.png"; sourceTree = "<group>"; };
+		0E03714A1CC5CA1B009E7CBC /* Flick-Off-Icon iPad 167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon iPad 167.png"; sourceTree = "<group>"; };
 		0E05E3EC1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 29pt 2x.png"; sourceTree = "<group>"; };
 		0E05E3ED1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 29pt 3x.png"; sourceTree = "<group>"; };
 		0E05E3EE1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flick-Off-Icon 40pt 2x.png"; sourceTree = "<group>"; };
@@ -515,6 +521,9 @@
 			children = (
 				0E05E3EC1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png */,
 				0E05E3ED1CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png */,
+				0E0371481CC5CA1B009E7CBC /* Flick-Off-Icon  iPad 152.png */,
+				0E0371491CC5CA1B009E7CBC /* Flick-Off-Icon iPad 76.png */,
+				0E03714A1CC5CA1B009E7CBC /* Flick-Off-Icon iPad 167.png */,
 				0E05E3EE1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png */,
 				0E05E3EF1CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 3x.png */,
 				0E05E3F01CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 2x.png */,
@@ -1067,6 +1076,7 @@
 				0EF3E1581CBF1A87005C73A3 /* Life_buy.png in Resources */,
 				0E1DDDCF1C35CB3600E0C28F /* playerShip1_green.png in Resources */,
 				0E363C161C8B6E050018C2F2 /* UFO_12.png in Resources */,
+				0E03714B1CC5CA1B009E7CBC /* Flick-Off-Icon  iPad 152.png in Resources */,
 				0ED77D451C5D435B00BF5D90 /* Gem v95.png in Resources */,
 				0EA6C1F41CADB5EC00ED16FF /* Start_Flicking.png in Resources */,
 				0ED77D1A1C5D435B00BF5D90 /* Gem v55.png in Resources */,
@@ -1150,6 +1160,7 @@
 				0EED8F2C1C8CEA7700A515A9 /* back_home.png in Resources */,
 				0E1DDD361C359A2800E0C28F /* spark.png in Resources */,
 				0E1DDD0B1C34677000E0C28F /* Assets.xcassets in Resources */,
+				0E03714C1CC5CA1B009E7CBC /* Flick-Off-Icon iPad 76.png in Resources */,
 				0EF3E1431CBE98E5005C73A3 /* play_button_white.png in Resources */,
 				0E1DE07E1C35E09000E0C28F /* a40000.png in Resources */,
 				0E363C141C8B6E050018C2F2 /* UFO_10.png in Resources */,
@@ -1177,6 +1188,7 @@
 				0EBF81341C5599EE0090E585 /* explosion_33.png in Resources */,
 				0E197A351C54291B00AA5658 /* spinning_coin_gold_4.png in Resources */,
 				0ED77D121C5D435B00BF5D90 /* Gem v47.png in Resources */,
+				0E03714D1CC5CA1B009E7CBC /* Flick-Off-Icon iPad 167.png in Resources */,
 				0E05E3F71CC4FDBC00AF0A01 /* Flick-Off-Icon 60pt 3x.png in Resources */,
 				0E586D791CB1D7CA001F995E /* 3 blast rocket.png in Resources */,
 				0E84C3FA1C8FA4E100F2ADCA /* bubble shield 10.png in Resources */,

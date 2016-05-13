@@ -52,6 +52,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, S
     var rockets=[SKSpriteNode]();
     var shields=[SKSpriteNode]();
     
+    var pause_button = SKSpriteNode();
+    var play_button = SKSpriteNode();
+    
     var rocket_power=0;
     var number_of_rockets=0;
     
@@ -122,6 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, S
     
     
     override func didMoveToView(view: SKView) {
+
         
         
         tutorial_status=NSUserDefaults.standardUserDefaults().floatForKey("tutorial_status");

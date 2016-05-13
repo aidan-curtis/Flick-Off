@@ -10,51 +10,79 @@ import Foundation
 import SpriteKit
 import CoreMotion
 import StoreKit
-
+import AudioToolbox
 
 class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver{
     
+    //TITLE SCENE
+    var temp_score=0;
+    var background_node=SKSpriteNode();
     
+    //menus
+    var main_menu = SKSpriteNode();
+    var sub_menu_1 = SKSpriteNode();
+    var play = SKSpriteNode();
+    var store = SKSpriteNode();
+    var main_panel = SKSpriteNode();
+    
+    
+    //bullet feature
+    var bullet_array = [SKEmitterNode]();
+    var bullet_left = true;
+    var bullet_time_active = 0;
+
+    //score feature
+    var high_score_label = SKLabelNode();
+    var score_label=SKLabelNode();
+    
+    var high_score_label_title = SKLabelNode();
+    var score_label_title=SKLabelNode();
+    
+    var title = SKSpriteNode();
+    var launch = false;
+    var black_background_node = SKSpriteNode();
     //GAME SCENE
     //YOU CAN CHANGE THESE CONSTANTS
     let power_speed=3;
     let regular_speed=1;
-    let heart_frequency=2450;
-    let rocket_frequency=2600;
-    let shield_frequency=1963;
+    let heart_frequency=4450;
+    let rocket_frequency=4600;
+    let shield_frequency=6300;
     let UFO_frequency=3000;
+    let gun_frequency = 100;
     let MAX_HEALTH = 150
     //DO NOT EDIT BELOW
     var temp_prod_id = ""
     var game_status:Float=0.0
     var bubble_shield_active = false;
     var current_coins=0;
-    var shield_activity:Int = 0
+    var shield_activity:Int = 0;
     var UFO_Column:CGPoint=CGPointMake(-1000,0);
     var UFO = SKSpriteNode();
     var emitterNode = SKEmitterNode();
     var UFO_set = false;
-    
     var laser=SKEmitterNode();
     //var backup_emitterNode = SKEmitterNode();=
     enum GameMode : Int {
-        case SPACE=0,CITY,UNDERWATER,MARS
+        case SPACE=0,CITY,UNDERWATER,MARS;
     }
     enum Objects : UInt32{
-        case Meteor=100
+        case Meteor=100;
     }
-    
     let next_coin: coin_dispenser = coin_dispenser()
     var oldparticlecolor=UIColor.clearColor();
     var oldparticlesize:CGFloat=20.0;
     //labels
-    let score = SKLabelNode()
+    let score = SKLabelNode();
     var score_number = 0;
     var gems = [SKSpriteNode]();
     let number_of_backgrounds=8;
     var backgroundNode=[SKSpriteNode]();
+    
     var rockets=[SKSpriteNode]();
     var shields=[SKSpriteNode]();
+    var blue_coins = [SKSpriteNode]();
+    
     var action = false;
     var rocket_power=0;
     var number_of_rockets=0;
@@ -62,20 +90,20 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     var falling_objects = [SKSpriteNode]();
     var falling_objects_speeds = [CGVector]();
     
-    var coins=[SKSpriteNode]()
-    var coins_position_x=0
+    var coins=[SKSpriteNode]();
+    var coins_position_x=0;
     //hearts init
-    var hearts=[SKSpriteNode]()
-    var permanant_hearts=[SKSpriteNode]()
+    var hearts=[SKSpriteNode]();
+    var permanant_hearts=[SKSpriteNode]();
     var number_of_hearts=3;
     var buy_hearts = Life();
     let life = Life();
     //let space_objects:[String] = ["meteorBrown_big1", "meteorBrown_big2", "meteorBrown_big3", "meteorBrown_big4"];
     //fix later to stramline string formatting
-    let paralax=["Rain.sks", "Bubbles.sks"]
+    let paralax=["Rain.sks", "Bubbles.sks"];
     
     let space_objects: [String] = ["a30000","a10000", "a40000","b10000", "b30000", "b40000"];
-    let city_objects: [String] = ["cat", "dog"]
+    let city_objects: [String] = ["cat", "dog"];
     let underwater_objects: [String] = ["color_fish_1","color_fish_2","color_fish_3","color_fish_4","color_fish_5"]
     let mars_objects: [String] = ["UFO1", "UFO2", "UFO3"]
     var objects = Array<Array<String>>()
@@ -90,15 +118,11 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     var shield_follow = Shield();
     var bubble_shield = BubbleShield();
     var fuel = SKEmitterNode();
-    
-    
     var game_mode=GameMode.SPACE.rawValue
-    
     var coin_alternator=false;
     var spinning_asteroid = SKAction();
     let manager = CMMotionManager();
     var currentRoll = Double();
-    
     var explosion = [SKTexture]()
     var menu = SKSpriteNode();
     
@@ -108,7 +132,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     var shield_cover=SKSpriteNode();
     
     var health_number = 150;
-    
     
     var coin_cover=SKSpriteNode();
     var coin_image = SKSpriteNode();
@@ -121,13 +144,52 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     var tutorial_status:Float = 0.0;
     var tutorial_cover = SKSpriteNode();
     var tutorial_cover_complete = SKSpriteNode();
+    
     func presentMenu(){
         menu.size=CGSizeMake(200, 100)
         menu.color=UIColor.redColor()
     }
     
+    var pause_button = SKSpriteNode();
+    var play_button = SKSpriteNode();
     
+    func play_action(){
+        emitterNode.paused = false;
+        fuel.paused = false;
+        print("nothing");
+        pause_button.hidden = false;
+        play_button.hidden = true;
+    }
+    
+    func pause_action(){
+        emitterNode.paused=true;
+        fuel.paused = true;
+        game_status=4;
+        falling_objects_speeds.removeAll()
+        for falling_object: SKSpriteNode in falling_objects{
+            falling_objects_speeds.append(falling_object.physicsBody!.velocity)
+            falling_object.physicsBody!.dynamic=false;
+        }
+        pause_button.hidden = true;
+        play_button.hidden = false;
+    }
+    
+
     func game_scene_begin() {
+        
+        //pause button init
+        pause_button.size=CGSizeMake(25, 25);
+        pause_button.position=CGPointMake(self.size.width/2, self.size.height-20);
+        pause_button.zPosition = 1000000;
+        pause_button.texture = SKTexture(imageNamed: "Pause");
+        addChild(pause_button);
+        //play button init
+        play_button.size=CGSizeMake(25, 25);
+        play_button.position=CGPointMake(self.size.width/2, self.size.height-20);
+        play_button.texture = SKTexture(imageNamed: "Play");
+        play_button.zPosition = 1000000;
+        self.addChild(play_button);
+        play_button.hidden = true;
         
         
         print("starting setup")
@@ -156,7 +218,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         
         buy_hearts.setup(self.size);
         buy_hearts.position = CGPointMake(self.size.width/2.0, -300);
-        buy_hearts.texture = SKTexture(imageNamed: "Life_buy");
+        buy_hearts.texture = SKTexture(imageNamed: "Life_spelling");
         buy_hearts.zPosition=10002;
         addChild(buy_hearts);
         addChild(life);
@@ -212,20 +274,12 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         coin_label.hidden=true;
         addChild(coin_label);
         
-//
-//        
-//        
-        
         //Coin repeat for gem popup
-        
-        
         gem_cover.position = CGPointMake(self.size.width-50, 18);
         gem_cover.size = CGSizeMake(1, 1);
         gem_cover.texture = SKTexture(imageNamed: "gem_cover");
         
         addChild(gem_cover);
-        
-        
         
         gem_image.position = CGPointMake(self.size.width+20, 18);
         gem_image.size = CGSizeMake(1 ,1)
@@ -249,8 +303,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         //present menu at beginning and after death
         presentMenu()
         
-        //addGem(CGPointMake(200, 200))
-        
         //setting score label
         score.position = CGPointMake(30, self.size.height-30)
         score.fontName = "04b_19"
@@ -267,21 +319,14 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         
         objects=[space_objects, city_objects,underwater_objects, mars_objects]
         self.physicsWorld.gravity=CGVectorMake(0, 0);
-//
-//      
-//        
-//        
-//        
-//        /* Setup your scene here */
+
         self.backgroundColor = UIColor.blackColor()
 
         
         if(NSUserDefaults.standardUserDefaults().objectForKey("ship") == nil){
             NSUserDefaults.standardUserDefaults().setObject("playerShip1_green.png", forKey: "ship")
-            
         }
 
-        
         
         if(NSUserDefaults.standardUserDefaults().integerForKey("shield")>0){
             bubble_shield_active=true;
@@ -303,15 +348,11 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         oldparticlecolor=fuel.particleColor;
         oldparticlesize=fuel.particleScale;
         
-        
-        
-        
-        
         let initial_rocket = NSUserDefaults.standardUserDefaults().integerForKey("blast")
         if(initial_rocket>0){
+            NSUserDefaults.standardUserDefaults().setInteger(initial_rocket-1, forKey: "blast");
             blastOff(500);
         }
-
         
         emitterNode=starfieldEmitter(SKColor.grayColor(), starSpeedY: 150, starsPerSecond: 20, starScaleFactor: 0.1,backup: false)
         emitterNode.zPosition = -9
@@ -352,9 +393,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             
             node1.removeFromParent()
             node2.removeFromParent()
-            
-            falling_objects.removeAtIndex(falling_objects.indexOf(node1)!)
-            falling_objects.removeAtIndex(falling_objects.indexOf(node2)!)
+            if(falling_objects.indexOf(node1) != nil && falling_objects.indexOf(node2) != nil){
+                falling_objects.removeAtIndex(falling_objects.indexOf(node1)!)
+                falling_objects.removeAtIndex(falling_objects.indexOf(node2)!)
+            }
             explode(CGSizeMake(power/15.0, power/15.0), location: CGPointMake((location1.x+location2.x)/2, (location1.y+location2.y)/2), speed: 0.01, explosion_color: "gray")
             if(tutorial_status<=3){
                 tutorial_status+=1;
@@ -375,7 +417,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
             falling_object.removeFromParent()
         }
         falling_objects.removeAll()
-        
         for heart: SKSpriteNode in hearts{
             heart.removeFromParent()
         }
@@ -390,9 +431,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         for shield: SKSpriteNode in shields{
             shield.removeFromParent()
         }
-        shields.removeAll()
-        
-        
+        shields.removeAll();
     }
     func addFallingObject(speed : Int){
         let falling_object = SKSpriteNode();
@@ -416,27 +455,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         }
         
         
-        //        if(arc4random_uniform(UInt32(11))==10){
-        //            falling_object.name="purple"
-        //            //add emitter_node
-        //            let emitterNode = SKEmitterNode(fileNamed: "Magic")!
-        //            emitterNode.zPosition = -11
-        //            emitterNode.position = CGPointMake(0, 0)
-        //            emitterNode.targetNode=self
-        //            falling_object.addChild(emitterNode)
-        //        }
-        //        else if(arc4random_uniform(UInt32(11))==10){
-        //            falling_object.name="blue"
-        //            //add emitter_node
-        //            let emitterNode = SKEmitterNode(fileNamed: "Magic2")!
-        //
-        //            emitterNode.zPosition = -11
-        //            emitterNode.position = CGPointMake(0, 0)
-        //            emitterNode.targetNode=self
-        //            falling_object.addChild(emitterNode)
-        //        }
-        
-        //add physics body
+
         
         falling_object.physicsBody=SKPhysicsBody(circleOfRadius: falling_object.size.width/4);
         falling_object.physicsBody!.dynamic=true;
@@ -528,14 +547,19 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         life_bar.position=CGPointMake(CGFloat((num+10)/2)+3, 18)
     }
     func setShieldBar(num : Int){
-        shield_bar.runAction(SKAction.scaleXTo(CGFloat(num+10), y: 1, duration: 0.2));
-        
+        let a = { () -> Void in
+            self.shield_bar.size.width = CGFloat(num);
+            
+            //coin.runAction(SKAction.scaleTo(CGFloat(0), duration: 0.5), completion: b)
+        }
+        //shield_bar.size.width = 100;
+      
+        shield_bar.runAction(SKAction.moveToX(CGFloat(Double(num)/2.0), duration: 0.1));
         if(num<=0){
             shield_bar.hidden=true;
         }
         shield_bar.size=CGSizeMake(CGFloat((num+10))+4, 14);
         shield_bar.color=UIColor.blueColor()
-        
         shield_bar.position=CGPointMake(CGFloat((num+10)/2)+4, 40)
     }
     
@@ -572,7 +596,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         if(coin_alternator==true){
             coins_position_x=next_coin.fetch_next_coin()
             if(next_coin.status==1){
-                //coin.texture=SKTexture(imageNamed:"spinning_coin_gold_1")
+            
                 var coin_textures=[SKTexture]()
                 for (var i=0; i<8; i=i+1){
                     let name="spinning_coin_gold_"+(i+1 as NSNumber).stringValue
@@ -597,7 +621,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         for falling_object: SKSpriteNode in falling_objects{
             
             falling_object.physicsBody!.dynamic=true;
-            falling_object.physicsBody!.velocity = falling_objects_speeds[falling_objects.indexOf(falling_object)!] as CGVector
+            if(falling_objects.indexOf(falling_object) != nil){
+                falling_object.physicsBody!.velocity = falling_objects_speeds[falling_objects.indexOf(falling_object)!] as CGVector
+            }
         }
         health_number = MAX_HEALTH;
         setStaticHearts(MAX_HEALTH);
@@ -619,8 +645,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         for rocket: Rocket in static_rockets{
             addChild(rocket);
         }
-        
-        
     }
     func blastOff(power: Int){
         shield_follow.hidden=true;
@@ -721,6 +745,34 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         }
         if(game_status==2){
     
+            for bullet_i: SKEmitterNode in bullet_array{
+                bullet_i.position = CGPointMake(bullet_i.position.x, bullet_i.position.y+10);
+                if(bullet_i.position.y>self.size.height){
+                    if(nil != bullet_array.indexOf(bullet_i)){
+                        bullet_i.removeFromParent();
+                        bullet_array.removeAtIndex(bullet_array.indexOf(bullet_i)!);
+                    }
+                }
+            }
+            
+            if(bullet_time_active>0){
+                bullet_time_active -= 1;
+                if(bullet_time_active%4==0){
+                    let bullet = SKEmitterNode(fileNamed: "Bullets.sks")!
+                    bullet.targetNode=self;
+                    if(bullet_left){
+                        bullet.position = CGPointMake(character.position.x-17, character.position.y);
+                        bullet_left = false;
+                    }
+                    else{
+                        bullet.position = CGPointMake(character.position.x+17, character.position.y);
+                        bullet_left=true;
+                    }
+                bullet_array.append(bullet);
+                addChild(bullet);
+                }
+                
+            }
             var lambda:CGFloat = 2.0;
             if(rocket_power<=0){
                 lambda = 1.0
@@ -950,7 +1002,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         setShieldBar(MAX_HEALTH)
                         shield_bar.hidden=false;
                         shield.removeFromParent()
-                        shields.removeAtIndex(shields.indexOf(shield)!)
+                        if(shields.indexOf(shield) != nil){
+                            shields.removeAtIndex(shields.indexOf(shield)!)
+                        }
                         
                     }
                 }
@@ -962,7 +1016,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         }
                         number_of_rockets+=1;
                         rocketIter(number_of_rockets);
-                        rockets.removeAtIndex(rockets.indexOf(rocket)!)
+                        if(rockets.indexOf(rocket) != nil){
+                            rockets.removeAtIndex(rockets.indexOf(rocket)!)
+                        }
+               
                         rocket.removeFromParent()
                         
                     }
@@ -979,7 +1036,9 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         if(CGFloat(health_number)>CGFloat(MAX_HEALTH)){
                             setStaticHearts(MAX_HEALTH)
                         }
-                        hearts.removeAtIndex(hearts.indexOf(heart)!)
+                        if(hearts.indexOf(heart) != nil){
+                            hearts.removeAtIndex(hearts.indexOf(heart)!)
+                        }
                         heart.removeFromParent()
                         
                     }
@@ -1010,11 +1069,15 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                                 tutorial_status+=1;
                             }
                             gem.runAction(SKAction.runBlock(a))
-                            gems.removeAtIndex(gems.indexOf(gem)!);
+                            if(gems.indexOf(gem) != nil){
+                                gems.removeAtIndex(gems.indexOf(gem)!);
+                            }
                         
                     }
                     
                 }
+            
+            
                 //falling objects enumerate
                 
                 for falling: SKSpriteNode in falling_objects{
@@ -1030,6 +1093,21 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                     }
                     let shrinkx:CGFloat=character.frame.width/2, shrinkx_m=character.frame.width/2
                     let shrinky:CGFloat=character.frame.height/2, shrinky_m=character.frame.height/2
+                    for bullet_i: SKEmitterNode in bullet_array{
+                        if(CGRectIntersectsRect(CGRectMake(bullet_i.position.x, bullet_i.position.y, 1, 1), falling.frame)){
+                            if(nil != bullet_array.indexOf(bullet_i)){
+                                bullet_i.removeFromParent();
+                                bullet_array.removeAtIndex(bullet_array.indexOf(bullet_i)!);
+                                if(falling_objects.indexOf(falling) != nil){
+                                    falling_objects.removeAtIndex(falling_objects.indexOf(falling)!);
+                                    falling.removeFromParent();
+                                }
+                           
+                                self.explode(CGSizeMake(40, 40), location: falling.position, speed: 0.02, explosion_color: "gray")
+                            }
+                        }
+                    }
+                    
                     if(CGRectIntersectsRect(CGRectMake(falling.frame.origin.x+shrinkx_m, falling.frame.origin.y+shrinky_m, 70, 70), CGRectMake(character.frame.origin.x+shrinkx, character.frame.origin.y+shrinky, 1, 1))){
                         if(bubble_shield_active){
                             
@@ -1049,6 +1127,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                             if(shield_follow.hidden==true){
                                 if(tutorial_status>=11){
                                 self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "red")
+                                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                                 health_number = health_number - Int(explosion_size);
                                 setStaticHearts(health_number - Int(explosion_size))
                                 }
@@ -1056,16 +1135,20 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                             else{
                                 
                                 self.explode(CGSizeMake(explosion_size, explosion_size), location: CGPointMake((character.position.x+falling.position.x)/2, (character.position.y+falling.position.y)/2), speed: (0.02), explosion_color: "gray")
-                                let change_shield=shield_bar.size.width-explosion_size
-                                setShieldBar(Int(change_shield))
-                                if(change_shield<0){
+                                let change_shield=shield_bar.size.width-explosion_size;
+                                if(change_shield>=0){
+                                    setShieldBar(Int(change_shield));
+                                }
+                                else if(change_shield<0){
                                     shield_cover.hidden=true;
                                     shield_bar.hidden=true;
                                     shield_follow.hidden=true;
                                 }
                             }
                         }
-                        falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                        if(falling_objects.indexOf(falling) != nil){
+                            falling_objects.removeAtIndex(falling_objects.indexOf(falling)!)
+                        }
                         
                         
                         falling.removeFromParent()
@@ -1074,22 +1157,16 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         
                     }
                     if(UFO_set==true){
-                 
-                        
-                     
                         //UFO.anchorPoint=CGPoint(x: 0.0,y: 0.0);
                         
                         if(CGRectIntersectsRect(
                             CGRectMake(falling.position.x, falling.position.y, falling.size.width, falling.size.height), CGRectMake(UFO.position.x, UFO.position.y, UFO.size.width, UFO.size.height)
                             )){
-                             print("power_value: \(CGFloat(sqrt(pow((falling.physicsBody?.velocity.dx)!,2)+pow((falling.physicsBody?.velocity.dy)!,2))))")
+                            print("power_value: \(CGFloat(sqrt(pow((falling.physicsBody?.velocity.dx)!,2)+pow((falling.physicsBody?.velocity.dy)!,2))))")
                             if(sqrt(pow((falling.physicsBody?.velocity.dx)!,2)+pow((falling.physicsBody?.velocity.dy)!,2))>=700 ){
                                 explode(CGSizeMake(100, 100), location: UFO.position, speed: 0.02, explosion_color: "blue");
                                 explode(CGSizeMake(100, 100), location: falling.position, speed: 0.02, explosion_color: "gray");
-                        
-                     
                                 falling.removeFromParent()
-                                
                                 tutorial_status+=1;
                                 UFO.removeFromParent();
                                 laser.removeFromParent()
@@ -1097,11 +1174,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                                 UFO_Column=CGPointMake(-1000, 0);
                                 UFO_set=false;
                             }
-                            
-                            
-                            
-                            
-                            
                         }
                         //UFO.anchorPoint=CGPoint(x: 0.5,y: 0.5);
                     }
@@ -1111,16 +1183,37 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                             falling.removeFromParent()
                         }
                     }
-                    
                 }
-                
                 //blast off
                 if(number_of_rockets==3){
                     number_of_rockets=0 ;
                     rocketIter(number_of_rockets);
                     blastOff(200);
                 }
-                
+                for blue_coin: SKSpriteNode in blue_coins{
+                    if(CGRectIntersectsRect(blue_coin.frame, character.frame)){
+                        if(blue_coins.indexOf(blue_coin) != nil){
+                            blue_coins.removeAtIndex(blue_coins.indexOf(blue_coin)!);
+                            blue_coin.removeFromParent();
+                            
+                            bullet_time_active=200;
+                        
+                            
+                        }
+                    }
+                    if(blue_coin.position.y<character.position.y-character.size.height*2){
+                        if(blue_coins.indexOf(blue_coin) != nil){
+                            blue_coins.removeAtIndex(blue_coins.indexOf(blue_coin)!);
+                            blue_coin.removeFromParent();
+                        }
+                    }
+                    if(rocket_power>0){
+                        blue_coin.position=CGPointMake(blue_coin.position.x, blue_coin.position.y-CGFloat(5*power_speed));
+                    }
+                    else{
+                        blue_coin.position=CGPointMake(blue_coin.position.x, blue_coin.position.y-CGFloat(5));
+                    }//dildo!!!
+                }
                 //move coins
                 for coin: SKSpriteNode in coins{
                     if(CGRectIntersectsRect(coin.frame,character.frame)){
@@ -1128,8 +1221,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                             tutorial_status+=1;
                         }
                         current_coins+=1;
-                        
-                        
                         let b = { () -> Void in
                             coin.removeFromParent()
                         }
@@ -1178,7 +1269,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                     if(tutorial_status>4){
                         let rocket = Rocket();
                         rocket.setup(CGSizeMake(60, 60));
-                        
                         rocket.position=CGPointMake(CGFloat(arc4random_uniform(UInt32(self.size.width))), self.size.height)
                         addChild(rocket);
                         rockets.append(rocket);
@@ -1196,18 +1286,30 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                         addFallingObject(object_speed);
                     }
                 }
+            
+            if(arc4random_uniform(UInt32(gun_frequency))==0){
+                if(coin_alternator==false){
+                var blue_coin = SKSpriteNode();
+                var blue_coin_textures=[SKTexture]()
+                for (var i=0; i<8; i=i+1){
+                    let name="spinning_coin_blue_"+(i+1 as NSNumber).stringValue
+                    blue_coin_textures.append(SKTexture(imageNamed: name))
+                }
+                blue_coin.runAction(SKAction.repeatActionForever( SKAction.animateWithTextures(blue_coin_textures, timePerFrame: 0.1)))
+                blue_coin.position=CGPointMake(CGFloat(arc4random_uniform(UInt32(self.size.width))), self.size.height+25)
+                blue_coin.size=CGSizeMake(30, 30);
+                blue_coin.zPosition = 10001
+                addChild(blue_coin)
+                blue_coins.append(blue_coin)
+            }
+            }
             }
         
         else if (game_status==3){
             
             
             life.runAction(SKAction.moveToY(self.size.height/2.0, duration: 0.3))
-            game_status=4;
-            falling_objects_speeds.removeAll()
-            for falling_object: SKSpriteNode in falling_objects{
-                falling_objects_speeds.append(falling_object.physicsBody!.velocity)
-                falling_object.physicsBody!.dynamic=false;
-            }
+            self.pause_action();
         }
         else if (game_status==4){
             //holding pattern
@@ -1318,28 +1420,7 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     
 
     
-    //TITLE SCENE
-    var temp_score=0;
-    var background_node=SKSpriteNode();
-
-    //menus
-    var main_menu = SKSpriteNode();
-    var sub_menu_1 = SKSpriteNode();
-    var play = SKSpriteNode();
-    var store = SKSpriteNode();
-    var main_panel = SKSpriteNode();
-    
-    var high_score_label = SKLabelNode();
-    var score_label=SKLabelNode();
-    
-    var high_score_label_title = SKLabelNode();
-    var score_label_title=SKLabelNode();
-    
-    var title = SKSpriteNode();
-  
-    var launch = false;
-
-    var black_background_node = SKSpriteNode();
+   
     override func didMoveToView(view: SKView){
         
         
@@ -1548,10 +1629,6 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
     }
 
     override func update(currentTime: CFTimeInterval){
-
-     
-        
-
         if(action==true){
          
             update_game();
@@ -1567,12 +1644,24 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
         }
         
     }
+  
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         for touches: AnyObject in touches{
             
             let location = touches.locationInNode(self)
-           
+            
+            if(self.nodeAtPoint(location) == play_button){
+                self.play_action();
+                self.continueGame();
+                game_status = 2
+            }
+                
+            else if(self.nodeAtPoint(location) == pause_button){
+                self.pause_action()
+            }
+            
             if(game_status==4 || game_status==4.5){
                 if(location.y > CGFloat(life.position.y)+CGFloat(life.size.height/2.0) - 30 && location.y < CGFloat(life.position.y)+CGFloat(life.size.height/2.0) + 30 && location.x > CGFloat(life.position.x)+CGFloat(life.size.width/2.0) - 30 && location.x < CGFloat(life.position.x)+CGFloat(life.size.width/2.0) + 30){
                     //life.runAction(SKAction.moveToY(-500, duration: 0.8));
@@ -1666,23 +1755,18 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                     self.store.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
                 }
                 let d = { () -> Void in
-                    
                     self.high_score_label.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
                     self.high_score_label.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
                 }
                 let e = { () -> Void in
-                    
                     self.high_score_label_title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
                     self.high_score_label_title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3))
-                    
                 }
                 let f = { () -> Void in
-                    
                     self.score_label.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
                     self.score_label.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
                 }
-                let g = { () -> Void in
-                    
+                let g = { () -> Void in 
                     self.score_label_title.runAction(SKAction.moveBy(CGVectorMake(0, 10), duration: 0.3))
                     self.score_label_title.runAction(SKAction.fadeAlphaTo(0, duration: 0.3));
                 }
@@ -1788,17 +1872,10 @@ class TitleScene: SKScene, SKPhysicsContactDelegate, SKProductsRequestDelegate, 
                 
                // SKAction.moveTo(CGPointMake(background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0)
                 let title_blast = { () -> Void in
-                   
                     self.background_node.runAction( SKAction.moveTo(CGPointMake(self.background_node.position.x,-self.size.width*4+self.size.height), duration: 1.0));
                     self.black_background_node.runAction(SKAction.fadeAlphaTo(1, duration: 1));
-                    
                 }
                 self.background_node.runAction(SKAction.sequence([SKAction.runBlock(title_blast),SKAction.waitForDuration(1.0), SKAction.runBlock(h)]))
-                
-                    
-                
-                
-                
             }
         }
         

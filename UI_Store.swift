@@ -32,7 +32,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
          "Green Ship for FREE",
         "One Save for $0.99",
         "Three Saves for $1.99",
-        "Gun Coins for 5000 gems"]);
+        "Buy Gun for 5000 gems"]);
     
     var current_ProductID:String = ""
     

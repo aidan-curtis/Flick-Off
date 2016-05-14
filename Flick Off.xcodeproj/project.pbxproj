@@ -120,6 +120,14 @@
 		0E57BF8D1CE6D5A200F5D872 /* Icon flick off58.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF881CE6D5A200F5D872 /* Icon flick off58.png */; };
 		0E57BF8E1CE6D5A200F5D872 /* Icon flick off80.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF891CE6D5A200F5D872 /* Icon flick off80.png */; };
 		0E57BF8F1CE6D5A200F5D872 /* Icon flick off87.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF8A1CE6D5A200F5D872 /* Icon flick off87.png */; };
+		0E57BF981CE7CE9C00F5D872 /* spinning_coin_blue_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF901CE7CE9C00F5D872 /* spinning_coin_blue_1.png */; };
+		0E57BF991CE7CE9C00F5D872 /* spinning_coin_blue_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF911CE7CE9C00F5D872 /* spinning_coin_blue_2.png */; };
+		0E57BF9A1CE7CE9C00F5D872 /* spinning_coin_blue_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF921CE7CE9C00F5D872 /* spinning_coin_blue_3.png */; };
+		0E57BF9B1CE7CE9C00F5D872 /* spinning_coin_blue_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF931CE7CE9C00F5D872 /* spinning_coin_blue_4.png */; };
+		0E57BF9C1CE7CE9C00F5D872 /* spinning_coin_blue_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF941CE7CE9C00F5D872 /* spinning_coin_blue_5.png */; };
+		0E57BF9D1CE7CE9C00F5D872 /* spinning_coin_blue_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF951CE7CE9C00F5D872 /* spinning_coin_blue_6.png */; };
+		0E57BF9E1CE7CE9C00F5D872 /* spinning_coin_blue_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF961CE7CE9C00F5D872 /* spinning_coin_blue_7.png */; };
+		0E57BF9F1CE7CE9C00F5D872 /* spinning_coin_blue_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF971CE7CE9C00F5D872 /* spinning_coin_blue_8.png */; };
 		0E586D791CB1D7CA001F995E /* 3 blast rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E586D771CB1D7CA001F995E /* 3 blast rocket.png */; };
 		0E586D7A1CB1D7CA001F995E /* Pile of coins.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E586D781CB1D7CA001F995E /* Pile of coins.png */; };
 		0E5924F01C6CBBDC00023713 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924EF1C6CBBDC00023713 /* Background7.png */; };
@@ -202,14 +210,6 @@
 		0EBF813D1C5599EE0090E585 /* spritesheet9-150x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF81191C5599EE0090E585 /* spritesheet9-150x150.png */; };
 		0EC3BC831CD917090097023A /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC811CD917090097023A /* Pause.png */; };
 		0EC3BC841CD917090097023A /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC821CD917090097023A /* Play.png */; };
-		0EC3BC8D1CDB89FA0097023A /* spinning_coin_blue_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC851CDB89FA0097023A /* spinning_coin_blue_1.png */; };
-		0EC3BC8E1CDB89FA0097023A /* spinning_coin_blue_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC861CDB89FA0097023A /* spinning_coin_blue_2.png */; };
-		0EC3BC8F1CDB89FA0097023A /* spinning_coin_blue_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC871CDB89FA0097023A /* spinning_coin_blue_3.png */; };
-		0EC3BC901CDB89FA0097023A /* spinning_coin_blue_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC881CDB89FA0097023A /* spinning_coin_blue_4.png */; };
-		0EC3BC911CDB89FA0097023A /* spinning_coin_blue_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC891CDB89FA0097023A /* spinning_coin_blue_5.png */; };
-		0EC3BC921CDB89FA0097023A /* spinning_coin_blue_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC8A1CDB89FA0097023A /* spinning_coin_blue_6.png */; };
-		0EC3BC931CDB89FA0097023A /* spinning_coin_blue_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC8B1CDB89FA0097023A /* spinning_coin_blue_7.png */; };
-		0EC3BC941CDB89FA0097023A /* spinning_coin_blue_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3BC8C1CDB89FA0097023A /* spinning_coin_blue_8.png */; };
 		0EC4639C1CCE373200A335AC /* Life_spelling.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC4639B1CCE373200A335AC /* Life_spelling.png */; };
 		0ED481AB1C7F2FF80041F8E7 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */; };
 		0ED77CEB1C5D435B00BF5D90 /* Gem v103.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED77C881C5D435B00BF5D90 /* Gem v103.png */; };
@@ -391,6 +391,14 @@
 		0E57BF881CE6D5A200F5D872 /* Icon flick off58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon flick off58.png"; sourceTree = SOURCE_ROOT; };
 		0E57BF891CE6D5A200F5D872 /* Icon flick off80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon flick off80.png"; sourceTree = SOURCE_ROOT; };
 		0E57BF8A1CE6D5A200F5D872 /* Icon flick off87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon flick off87.png"; sourceTree = SOURCE_ROOT; };
+		0E57BF901CE7CE9C00F5D872 /* spinning_coin_blue_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_1.png; sourceTree = "<group>"; };
+		0E57BF911CE7CE9C00F5D872 /* spinning_coin_blue_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_2.png; sourceTree = "<group>"; };
+		0E57BF921CE7CE9C00F5D872 /* spinning_coin_blue_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_3.png; sourceTree = "<group>"; };
+		0E57BF931CE7CE9C00F5D872 /* spinning_coin_blue_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_4.png; sourceTree = "<group>"; };
+		0E57BF941CE7CE9C00F5D872 /* spinning_coin_blue_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_5.png; sourceTree = "<group>"; };
+		0E57BF951CE7CE9C00F5D872 /* spinning_coin_blue_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_6.png; sourceTree = "<group>"; };
+		0E57BF961CE7CE9C00F5D872 /* spinning_coin_blue_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_7.png; sourceTree = "<group>"; };
+		0E57BF971CE7CE9C00F5D872 /* spinning_coin_blue_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinning_coin_blue_8.png; sourceTree = "<group>"; };
 		0E586D771CB1D7CA001F995E /* 3 blast rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3 blast rocket.png"; path = "Images/3 blast rocket.png"; sourceTree = "<group>"; };
 		0E586D781CB1D7CA001F995E /* Pile of coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pile of coins.png"; path = "Images/Pile of coins.png"; sourceTree = "<group>"; };
 		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = "Flick Off/Images/Background7.png"; sourceTree = SOURCE_ROOT; };
@@ -473,14 +481,6 @@
 		0EBF81191C5599EE0090E585 /* spritesheet9-150x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spritesheet9-150x150.png"; sourceTree = "<group>"; };
 		0EC3BC811CD917090097023A /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = Images/Pause.png; sourceTree = "<group>"; };
 		0EC3BC821CD917090097023A /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = Images/Play.png; sourceTree = "<group>"; };
-		0EC3BC851CDB89FA0097023A /* spinning_coin_blue_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_1.png; path = ../../../../Coin/spinning_coin_blue_1.png; sourceTree = "<group>"; };
-		0EC3BC861CDB89FA0097023A /* spinning_coin_blue_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_2.png; path = ../../../../Coin/spinning_coin_blue_2.png; sourceTree = "<group>"; };
-		0EC3BC871CDB89FA0097023A /* spinning_coin_blue_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_3.png; path = ../../../../Coin/spinning_coin_blue_3.png; sourceTree = "<group>"; };
-		0EC3BC881CDB89FA0097023A /* spinning_coin_blue_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_4.png; path = ../../../../Coin/spinning_coin_blue_4.png; sourceTree = "<group>"; };
-		0EC3BC891CDB89FA0097023A /* spinning_coin_blue_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_5.png; path = ../../../../Coin/spinning_coin_blue_5.png; sourceTree = "<group>"; };
-		0EC3BC8A1CDB89FA0097023A /* spinning_coin_blue_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_6.png; path = ../../../../Coin/spinning_coin_blue_6.png; sourceTree = "<group>"; };
-		0EC3BC8B1CDB89FA0097023A /* spinning_coin_blue_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_7.png; path = ../../../../Coin/spinning_coin_blue_7.png; sourceTree = "<group>"; };
-		0EC3BC8C1CDB89FA0097023A /* spinning_coin_blue_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinning_coin_blue_8.png; path = ../../../../Coin/spinning_coin_blue_8.png; sourceTree = "<group>"; };
 		0EC4639B1CCE373200A335AC /* Life_spelling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Life_spelling.png; sourceTree = SOURCE_ROOT; };
 		0ED481AA1C7F2FF80041F8E7 /* Rocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		0ED77C881C5D435B00BF5D90 /* Gem v103.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem v103.png"; sourceTree = "<group>"; };
@@ -592,14 +592,14 @@
 		0E197A271C54291B00AA5658 /* Coin */ = {
 			isa = PBXGroup;
 			children = (
-				0EC3BC851CDB89FA0097023A /* spinning_coin_blue_1.png */,
-				0EC3BC861CDB89FA0097023A /* spinning_coin_blue_2.png */,
-				0EC3BC871CDB89FA0097023A /* spinning_coin_blue_3.png */,
-				0EC3BC881CDB89FA0097023A /* spinning_coin_blue_4.png */,
-				0EC3BC891CDB89FA0097023A /* spinning_coin_blue_5.png */,
-				0EC3BC8A1CDB89FA0097023A /* spinning_coin_blue_6.png */,
-				0EC3BC8B1CDB89FA0097023A /* spinning_coin_blue_7.png */,
-				0EC3BC8C1CDB89FA0097023A /* spinning_coin_blue_8.png */,
+				0E57BF901CE7CE9C00F5D872 /* spinning_coin_blue_1.png */,
+				0E57BF911CE7CE9C00F5D872 /* spinning_coin_blue_2.png */,
+				0E57BF921CE7CE9C00F5D872 /* spinning_coin_blue_3.png */,
+				0E57BF931CE7CE9C00F5D872 /* spinning_coin_blue_4.png */,
+				0E57BF941CE7CE9C00F5D872 /* spinning_coin_blue_5.png */,
+				0E57BF951CE7CE9C00F5D872 /* spinning_coin_blue_6.png */,
+				0E57BF961CE7CE9C00F5D872 /* spinning_coin_blue_7.png */,
+				0E57BF971CE7CE9C00F5D872 /* spinning_coin_blue_8.png */,
 				0E197A281C54291B00AA5658 /* spinning_coin_gold.png */,
 				0E197A291C54291B00AA5658 /* spinning_coin_gold_1.png */,
 				0E197A2A1C54291B00AA5658 /* spinning_coin_gold_2.png */,
@@ -1095,11 +1095,13 @@
 				0EB386901C69785C008CA036 /* Main_Panel.png in Resources */,
 				0EBF81261C5599EE0090E585 /* explosion_20.png in Resources */,
 				0E84C3E61C8FA18600F2ADCA /* playerShip1_orange.png in Resources */,
+				0E57BF9D1CE7CE9C00F5D872 /* spinning_coin_blue_6.png in Resources */,
 				0E29114B1C740C4A00DDE978 /* Magic2.sks in Resources */,
 				0E363BF91C8B4B010018C2F2 /* Blue_Explosion.sks in Resources */,
 				0E84C3FC1C8FA4E100F2ADCA /* bubble shield 12.png in Resources */,
 				0E84C3FB1C8FA4E100F2ADCA /* bubble shield 11.png in Resources */,
 				0EE3686A1C98B578003639C8 /* shield_cover.png in Resources */,
+				0E57BF981CE7CE9C00F5D872 /* spinning_coin_blue_1.png in Resources */,
 				0E84C40C1C8FABE800F2ADCA /* GreenBorder.png in Resources */,
 				0E05E3F41CC4FDBC00AF0A01 /* Flick-Off-Icon 40pt 2x.png in Resources */,
 				0ED77D221C5D435B00BF5D90 /* Gem v63.png in Resources */,
@@ -1125,7 +1127,6 @@
 				0E363C1C1C8B6E050018C2F2 /* UFO_7.png in Resources */,
 				0E84C3FE1C8FA4E100F2ADCA /* bubble shield 14.png in Resources */,
 				0E5925091C6D497A00023713 /* Background7_1k.png in Resources */,
-				0EC3BC911CDB89FA0097023A /* spinning_coin_blue_5.png in Resources */,
 				0E05E3F31CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 3x.png in Resources */,
 				0EF3E1581CBF1A87005C73A3 /* Life_buy.png in Resources */,
 				0E1DDDCF1C35CB3600E0C28F /* playerShip1_green.png in Resources */,
@@ -1141,14 +1142,14 @@
 				0EBF81211C5599EE0090E585 /* explosion_16.png in Resources */,
 				0E1420C51C853249003785D5 /* shield2.png in Resources */,
 				0ED77D2B1C5D435B00BF5D90 /* Gem v71.png in Resources */,
-				0EC3BC931CDB89FA0097023A /* spinning_coin_blue_7.png in Resources */,
 				0E84C3E51C8FA18600F2ADCA /* playerShip1_blue.png in Resources */,
 				0E363BEC1C87D5FF0018C2F2 /* Rocket for app v12.png in Resources */,
 				0EBF812C1C5599EE0090E585 /* explosion_26.png in Resources */,
-				0EC3BC8E1CDB89FA0097023A /* spinning_coin_blue_2.png in Resources */,
 				0E84C4061C8FA4E100F2ADCA /* bubble shield 7.png in Resources */,
 				0EF3E1471CBE9B67005C73A3 /* buy_button_white.png in Resources */,
+				0E57BF9E1CE7CE9C00F5D872 /* spinning_coin_blue_7.png in Resources */,
 				0E0DBB281CBDD1EB006CB6AC /* title_image.png in Resources */,
+				0E57BF9C1CE7CE9C00F5D872 /* spinning_coin_blue_5.png in Resources */,
 				0EBF81301C5599EE0090E585 /* explosion_3.png in Resources */,
 				0EC3BC841CD917090097023A /* Play.png in Resources */,
 				0ED77CF21C5D435B00BF5D90 /* Gem v15.png in Resources */,
@@ -1175,11 +1176,9 @@
 				0EBF81241C5599EE0090E585 /* explosion_19.png in Resources */,
 				0E197A311C54291B00AA5658 /* spinning_coin_gold.png in Resources */,
 				0E59250B1C6D497A00023713 /* Background7_3k.png in Resources */,
-				0EC3BC901CDB89FA0097023A /* spinning_coin_blue_4.png in Resources */,
 				0E363C111C8B6E050018C2F2 /* Credit in Resources */,
 				0E8896931C90EA6F000D9E51 /* coin_cover.png in Resources */,
 				0E363BEE1C87D5FF0018C2F2 /* Rocket for app v3.png in Resources */,
-				0EC3BC8F1CDB89FA0097023A /* spinning_coin_blue_3.png in Resources */,
 				0E1DDD0E1C34677000E0C28F /* LaunchScreen.storyboard in Resources */,
 				0EBF811C1C5599EE0090E585 /* explosion_11.png in Resources */,
 				0E59250F1C6D497A00023713 /* Background7_7k.png in Resources */,
@@ -1233,6 +1232,7 @@
 				0EBF81321C5599EE0090E585 /* explosion_31.png in Resources */,
 				0E1DDD091C34677000E0C28F /* Main.storyboard in Resources */,
 				0EE368621C96DF1F003639C8 /* gem_bag_2.png in Resources */,
+				0E57BF991CE7CE9C00F5D872 /* spinning_coin_blue_2.png in Resources */,
 				0E1DDD341C3495D000E0C28F /* garaxee.png in Resources */,
 				0E363C1B1C8B6E050018C2F2 /* UFO_6.png in Resources */,
 				0EF3E1461CBE9B67005C73A3 /* back_button_white.png in Resources */,
@@ -1245,6 +1245,7 @@
 				0E57BF8F1CE6D5A200F5D872 /* Icon flick off87.png in Resources */,
 				0E84C4081C8FA4E100F2ADCA /* bubble shield 9.png in Resources */,
 				0E363C171C8B6E050018C2F2 /* UFO_2.png in Resources */,
+				0E57BF9B1CE7CE9C00F5D872 /* spinning_coin_blue_4.png in Resources */,
 				0EC4639C1CCE373200A335AC /* Life_spelling.png in Resources */,
 				0EE368641C98A8D7003639C8 /* Three Hearts.png in Resources */,
 				0E363C1F1C8B6E050018C2F2 /* ufo_map.png in Resources */,
@@ -1268,13 +1269,14 @@
 				0EBF81381C5599EE0090E585 /* explosion_6.png in Resources */,
 				0E197A341C54291B00AA5658 /* spinning_coin_gold_3.png in Resources */,
 				0E84C40A1C8FAAC600F2ADCA /* BlueBorder.png in Resources */,
+				0E57BF9A1CE7CE9C00F5D872 /* spinning_coin_blue_3.png in Resources */,
 				0E1420C71C853249003785D5 /* shield4.png in Resources */,
 				0E363BEB1C87D5FF0018C2F2 /* Rocket for app v11.png in Resources */,
 				0EF3E1591CBF1A87005C73A3 /* Life_intro.png in Resources */,
 				0EA6C1F81CADBBAF00ED16FF /* Life3v2.png in Resources */,
-				0EC3BC921CDB89FA0097023A /* spinning_coin_blue_6.png in Resources */,
 				0E59250D1C6D497A00023713 /* Background7_5k.png in Resources */,
 				0E1DDDD81C35D71B00E0C28F /* MyParticle.sks in Resources */,
+				0E57BF9F1CE7CE9C00F5D872 /* spinning_coin_blue_8.png in Resources */,
 				0E12C0671CAD7B170026879B /* Tutorial_Cover_smash.png in Resources */,
 				0EE368601C96DF1F003639C8 /* gem_bag_0.png in Resources */,
 				0E84C4011C8FA4E100F2ADCA /* bubble shield 2.png in Resources */,
@@ -1283,10 +1285,8 @@
 				0E59250E1C6D497A00023713 /* Background7_6k.png in Resources */,
 				0E12C0681CAD7B170026879B /* UFO_tutorial.png in Resources */,
 				0E1DDDD91C35D71B00E0C28F /* spark.png in Resources */,
-				0EC3BC8D1CDB89FA0097023A /* spinning_coin_blue_1.png in Resources */,
 				0EE3685A1C96DD48003639C8 /* rocket_image.png in Resources */,
 				0E84C3E71C8FA18600F2ADCA /* playerShip1_red.png in Resources */,
-				0EC3BC941CDB89FA0097023A /* spinning_coin_blue_8.png in Resources */,
 				0EBF811A1C5599EE0090E585 /* explosion_1.png in Resources */,
 				0E05E3F21CC4FDBC00AF0A01 /* Flick-Off-Icon 29pt 2x.png in Resources */,
 				0E6B054A1C8FC72000D557E0 /* schatzkiste-300px.png in Resources */,

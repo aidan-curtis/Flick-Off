@@ -114,6 +114,7 @@
 		0E363C331C8CC4320018C2F2 /* UI_Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E363C321C8CC4320018C2F2 /* UI_Store.swift */; };
 		0E363C351C8CD28A0018C2F2 /* search.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E363C341C8CD28A0018C2F2 /* search.jpg */; };
 		0E57BF791CE62FF200F5D872 /* Bullets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF781CE62FF200F5D872 /* Bullets.sks */; };
+		0E57BF7B1CE6965C00F5D872 /* gun_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E57BF7A1CE6965C00F5D872 /* gun_image.png */; };
 		0E586D791CB1D7CA001F995E /* 3 blast rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E586D771CB1D7CA001F995E /* 3 blast rocket.png */; };
 		0E586D7A1CB1D7CA001F995E /* Pile of coins.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E586D781CB1D7CA001F995E /* Pile of coins.png */; };
 		0E5924F01C6CBBDC00023713 /* Background7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5924EF1C6CBBDC00023713 /* Background7.png */; };
@@ -379,6 +380,7 @@
 		0E363C321C8CC4320018C2F2 /* UI_Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UI_Store.swift; path = ../UI_Store.swift; sourceTree = "<group>"; };
 		0E363C341C8CD28A0018C2F2 /* search.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = search.jpg; path = Images/search.jpg; sourceTree = "<group>"; };
 		0E57BF781CE62FF200F5D872 /* Bullets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bullets.sks; sourceTree = "<group>"; };
+		0E57BF7A1CE6965C00F5D872 /* gun_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gun_image.png; sourceTree = SOURCE_ROOT; };
 		0E586D771CB1D7CA001F995E /* 3 blast rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3 blast rocket.png"; path = "Images/3 blast rocket.png"; sourceTree = "<group>"; };
 		0E586D781CB1D7CA001F995E /* Pile of coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pile of coins.png"; path = "Images/Pile of coins.png"; sourceTree = "<group>"; };
 		0E5924EF1C6CBBDC00023713 /* Background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background7.png; path = "Flick Off/Images/Background7.png"; sourceTree = SOURCE_ROOT; };
@@ -655,6 +657,7 @@
 				0E1420CF1C8532B6003785D5 /* Shield.swift */,
 				0E05E3EB1CC4FDBC00AF0A01 /* Flick-Off-Icons */,
 				0E0DBB251CBDD040006CB6AC /* background_title.png */,
+				0E57BF7A1CE6965C00F5D872 /* gun_image.png */,
 				0EF3E1481CBE9CF6005C73A3 /* WhiteBorder.png */,
 				0EF3E1441CBE9B67005C73A3 /* back_button_white.png */,
 				0EF3E1451CBE9B67005C73A3 /* buy_button_white.png */,
@@ -1206,6 +1209,7 @@
 				0E1DE07E1C35E09000E0C28F /* a40000.png in Resources */,
 				0E363C141C8B6E050018C2F2 /* UFO_10.png in Resources */,
 				0E1420CA1C853249003785D5 /* shield7.png in Resources */,
+				0E57BF7B1CE6965C00F5D872 /* gun_image.png in Resources */,
 				0EBF811E1C5599EE0090E585 /* explosion_13.png in Resources */,
 				0EF3E1531CBEF9EE005C73A3 /* Health_badge.png in Resources */,
 				0ED77D331C5D435B00BF5D90 /* Gem v79.png in Resources */,

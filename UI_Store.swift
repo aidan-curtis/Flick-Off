@@ -31,7 +31,8 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "Orange Ship for 10,000 Coins",
          "Green Ship for FREE",
         "One Save for $0.99",
-        "Three Saves for $1.99"]);
+        "Three Saves for $1.99",
+        "Gun Coins for 5000 gems"]);
     
     var current_ProductID:String = ""
     
@@ -49,7 +50,10 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         "playerShip1_orange",
         "playerShip1_green",
         "heart",
-        "Three Hearts"]);
+        "Three Hearts",
+        "gun_image"
+        ]);
+    
     var sizes:[CGSize]=[
         CGSizeMake(200, 200),
         CGSizeMake(100, 100),
@@ -64,7 +68,10 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
         CGSizeMake(100, 100),
-        CGSizeMake(125, 100)
+        CGSizeMake(125, 100),
+        CGSizeMake(100, 100)
+
+        
     ]
     
   
@@ -179,7 +186,15 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
                 buy.hidden=true;
             }
         }
-    
+        
+        else if(current_index==14){
+            //buying gun
+            if(gems>=5000){
+                NSUserDefaults.standardUserDefaults().setObject(gems-5000, forKey: "gems");
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "gun_active");
+            }
+        }
+       
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
         purple_gem.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("gems"))";
         shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("shield"))";
@@ -188,12 +203,6 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
 
     override func viewDidLoad() {
       
-        
-        
-        
-
-        
-        
         bank.textColor=UIColor.yellowColor()
         bank.font=UIFont(name: "Corbert", size: 12);
         bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("coins"))";
@@ -205,7 +214,7 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         shield_bank.textColor=UIColor.cyanColor()
         shield_bank.font=UIFont(name: "Corbert", size: 12);
         shield_bank.text = "\(NSUserDefaults.standardUserDefaults().integerForKey("shields"))";
-    
+        
         use_object.hidden=true;
         home_button.hidden=false;
         buy.hidden=true;
@@ -214,37 +223,28 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         Carousel.type = iCarouselType.CoverFlow;
         Carousel.bounces=false;
         home_button.titleLabel!.font = UIFont(name: "04b_19", size: 30)
-        
         cost.font = UIFont(name: "Corbert", size: 20)
         cost.text = descriptions.objectAtIndex(0) as? String
         //background_node.position=CGPointMake(self.size.width/2, (self.size.width*6/2));
-        
         let background_image: UIImageView = UIImageView();
         print("bounds width: \(self.view.bounds.size.width)")
         background_image.frame=CGRectMake(0, -self.view.bounds.size.width*2+(self.view.bounds.size.height),self.view.bounds.size.width,self.view.bounds.size.width*6);
         background_image.image=UIImage(named: "Background7_4k")
         self.view.addSubview(background_image);
-        
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "playerShip1_green");
-       
-    
     }
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int
     {
         return images.count
     }
-
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView
     {
         var itemView: UIView
         itemView = UIView(frame:CGRect(x:0, y:0, width:200, height:200))
         itemView.contentMode = .ScaleAspectFit
-        
         let imageView = UIImageView(frame: CGRectMake(100-(sizes[index].width/2), 100-(sizes[index].height/2), sizes[index].width, sizes[index].height))
         imageView.image = UIImage(named: "\(images.objectAtIndex(index))")
-        
         itemView.addSubview(imageView);
-        
         let borderView = UIImageView(frame: CGRectMake(0,0, 200, 200))
         if(current_index==index){
             borderView.image = UIImage(named: "GreenBorder")
@@ -254,8 +254,6 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         }
         itemView.addSubview(borderView);
         return itemView
-        
-        
     }
    
     func carousel(carousel: iCarousel, didSelectItemAtIndex index: Int) {

@@ -189,8 +189,8 @@ class UI_Store: UIViewController, iCarouselDataSource, iCarouselDelegate, SKProd
         
         else if(current_index==14){
             //buying gun
-            if(gems>=5000){
-                NSUserDefaults.standardUserDefaults().setObject(gems-5000, forKey: "gems");
+            if(gems>=5){
+                NSUserDefaults.standardUserDefaults().setObject(gems-5, forKey: "gems");
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "gun_active");
             }
         }
